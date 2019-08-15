@@ -118,4 +118,14 @@ public class PlayerCtrl : LivingEntity
 
     }
 
+    private void OnTriggerEnter( Collider other )
+    {
+        Obstacle obstacle= other.GetComponent<Obstacle>();
+
+        if (obstacle != null && obstacle.colorType == colorType)
+        {
+            obstacle.Die();
+        }
+    }
+
 }

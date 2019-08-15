@@ -46,6 +46,6 @@ public class LivingEntity : MonoBehaviour
     public void Die()
     {
         if (onDie != null)
-            Die();
+            onDie();
     }
 }
