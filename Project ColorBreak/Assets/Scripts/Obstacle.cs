@@ -39,6 +39,7 @@ public class Obstacle : LivingEntity
 
         lastChangeTime = 0f;
 
+        onDie += () => StageManager.instance.stage.AddScore();
         onDie += () => Destroy( gameObject );
     }
 
@@ -62,22 +63,11 @@ public class Obstacle : LivingEntity
 
     private void SetMaterial()
     {
+        if ((int)colorType >= colorMaterials.Length)
+            return;
+
         //colorType에 맞는 material을 설정
-        switch(colorType)
-        {
-            case ColorType.Red :
-                meshRenderer.material = colorMaterials[0];
-                break;
-            case ColorType.Yellow:
-                meshRenderer.material = colorMaterials[1];
-                break;
-            case ColorType.Green:
-                meshRenderer.material = colorMaterials[2];
-                break;
-            default:
-                meshRenderer.material = colorMaterials[3];
-                break;
-        }
+        meshRenderer.material = colorMaterials[(int)colorType];
     }
 
     private IEnumerator MoveCoroutine()

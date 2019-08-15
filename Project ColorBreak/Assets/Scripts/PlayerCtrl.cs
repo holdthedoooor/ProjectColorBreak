@@ -19,7 +19,6 @@ public class PlayerCtrl : LivingEntity
     public Vector3 moveVec = Vector3.zero;
     private float maxSpeed;
     private float borderDist;
-    private bool isGameOver = false;
   
     public Material[] colorMt;
 
@@ -33,7 +32,8 @@ public class PlayerCtrl : LivingEntity
         playerTr = this.transform;
         playerCol = GetComponent<SphereCollider>();
         playerMr = GetComponentInChildren<MeshRenderer>();
-        
+
+        onDie += () => StageManager.instance.stage.EndGame();
     }
 
     void Start()
@@ -42,12 +42,11 @@ public class PlayerCtrl : LivingEntity
         maxSpeed = speed;
         speed = 0f;
         playerMr.material = colorMt[(int)colorType];
-        
     }
 
     void Update()
     {
-        if (isGameOver)
+        if (StageManager.instance.stage.isGameOver)
             return;
 
         Moving();
@@ -120,11 +119,23 @@ public class PlayerCtrl : LivingEntity
 
     private void OnTriggerEnter( Collider other )
     {
-        Obstacle obstacle= other.GetComponent<Obstacle>();
-
-        if (obstacle != null && obstacle.colorType == colorType)
+        if(other.tag == "Obstacle")
         {
-            obstacle.Die();
+            Obstacle obstacle = other.GetComponent<Obstacle>();
+
+            if (obstacle != null)
+            {
+                if (obstacle.colorType == colorType)
+                {
+                    obstacle.OnDamage();
+                }
+                else
+                    OnDamage();
+            }
+        }
+        else if(other.tag == "Goal")
+        {
+            StageManager.instance.stage.FinishStage();
         }
     }
 
