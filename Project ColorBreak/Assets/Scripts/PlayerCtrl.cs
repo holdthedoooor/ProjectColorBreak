@@ -111,5 +111,11 @@ public class PlayerCtrl : LivingEntity
 
     }//Moving()
 
+    public void ChangeColor(ColorType color)
+    {
+        colorType = color;
+        playerMr.material = colorMt[(int)colorType];
+
+    }
 
 }
