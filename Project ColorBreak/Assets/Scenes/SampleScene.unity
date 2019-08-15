@@ -258,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1661867349}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c29636b12068347a7cf767c40bfd4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cb9936878abfef4aa84bc6214641327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1581115115
@@ -472,7 +472,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -486,11 +486,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1753907795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8665096b068f9474aa9e4ac61b8eec87, type: 3}
+  m_Script: {fileID: 11500000, guid: bb88217c064803b4292a74d4b74a7d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  touchAmount: 0.1
+  colorType: 0
+  maxHp: 0
+  moveVec: {x: 0, y: 0, z: 0}
+  colorMt:
+  - {fileID: 2100000, guid: c61abbe3a6f1ba44eac64b551c3ea037, type: 2}
+  - {fileID: 2100000, guid: 2e898b36e9bc0b74e84735badfb4d8aa, type: 2}
+  - {fileID: 2100000, guid: 23d37fb505e57ff468e3d9062d5d2287, type: 2}
+  - {fileID: 2100000, guid: a363f6bc511bbda43b8003f4ec639ba2, type: 2}
+  speed: 5
+  touchAmount: 0.3
 --- !u!1001 &6390962292984222892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557,6 +565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192462445579325335, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 954d5e413b317764580df7149b8da02d, type: 3}
