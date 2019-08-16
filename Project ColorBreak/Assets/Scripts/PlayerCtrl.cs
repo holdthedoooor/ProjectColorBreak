@@ -10,7 +10,6 @@ public enum PlayerState
 
 public class PlayerCtrl : LivingEntity
 {
-<<<<<<< HEAD
     private Transform   playerTr;
     private SphereCollider   playerCol;
     private MeshRenderer     playerMr;
@@ -21,17 +20,6 @@ public class PlayerCtrl : LivingEntity
     private float   maxSpeed;
     private float    borderDist;
     private bool     isGameOver = false;
-=======
-    private Transform playerTr;
-    private SphereCollider playerCol;
-    private MeshRenderer playerMr;
-
-    private PlayerState playerState = PlayerState.Start;
-    private Vector3 slideVec = Vector3.zero;
-    public Vector3 moveVec = Vector3.zero;
-    private float maxSpeed;
-    private float borderDist;
->>>>>>> f9b8f0843849a78380d08a90861ed6bb4ded0afc
   
     public Material[]    colorMt;
 
@@ -55,10 +43,7 @@ public class PlayerCtrl : LivingEntity
         maxSpeed = speed;
         speed = 0f;
         playerMr.material = colorMt[(int)colorType];
-<<<<<<< HEAD
-        playerMr.material.color = Color.red;
-=======
->>>>>>> f9b8f0843849a78380d08a90861ed6bb4ded0afc
+
     }
 
     void Update()
