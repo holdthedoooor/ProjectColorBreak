@@ -10,6 +10,7 @@ public enum PlayerState
 
 public class PlayerCtrl : LivingEntity
 {
+<<<<<<< HEAD
     private Transform   playerTr;
     private SphereCollider   playerCol;
     private MeshRenderer     playerMr;
@@ -20,6 +21,17 @@ public class PlayerCtrl : LivingEntity
     private float   maxSpeed;
     private float    borderDist;
     private bool     isGameOver = false;
+=======
+    private Transform playerTr;
+    private SphereCollider playerCol;
+    private MeshRenderer playerMr;
+
+    private PlayerState playerState = PlayerState.Start;
+    private Vector3 slideVec = Vector3.zero;
+    public Vector3 moveVec = Vector3.zero;
+    private float maxSpeed;
+    private float borderDist;
+>>>>>>> f9b8f0843849a78380d08a90861ed6bb4ded0afc
   
     public Material[]    colorMt;
 
@@ -33,7 +45,8 @@ public class PlayerCtrl : LivingEntity
         playerTr = this.transform;
         playerCol = GetComponent<SphereCollider>();
         playerMr = GetComponentInChildren<MeshRenderer>();
-        
+
+        onDie += () => StageManager.instance.stage.EndGame();
     }
 
     void Start()
@@ -42,12 +55,15 @@ public class PlayerCtrl : LivingEntity
         maxSpeed = speed;
         speed = 0f;
         playerMr.material = colorMt[(int)colorType];
+<<<<<<< HEAD
         playerMr.material.color = Color.red;
+=======
+>>>>>>> f9b8f0843849a78380d08a90861ed6bb4ded0afc
     }
 
     void Update()
     {
-        if (isGameOver)
+        if (StageManager.instance.stage.isGameOver)
             return;
 
         Moving();
@@ -123,11 +139,23 @@ public class PlayerCtrl : LivingEntity
 
     private void OnTriggerEnter( Collider other )
     {
-        Obstacle obstacle= other.GetComponent<Obstacle>();
-
-        if (obstacle != null && obstacle.colorType == colorType)
+        if(other.tag == "Obstacle")
         {
-            obstacle.Die();
+            Obstacle obstacle = other.GetComponent<Obstacle>();
+
+            if (obstacle != null)
+            {
+                if (obstacle.colorType == colorType)
+                {
+                    obstacle.OnDamage();
+                }
+                else
+                    OnDamage();
+            }
+        }
+        else if(other.tag == "Goal")
+        {
+            StageManager.instance.stage.FinishStage();
         }
     }
 
