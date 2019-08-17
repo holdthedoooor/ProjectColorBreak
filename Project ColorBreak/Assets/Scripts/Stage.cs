@@ -32,6 +32,7 @@ public class Stage : MonoBehaviour
             score += _score;
             UIManager.instance.UpdateScoreText( score );
             StartCoroutine( UIManager.instance.UpdateScoreSliderCoroutine( score, checkPoint_3 ) );
+            UIManager.instance.StarColorChange();
         }
     }
 

@@ -19,7 +19,8 @@ public class UIManager : MonoBehaviour
     private static UIManager m_instance; //싱글톤이 할당될 변수
 
     public Text         scoreText;
-    public Image        scoreSlider;  
+    public Image        scoreSlider;
+    public StarImage[]  starImages;
     public GameObject   gameOverUI;
     public GameObject   gameClearUI;
 
@@ -38,10 +39,15 @@ public class UIManager : MonoBehaviour
         gameClearUI.SetActive( _active );
     }
 
-    /*public void UpdateScoreSlider(int _score, int _checkPoint_3)
+    public void StarColorChange()
     {
-        scoreSlider.fillAmount = _score / (float)_checkPoint_3;
-    }*/
+        if(StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_1)
+            starImages[0].ChangeColorYellow();
+        else if (StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_2)
+            starImages[1].ChangeColorYellow();
+        else if (StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_3)
+            starImages[2].ChangeColorYellow();
+    }
 
     public IEnumerator UpdateScoreSliderCoroutine( int _score, int _checkPoint_3 )
     {
