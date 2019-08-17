@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    private int     score;
+    public int      score { get; private set; }
     public bool     isGameOver { get; private set; }
+
+    public int      checkPoint_1;
+    public int      checkPoint_2;
+    public int      checkPoint_3;
 
     // 스테이지 시작 시 실행
     public void StartStage()
@@ -27,6 +31,7 @@ public class Stage : MonoBehaviour
         {
             score += _score;
             UIManager.instance.UpdateScoreText( score );
+            StartCoroutine( UIManager.instance.UpdateScoreSliderCoroutine( score, checkPoint_3 ) );
         }
     }
 
