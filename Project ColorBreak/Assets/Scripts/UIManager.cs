@@ -20,9 +20,17 @@ public class UIManager : MonoBehaviour
 
     public Text         scoreText;
     public Image        scoreSlider;
-    public StarImage[]  starImages;
+    private StarImage[] starImages;
+    public GameObject   scoreUI;
+    public GameObject   scoreSliderUI;
+    public GameObject   starImageUI;
     public GameObject   gameOverUI;
     public GameObject   gameClearUI;
+
+    void Awake()
+    {
+        starImages = starImageUI.GetComponentsInChildren<StarImage>();
+    }
 
     public void UpdateScoreText(int _score)
     {
@@ -47,6 +55,20 @@ public class UIManager : MonoBehaviour
             starImages[1].ChangeColorYellow();
         else if (StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_3)
             starImages[2].ChangeColorYellow();
+    }
+
+    public void SetStartUI()
+    {
+        UpdateScoreText( 0 );
+        starImageUI.SetActive( true );
+        scoreSliderUI.SetActive( true );
+        scoreUI.SetActive( true );
+    }
+
+    public void SetFinishUI()
+    {
+        scoreSliderUI.SetActive( false );
+        scoreUI.SetActive( false );
     }
 
     public IEnumerator UpdateScoreSliderCoroutine( int _score, int _checkPoint_3 )

@@ -16,12 +16,14 @@ public class Stage : MonoBehaviour
     {
         score = 0;
         isGameOver = false;
+        UIManager.instance.SetStartUI();
     }
 
     // 스테이지를 통과 시 실행
     public void FinishStage()
     {
         isGameOver = true;
+        UIManager.instance.SetFinishUI();
         UIManager.instance.SetActiveGameClearUI( true );
     }
 
