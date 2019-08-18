@@ -34,7 +34,7 @@ public class PlayerCtrl : LivingEntity
         playerCol = GetComponent<SphereCollider>();
         playerMr = GetComponentInChildren<MeshRenderer>();
 
-        onDie += () => StageManager.instance.stage.EndGame();
+        onDie += () => StageManager.instance.stage.FinishStage();
     }
 
     void Start()

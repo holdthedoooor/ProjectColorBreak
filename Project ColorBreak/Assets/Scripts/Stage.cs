@@ -24,7 +24,6 @@ public class Stage : MonoBehaviour
     {
         isGameOver = true;
         UIManager.instance.SetFinishUI();
-        UIManager.instance.SetActiveGameClearUI( true );
     }
 
     public void AddScore(int _score = 1)
@@ -36,12 +35,5 @@ public class Stage : MonoBehaviour
             StartCoroutine( UIManager.instance.UpdateScoreSliderCoroutine( score, checkPoint_3 ) );
             UIManager.instance.StarColorChange();
         }
-    }
-
-    //장애물에 부딪혀서 플레이어가 죽었을 때 실행
-    public void EndGame()
-    {
-        isGameOver = true;
-        UIManager.instance.SetActiveGameOverUI( true );
     }
 }
