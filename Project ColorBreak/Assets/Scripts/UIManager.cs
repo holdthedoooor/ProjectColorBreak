@@ -18,23 +18,23 @@ public class UIManager : MonoBehaviour
     }
     private static UIManager m_instance; //싱글톤이 할당될 변수
 
+    //나중에 간편하게 관리
     public Text         scoreText;
     public Text         gameOverScoreText;
     public Text         gameOverText;
     public Button       nextButton;
     public Image        scoreSlider;
     private StarImage[] starImages;
-    private Image[]     gameOverStarImages;
+    public ResultStar   resultStar;
     public GameObject   scoreUI;
     public GameObject   scoreSliderUI;
     public GameObject   starImageUI;
-    public GameObject   gameOverStarImageUI;
     public GameObject   gameOverUI;
 
+    // ============== 변수 선언 =============================================//
     void Awake()
     {
         starImages = starImageUI.GetComponentsInChildren<StarImage>();
-        gameOverStarImages = gameOverStarImageUI.GetComponentsInChildren<Image>();
     }
 
     public void UpdateScoreText(int _score)
@@ -45,11 +45,11 @@ public class UIManager : MonoBehaviour
     public void StarColorChange()
     {
         if(StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_1)
-            starImages[0].ChangeColorYellow();
+            starImages[0].ChangeStar();
         else if (StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_2)
-            starImages[1].ChangeColorYellow();
+            starImages[1].ChangeStar();
         else if (StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_3)
-            starImages[2].ChangeColorYellow();
+            starImages[2].ChangeStar();
     }
 
     public void SetStartUI()
@@ -65,16 +65,16 @@ public class UIManager : MonoBehaviour
         scoreSliderUI.SetActive( false );
         scoreUI.SetActive( false );
 
-        for (int i = 0; i < gameOverStarImages.Length; i++)
+        for (int i = 0; i < resultStar.starImages.Length; i++)
         {
-            gameOverStarImages[i].color = Color.gray;
+            resultStar.starImages[i].sprite = resultStar.blankStarSprite;
         }
 
         if(StageManager.instance.stage.score >= StageManager.instance.stage.checkPoint_1)
         {
             gameOverText.text = "Stage Clear";
             gameOverText.color = Color.blue;
-            gameOverStarImages[0].color = Color.yellow;
+            resultStar.starImages[0].sprite = resultStar.starSprite;
             nextButton.interactable = true;
         }
         else
@@ -86,12 +86,12 @@ public class UIManager : MonoBehaviour
 
         if (StageManager.instance.stage.score >= StageManager.instance.stage.checkPoint_3)
         {
-            gameOverStarImages[1].color = Color.yellow;
-            gameOverStarImages[2].color = Color.yellow;
+            resultStar.starImages[1].sprite = resultStar.starSprite;
+            resultStar.starImages[2].sprite = resultStar.starSprite;
         }
         else if (StageManager.instance.stage.score >= StageManager.instance.stage.checkPoint_2)
         {
-            gameOverStarImages[1].color = Color.yellow;            
+            resultStar.starImages[1].sprite = resultStar.starSprite;
         }
         
         gameOverScoreText.text = StageManager.instance.stage.score.ToString();

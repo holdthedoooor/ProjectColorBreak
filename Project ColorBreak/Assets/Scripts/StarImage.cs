@@ -15,12 +15,13 @@ public class StarImage : MonoBehaviour
 
     private RectTransform starTransform;
     private Image         starImage;
-    private Color         starColor;
+    public  Sprite        blankStarSprite;
+    public  Sprite        starSprite;
     private Text          starText;
 
     private float   ratio;
-    private float   minPositionX = -97f;
-    private float   maxPositionX = 97f;
+    private float   minPositionX = -365f;
+    private float   maxPositionX = 365f;
 
     void Awake()
     {
@@ -54,11 +55,16 @@ public class StarImage : MonoBehaviour
 
         transform.localPosition = new Vector3( Mathf.Lerp( minPositionX, maxPositionX, ratio ), transform.localPosition.y, transform.localPosition.z );
 
-        starImage.color = Color.gray;
+        starImage.sprite = blankStarSprite;
     }
 
-    public void ChangeColorYellow()
+    public void ChangeStar()
     {
-        starImage.color = Color.yellow;
+        starImage.sprite = starSprite;
+    }
+
+    public void ChangeBlankStar()
+    {
+        starImage.sprite = blankStarSprite;
     }
 }
