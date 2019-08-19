@@ -40,6 +40,10 @@ public class PlayerCtrl : LivingEntity
     void Start()
     {
         borderDist= Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,Screen.height)).x - playerCol.radius/2;
+        //Screen.width - 게임 화면의 크기를 픽셀로 반환함.
+        //ScreenToWorldPoint - 게임 화면의 픽셀위치를 월드포인트로 반환함.
+
+
         maxSpeed = speed;
         speed = 0f;
         playerMr.material = colorMt[(int)colorType];
