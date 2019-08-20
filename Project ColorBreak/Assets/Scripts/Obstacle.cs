@@ -31,7 +31,7 @@ public class Obstacle : LivingEntity
     public Material[]       colorMaterials;
     private MeshRenderer     meshRenderer;
 
-    private void Awake()
+    void Awake()
     {
         status = Status.Live;
 
@@ -39,11 +39,11 @@ public class Obstacle : LivingEntity
 
         lastChangeTime = 0f;
 
-        onDie += () => StageManager.instance.stage.AddScore();
-        onDie += () => Destroy( gameObject );
+        onDie += () => StageManager.instance.currentStage.AddScore();
+        onDie += () => gameObject.SetActive(false);
     }
 
-    private void Start()
+    void Start()
     {
         SetMaterial();
 

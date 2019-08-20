@@ -13,8 +13,10 @@ public class PlayerCtrl : LivingEntity
     private Transform   playerTr;
     private SphereCollider   playerCol;
     private MeshRenderer     playerMr;
-
     private PlayerState     playerState = PlayerState.Start;
+
+    public FollowCamera followCamera;
+
     private Vector3  slideVec = Vector3.zero;
     public Vector3   moveVec = Vector3.zero;
     private float   maxSpeed;
@@ -28,13 +30,19 @@ public class PlayerCtrl : LivingEntity
 
     //--------------------변수선언-----------------(여기까지)
 
-    private void Awake()
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        followCamera.transform.position = new Vector3(0,4.6f,-10);
+    }
+
+    void Awake()
     {
         playerTr = this.transform;
         playerCol = GetComponent<SphereCollider>();
         playerMr = GetComponentInChildren<MeshRenderer>();
 
-        onDie += () => StageManager.instance.stage.FinishStage();
+        onDie += () => StageManager.instance.currentStage.FinishStage();
     }
 
     void Start()
@@ -43,12 +51,11 @@ public class PlayerCtrl : LivingEntity
         maxSpeed = speed;
         speed = 0f;
         playerMr.material = colorMt[(int)colorType];
-
     }
 
     void Update()
     {
-        if (StageManager.instance.stage.isGameOver)
+        if (StageManager.instance.isGameOver)
             return;
 
         Moving();
@@ -60,7 +67,7 @@ public class PlayerCtrl : LivingEntity
         if (playerState == PlayerState.Start)
         {
             speed += 0.1f;
-
+            
             if (speed >= maxSpeed)
             {
                 speed = maxSpeed;
@@ -111,15 +118,12 @@ public class PlayerCtrl : LivingEntity
             Debug.Log( "좌지점" );
 
         }
-
-
     }//Moving()
 
     public void ChangeColor(ColorType color)
     {
         colorType = color;
         playerMr.material = colorMt[(int)colorType];
-
     }
 
     private void OnTriggerEnter( Collider other )
@@ -140,7 +144,7 @@ public class PlayerCtrl : LivingEntity
         }
         else if(other.tag == "Goal")
         {
-            StageManager.instance.stage.FinishStage();
+            StageManager.instance.currentStage.FinishStage();
         }
     }
 

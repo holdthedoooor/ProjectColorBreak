@@ -17,19 +17,24 @@ public class StageManager : MonoBehaviour
     }
     private static StageManager m_instance; //싱글톤이 할당될 변수
 
-    public Stage stage;
+    public bool         isGameOver;
+
+    public GameObject   go_Player;
+    //현재 스테이지
+    public Stage        currentStage;
+    public StageSlot    currentStageSlot;
 
     void Awake()
     {
         if (instance != this)
             Destroy( gameObject );
     }
-    // Start is called before the first frame update
-    void Start()
+
+    /*void Start()
     {
-        if ( stage )
+        if (currentStage)
         {
-            stage.StartStage();
+            currentStage.StartStage();
         }
-    }
+    }*/
 }
