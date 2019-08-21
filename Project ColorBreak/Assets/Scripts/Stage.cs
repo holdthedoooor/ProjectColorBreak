@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public int      score { get; private set; }
     public int[]    checkPoints;
-    
 
     public Obstacle[] obstacles;
 
@@ -20,15 +18,18 @@ public class Stage : MonoBehaviour
         StartStage();
     }
 
-    // 스테이지 시작 시 실행
+    // 활성화 되면 즉 스테이지 시작 시 실행
     public void StartStage()
     {
         Debug.Log( "스타트" );
-        score = 0;
+        StageManager.instance.score = 0;
         StageManager.instance.isGameOver = false;
         StageManager.instance.go_Player.SetActive( true );
+
+        //isMovable를 true로 바꿔줌으로 써 카메라가 다시 움직이도록 설정
         StageManager.instance.go_Player.GetComponent<PlayerCtrl>().followCamera.isMovable = true;
         UIManager.instance.SetStartUI();
+
         for (int i = 0; i < obstacles.Length; i++)
         {
             obstacles[i].gameObject.SetActive( false );
@@ -41,19 +42,11 @@ public class Stage : MonoBehaviour
     {
         StageManager.instance.isGameOver = true;
         UIManager.instance.SetFinishUI();
-        if (score > StageManager.instance.currentStageSlot.bestScore)
-            StageManager.instance.currentStageSlot.bestScore = score;
 
+        //현재 점수가 현재 스테이지에서 달성한 최대 점수보다 크다면 최대 점수 변경
+        if (StageManager.instance.score > StageManager.instance.currentStageSlot.bestScore)
+            StageManager.instance.currentStageSlot.bestScore = StageManager.instance.score;
     }
 
-    public void AddScore(int _score = 1)
-    {
-        if(!StageManager.instance.isGameOver)
-        {
-            score += _score;
-            UIManager.instance.stageUI.UpdateScoreText( score );
-            UIManager.instance.StarImageChange();
-            StartCoroutine( UIManager.instance.stageUI.UpdateScoreSliderCoroutine( score, checkPoints[2]) );
-        }
-    }
+
 }

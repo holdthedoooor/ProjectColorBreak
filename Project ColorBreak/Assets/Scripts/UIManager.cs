@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     //나중에 기능별로 나눌 예정
     public GameObject           go_StageSlotsParent;
     public Button               nextButton;
-    public Sprite               starSprite;
+    public Sprite               starSprite; 
     public Sprite               blankStarSprite;
     public StageUI              stageUI;
     public GameOverUI           gameOverUI;
@@ -35,24 +35,25 @@ public class UIManager : MonoBehaviour
     public LobbyUI              lobbyUI;
     private StageSlot[]         stageSlots;
 
-    //체크 포인트에 도달할 때마다 StarImage를 변경
+    //체크 포인트에 도달할 때마다 슬라이더의 Star Image와 gameOver의 Star Image를 변경
+    //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;ㅑ
     public void StarImageChange()
     {
-        if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[0])
+        if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[0])
         {
             stageUI.starImages[0].sprite = starSprite;
             gameOverUI.starImages[0].sprite = starSprite;
             if (StageManager.instance.currentStageSlot.starCount < 1)
                 StageManager.instance.currentStageSlot.starCount = 1;
         }
-        else if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[1])
+        else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[1])
         {
             stageUI.starImages[1].sprite = starSprite;
             gameOverUI.starImages[1].sprite = starSprite;
             if (StageManager.instance.currentStageSlot.starCount < 2)
                 StageManager.instance.currentStageSlot.starCount = 2;
         }
-        else if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[2])
+        else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[2])
         {
             stageUI.starImages[2].sprite = starSprite;
             gameOverUI.starImages[2].sprite = starSprite;
@@ -71,13 +72,18 @@ public class UIManager : MonoBehaviour
     //게임이 끝날 때
     public void SetFinishUI()
     {
+        //starCount가 1개 이상이면 Stage Clear
         if (StageManager.instance.currentStageSlot.starCount > 0)
         {
             gameOverUI.gameOverText.text = "Stage Clear";
             gameOverUI.gameOverText.color = Color.blue;
+
+            //만약 현재 stageSlot이 Open만 된 상태였다면 Clear로 변경
             if(StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
             {
                 StageManager.instance.currentStageSlot.stageStatus = StageSlot.StageStatus.Clear;
+
+                //현재 Stage를 Clear 했으니 다음 Stage를 Open 시켜준다.
                 if(StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
                      stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].StageSlotOpen();
             }
@@ -97,7 +103,7 @@ public class UIManager : MonoBehaviour
         }
         
         StageManager.instance.currentStageSlot.StageSlotChange();
-        gameOverUI.gameOverScoreText.text = StageManager.instance.currentStage.score.ToString();
+        gameOverUI.gameOverScoreText.text = StageManager.instance.score.ToString();
         gameOverUI.go_GameOverUI.SetActive( true );
     }
 
@@ -108,9 +114,12 @@ public class UIManager : MonoBehaviour
         gameOverUI.go_GameOverUI.SetActive( false );
         StageManager.instance.currentStage.gameObject.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
+        StageManager.instance.currentStageSlot = null;
+        StageManager.instance.currentStage = null;
         stageSelectUI.go_StageSelectUI.SetActive( true );
     }
 
+    //현재 스테이지를 다시 플레이하는 버튼
     public void RestartButton()
     {
         gameOverUI.go_GameOverUI.SetActive( false );
@@ -119,6 +128,7 @@ public class UIManager : MonoBehaviour
         StageManager.instance.currentStage.gameObject.SetActive( true );
     }
 
+    //다음 스테이지로 넘어가는 버튼
     public void NextButton()
     {
         gameOverUI.go_GameOverUI.SetActive( false );

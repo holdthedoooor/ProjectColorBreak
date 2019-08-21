@@ -17,6 +17,7 @@ public class StageInformationUI : MonoBehaviour
     {
         StageManager.instance.currentStageSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StageSlot>();
         StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
+
         if (StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Rock)
             return;
 
@@ -24,6 +25,14 @@ public class StageInformationUI : MonoBehaviour
         SetStageInformation();
     }
 
+    public void StageSelectCancelButton()
+    {
+        StageManager.instance.currentStageSlot = null;
+        StageManager.instance.currentStage = null;
+        go_StageInformationUI.SetActive( false );
+    }
+
+    //최대 점수, Star Image, CheckPountText 초기화
     public void ResetStageInformation()
     {
         bestScoreText.text = StageManager.instance.currentStageSlot.bestScore.ToString();
@@ -36,6 +45,7 @@ public class StageInformationUI : MonoBehaviour
         }
     }
 
+    //클릭한 StageSlot의 정보에 맞게 설정
     public void SetStageInformation()
     {
         if (StageManager.instance.currentStageSlot.starCount > 0)

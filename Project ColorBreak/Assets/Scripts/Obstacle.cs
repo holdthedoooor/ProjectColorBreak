@@ -39,7 +39,7 @@ public class Obstacle : LivingEntity
 
         lastChangeTime = 0f;
 
-        onDie += () => StageManager.instance.currentStage.AddScore();
+        onDie += () => StageManager.instance.AddScore();
         onDie += () => gameObject.SetActive(false);
     }
 
