@@ -20,11 +20,13 @@ public class PlayerCtrl : LivingEntity
     private Vector3  slideVec = Vector3.zero;
     public Vector3   moveVec = Vector3.zero;
     private float   maxSpeed;
+    private float    bouncePower =0f;
     private float    borderDist;
     private bool     isGameOver = false;
   
     public Material[]    colorMt;
 
+    public float    bounceMaxPower = 3.0f;//튕기는 정도
     public float    speed = 5.0f; //공의 하강속도
     public float    touchAmount = 0.3f; //터치 감도
 
@@ -64,9 +66,15 @@ public class PlayerCtrl : LivingEntity
 
         Moving();
 
-      
+        if (Input.GetKeyDown( KeyCode.Space ))
+                BounceBall();
+
     }
 
+    void BounceBall()
+    {
+        bouncePower = bounceMaxPower;
+    }
 
     private void Moving()
     {
@@ -108,8 +116,12 @@ public class PlayerCtrl : LivingEntity
 
 #endif
 
+        if (bouncePower > 0)
+            bouncePower -= 0.1f;
+
         //이동시키는 부분
         moveVec = Vector3.down + slideVec;
+        moveVec.y += bouncePower;
         playerTr.Translate( moveVec * speed * Time.deltaTime );
 
 
