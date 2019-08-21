@@ -34,4 +34,8 @@ public class Item : LivingEntity
         meshRenderer.material = colorMaterials[(int)colorType];
     }
 
+    override public void OnDamage()
+    {
+        Die();
+    }
 }

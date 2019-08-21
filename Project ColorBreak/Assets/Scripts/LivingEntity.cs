@@ -43,7 +43,7 @@ public class LivingEntity : MonoBehaviour
     }
 
     //데미지를 받았을 때 실행되는 함수
-    public void OnDamage()
+    virtual public void OnDamage()
     {
         if (isBreakable == false)//부실수 없는 장애물의 경우
             return;
