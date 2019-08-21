@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkPoints: 
+  obstacles: []
 --- !u!1 &9009833987651206825
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +431,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: obstaclesType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}

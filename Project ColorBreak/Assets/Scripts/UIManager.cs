@@ -31,23 +31,26 @@ public class UIManager : MonoBehaviour
     //체크 포인트에 도달할 때마다 StarImage를 변경
     public void StarImageChange()
     {
-        if(StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[0])
+        if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[0])
         {
             stageUI.starImages[0].sprite = starSprite;
             gameOverUI.starImages[0].sprite = starSprite;
-            StageManager.instance.currentStageSlot.starCount = 1;
+            if (StageManager.instance.currentStageSlot.starCount < 1)
+                StageManager.instance.currentStageSlot.starCount = 1;
         }
         else if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[1])
         {
             stageUI.starImages[1].sprite = starSprite;
             gameOverUI.starImages[1].sprite = starSprite;
-            StageManager.instance.currentStageSlot.starCount = 2;
+            if (StageManager.instance.currentStageSlot.starCount < 2)
+                StageManager.instance.currentStageSlot.starCount = 2;
         }
         else if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[2])
         {
             stageUI.starImages[2].sprite = starSprite;
             gameOverUI.starImages[2].sprite = starSprite;
-            StageManager.instance.currentStageSlot.starCount = 3;
+            if (StageManager.instance.currentStageSlot.starCount < 3)
+                StageManager.instance.currentStageSlot.starCount = 3;
         }
     }
 
@@ -61,7 +64,7 @@ public class UIManager : MonoBehaviour
     //게임이 끝날 때
     public void SetFinishUI()
     {
-        if(StageManager.instance.currentStageSlot.starCount > 0)
+        if(StageManager.instance.currentStage.score > StageManager.instance.currentStage.checkPoints[0])
         {
             gameOverUI.gameOverText.text = "Stage Clear";
             gameOverUI.gameOverText.color = Color.blue;
