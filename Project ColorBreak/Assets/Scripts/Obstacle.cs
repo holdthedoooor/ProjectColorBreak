@@ -28,7 +28,7 @@ public class Obstacle : LivingEntity
     //랜덤으로 색을 바꿀 떄 사용
     private int     colorChangeNum;
 
-    public Material[]       colorMaterials;
+    public Material[]        colorMaterials;
     private MeshRenderer     meshRenderer;
 
     void Awake()

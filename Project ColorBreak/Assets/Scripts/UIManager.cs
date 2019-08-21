@@ -114,8 +114,6 @@ public class UIManager : MonoBehaviour
         gameOverUI.go_GameOverUI.SetActive( false );
         StageManager.instance.currentStage.gameObject.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
-        StageManager.instance.currentStageSlot = null;
-        StageManager.instance.currentStage = null;
         stageSelectUI.go_StageSelectUI.SetActive( true );
     }
 

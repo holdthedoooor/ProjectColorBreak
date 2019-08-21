@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public int[]    checkPoints;
+    public int[]         checkPoints;
 
-    public Obstacle[] obstacles;
+    public Obstacle[]    obstacles;
+    public Item[]        items;
 
     void Awake()
     {
         obstacles = transform.GetComponentsInChildren<Obstacle>();
+        items = transform.GetComponentsInChildren<Item>();
     }
 
     void OnEnable()
@@ -21,7 +23,6 @@ public class Stage : MonoBehaviour
     // 활성화 되면 즉 스테이지 시작 시 실행
     public void StartStage()
     {
-        Debug.Log( "스타트" );
         StageManager.instance.score = 0;
         StageManager.instance.isGameOver = false;
         StageManager.instance.go_Player.SetActive( true );
@@ -34,6 +35,12 @@ public class Stage : MonoBehaviour
         {
             obstacles[i].gameObject.SetActive( false );
             obstacles[i].gameObject.SetActive( true );
+        }
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].gameObject.SetActive( false );
+            items[i].gameObject.SetActive( true );
         }
     }
 

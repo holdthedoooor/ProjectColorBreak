@@ -159,6 +159,20 @@ public class PlayerCtrl : LivingEntity
                     OnDamage();
             }
         }
+        else if(other.tag == "Item")
+        {
+            Item item = other.GetComponent<Item>();
+
+            if(item != null)
+            {
+                if (item.itemType == Item.ItemType.ColorChange)
+                {
+                    playerMr.material = colorMt[(int)item.colorType];
+                    colorType = item.colorType;
+                }
+                item.OnDamage();
+            }
+        }
         else if(other.tag == "Goal")
         {
             StageManager.instance.currentStage.FinishStage();

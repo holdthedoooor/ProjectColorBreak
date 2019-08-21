@@ -8,6 +8,7 @@ public class StageInformationUI : MonoBehaviour
 {
     public GameObject   go_StageInformationUI;
 
+    public Text         stageNumberText;
     public Text         bestScoreText;
     public Text[]       checkPointTexts;
     public Image[]      starImages;
@@ -15,6 +16,7 @@ public class StageInformationUI : MonoBehaviour
     //스테이지 선택 버튼
     public void StageSelectButton()
     {
+        Debug.Log( EventSystem.current.currentSelectedGameObject.name );
         StageManager.instance.currentStageSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StageSlot>();
         StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
 
@@ -27,8 +29,6 @@ public class StageInformationUI : MonoBehaviour
 
     public void StageSelectCancelButton()
     {
-        StageManager.instance.currentStageSlot = null;
-        StageManager.instance.currentStage = null;
         go_StageInformationUI.SetActive( false );
     }
 
@@ -70,6 +70,8 @@ public class StageInformationUI : MonoBehaviour
         }
         else if (StageManager.instance.currentStageSlot.starCount == 1)
             checkPointTexts[0].enabled = false;
+
+        stageNumberText.text = "STAGE " + (StageManager.instance.currentStageSlot.stageNumber + 1).ToString();
 
         go_StageInformationUI.SetActive( true );
     }
