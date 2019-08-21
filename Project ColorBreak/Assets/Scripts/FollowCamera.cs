@@ -32,7 +32,6 @@ public class FollowCamera : MonoBehaviour
         if (isMovable == false)
             return;
 
-
         moveVec = cameraTr.position;
         moveVec.y = playerTr.position.y - dumping;
 

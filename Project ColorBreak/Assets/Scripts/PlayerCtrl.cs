@@ -20,12 +20,13 @@ public class PlayerCtrl : LivingEntity
     private Vector3  slideVec = Vector3.zero;
     public Vector3   moveVec = Vector3.zero;
     private float   maxSpeed;
+    private float    bouncePower =0f;
     private float    borderDist;
     private bool     isGameOver = false;
-    private bool     isBounce = false;
   
     public Material[]    colorMt;
 
+    public float    bounceMaxPower = 3.0f;//튕기는 정도
     public float    speed = 5.0f; //공의 하강속도
     public float    touchAmount = 0.3f; //터치 감도
 
@@ -65,13 +66,15 @@ public class PlayerCtrl : LivingEntity
 
         Moving();
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine( BounceUp() );
-        }
-      
+        if (Input.GetKeyDown( KeyCode.Space ))
+                BounceBall();
+
     }
 
+    void BounceBall()
+    {
+        bouncePower = bounceMaxPower;
+    }
 
     private void Moving()
     {
@@ -113,16 +116,12 @@ public class PlayerCtrl : LivingEntity
 
 #endif
 
-        //이동시키는 부분
-        if(isBounce== false)
-        {
-            moveVec = Vector3.down + slideVec;
-        }
-        else
-        {
-            moveVec = Vector3.up + slideVec;
-        }
+        if (bouncePower > 0)
+            bouncePower -= 0.1f;
 
+        //이동시키는 부분
+        moveVec = Vector3.down + slideVec;
+        moveVec.y += bouncePower;
         playerTr.Translate( moveVec * speed * Time.deltaTime );
 
 
@@ -137,16 +136,6 @@ public class PlayerCtrl : LivingEntity
 
         }
     }//Moving()
-
-    IEnumerator BounceUp()
-    {
-        isBounce = true;
-
-
-        yield return new WaitForSeconds(0.5f);
-
-        isBounce = false;
-    }
 
     public void ChangeColor(ColorType color)
     {
