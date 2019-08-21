@@ -28,11 +28,9 @@ public class FollowCamera : MonoBehaviour
     void LateUpdate()
     {
         if (StageManager.instance.isGameOver)
+            return;
         if (isMovable == false)
             return;
-
-            if (StageManager.instance.stage.isGameOver)
-                return;
 
         moveVec = cameraTr.position;
         moveVec.y = playerTr.position.y - dumping;
