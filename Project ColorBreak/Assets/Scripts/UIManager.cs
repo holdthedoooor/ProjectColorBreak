@@ -18,93 +18,84 @@ public class UIManager : MonoBehaviour
     }
     private static UIManager m_instance; //싱글톤이 할당될 변수
 
-    //나중에 간편하게 관리
-    public Text         scoreText;
-    public Text         gameOverScoreText;
-    public Text         gameOverText;
-    public Button       nextButton;
-    public Image        scoreSlider;
-    private StarImage[] starImages;
-    public ResultStar   resultStar;
-    public GameObject   scoreUI;
-    public GameObject   scoreSliderUI;
-    public GameObject   starImageUI;
-    public GameObject   gameOverUI;
+    //나중에 기능별로 나눌 예정
+    public Button                nextButton;
+    public Sprite                starSprite;
+    public Sprite                blankStarSprite;
+    public StageUI               stageUI;
+    public GameOverUI            gameOverUI;
+    public StageSelectUI         stageSelectUI;
+    public StageInformationUI    stageInformationUI;
+    public LobbyUI               lobbyUI;
 
-    // ============== 변수 선언 =============================================//
-    void Awake()
+    //체크 포인트에 도달할 때마다 StarImage를 변경
+    public void StarImageChange()
     {
-        starImages = starImageUI.GetComponentsInChildren<StarImage>();
+        if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[0])
+        {
+            stageUI.starImages[0].sprite = starSprite;
+            gameOverUI.starImages[0].sprite = starSprite;
+            if (StageManager.instance.currentStageSlot.starCount < 1)
+                StageManager.instance.currentStageSlot.starCount = 1;
+        }
+        else if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[1])
+        {
+            stageUI.starImages[1].sprite = starSprite;
+            gameOverUI.starImages[1].sprite = starSprite;
+            if (StageManager.instance.currentStageSlot.starCount < 2)
+                StageManager.instance.currentStageSlot.starCount = 2;
+        }
+        else if (StageManager.instance.currentStage.score == StageManager.instance.currentStage.checkPoints[2])
+        {
+            stageUI.starImages[2].sprite = starSprite;
+            gameOverUI.starImages[2].sprite = starSprite;
+            if (StageManager.instance.currentStageSlot.starCount < 3)
+                StageManager.instance.currentStageSlot.starCount = 3;
+        }
     }
 
-    public void UpdateScoreText(int _score)
-    {
-        scoreText.text = _score.ToString();
-    }
-
-    public void StarColorChange()
-    {
-        if(StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_1)
-            starImages[0].ChangeStar();
-        else if (StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_2)
-            starImages[1].ChangeStar();
-        else if (StageManager.instance.stage.score == StageManager.instance.stage.checkPoint_3)
-            starImages[2].ChangeStar();
-    }
-
+    //게임이 시작할 때
     public void SetStartUI()
     {
-        UpdateScoreText( 0 );
-        starImageUI.SetActive( true );
-        scoreSliderUI.SetActive( true );
-        scoreUI.SetActive( true );
+        stageUI.ActivateUI();
+        gameOverUI.ResetStar();
     }
 
+    //게임이 끝날 때
     public void SetFinishUI()
     {
-        scoreSliderUI.SetActive( false );
-        scoreUI.SetActive( false );
-
-        for (int i = 0; i < resultStar.starImages.Length; i++)
+        if(StageManager.instance.currentStage.score > StageManager.instance.currentStage.checkPoints[0])
         {
-            resultStar.starImages[i].sprite = resultStar.blankStarSprite;
-        }
-
-        if(StageManager.instance.stage.score >= StageManager.instance.stage.checkPoint_1)
-        {
-            gameOverText.text = "Stage Clear";
-            gameOverText.color = Color.blue;
-            resultStar.starImages[0].sprite = resultStar.starSprite;
+            gameOverUI.gameOverText.text = "Stage Clear";
+            gameOverUI.gameOverText.color = Color.blue;
             nextButton.interactable = true;
         }
         else
         {
-            gameOverText.text = "Game Over";
-            gameOverText.color = Color.red;
+            gameOverUI.gameOverText.text = "Game Over";
+            gameOverUI.gameOverText.color = Color.red;
             nextButton.interactable = false;
         }
 
-        if (StageManager.instance.stage.score >= StageManager.instance.stage.checkPoint_3)
-        {
-            resultStar.starImages[1].sprite = resultStar.starSprite;
-            resultStar.starImages[2].sprite = resultStar.starSprite;
-        }
-        else if (StageManager.instance.stage.score >= StageManager.instance.stage.checkPoint_2)
-        {
-            resultStar.starImages[1].sprite = resultStar.starSprite;
-        }
-        
-        gameOverScoreText.text = StageManager.instance.stage.score.ToString();
-        gameOverUI.SetActive( true );
+        StageManager.instance.currentStageSlot.StageSlotChange();
+        gameOverUI.gameOverScoreText.text = StageManager.instance.currentStage.score.ToString();
+        gameOverUI.go_GameOverUI.SetActive( true );
     }
 
-    public IEnumerator UpdateScoreSliderCoroutine( int _score, int _checkPoint_3 )
+    //홈 버튼 클릭
+    public void HomeButton()
     {
-        while(scoreSlider.fillAmount < _score / (float)_checkPoint_3)
-        {
-            scoreSlider.fillAmount += Time.deltaTime;
+        stageUI.DeactivateUI();
+        gameOverUI.go_GameOverUI.SetActive( false );
+        StageManager.instance.currentStage.gameObject.SetActive( false );
+        StageManager.instance.go_Player.SetActive( false );
+        stageSelectUI.go_StageSelectUI.SetActive( true );
+    }
 
-            yield return null;
-        }
+    //스테이지 선택 UI로 가는 버튼
+    public void LobbyStartButton()
+    {
+        lobbyUI.go_LobbyUI.SetActive( false );
+        stageSelectUI.go_StageSelectUI.SetActive( true );
     }
 }

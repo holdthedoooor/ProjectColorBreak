@@ -26,12 +26,20 @@ public class LivingEntity : MonoBehaviour
     public ColorType colorType;
 
     //최대 체력
-    public int maxHp;
+    public int               maxHp;
     //현재 체력
-    public int currentHP { get; protected set; }
+    public int               currentHP { get; protected set; }
+    public Vector3           originPosition;
 
     //죽을 때 실행되는 이벤트
-    protected event Action onDie;
+    protected event Action   onDie;
+
+    virtual protected void OnEnable()
+    {
+        currentHP = maxHp;
+        status = Status.Live;
+        transform.position = originPosition;
+    }
 
     //데미지를 받았을 때 실행되는 함수
     public void OnDamage()
