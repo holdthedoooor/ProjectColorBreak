@@ -109,10 +109,10 @@ public class Obstacle : LivingEntity
                         colorType = ColorType.Yellow;
                         break;
                     case 2:
-                        colorType = ColorType.Green;
+                        colorType = ColorType.Blue;
                         break;
                     default:
-                        colorType = ColorType.Blue;
+                        colorType = ColorType.Purple;
                         break;
                 }
 

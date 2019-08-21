@@ -20,8 +20,8 @@ public class LivingEntity : MonoBehaviour
     {
         Red,
         Yellow,
-        Green,
-        Blue
+        Blue,
+        Purple
     }
     public ColorType colorType;
 

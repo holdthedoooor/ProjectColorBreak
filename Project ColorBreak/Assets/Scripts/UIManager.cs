@@ -18,15 +18,22 @@ public class UIManager : MonoBehaviour
     }
     private static UIManager m_instance; //싱글톤이 할당될 변수
 
+    void Awake()
+    {
+        stageSlots = go_StageSlotsParent.transform.GetComponentsInChildren<StageSlot>();
+    }
+
     //나중에 기능별로 나눌 예정
-    public Button                nextButton;
-    public Sprite                starSprite;
-    public Sprite                blankStarSprite;
-    public StageUI               stageUI;
-    public GameOverUI            gameOverUI;
-    public StageSelectUI         stageSelectUI;
-    public StageInformationUI    stageInformationUI;
-    public LobbyUI               lobbyUI;
+    public GameObject           go_StageSlotsParent;
+    public Button               nextButton;
+    public Sprite               starSprite;
+    public Sprite               blankStarSprite;
+    public StageUI              stageUI;
+    public GameOverUI           gameOverUI;
+    public StageSelectUI        stageSelectUI;
+    public StageInformationUI   stageInformationUI;
+    public LobbyUI              lobbyUI;
+    private StageSlot[]         stageSlots;
 
     //체크 포인트에 도달할 때마다 StarImage를 변경
     public void StarImageChange()
@@ -64,19 +71,31 @@ public class UIManager : MonoBehaviour
     //게임이 끝날 때
     public void SetFinishUI()
     {
-        if(StageManager.instance.currentStage.score > StageManager.instance.currentStage.checkPoints[0])
+        if (StageManager.instance.currentStageSlot.starCount > 0)
         {
             gameOverUI.gameOverText.text = "Stage Clear";
             gameOverUI.gameOverText.color = Color.blue;
-            nextButton.interactable = true;
+            if(StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
+            {
+                StageManager.instance.currentStageSlot.stageStatus = StageSlot.StageStatus.Clear;
+                if(StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
+                     stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].StageSlotOpen();
+            }
         }
         else
         {
             gameOverUI.gameOverText.text = "Game Over";
             gameOverUI.gameOverText.color = Color.red;
-            nextButton.interactable = false;
         }
 
+        if(StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
+        {
+            if (stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].stageStatus != StageSlot.StageStatus.Rock)
+                nextButton.interactable = true;
+            else
+                nextButton.interactable = false;
+        }
+        
         StageManager.instance.currentStageSlot.StageSlotChange();
         gameOverUI.gameOverScoreText.text = StageManager.instance.currentStage.score.ToString();
         gameOverUI.go_GameOverUI.SetActive( true );
@@ -90,6 +109,24 @@ public class UIManager : MonoBehaviour
         StageManager.instance.currentStage.gameObject.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
         stageSelectUI.go_StageSelectUI.SetActive( true );
+    }
+
+    public void RestartButton()
+    {
+        gameOverUI.go_GameOverUI.SetActive( false );
+        StageManager.instance.go_Player.SetActive( false );
+        StageManager.instance.currentStage.gameObject.SetActive( false );
+        StageManager.instance.currentStage.gameObject.SetActive( true );
+    }
+
+    public void NextButton()
+    {
+        gameOverUI.go_GameOverUI.SetActive( false );
+        StageManager.instance.go_Player.SetActive( false );
+        StageManager.instance.currentStage.gameObject.SetActive( false );
+        StageManager.instance.currentStageSlot = stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1];
+        StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
+        StageManager.instance.currentStage.gameObject.SetActive( true );
     }
 
     //스테이지 선택 UI로 가는 버튼
