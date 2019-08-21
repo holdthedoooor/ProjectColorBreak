@@ -19,14 +19,13 @@ public class PlayerCtrl : LivingEntity
 
     private Vector3  slideVec = Vector3.zero;
     public Vector3   moveVec = Vector3.zero;
-    private float   bouncePower = 0f;
     private float   maxSpeed;
     private float    borderDist;
     private bool     isGameOver = false;
+    private bool     isBounce = false;
   
     public Material[]    colorMt;
 
-    public float     bounceMaxPower = 5.0f;
     public float    speed = 5.0f; //공의 하강속도
     public float    touchAmount = 0.3f; //터치 감도
 
@@ -102,7 +101,7 @@ public class PlayerCtrl : LivingEntity
 #else //에디터일때
         float stationary = Mathf.Abs( Input.GetAxis( "Horizontal" ) - 0 );
 
-        if (Input.GetMouseButton( 0 ) && stationary > 0.5f)
+        if (Input.GetMouseButton( 0 ) && stationary > 0.5)
         {
             slideVec.x = Input.GetAxis( "Horizontal" ) * touchAmount;
         }
@@ -114,15 +113,16 @@ public class PlayerCtrl : LivingEntity
 
 #endif
 
-        if(bouncePower>0)
+        //이동시키는 부분
+        if(isBounce== false)
         {
-            bouncePower -= 0.1f;
+            moveVec = Vector3.down + slideVec;
+        }
+        else
+        {
+            moveVec = Vector3.up + slideVec;
         }
 
-        moveVec = Vector3.down + slideVec;
-        moveVec.y += bouncePower;
-
-        //이동시키는 부분
         playerTr.Translate( moveVec * speed * Time.deltaTime );
 
 
@@ -140,10 +140,12 @@ public class PlayerCtrl : LivingEntity
 
     IEnumerator BounceUp()
     {
-        bouncePower = bounceMaxPower;
+        isBounce = true;
+
 
         yield return new WaitForSeconds(0.5f);
 
+        isBounce = false;
     }
 
     public void ChangeColor(ColorType color)
