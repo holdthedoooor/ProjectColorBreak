@@ -20,6 +20,7 @@ public class PlayerCtrl : LivingEntity
     private float   maxSpeed;
     private float    borderDist;
     private bool     isGameOver = false;
+    private bool     isBounce = false;
   
     public Material[]    colorMt;
 
@@ -57,6 +58,10 @@ public class PlayerCtrl : LivingEntity
 
         Moving();
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine( BounceUp() );
+        }
       
     }
 
@@ -102,7 +107,15 @@ public class PlayerCtrl : LivingEntity
 #endif
 
         //이동시키는 부분
-        moveVec = Vector3.down + slideVec;
+        if(isBounce== false)
+        {
+            moveVec = Vector3.down + slideVec;
+        }
+        else
+        {
+            moveVec = Vector3.up + slideVec;
+        }
+
         playerTr.Translate( moveVec * speed * Time.deltaTime );
 
 
@@ -119,6 +132,16 @@ public class PlayerCtrl : LivingEntity
 
        
     }//Moving()
+
+    IEnumerator BounceUp()
+    {
+        isBounce = true;
+
+
+        yield return new WaitForSeconds(0.5f);
+
+        isBounce = false;
+    }
 
     public void ChangeColor(ColorType color)
     {
