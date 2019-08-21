@@ -16,8 +16,8 @@ public class StageInformationUI : MonoBehaviour
     public void StageSelectButton()
     {
         StageManager.instance.currentStageSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StageSlot>();
-        StageManager.instance.currentStage = StageManager.instance.currentStageSlot.stagePrefab.GetComponent<Stage>();
-        if (StageManager.instance.currentStageSlot.stageStatus != StageSlot.StageStatus.Rock)
+        StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
+        if (StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Rock)
             return;
 
         ResetStageInformation();

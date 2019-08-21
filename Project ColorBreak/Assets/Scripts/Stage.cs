@@ -5,8 +5,8 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public int      score { get; private set; }
-
     public int[]    checkPoints;
+    
 
     public Obstacle[] obstacles;
 
@@ -27,6 +27,7 @@ public class Stage : MonoBehaviour
         score = 0;
         StageManager.instance.isGameOver = false;
         StageManager.instance.go_Player.SetActive( true );
+        StageManager.instance.go_Player.GetComponent<PlayerCtrl>().followCamera.isMovable = true;
         UIManager.instance.SetStartUI();
         for (int i = 0; i < obstacles.Length; i++)
         {
@@ -42,6 +43,7 @@ public class Stage : MonoBehaviour
         UIManager.instance.SetFinishUI();
         if (score > StageManager.instance.currentStageSlot.bestScore)
             StageManager.instance.currentStageSlot.bestScore = score;
+
     }
 
     public void AddScore(int _score = 1)
