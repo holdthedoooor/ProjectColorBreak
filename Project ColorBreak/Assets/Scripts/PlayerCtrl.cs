@@ -47,7 +47,11 @@ public class PlayerCtrl : LivingEntity
 
     void Start()
     {
-        borderDist= Camera.main.pixelWidth/60- playerCol.radius;
+        borderDist= Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,Screen.height)).x - playerCol.radius/2;
+        //Screen.width - 게임 화면의 크기를 픽셀로 반환함.
+        //ScreenToWorldPoint - 게임 화면의 픽셀위치를 월드포인트로 반환함.
+
+
         maxSpeed = speed;
         speed = 0f;
         playerMr.material = colorMt[(int)colorType];
@@ -59,7 +63,10 @@ public class PlayerCtrl : LivingEntity
             return;
 
         Moving();
+
+      
     }
+
 
     private void Moving()
     {
@@ -110,12 +117,10 @@ public class PlayerCtrl : LivingEntity
         if (playerTr.position.x > borderDist)
         {
             playerTr.position = new Vector3( borderDist, playerTr.position.y, playerTr.position.z );
-            Debug.Log( "우지점" );
         }
         else if (playerTr.position.x < -borderDist)
         {
             playerTr.position = new Vector3( -borderDist, playerTr.position.y, playerTr.position.z );
-            Debug.Log( "좌지점" );
 
         }
     }//Moving()

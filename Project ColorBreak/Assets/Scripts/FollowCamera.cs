@@ -8,8 +8,7 @@ public class FollowCamera : MonoBehaviour
     public Transform cameraTr { get; private set; }
     private Vector3 moveVec = Vector3.zero;
     private float dumping = 2.5f;
-
-    bool isStart = false;
+    public bool isMovable = true;
 
     //----------------------변수선언---------------------(여기까지)
 
@@ -29,14 +28,24 @@ public class FollowCamera : MonoBehaviour
     void LateUpdate()
     {
         if (StageManager.instance.isGameOver)
+        if (isMovable == false)
             return;
+
+            if (StageManager.instance.stage.isGameOver)
+                return;
 
         moveVec = cameraTr.position;
         moveVec.y = playerTr.position.y - dumping;
 
-        if(playerTr.position.y< cameraTr.position.y+ dumping)
+        if (playerTr.position.y < cameraTr.position.y + dumping)
         {
             cameraTr.position = moveVec;
         }
     }
+
+    public void StopCamera()
+    {
+        isMovable = false;
+    }
+
 }
