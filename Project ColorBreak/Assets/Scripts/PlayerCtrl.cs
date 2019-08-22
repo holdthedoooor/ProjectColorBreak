@@ -14,10 +14,10 @@ public class PlayerCtrl : LivingEntity
     private CircleCollider2D   playerCol;
     private SpriteRenderer     playerSr;
     private Animator        playerAnim;
-    private PlayerState     playerState = PlayerState.Start;
-
+    private TrailRenderer    trailRenderer;
     public FollowCamera followCamera;
 
+    private PlayerState playerState = PlayerState.Start;
     private Vector3  slideVec = Vector3.zero;
     public Vector3   moveVec = Vector3.zero;
     private float   maxSpeed;
@@ -46,6 +46,7 @@ public class PlayerCtrl : LivingEntity
         playerCol = GetComponent<CircleCollider2D>();
         playerSr = GetComponentInChildren<SpriteRenderer>();
         playerAnim = GetComponent<Animator>();
+        trailRenderer = GetComponent<TrailRenderer>();
 
         onDie += () => StageManager.instance.currentStage.FinishStage();
     }
@@ -60,6 +61,7 @@ public class PlayerCtrl : LivingEntity
         maxSpeed = speed;
         speed = 0f;
         playerSr.material = colorMt[(int)colorType];
+        trailRenderer.material= colorMt[(int)colorType];
     }
 
     void Update()
@@ -149,6 +151,8 @@ public class PlayerCtrl : LivingEntity
     {
         colorType = color;
         playerSr.material = colorMt[(int)colorType];
+        trailRenderer.material = colorMt[(int)colorType];
+
     }
 
 
