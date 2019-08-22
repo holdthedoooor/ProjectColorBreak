@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4630,6 +4630,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2e898b36e9bc0b74e84735badfb4d8aa, type: 2}
   - {fileID: 2100000, guid: a363f6bc511bbda43b8003f4ec639ba2, type: 2}
   - {fileID: 2100000, guid: 43b17326971934444b57e9141e255ba2, type: 2}
+  - {fileID: 2100000, guid: fc1bcdcbb2bc25140b0648dadaa01fc1, type: 2}
   bounceMaxPower: 3
   speed: 3
   touchAmount: 0.1
@@ -5093,21 +5094,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2054776858}
-    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StageSelectButton
-      objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: stagePrefab
@@ -5122,6 +5108,21 @@ PrefabInstance:
         type: 3}
       propertyPath: stageNumber
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2054776858}
+    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StageSelectButton
       objectReference: {fileID: 0}
     - target: {fileID: 5984863888913351624, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -5443,16 +5444,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 432240650}
-    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StageSelectButton
-      objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: stagePrefab
@@ -5468,6 +5459,16 @@ PrefabInstance:
       propertyPath: go_StagePrefab
       value: 
       objectReference: {fileID: 6390962292984222895}
+    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 432240650}
+    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StageSelectButton
+      objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905420, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: m_Sprite
@@ -5560,21 +5561,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9116238002967752210, guid: 954d5e413b317764580df7149b8da02d,
         type: 3}
-      propertyPath: checkPoint_1
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9116238002967752210, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: checkPoint_2
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9116238002967752210, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: checkPoint_3
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9116238002967752210, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
       propertyPath: checkPoints.Array.data[0]
       value: 2
       objectReference: {fileID: 0}
@@ -5588,45 +5574,15 @@ PrefabInstance:
       propertyPath: checkPoints.Array.data[2]
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 6286838980343510626, guid: 954d5e413b317764580df7149b8da02d,
+    - target: {fileID: 8538352754220746587, guid: 954d5e413b317764580df7149b8da02d,
         type: 3}
-      propertyPath: obstaclesType
-      value: 0
+      propertyPath: colorType
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: colorMaterials.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+    - target: {fileID: 8538352754220746587, guid: 954d5e413b317764580df7149b8da02d,
         type: 3}
       propertyPath: obstaclesType
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: originPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: maxPositionX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: minPositionX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: speed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
-        type: 3}
-      propertyPath: colorChangeTime
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 954d5e413b317764580df7149b8da02d, type: 3}

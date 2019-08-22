@@ -105,11 +105,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 0
-  maxHp: 1
+  maxLife: 0
   originPosition: {x: 0, y: 0, z: 0}
+  isBreakable: 1
   itemType: 0
   colorMaterials:
   - {fileID: 2100000, guid: c61abbe3a6f1ba44eac64b551c3ea037, type: 2}
   - {fileID: 2100000, guid: 2e898b36e9bc0b74e84735badfb4d8aa, type: 2}
   - {fileID: 2100000, guid: a363f6bc511bbda43b8003f4ec639ba2, type: 2}
   - {fileID: 2100000, guid: 43b17326971934444b57e9141e255ba2, type: 2}
+  - {fileID: 2100000, guid: fc1bcdcbb2bc25140b0648dadaa01fc1, type: 2}

@@ -188,10 +188,15 @@ public class PlayerCtrl : LivingEntity
                     OnDamage();
             }
         }
-        else if(other.tag=="Item")
+        else if(other.tag == "Item")
         {
             Item item = other.GetComponent<Item>();
-            ChangeColor( item.colorType );
+
+            if(item != null)
+            {
+                if(item.itemType == Item.ItemType.ColorChange)
+                    ChangeColor( item.colorType );
+            }
             item.OnDamage();
         }
         else if(other.tag == "Goal")

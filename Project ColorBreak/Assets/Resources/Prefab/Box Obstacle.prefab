@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8625381213675161635}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.15, z: 1}
   m_Children: []
@@ -104,16 +104,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3ecf5a1b0556d48b934214cc050192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorType: 1
-  maxHp: 1
-  originPosition: {x: 0, y: 0, z: 0}
+  colorType: 0
+  maxLife: 0
+  originPosition: {x: 0, y: 4, z: 0}
+  isBreakable: 1
   obstaclesType: 0
   maxPositionX: 2.3
   minPositionX: -2.3
   speed: 2
   colorChangeTime: 2
+  isMovable: 0
   colorMaterials:
   - {fileID: 2100000, guid: c61abbe3a6f1ba44eac64b551c3ea037, type: 2}
   - {fileID: 2100000, guid: 2e898b36e9bc0b74e84735badfb4d8aa, type: 2}
   - {fileID: 2100000, guid: a363f6bc511bbda43b8003f4ec639ba2, type: 2}
   - {fileID: 2100000, guid: 43b17326971934444b57e9141e255ba2, type: 2}
+  - {fileID: 2100000, guid: fc1bcdcbb2bc25140b0648dadaa01fc1, type: 2}

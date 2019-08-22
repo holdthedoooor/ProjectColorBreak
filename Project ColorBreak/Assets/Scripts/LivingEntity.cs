@@ -21,7 +21,8 @@ public class LivingEntity : MonoBehaviour
         Red,
         Yellow,
         Blue,
-        Purple
+        Purple,
+        Gray
     }
     public ColorType colorType;
 
