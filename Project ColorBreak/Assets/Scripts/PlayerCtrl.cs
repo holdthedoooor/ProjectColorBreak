@@ -10,9 +10,10 @@ public enum PlayerState
 
 public class PlayerCtrl : LivingEntity
 {
-    private Transform   playerTr;
+    private Transform       playerTr;
     private SphereCollider   playerCol;
     private MeshRenderer     playerMr;
+    private Animator        playerAnim;
     private PlayerState     playerState = PlayerState.Start;
 
     public FollowCamera followCamera;
@@ -23,6 +24,7 @@ public class PlayerCtrl : LivingEntity
     private float    bouncePower =0f;
     private float    borderDist;
     private bool     isGameOver = false;
+    private bool     isBounce = false;
   
     public Material[]    colorMt;
 
@@ -43,6 +45,7 @@ public class PlayerCtrl : LivingEntity
         playerTr = this.transform;
         playerCol = GetComponent<SphereCollider>();
         playerMr = GetComponentInChildren<MeshRenderer>();
+        playerAnim = GetComponent<Animator>();
 
         onDie += () => StageManager.instance.currentStage.FinishStage();
     }
@@ -66,14 +69,18 @@ public class PlayerCtrl : LivingEntity
 
         Moving();
 
-        if (Input.GetKeyDown( KeyCode.Space ))
-                BounceBall();
+        playerAnim.SetBool( "isBounce",isBounce );
 
     }
 
-    void BounceBall()
+    IEnumerator BounceBall()
     {
+        isBounce = true;
         bouncePower = bounceMaxPower;
+
+        yield return new WaitForSeconds( 2.5f );
+
+        isBounce = false;
     }
 
     private void Moving()
@@ -135,6 +142,7 @@ public class PlayerCtrl : LivingEntity
             playerTr.position = new Vector3( -borderDist, playerTr.position.y, playerTr.position.z );
 
         }
+
     }//Moving()
 
     public void ChangeColor(ColorType color)
@@ -145,33 +153,46 @@ public class PlayerCtrl : LivingEntity
 
     private void OnTriggerEnter( Collider other )
     {
+        bool isCollisionUp = false;
+        isCollisionUp = other.transform.position.y < playerTr.position.y;
+
         if(other.tag == "Obstacle")
         {
             Obstacle obstacle = other.GetComponent<Obstacle>();
 
             if (obstacle != null)
             {
-                if (obstacle.colorType == colorType)
+                if(isCollisionUp== true)
                 {
-                    obstacle.OnDamage();
+                    if (obstacle.isBreakable == false)
+                    {
+                        StartCoroutine( BounceBall() ); ;
+                        return;
+
+                    }
+
+                    if (obstacle.colorType == colorType)
+                    {
+                        obstacle.OnDamage();
+
+                        if (obstacle.status != Status.Die)
+                            StartCoroutine( BounceBall() );
+                    }
+                    else if (obstacle.colorType != colorType)
+                        OnDamage();
+
                 }
-                else
+                else if (obstacle.isBreakable == false)
+                    return;
+                else if(obstacle.colorType != colorType)
                     OnDamage();
             }
         }
-        else if(other.tag == "Item")
+        else if(other.tag=="Item")
         {
             Item item = other.GetComponent<Item>();
-
-            if(item != null)
-            {
-                if (item.itemType == Item.ItemType.ColorChange)
-                {
-                    playerMr.material = colorMt[(int)item.colorType];
-                    colorType = item.colorType;
-                }
-                item.OnDamage();
-            }
+            ChangeColor( item.colorType );
+            item.OnDamage();
         }
         else if(other.tag == "Goal")
         {

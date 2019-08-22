@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4511,6 +4511,7 @@ GameObject:
   - component: {fileID: 1753907797}
   - component: {fileID: 1753907801}
   - component: {fileID: 1753907800}
+  - component: {fileID: 1753907802}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4619,8 +4620,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 0
-  maxHp: 1
+  maxLife: 0
   originPosition: {x: 0, y: 7, z: 0}
+  isBreakable: 1
   followCamera: {fileID: 534669906}
   moveVec: {x: 0, y: 0, z: 0}
   colorMt:
@@ -4631,6 +4633,25 @@ MonoBehaviour:
   bounceMaxPower: 3
   speed: 3
   touchAmount: 0.1
+--- !u!95 &1753907802
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753907795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4238318194dea7f439f92dbd8263e1c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1803895131
 GameObject:
   m_ObjectHideFlags: 0
@@ -5570,6 +5591,41 @@ PrefabInstance:
     - target: {fileID: 6286838980343510626, guid: 954d5e413b317764580df7149b8da02d,
         type: 3}
       propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: colorMaterials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: originPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: maxPositionX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: minPositionX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000711751742360504, guid: 954d5e413b317764580df7149b8da02d,
+        type: 3}
+      propertyPath: colorChangeTime
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
