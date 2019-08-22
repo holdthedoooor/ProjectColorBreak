@@ -18,6 +18,7 @@ public class StageManager : MonoBehaviour
     private static StageManager m_instance; //싱글톤이 할당될 변수
 
     public bool         isGameOver;
+    public bool         isPause;
     public int          score;
 
     public GameObject   go_Player;

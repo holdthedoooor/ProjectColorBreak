@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class StageUI : MonoBehaviour
 {
-    public GameObject    go_ScoreUI;
-    public GameObject    go_ScoreSliderUI;
+    public GameObject    go_StageUI;
     public Text          scoreText;
     public Image         scoreSlider;
     public Image[]       starImages;
@@ -48,14 +47,19 @@ public class StageUI : MonoBehaviour
     {
         ResetStar();
         UpdateScoreText( 0 );
-        go_ScoreUI.SetActive( true );
-        go_ScoreSliderUI.SetActive( true );
+        go_StageUI.SetActive( true );
         scoreSlider.fillAmount = 0f;
     }
 
     public void DeactivateUI()
     {
-        go_ScoreUI.SetActive( false );
-        go_ScoreSliderUI.SetActive( false );
+        go_StageUI.SetActive( false );
+    }
+
+    public void PauseButton()
+    {
+        UIManager.instance.pauseUI.go_PauseUI.SetActive( true );
+        StageManager.instance.isPause = true;
+        Time.timeScale = 0;
     }
 }

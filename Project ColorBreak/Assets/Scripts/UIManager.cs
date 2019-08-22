@@ -33,7 +33,10 @@ public class UIManager : MonoBehaviour
     public StageSelectUI        stageSelectUI;
     public StageInformationUI   stageInformationUI;
     public LobbyUI              lobbyUI;
+    public PauseUI              pauseUI;
     public StageSlot[]          stageSlots { get; private set; }
+
+    public int starCount { get; private set; }
 
     //체크 포인트에 도달할 때마다 슬라이더의 Star Image와 gameOver의 Star Image를 변경
     //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;ㅑ
@@ -43,28 +46,29 @@ public class UIManager : MonoBehaviour
         {
             stageUI.starImages[0].sprite = starSprite;
             gameOverUI.starImages[0].sprite = starSprite;
-            if (StageManager.instance.currentStageSlot.starCount < 1)
-                StageManager.instance.currentStageSlot.starCount = 1;
+            if (starCount < StageManager.instance.currentStageSlot.starCount)
+                starCount = 1;
         }
         else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[1])
         {
             stageUI.starImages[1].sprite = starSprite;
             gameOverUI.starImages[1].sprite = starSprite;
-            if (StageManager.instance.currentStageSlot.starCount < 2)
-                StageManager.instance.currentStageSlot.starCount = 2;
+            if (starCount < StageManager.instance.currentStageSlot.starCount)
+                starCount = 2;
         }
         else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[2])
         {
             stageUI.starImages[2].sprite = starSprite;
             gameOverUI.starImages[2].sprite = starSprite;
-            if (StageManager.instance.currentStageSlot.starCount < 3)
-                StageManager.instance.currentStageSlot.starCount = 3;
+            if (starCount < StageManager.instance.currentStageSlot.starCount)
+                starCount = 3;
         }
     }
 
     //게임이 시작할 때
     public void SetStartUI()
     {
+        starCount = 0;
         stageUI.ActivateUI();
         gameOverUI.ResetStar();
     }

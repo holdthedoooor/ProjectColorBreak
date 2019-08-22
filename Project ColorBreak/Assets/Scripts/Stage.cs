@@ -23,6 +23,12 @@ public class Stage : MonoBehaviour
     // 활성화 되면 즉 스테이지 시작 시 실행
     public void StartStage()
     {
+        if(StageManager.instance.isPause)
+        {
+            StageManager.instance.isPause = false;
+            Time.timeScale = 1;
+        }
+
         StageManager.instance.score = 0;
         StageManager.instance.isGameOver = false;
         StageManager.instance.go_Player.SetActive( true );
@@ -48,12 +54,13 @@ public class Stage : MonoBehaviour
     public void FinishStage()
     {
         StageManager.instance.isGameOver = true;
-        UIManager.instance.SetFinishUI();
 
         //현재 점수가 현재 스테이지에서 달성한 최대 점수보다 크다면 최대 점수 변경
         if (StageManager.instance.score > StageManager.instance.currentStageSlot.bestScore)
+        {
+            StageManager.instance.currentStageSlot.starCount = UIManager.instance.starCount;
             StageManager.instance.currentStageSlot.bestScore = StageManager.instance.score;
+        }
+        UIManager.instance.SetFinishUI();
     }
-
-
 }
