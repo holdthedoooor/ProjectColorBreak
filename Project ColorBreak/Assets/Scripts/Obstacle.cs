@@ -33,7 +33,7 @@ public class Obstacle : LivingEntity
 
     private int obstacleScore = 1;
 
-    
+    public GameObject       particle;
     public Material[]       colorMaterials;
     private SpriteRenderer     spriteRenderer;
 
@@ -46,6 +46,7 @@ public class Obstacle : LivingEntity
         lastChangeTime = 0f;
 
         onDie += AddScore;
+        onDie += CreateParticle;
         onDie += () => gameObject.SetActive(false);
     }
 
@@ -148,5 +149,14 @@ public class Obstacle : LivingEntity
             }
             yield return null;
         }
+    }
+
+    void CreateParticle()
+    {
+        GameObject obj = GameObject.Instantiate( particle);
+        obj.transform.position = new Vector3( transform.position.x, transform.position.y, obj.transform.position.z );
+        Destroy( obj, 1.5f );
+
+
     }
 }

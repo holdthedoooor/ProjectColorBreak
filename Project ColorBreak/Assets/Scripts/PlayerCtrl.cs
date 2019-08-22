@@ -111,7 +111,7 @@ public class PlayerCtrl : LivingEntity
 #else //에디터일때
         float stationary = Mathf.Abs( Input.GetAxis( "Horizontal" ) - 0 );
 
-        if (Input.GetMouseButton( 0 ) && stationary > 0.5)
+        if (Input.GetMouseButton( 0 ) && stationary > 1.0f)
         {
             slideVec.x = Input.GetAxis( "Horizontal" ) * touchAmount;
         }
