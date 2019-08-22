@@ -11,11 +11,11 @@ public class Item : LivingEntity
     public ItemType itemType;
 
     public Material[] colorMaterials;
-    private MeshRenderer meshRenderer;
+    private SpriteRenderer spriteRenderer;
 
     void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         onDie += () => gameObject.SetActive( false );
     }
@@ -31,7 +31,7 @@ public class Item : LivingEntity
             return;
 
         //colorType에 맞는 material을 설정
-        meshRenderer.material = colorMaterials[(int)colorType];
+        spriteRenderer.material = colorMaterials[(int)colorType];
     }
 
     override public void OnDamage()

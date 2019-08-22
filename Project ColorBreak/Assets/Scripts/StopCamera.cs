@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent( typeof( MeshRenderer ) )]
+[RequireComponent( typeof( SpriteRenderer ) )]
 public class StopCamera : MonoBehaviour
 {
     //카메라에 들어와서 렌더가 시작되면 호출이 되는 함수입니다.
@@ -11,4 +11,6 @@ public class StopCamera : MonoBehaviour
     {
         Camera.main.GetComponent<FollowCamera>().StopCamera();
     }
+
+    
 }

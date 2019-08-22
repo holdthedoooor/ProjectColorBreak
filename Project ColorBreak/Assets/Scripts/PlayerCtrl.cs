@@ -11,8 +11,8 @@ public enum PlayerState
 public class PlayerCtrl : LivingEntity
 {
     private Transform       playerTr;
-    private SphereCollider   playerCol;
-    private MeshRenderer     playerMr;
+    private CircleCollider2D   playerCol;
+    private SpriteRenderer     playerSr;
     private Animator        playerAnim;
     private PlayerState     playerState = PlayerState.Start;
 
@@ -43,8 +43,8 @@ public class PlayerCtrl : LivingEntity
     void Awake()
     {
         playerTr = this.transform;
-        playerCol = GetComponent<SphereCollider>();
-        playerMr = GetComponentInChildren<MeshRenderer>();
+        playerCol = GetComponent<CircleCollider2D>();
+        playerSr = GetComponentInChildren<SpriteRenderer>();
         playerAnim = GetComponent<Animator>();
 
         onDie += () => StageManager.instance.currentStage.FinishStage();
@@ -59,7 +59,7 @@ public class PlayerCtrl : LivingEntity
 
         maxSpeed = speed;
         speed = 0f;
-        playerMr.material = colorMt[(int)colorType];
+        playerSr.material = colorMt[(int)colorType];
     }
 
     void Update()
@@ -148,10 +148,11 @@ public class PlayerCtrl : LivingEntity
     public void ChangeColor(ColorType color)
     {
         colorType = color;
-        playerMr.material = colorMt[(int)colorType];
+        playerSr.material = colorMt[(int)colorType];
     }
 
-    private void OnTriggerEnter( Collider other )
+
+    private void OnTriggerEnter2D( Collider2D other )
     {
         bool isCollisionUp = false;
         isCollisionUp = other.transform.position.y < playerTr.position.y;
