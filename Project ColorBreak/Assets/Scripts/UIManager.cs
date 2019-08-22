@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     public StageSelectUI        stageSelectUI;
     public StageInformationUI   stageInformationUI;
     public LobbyUI              lobbyUI;
-    private StageSlot[]         stageSlots;
+    public StageSlot[]          stageSlots { get; private set; }
 
     //체크 포인트에 도달할 때마다 슬라이더의 Star Image와 gameOver의 Star Image를 변경
     //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;ㅑ

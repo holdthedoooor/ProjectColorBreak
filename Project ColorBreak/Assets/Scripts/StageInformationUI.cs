@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class StageInformationUI : MonoBehaviour
@@ -12,20 +11,6 @@ public class StageInformationUI : MonoBehaviour
     public Text         bestScoreText;
     public Text[]       checkPointTexts;
     public Image[]      starImages;
-
-    //스테이지 선택 버튼
-    public void StageSelectButton()
-    {
-        Debug.Log( EventSystem.current.currentSelectedGameObject.name );
-        StageManager.instance.currentStageSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StageSlot>();
-        StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
-
-        if (StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Rock)
-            return;
-
-        ResetStageInformation();
-        SetStageInformation();
-    }
 
     public void StageSelectCancelButton()
     {

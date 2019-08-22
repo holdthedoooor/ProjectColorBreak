@@ -56,4 +56,17 @@ public class StageSlot : MonoBehaviour
             stageStatus = StageStatus.Open;
         }   
     }
+
+    //스테이지 선택 버튼
+    public void StageSelectButton()
+    {
+        StageManager.instance.currentStageSlot = transform.GetComponent<StageSlot>();
+        StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
+
+        if (StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Rock)
+            return;
+
+        UIManager.instance.stageInformationUI.ResetStageInformation();
+        UIManager.instance.stageInformationUI.SetStageInformation();
+    }
 }
