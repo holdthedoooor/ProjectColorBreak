@@ -55,12 +55,15 @@ public class Stage : MonoBehaviour
     {
         StageManager.instance.isGameOver = true;
 
+        UIManager.instance.SetFinishUI();
+
+        
         //현재 점수가 현재 스테이지에서 달성한 최대 점수보다 크다면 최대 점수 변경
         if (StageManager.instance.score > StageManager.instance.currentStageSlot.bestScore)
         {
             StageManager.instance.currentStageSlot.starCount = UIManager.instance.starCount;
+            StageManager.instance.currentStageSlot.StageSlotChange();
             StageManager.instance.currentStageSlot.bestScore = StageManager.instance.score;
         }
-        UIManager.instance.SetFinishUI();
     }
 }
