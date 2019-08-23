@@ -19,12 +19,14 @@ public class StageManager : MonoBehaviour
 
     public bool         isGameOver;
     public bool         isPause;
+    public bool         isGoal;
     public int          score;
 
     public GameObject   go_Player;
     //현재 스테이지
     public Stage        currentStage;
     public StageSlot    currentStageSlot;
+    public SaveLoad     theSaveLoad;
 
     void Awake()
     {

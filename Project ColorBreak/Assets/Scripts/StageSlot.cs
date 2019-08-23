@@ -13,11 +13,11 @@ public class StageSlot : MonoBehaviour
     }
     public StageStatus stageStatus;
 
-    private  Image        stageSlotImage;  
+    public   Image        stageSlotImage;  
     public   Image[]      starImages;
     public   Sprite       rockSprite;
     public   Sprite       openSprite;
-    private  Button       stageSelectButton;
+    public   Button       stageSelectButton;
     public   GameObject   go_StagePrefab;
     public   GameObject   go_StageInformation;
 
@@ -26,15 +26,9 @@ public class StageSlot : MonoBehaviour
     public int          starCount = 0; //별이 몇개 채워졌는지 저장
     public int          stageNumber;
 
-    void Awake()
-    {
-        stageSlotImage = GetComponent<Image>();
-        stageSelectButton = GetComponent<Button>();
-    }
-
     //해당 스테이지가 끝나고 점수가 bestScore보다 높을 때 실행
     //별 이미지 최대 점수 변경
-    public void StageSlotChange()
+    public void StarImageChange()
     {
         for (int i = 0; i < starCount; i++)
         {
@@ -65,5 +59,19 @@ public class StageSlot : MonoBehaviour
 
         UIManager.instance.stageInformationUI.ResetStageInformation();
         UIManager.instance.stageInformationUI.SetStageInformation();
+    }
+
+    public void SetStageSlot(int _bestScore, int _starCount, int _statusNumber)
+    {
+        bestScore = _bestScore;
+        starCount = _starCount;
+        StarImageChange();
+        if (_statusNumber == 1)
+            stageStatus = StageStatus.Open;
+        else
+            stageStatus = StageStatus.Clear;
+        stageSelectButton.interactable = true; //버튼 클릭 가능
+        stageSlotImage.sprite = openSprite;    //오픈 Sprite로 변경
+        go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
     }
 }

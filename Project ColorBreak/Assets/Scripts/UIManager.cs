@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
     public void SetFinishUI()
     {
         //starCount가 1개 이상이면 Stage Clear
-        if (UIManager.instance.starCount > 0)
+        if (UIManager.instance.starCount > 0 && StageManager.instance.isGoal)
         {
             gameOverUI.gameOverText.text = "Stage Clear";
             gameOverUI.gameOverText.color = Color.blue;
@@ -144,5 +144,10 @@ public class UIManager : MonoBehaviour
     {
         lobbyUI.go_LobbyUI.SetActive( false );
         stageSelectUI.go_StageSelectUI.SetActive( true );
+    }
+
+    public void LoadToStageSlot(int _arrayNumber ,int _bestScore, int _starCount, int _statusNumber)
+    {
+        stageSlots[_arrayNumber].SetStageSlot( _bestScore, _starCount, _statusNumber );
     }
 }

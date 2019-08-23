@@ -206,6 +206,7 @@ public class PlayerCtrl : LivingEntity
         }
         else if(other.tag == "Goal")
         {
+            StageManager.instance.isGoal = true;
             StageManager.instance.currentStage.FinishStage();
         }
     }
