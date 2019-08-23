@@ -46,22 +46,19 @@ public class UIManager : MonoBehaviour
         {
             stageUI.starImages[0].sprite = starSprite;
             gameOverUI.starImages[0].sprite = starSprite;
-            if (starCount < StageManager.instance.currentStageSlot.starCount)
-                starCount = 1;
+            starCount = 1;
         }
         else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[1])
         {
             stageUI.starImages[1].sprite = starSprite;
             gameOverUI.starImages[1].sprite = starSprite;
-            if (starCount < StageManager.instance.currentStageSlot.starCount)
-                starCount = 2;
+            starCount = 2;
         }
         else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[2])
         {
             stageUI.starImages[2].sprite = starSprite;
             gameOverUI.starImages[2].sprite = starSprite;
-            if (starCount < StageManager.instance.currentStageSlot.starCount)
-                starCount = 3;
+            starCount = 3;
         }
     }
 
@@ -77,7 +74,7 @@ public class UIManager : MonoBehaviour
     public void SetFinishUI()
     {
         //starCount가 1개 이상이면 Stage Clear
-        if (StageManager.instance.currentStageSlot.starCount > 0)
+        if (UIManager.instance.starCount > 0)
         {
             gameOverUI.gameOverText.text = "Stage Clear";
             gameOverUI.gameOverText.color = Color.blue;
@@ -105,8 +102,9 @@ public class UIManager : MonoBehaviour
             else
                 nextButton.interactable = false;
         }
-        
-        StageManager.instance.currentStageSlot.StageSlotChange();
+        else
+            nextButton.interactable = false;
+
         gameOverUI.gameOverScoreText.text = StageManager.instance.score.ToString();
         gameOverUI.go_GameOverUI.SetActive( true );
     }

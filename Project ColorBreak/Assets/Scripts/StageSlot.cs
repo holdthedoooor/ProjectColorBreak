@@ -36,12 +36,9 @@ public class StageSlot : MonoBehaviour
     //별 이미지 최대 점수 변경
     public void StageSlotChange()
     {
-        if(StageManager.instance.score > bestScore)
+        for (int i = 0; i < starCount; i++)
         {
-            for (int i = 0; i < starCount; i++)
-            {
-                starImages[i].sprite = UIManager.instance.starSprite;
-            }
+            starImages[i].sprite = UIManager.instance.starSprite;
         }
     }
 
