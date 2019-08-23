@@ -5758,7 +5758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753907795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7, z: 0}
+  m_LocalPosition: {x: 0, y: 11, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1661867349}
@@ -5977,9 +5977,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a363f6bc511bbda43b8003f4ec639ba2, type: 2}
   - {fileID: 2100000, guid: 43b17326971934444b57e9141e255ba2, type: 2}
   - {fileID: 2100000, guid: fc1bcdcbb2bc25140b0648dadaa01fc1, type: 2}
-  bounceMaxPower: 3
+  bounceMaxPower: 4
   speed: 3
-  touchAmount: 0.1
+  touchAmount: 0.2
 --- !u!95 &1753907802
 Animator:
   serializedVersion: 3
