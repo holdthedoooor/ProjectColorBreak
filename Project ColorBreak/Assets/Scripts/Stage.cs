@@ -66,10 +66,8 @@ public class Stage : MonoBehaviour
                 StageManager.instance.currentStageSlot.starCount = UIManager.instance.starCount;
                 StageManager.instance.currentStageSlot.StarImageChange();
                 StageManager.instance.currentStageSlot.bestScore = StageManager.instance.score;
+                StageManager.instance.theSaveLoad.SaveData();
             }
         }
-
-        Debug.Log( "BestScore : " + StageManager.instance.currentStageSlot.bestScore + "  StarCount : " + StageManager.instance.currentStageSlot.starCount );
-        StageManager.instance.theSaveLoad.SaveData();
     }
 }
