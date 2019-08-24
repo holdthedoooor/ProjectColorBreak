@@ -21,7 +21,7 @@ public class SaveLoad : MonoBehaviour
 
     private void Start()
     {
-        SAVE_DATA_DIRECTORY = Application.dataPath + "/Saves/";
+        SAVE_DATA_DIRECTORY = Application.persistentDataPath + "/Saves/";
 
         if(!Directory.Exists(SAVE_DATA_DIRECTORY))
         {
