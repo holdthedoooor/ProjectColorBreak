@@ -74,4 +74,18 @@ public class StageSlot : MonoBehaviour
         stageSlotImage.sprite = openSprite;    //오픈 Sprite로 변경
         go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
     }
+
+    public void SetOpen()
+    {
+        bestScore = 0;
+        starCount = 0;
+        stageSelectButton.interactable = true; //버튼 클릭 가능
+        stageSlotImage.sprite = openSprite;    //오픈 Sprite로 변경
+        for (int i = 0; i < starImages.Length; i++)
+        {
+            starImages[i].sprite = UIManager.instance.blankStarSprite;
+        }
+        go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
+        stageStatus = StageStatus.Open;
+    }
 }

@@ -17,6 +17,7 @@ public class StageManager : MonoBehaviour
     }
     private static StageManager m_instance; //싱글톤이 할당될 변수
 
+    public bool         isMasterMode = false;
     public bool         isGameOver;
     public bool         isPause;
     public bool         isGoal;
@@ -32,6 +33,14 @@ public class StageManager : MonoBehaviour
     {
         if (instance != this)
             Destroy( gameObject );
+
+        if(isMasterMode)
+        {
+            for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
+            {
+                UIManager.instance.stageSlots[i].SetOpen();
+            }
+        }
     }
 
     // 같은 ColorType의 장애물과 충돌하면 1점씩 추가
