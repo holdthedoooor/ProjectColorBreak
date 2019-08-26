@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public int[]         checkPoints;
 
     public Obstacle[]    obstacles;
     public Item[]        items;

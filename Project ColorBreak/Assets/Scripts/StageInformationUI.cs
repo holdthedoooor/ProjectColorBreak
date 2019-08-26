@@ -25,7 +25,7 @@ public class StageInformationUI : MonoBehaviour
         for (int i = 0; i < starImages.Length; i++)
         {
             starImages[i].sprite = UIManager.instance.blankStarSprite;
-            checkPointTexts[i].text = StageManager.instance.currentStage.checkPoints[i].ToString();
+            checkPointTexts[i].text = StageManager.instance.currentStageSlot.checkPoints[i].ToString();
             checkPointTexts[i].enabled = true;
         }
     }
@@ -65,6 +65,6 @@ public class StageInformationUI : MonoBehaviour
     {
         StageManager.instance.currentStageSlot.transform.parent.parent.gameObject.SetActive( false );
         go_StageInformationUI.SetActive( false );
-        StageManager.instance.currentStage.gameObject.SetActive( true );
+        StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
     }
 }

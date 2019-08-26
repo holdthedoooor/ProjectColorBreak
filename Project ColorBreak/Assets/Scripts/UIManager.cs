@@ -43,19 +43,19 @@ public class UIManager : MonoBehaviour
     //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;ㅑ
     public void StarImageChange()
     {
-        if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[0])
+        if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[0])
         {
             stageUI.starImages[0].sprite = starSprite;
             gameOverUI.starImages[0].sprite = starSprite;
             starCount = 1;
         }
-        else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[1])
+        else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[1])
         {
             stageUI.starImages[1].sprite = starSprite;
             gameOverUI.starImages[1].sprite = starSprite;
             starCount = 2;
         }
-        else if (StageManager.instance.score == StageManager.instance.currentStage.checkPoints[2])
+        else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[2])
         {
             stageUI.starImages[2].sprite = starSprite;
             gameOverUI.starImages[2].sprite = starSprite;
@@ -115,9 +115,9 @@ public class UIManager : MonoBehaviour
     {
         stageUI.DeactivateUI();
         gameOverUI.go_GameOverUI.SetActive( false );
-        StageManager.instance.currentStage.gameObject.SetActive( false );
+        Destroy( StageManager.instance.currentStage.gameObject );
         StageManager.instance.go_Player.SetActive( false );
-        StageManager.instance.currentStageSlot.transform.parent.parent.gameObject.SetActive( true );
+        StageManager.instance.currentStageSlot.transform.parent.parent.parent.gameObject.SetActive( true );
     }
 
     //현재 스테이지를 다시 플레이하는 버튼
@@ -134,10 +134,9 @@ public class UIManager : MonoBehaviour
     {
         gameOverUI.go_GameOverUI.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
-        StageManager.instance.currentStage.gameObject.SetActive( false );
+        Destroy( StageManager.instance.currentStage.gameObject );
         StageManager.instance.currentStageSlot = stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1];
-        StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
-        StageManager.instance.currentStage.gameObject.SetActive( true );
+        StageManager.instance.currentStage = Instantiate(StageManager.instance.currentStageSlot.go_StagePrefab,new Vector3(0,0,0),Quaternion.identity).GetComponent<Stage>();
     }
 
     //스테이지 선택 UI로 가는 버튼

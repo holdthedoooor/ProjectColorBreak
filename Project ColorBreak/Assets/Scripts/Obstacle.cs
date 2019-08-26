@@ -22,6 +22,7 @@ public class Obstacle : LivingEntity
     private int     direction;
 
     //몇초 마다 장애물 색깔이 바뀔지 결정, 랜덤일수도 
+    [HideInInspector]
     public float    colorChangeTime;
     private float   lastChangeTime;
 

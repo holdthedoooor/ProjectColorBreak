@@ -26,11 +26,14 @@ public class LivingEntity : MonoBehaviour
     }
     public ColorType colorType;
 
+    [Header("최대 체력을 조절할 수 있습니다. (정수만 가능)")]
     //최대 체력
     public int               maxLife;
     //현재 체력
     public int               curLife { get; protected set; }
+    [Header("시작 X, Y, Z 좌표를 입력해주세요!")]
     public Vector3           originPosition;
+    [Header( "체크 해제하면 세이프 블럭이 됩니다!" )]
     //파괴가능 여부
     public bool isBreakable = true;
     //죽을 때 실행되는 이벤트

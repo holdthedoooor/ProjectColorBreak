@@ -13,6 +13,7 @@ public class StageSlot : MonoBehaviour
     }
     public StageStatus stageStatus;
 
+    public   Text         stageNumberText;
     public   Image        stageSlotImage;  
     public   Image[]      starImages;
     public   Sprite       rockSprite;
@@ -22,9 +23,15 @@ public class StageSlot : MonoBehaviour
     public   GameObject   go_StageInformation;
 
     //Stage Prefab이 생성, 파괴 될 수도 있기 때문에 StageSlot에 선언해준다.
+    public int[]        checkPoints;
     public int          bestScore = 0;
     public int          starCount = 0; //별이 몇개 채워졌는지 저장
     public int          stageNumber;
+
+    void Awake()
+    {
+        stageNumberText.text = (stageNumber + 1).ToString();
+    }
 
     //해당 스테이지가 끝나고 점수가 bestScore보다 높을 때 실행
     //별 이미지 최대 점수 변경

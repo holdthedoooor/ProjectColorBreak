@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageStatus: 0
+  stageNumberText: {fileID: 5984863888913351624}
   stageSlotImage: {fileID: 5984863887555905420}
   starImages:
   - {fileID: 5984863887959880335}
@@ -189,8 +190,9 @@ MonoBehaviour:
   rockSprite: {fileID: 21300000, guid: 9d4faa5f427b89c44908ecdea11e497d, type: 3}
   openSprite: {fileID: 21300000, guid: 7e708dbfcda0bca4197e2135b6671a3a, type: 3}
   stageSelectButton: {fileID: 5984863887555905422}
-  go_StagePrefab: {fileID: 0}
+  go_StagePrefab: {fileID: 5984863888913351622}
   go_StageInformation: {fileID: 8338554098904994020}
+  checkPoints: 
   bestScore: 0
   starCount: 0
   stageNumber: 0

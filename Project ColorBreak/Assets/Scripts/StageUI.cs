@@ -35,9 +35,9 @@ public class StageUI : MonoBehaviour
     {
         for (int i = 0; i < starImages.Length; i++)
         {
-            ratio = StageManager.instance.currentStage.checkPoints[i] / (float)StageManager.instance.currentStage.checkPoints[2];
+            ratio = StageManager.instance.currentStageSlot.checkPoints[i] / (float)StageManager.instance.currentStageSlot.checkPoints[2];
             starTexts[i].enabled = true;
-            starTexts[i].text = StageManager.instance.currentStage.checkPoints[i].ToString();
+            starTexts[i].text = StageManager.instance.currentStageSlot.checkPoints[i].ToString();
             starImages[i].transform.localPosition = new Vector3( Mathf.Lerp( minPositionX, maxPositionX, ratio ), starImages[i].transform.localPosition.y, starImages[i].transform.localPosition.z );
             starImages[i].sprite = UIManager.instance.blankStarSprite;
         }

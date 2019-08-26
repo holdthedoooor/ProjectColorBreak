@@ -19,7 +19,7 @@ public class GameOverUI : MonoBehaviour
         {
             starImages[i].sprite = UIManager.instance.blankStarSprite;
             checkPointTexts[i].enabled = true;
-            checkPointTexts[i].text = StageManager.instance.currentStage.checkPoints[i].ToString();
+            checkPointTexts[i].text = StageManager.instance.currentStageSlot.checkPoints[i].ToString();
         }
     }
 }

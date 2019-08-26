@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30266193aedf7be48a161b5300eefe12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPoints: 
   obstacles: []
   items: []
 --- !u!1 &9009833987651206825
@@ -807,7 +806,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: isBreakable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
