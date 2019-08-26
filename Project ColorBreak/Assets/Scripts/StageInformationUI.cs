@@ -63,7 +63,7 @@ public class StageInformationUI : MonoBehaviour
 
     public void StageStartButton()
     {
-        UIManager.instance.stageSelectUI.go_StageSelectUI.SetActive( false );
+        StageManager.instance.currentStageSlot.transform.parent.parent.gameObject.SetActive( false );
         go_StageInformationUI.SetActive( false );
         StageManager.instance.currentStage.gameObject.SetActive( true );
     }

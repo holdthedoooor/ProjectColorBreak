@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     public StageInformationUI   stageInformationUI;
     public LobbyUI              lobbyUI;
     public PauseUI              pauseUI;
+    public ChapterSelectUI      chapterSelectUI;
     public StageSlot[]          stageSlots { get; private set; }
 
     public int starCount { get; private set; }
@@ -116,7 +117,7 @@ public class UIManager : MonoBehaviour
         gameOverUI.go_GameOverUI.SetActive( false );
         StageManager.instance.currentStage.gameObject.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
-        stageSelectUI.go_StageSelectUI.SetActive( true );
+        StageManager.instance.currentStageSlot.transform.parent.parent.gameObject.SetActive( true );
     }
 
     //현재 스테이지를 다시 플레이하는 버튼
@@ -143,7 +144,7 @@ public class UIManager : MonoBehaviour
     public void LobbyStartButton()
     {
         lobbyUI.go_LobbyUI.SetActive( false );
-        stageSelectUI.go_StageSelectUI.SetActive( true );
+        chapterSelectUI.go_ChapterSelectUI.SetActive( true );
     }
 
     public void LoadToStageSlot(int _arrayNumber ,int _bestScore, int _starCount, int _statusNumber)
