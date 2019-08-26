@@ -10,34 +10,39 @@ public enum PlayerState
 
 public class PlayerCtrl : LivingEntity
 {
-    private Transform       playerTr;
-    private CircleCollider2D   playerCol;
-    private SpriteRenderer     playerSr;
-    private Animator        playerAnim;
-    private TrailRenderer    trailRenderer;
+    private Transform playerTr;
+    private CircleCollider2D playerCol;
+    private SpriteRenderer playerSr;
+    private Animator playerAnim;
+    private TrailRenderer trailRenderer;
     public FollowCamera followCamera;
 
     private PlayerState playerState = PlayerState.Start;
-    private Vector3  slideVec = Vector3.zero;
-    public Vector3   moveVec = Vector3.zero;
-    private float   maxSpeed;
-    private float    bouncePower =0f;
-    private float    borderDist;
-    private bool     isGameOver = false;
-    private bool     isBounce = false;
-  
-    public Material[]    colorMt;
+    private Vector3 slideVec = Vector3.zero;
+    public Vector3 moveVec = Vector3.zero;
+    private float maxSpeed;
+    private float bouncePower = 0f;
+    private float borderDist;
+    private bool isGameOver = false;
+    private bool isBounce = false;
 
-    public float    bounceMaxPower = 3.0f;//튕기는 정도
-    public float    speed = 5.0f; //공의 하강속도
-    public float    touchAmount = 0.3f; //터치 감도
+    private float slidePower = 0f;
+
+    private Vector3 startTouchPos = Vector3.zero;
+    private Vector3 endTouchPos = Vector3.zero;
+
+    public Material[] colorMt;
+
+    public float bounceMaxPower = 3.0f;//튕기는 정도
+    public float speed = 5.0f; //공의 하강속도
+    public float touchAmount = 0.3f; //터치 감도
 
     //--------------------변수선언-----------------(여기까지)
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        followCamera.transform.position = new Vector3(0,4.6f,-10);
+        followCamera.transform.position = new Vector3( 0, 4.6f, -10 );
     }
 
     void Awake()
@@ -53,15 +58,16 @@ public class PlayerCtrl : LivingEntity
 
     void Start()
     {
-        borderDist= Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,Screen.height)).x - playerCol.radius/2;
+        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).x - playerCol.radius / 2;
         //Screen.width - 게임 화면의 크기를 픽셀로 반환함.
         //ScreenToWorldPoint - 게임 화면의 픽셀위치를 월드포인트로 반환함.
+
 
 
         maxSpeed = speed;
         speed = 0f;
         playerSr.material = colorMt[(int)colorType];
-        trailRenderer.material= colorMt[(int)colorType];
+        trailRenderer.material = colorMt[(int)colorType];
     }
 
     void Update()
@@ -71,7 +77,7 @@ public class PlayerCtrl : LivingEntity
 
         Moving();
 
-        playerAnim.SetBool( "isBounce",isBounce );
+        playerAnim.SetBool( "isBounce", isBounce );
 
     }
 
@@ -91,7 +97,7 @@ public class PlayerCtrl : LivingEntity
         if (playerState == PlayerState.Start)
         {
             speed += 0.1f;
-            
+
             if (speed >= maxSpeed)
             {
                 speed = maxSpeed;
@@ -99,37 +105,68 @@ public class PlayerCtrl : LivingEntity
             }
         }
 
+        float dist = 0f;
+
+
 #if UNITY_ANDROID //안드로이드일때
 
-        if(Input.GetTouch(0).phase== TouchPhase.Moved)
+
+        if (Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Began)
         {
-            slideVec.x = Input.GetAxis( "Horizontal" ) * touchAmount;
+            startTouchPos = Input.GetTouch( 0 ).position;
         }
-        else
+        else if (Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Ended)
         {
-            slideVec.x = Vector3.Slerp( slideVec, Vector3.zero, 0.1f ).x;
+            endTouchPos = Input.GetTouch( 0 ).position;
+            Debug.Log( "endPos.x: " + endTouchPos.x );
+
+            dist = Vector3.Distance( startTouchPos, endTouchPos ) / 50;
+
+            Debug.Log( "dist: " + dist );
+
+            if (startTouchPos.x < endTouchPos.x)
+                slidePower = dist * touchAmount;
+            else
+                slidePower = -dist * touchAmount;
+
+            Debug.Log( "slidePower:" + slidePower );
+
         }
-       
+
+
 #else //에디터일때
-        float stationary = Mathf.Abs( Input.GetAxis( "Horizontal" ) - 0 );
 
-        if (Input.GetMouseButton( 0 ) && stationary > 1.0f)
+        if (Input.GetMouseButtonDown( 0 ))
         {
-            slideVec.x = Input.GetAxis( "Horizontal" ) * touchAmount;
+            startTouchPos = Input.mousePosition;
         }
-        else
+        else if (Input.GetMouseButtonUp( 0 ))
         {
-            slideVec.x = Vector3.Slerp( slideVec, Vector3.zero, 0.1f ).x;
-        }
+            endTouchPos = Input.mousePosition;
 
+            dist = Vector3.Distance( startTouchPos, endTouchPos ) / 50;
+
+            if (startTouchPos.x < endTouchPos.x)
+                slidePower = dist * touchAmount;
+            else
+                slidePower = -dist * touchAmount;
+
+        }
 
 #endif
 
         if (bouncePower > 0)
             bouncePower -= 0.1f;
 
+        if (slidePower > 0)
+            slidePower -= 0.1f;
+        else
+            slidePower += 0.1f;
+
         //이동시키는 부분
-        moveVec = Vector3.down + slideVec;
+        moveVec = Vector3.down;
+
+        moveVec.x += slidePower;
         moveVec.y += bouncePower;
         playerTr.Translate( moveVec * speed * Time.deltaTime );
 
