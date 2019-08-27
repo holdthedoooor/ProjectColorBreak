@@ -111,4 +111,10 @@ public class ChapterSelectUI : MonoBehaviour
             UIManager.instance.stageSlots[i] = chapter5_StageSlots[i];
         }
     }
+
+    public void BackButton()
+    {
+        go_CurrentChapterUI.SetActive( false );
+        go_ChapterSelectUI.SetActive( true );
+    }
 }

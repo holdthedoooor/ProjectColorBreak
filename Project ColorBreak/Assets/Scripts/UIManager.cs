@@ -24,7 +24,6 @@ public class UIManager : MonoBehaviour
     public Sprite               blankStarSprite;
     public StageUI              stageUI;
     public GameOverUI           gameOverUI;
-    public StageSelectUI        stageSelectUI;
     public StageInformationUI   stageInformationUI;
     public LobbyUI              lobbyUI;
     public PauseUI              pauseUI;
