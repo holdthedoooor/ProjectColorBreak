@@ -63,7 +63,7 @@ public class StageInformationUI : MonoBehaviour
 
     public void StageStartButton()
     {
-        StageManager.instance.currentStageSlot.transform.parent.parent.gameObject.SetActive( false );
+        UIManager.instance.chapterSelectUI.go_CurrentChapterUI.SetActive( false );
         go_StageInformationUI.SetActive( false );
         StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
     }

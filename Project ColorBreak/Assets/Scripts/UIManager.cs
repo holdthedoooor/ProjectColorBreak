@@ -18,13 +18,7 @@ public class UIManager : MonoBehaviour
     }
     private static UIManager m_instance; //싱글톤이 할당될 변수
 
-    void Awake()
-    {
-        stageSlots = go_StageSlotsParent.transform.GetComponentsInChildren<StageSlot>();
-    }
-
     //나중에 기능별로 나눌 예정
-    public GameObject           go_StageSlotsParent;
     public Button               nextButton;
     public Sprite               starSprite; 
     public Sprite               blankStarSprite;
@@ -35,9 +29,14 @@ public class UIManager : MonoBehaviour
     public LobbyUI              lobbyUI;
     public PauseUI              pauseUI;
     public ChapterSelectUI      chapterSelectUI;
-    public StageSlot[]          stageSlots { get; private set; }
+    public StageSlot[]          stageSlots;
 
     public int starCount { get; private set; }
+
+    void Awake()
+    {
+        stageSlots = chapterSelectUI.go_Chapters[0].GetComponentsInChildren<StageSlot>();
+    }
 
     //체크 포인트에 도달할 때마다 슬라이더의 Star Image와 gameOver의 Star Image를 변경
     //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;ㅑ
@@ -117,7 +116,7 @@ public class UIManager : MonoBehaviour
         gameOverUI.go_GameOverUI.SetActive( false );
         Destroy( StageManager.instance.currentStage.gameObject );
         StageManager.instance.go_Player.SetActive( false );
-        StageManager.instance.currentStageSlot.transform.parent.parent.parent.gameObject.SetActive( true );
+        chapterSelectUI.go_CurrentChapterUI.SetActive( true );
     }
 
     //현재 스테이지를 다시 플레이하는 버튼

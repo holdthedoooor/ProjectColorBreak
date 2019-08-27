@@ -36,9 +36,29 @@ public class StageManager : MonoBehaviour
 
         if(isMasterMode)
         {
-            for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length; i++)
             {
-                UIManager.instance.stageSlots[i].SetOpen();
+                UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].SetOpen();
+            }
+
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter2_StageSlots.Length; i++)
+            {
+                UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].SetOpen();
+            }
+
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter3_StageSlots.Length; i++)
+            {
+                UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].SetOpen();
+            }
+
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter4_StageSlots.Length; i++)
+            {
+                UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].SetOpen();
+            }
+
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter5_StageSlots.Length; i++)
+            {
+                UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].SetOpen();
             }
         }
     }
