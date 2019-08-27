@@ -123,8 +123,8 @@ public class UIManager : MonoBehaviour
     {
         gameOverUI.go_GameOverUI.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
-        StageManager.instance.currentStage.gameObject.SetActive( false );
-        StageManager.instance.currentStage.gameObject.SetActive( true );
+        Destroy( StageManager.instance.currentStage.gameObject );
+        StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
     }
 
     //다음 스테이지로 넘어가는 버튼
