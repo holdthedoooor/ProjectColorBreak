@@ -53,6 +53,8 @@ public class PlayerCtrl : LivingEntity
         playerAnim = GetComponent<Animator>();
         trailRenderer = GetComponent<TrailRenderer>();
 
+        originColor = colorType;
+
         onDie += () => StageManager.instance.currentStage.FinishStage();
     }
 
@@ -62,14 +64,12 @@ public class PlayerCtrl : LivingEntity
         //Screen.width - 게임 화면의 크기를 픽셀로 반환함.
         //ScreenToWorldPoint - 게임 화면의 픽셀위치를 월드포인트로 반환함.
 
-
-
         maxSpeed = speed;
         speed = 0f;
         playerSr.material = colorMt[(int)colorType];
         trailRenderer.material = colorMt[(int)colorType];
     }
-
+    
     void Update()
     {
         if (StageManager.instance.isGameOver)
@@ -106,7 +106,7 @@ public class PlayerCtrl : LivingEntity
         }
 
         float dist = 0f;
-
+        bool isStationary = false;
 
 #if UNITY_ANDROID //안드로이드일때
 
@@ -114,6 +114,11 @@ public class PlayerCtrl : LivingEntity
         if (Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Began)
         {
             startTouchPos = Input.GetTouch( 0 ).position;
+        }
+        else if((Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Stationary)
+        {
+            slidePower = Input.GetAxis( "Horizontal" ) * touchAmount;
+            isStationary= true;
         }
         else if (Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Ended)
         {
@@ -132,38 +137,19 @@ public class PlayerCtrl : LivingEntity
             Debug.Log( "slidePower:" + slidePower );
 
         }
-
-
-#else //에디터일때
-
-        if (Input.GetMouseButtonDown( 0 ))
-        {
-            startTouchPos = Input.mousePosition;
-        }
-        else if ( Input.GetMouseButton( 0 ) )
-        {
-            endTouchPos = Input.mousePosition;
-
-            dist = Vector3.Distance( startTouchPos, endTouchPos ) / 50;
-
-            if ( startTouchPos.x < endTouchPos.x )
-                slidePower = dist * touchAmount;
-            else
-                slidePower = -dist * touchAmount;
-
-           // startTouchPos = endTouchPos;
-        }
-
-#endif
-
+        
         if (bouncePower > 0)
             bouncePower -= 0.1f;
 
-        if (slidePower > 0)
+        if(isStationary == false)
+        {
+          if (slidePower > 0)
             slidePower -= 0.1f;
-        else
+         else
             slidePower += 0.1f;
+        }
 
+    
         //이동시키는 부분
         moveVec = Vector3.down;
 
@@ -171,16 +157,39 @@ public class PlayerCtrl : LivingEntity
         moveVec.y += bouncePower;
         playerTr.Translate( moveVec * speed * Time.deltaTime );
 
+#else //에디터일때
+
+        float stationary = Mathf.Abs( Input.GetAxis( "Horizontal" ) );
+
+       if (Input.GetMouseButton( 0 ) && stationary > 1.5f)
+       {
+           slideVec.x = Input.GetAxis( "Horizontal" ) * touchAmount;
+       }
+       else
+       {
+           slideVec.x = Vector3.Slerp( slideVec, Vector3.zero, 0.1f ).x;
+       }
+
+        if (bouncePower > 0)
+            bouncePower -= 0.1f;
+
+        //이동시키는 부분
+        moveVec = Vector3.down + slideVec;
+        moveVec.y += bouncePower;
+        playerTr.Translate( moveVec * speed * Time.deltaTime );
+
+#endif
 
         //화면 끝 에외처리
         if (playerTr.position.x > borderDist)
         {
             playerTr.position = new Vector3( borderDist, playerTr.position.y, playerTr.position.z );
+            slidePower = 0f;
         }
         else if (playerTr.position.x < -borderDist)
         {
             playerTr.position = new Vector3( -borderDist, playerTr.position.y, playerTr.position.z );
-
+            slidePower = 0f;
         }
 
     }//Moving()

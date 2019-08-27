@@ -39,7 +39,7 @@ public class ChapterSelectUI : MonoBehaviour
 
         for (int i = 0; i < chapter1_StageSlots.Length; i++)
         {
-            Debug.Log( UIManager.instance.stageSlots.Length );
+            //Debug.Log( UIManager.instance.stageSlots.Length );
             UIManager.instance.stageSlots[i] = chapter1_StageSlots[i];
         }
     }

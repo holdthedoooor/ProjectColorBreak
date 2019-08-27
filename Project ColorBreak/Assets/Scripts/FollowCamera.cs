@@ -46,4 +46,10 @@ public class FollowCamera : MonoBehaviour
         isMovable = false;
     }
 
+    public void SetCamera()
+    {
+        isMovable = true;
+
+    }
+
 }
