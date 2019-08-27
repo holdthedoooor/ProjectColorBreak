@@ -43,6 +43,7 @@ public class PlayerCtrl : LivingEntity
     {
         base.OnEnable();
         followCamera.transform.position = new Vector3( 0, 4.6f, -10 );
+        colorType = ColorType.Red;
     }
 
     void Awake()
@@ -53,10 +54,9 @@ public class PlayerCtrl : LivingEntity
         playerAnim = GetComponent<Animator>();
         trailRenderer = GetComponent<TrailRenderer>();
 
-        originColor = colorType;
-
         onDie += () => StageManager.instance.currentStage.FinishStage();
     }
+  
 
     void Start()
     {

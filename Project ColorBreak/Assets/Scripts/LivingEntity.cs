@@ -25,7 +25,6 @@ public class LivingEntity : MonoBehaviour
         Gray
     }
     public ColorType colorType;
-    protected ColorType originColor;
 
     [Header("최대 체력을 조절할 수 있습니다. (정수만 가능)")]
     //최대 체력
@@ -45,7 +44,7 @@ public class LivingEntity : MonoBehaviour
         curLife = maxLife;
         status = Status.Live;
         transform.position = originPosition;
-        colorType = originColor;
+
     }
 
     //데미지를 받았을 때 실행되는 함수
