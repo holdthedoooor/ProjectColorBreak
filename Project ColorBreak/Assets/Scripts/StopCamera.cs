@@ -9,7 +9,7 @@ public class StopCamera : MonoBehaviour
     //이 함수를 쓰려면 렌더러 컴포넌트가 있어야합니다.
     void OnBecameVisible()
     {
-        //Camera.main.GetComponent<FollowCamera>().StopCamera();
+        Camera.main.GetComponent<FollowCamera>().StopCamera();
     }
 
     

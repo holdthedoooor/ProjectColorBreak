@@ -151,7 +151,7 @@ public class PlayerCtrl : LivingEntity
             else
                 slidePower = -dist * touchAmount;
 
-            startTouchPos = endTouchPos;
+           // startTouchPos = endTouchPos;
         }
 
 #endif
