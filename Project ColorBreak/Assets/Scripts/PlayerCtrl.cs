@@ -140,17 +140,18 @@ public class PlayerCtrl : LivingEntity
         {
             startTouchPos = Input.mousePosition;
         }
-        else if (Input.GetMouseButtonUp( 0 ))
+        else if ( Input.GetMouseButton( 0 ) )
         {
             endTouchPos = Input.mousePosition;
 
             dist = Vector3.Distance( startTouchPos, endTouchPos ) / 50;
 
-            if (startTouchPos.x < endTouchPos.x)
+            if ( startTouchPos.x < endTouchPos.x )
                 slidePower = dist * touchAmount;
             else
                 slidePower = -dist * touchAmount;
 
+            startTouchPos = endTouchPos;
         }
 
 #endif
