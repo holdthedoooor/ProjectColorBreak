@@ -13,13 +13,27 @@ public class Obstacle : LivingEntity
     }
     public ObstaclesType obstaclesType;
 
+    public enum MoveType
+    {
+        MoveX, //X좌표로 이동
+        MoveY, //Y좌표로 이동
+        Fix //고정
+    }
+    [Header("MoveX - X좌표로 이동, MoveY - Y좌표로 이동, Fix - 고정")]
+    public MoveType moveType;
+
     //장애물의 최대, 최소 x position
     public float     maxPositionX;
     public float     minPositionX;
 
+    //장애물의 최대, 최소 y position
+    public float     maxPositionY;
+    public float     minPositionY;
+
     //장애물의 스피드, 방향
     public float    speed;
-    private int     direction;
+    [Header( "-1이면 왼쪽 or 아래쪽, 1이면 오른쪽 or 위쪽부터 시작" )]
+    public int      direction; //-1이면 왼쪽 or 아래쪽, 1이면 오른쪽 or 위쪽
 
     //몇초 마다 장애물 색깔이 바뀔지 결정, 랜덤일수도 
     [HideInInspector]
@@ -28,9 +42,6 @@ public class Obstacle : LivingEntity
 
     //랜덤으로 색을 바꿀 떄 사용
     private int     colorChangeNum;
-
-    //이동형 여부
-    public bool isMovable = false;
 
     private int obstacleScore = 1;
 
@@ -63,24 +74,22 @@ public class Obstacle : LivingEntity
         SetMaterial();
 
         //장애물 타입이 Move면 MoveCoroutine 실행
-        if (isMovable == true)
+        if (moveType == MoveType.MoveX)
         {
-            if (Random.Range( 0, 1 ) == 0)
-                direction = -1;
-            else
-                direction = 1;
-            StartCoroutine( MoveCoroutine() );
+            StartCoroutine( MoveXCoroutine() );
         }
-        //장애물 타입이 ColorChange면 ColorChangeCoroutine 실행
-        else if (obstaclesType == ObstaclesType.ColorChange)
-            StartCoroutine( ColorChangeCoroutine() );
+        else if(moveType == MoveType.MoveY)
+        {
+            StartCoroutine( MoveYCoroutine() );
+        }
+
     }
 
     void AddScore()
     {
-        if (maxLife == 2 && isMovable == true)
+        if (maxLife == 2 && moveType != MoveType.Fix)
             obstacleScore = 3;
-        else if (maxLife == 2 || isMovable == true)
+        else if (maxLife == 2 || moveType != MoveType.Fix)
             obstacleScore = 2;
         else
             obstacleScore = 1;
@@ -100,7 +109,7 @@ public class Obstacle : LivingEntity
         spriteRenderer.material = colorMaterials[(int)colorType];
     }
 
-    private IEnumerator MoveCoroutine()
+    private IEnumerator MoveXCoroutine()
     {
         while(status == Status.Live)
         {
@@ -116,6 +125,26 @@ public class Obstacle : LivingEntity
             }
 
             transform.Translate( Vector3.right * speed * Time.deltaTime * direction );
+            yield return null;
+        }
+    }
+
+    private IEnumerator MoveYCoroutine()
+    {
+        while (status == Status.Live)
+        {
+            if (transform.position.y <= minPositionY)
+            {
+                transform.position = new Vector3( transform.position.x, minPositionY, transform.position.z );
+                direction = 1;
+            }
+            else if (transform.position.y >= maxPositionY)
+            {
+                transform.position = new Vector3( transform.position.x, minPositionY, transform.position.z );
+                direction = -1;
+            }
+
+            transform.Translate( Vector3.up * speed * Time.deltaTime * direction );
             yield return null;
         }
     }
