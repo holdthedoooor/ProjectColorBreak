@@ -45,6 +45,7 @@ public class PlayerCtrl : LivingEntity
         base.OnEnable();
         followCamera.transform.position = new Vector3( 0, 4.6f, -10 );
         colorType = ColorType.Red;
+        ChangeColor( colorType );
     }
 
     void Awake()
