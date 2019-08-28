@@ -19,6 +19,7 @@ public class PlayerCtrl : LivingEntity
 
     private PlayerState playerState = PlayerState.Start;
     private Vector3 slideVec = Vector3.zero;
+    private Vector3 touchDist = Vector3.zero;
     public Vector3 moveVec = Vector3.zero;
     private float maxSpeed;
     private float bouncePower = 0f;
@@ -105,78 +106,69 @@ public class PlayerCtrl : LivingEntity
             }
         }
 
-        float dist = 0f;
-        bool isStationary = false;
-
 #if UNITY_ANDROID //안드로이드일때
 
-
-        if (Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Began)
+   if (Input.GetMouseButtonDown( 0 ))
         {
-            startTouchPos = Input.GetTouch( 0 ).position;
+            startTouchPos = Input.mousePosition;
         }
-        else if((Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Stationary)
+        else if (Input.GetMouseButton( 0 ))
         {
-            slidePower = Input.GetAxis( "Horizontal" ) * touchAmount;
-            isStationary= true;
-        }
-        else if (Input.touchCount > 0 && Input.GetTouch( 0 ).phase == TouchPhase.Ended)
-        {
-            endTouchPos = Input.GetTouch( 0 ).position;
-            Debug.Log( "endPos.x: " + endTouchPos.x );
+            endTouchPos = Input.mousePosition;
 
-            dist = Vector3.Distance( startTouchPos, endTouchPos ) / 50;
+            touchDist = endTouchPos - startTouchPos ;
 
-            Debug.Log( "dist: " + dist );
-
-            if (startTouchPos.x < endTouchPos.x)
-                slidePower = dist * touchAmount;
-            else
-                slidePower = -dist * touchAmount;
-
-            Debug.Log( "slidePower:" + slidePower );
+            slideVec = Vector3.Slerp( slideVec, touchDist/100, 1.0f ) * touchAmount;
 
         }
-        
+        else
+        {
+            slideVec = Vector3.Slerp(slideVec,Vector3.zero, 0.1f);
+        }
+       
+
         if (bouncePower > 0)
             bouncePower -= 0.1f;
 
-        if(isStationary == false)
-        {
-          if (slidePower > 0)
-            slidePower -= 0.1f;
-         else
-            slidePower += 0.1f;
-        }
 
-    
-        //이동시키는 부분
+        ////이동시키는 부분
         moveVec = Vector3.down;
-
-        moveVec.x += slidePower;
+        moveVec.x += slideVec.x;
         moveVec.y += bouncePower;
         playerTr.Translate( moveVec * speed * Time.deltaTime );
+
 
 #else //에디터일때
 
-        float stationary = Mathf.Abs( Input.GetAxis( "Horizontal" ) );
+        if (Input.GetMouseButtonDown( 0 ))
+        {
+            startTouchPos = Input.mousePosition;
+        }
+        else if (Input.GetMouseButton( 0 ))
+        {
+            endTouchPos = Input.mousePosition;
 
-       if (Input.GetMouseButton( 0 ) && stationary > 1.5f)
-       {
-           slideVec.x = Input.GetAxis( "Horizontal" ) * touchAmount;
-       }
-       else
-       {
-           slideVec.x = Vector3.Slerp( slideVec, Vector3.zero, 0.1f ).x;
-       }
+            touchDist = endTouchPos - startTouchPos;
+
+            slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
+
+        }
+        else
+        {
+            slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
+        }
+
 
         if (bouncePower > 0)
             bouncePower -= 0.1f;
 
-        //이동시키는 부분
-        moveVec = Vector3.down + slideVec;
+
+        ////이동시키는 부분
+        moveVec = Vector3.down;
+        moveVec.x += slideVec.x;
         moveVec.y += bouncePower;
         playerTr.Translate( moveVec * speed * Time.deltaTime );
+
 
 #endif
 
