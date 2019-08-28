@@ -37,7 +37,7 @@ public class PlayerCtrl : LivingEntity
     public float bounceMaxPower = 3.0f;//튕기는 정도
     [Header( "공이 낙하는 최대 속도를 수치로 설정해줍니다." )]
     public float maxSpeed = 3.0f;    //공의 하강속도
-    [Header( "터치로 감도를 수치로 설정해줍니다. 0.1 단위로 조작합니다." )]
+    [Header( "터치의 감도를 수치로 설정해줍니다. 0.1 단위로 조작합니다." )]
     public float touchAmount = 1f; //터치 감도
 
     //--------------------변수선언-----------------(여기까지)
@@ -169,6 +169,8 @@ public class PlayerCtrl : LivingEntity
         {
             slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
         }
+
+        startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
 
 
         if (bouncePower > 0)
