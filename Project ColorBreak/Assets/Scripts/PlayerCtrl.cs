@@ -23,6 +23,9 @@ public class PlayerCtrl : LivingEntity
     public Vector3 moveVec = Vector3.zero;
     private float bouncePower = 0f;
 
+    private float touchStartTime = 0f;
+    private bool isSwiped = false;
+
     private float borderDist;
     private bool isGameOver = false;
     private bool isBounce = false;
@@ -65,7 +68,9 @@ public class PlayerCtrl : LivingEntity
         bouncePower = 0f;
         moveVec = Vector3.zero;
         speed = 0f;
+        touchStartTime = 0f;
 
+        isSwiped = false;
         isBounce = false;
         isGameOver = false;
 
@@ -123,25 +128,30 @@ public class PlayerCtrl : LivingEntity
         if (Input.GetMouseButtonDown( 0 ))
         {
             startTouchPos = Input.mousePosition;
+            touchStartTime = Time.time;
         }
-        else if (Input.GetMouseButton( 0 ))
+
+        if(isSwiped == false)
+             isSwiped = Time.time - touchStartTime > 0.1f;
+
+        if (Input.GetMouseButton( 0 ) && isSwiped == true)
         {
             endTouchPos = Input.mousePosition;
 
             touchDist = endTouchPos - startTouchPos;
 
-            slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
+            slideVec = Vector3.Slerp( slideVec, touchDist/100, 1.0f ) * touchAmount;
 
+            startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
         }
         else
         {
             slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
+            isSwiped = false;
         }
-
 
         if (bouncePower > 0)
             bouncePower -= 0.1f;
-
 
         ////이동시키는 부분
         moveVec = Vector3.down;
@@ -150,13 +160,19 @@ public class PlayerCtrl : LivingEntity
         playerTr.Translate( moveVec * speed * Time.deltaTime );
 
 
+
 #else //에디터일때
 
         if (Input.GetMouseButtonDown( 0 ))
         {
             startTouchPos = Input.mousePosition;
+            touchStartTime = Time.time;
         }
-        else if (Input.GetMouseButton( 0 ))
+
+        if (isSwiped == false)
+            isSwiped = Time.time - touchStartTime > 0.1f;
+
+        if (Input.GetMouseButton( 0 ) && isSwiped == true)
         {
             endTouchPos = Input.mousePosition;
 
@@ -164,18 +180,16 @@ public class PlayerCtrl : LivingEntity
 
             slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
 
+            startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
         }
         else
         {
             slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
+            isSwiped = false;
         }
-
-        startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
-
 
         if (bouncePower > 0)
             bouncePower -= 0.1f;
-
 
         ////이동시키는 부분
         moveVec = Vector3.down;
