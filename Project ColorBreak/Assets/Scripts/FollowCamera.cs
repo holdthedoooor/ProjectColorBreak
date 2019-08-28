@@ -49,6 +49,7 @@ public class FollowCamera : MonoBehaviour
     public void SetCamera()
     {
         isMovable = true;
+        cameraTr.position = new Vector3( 0, 4.6f, -10 );
 
     }
 

@@ -34,7 +34,7 @@ public class Stage : MonoBehaviour
         StageManager.instance.go_Player.SetActive( true );
 
         //isMovable를 true로 바꿔줌으로 써 카메라가 다시 움직이도록 설정
-        StageManager.instance.go_Player.GetComponent<PlayerCtrl>().followCamera.isMovable = true;
+        Camera.main.GetComponent<FollowCamera>().SetCamera();
         UIManager.instance.SetStartUI();
 
         for (int i = 0; i < obstacles.Length; i++)

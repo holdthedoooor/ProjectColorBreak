@@ -15,11 +15,6 @@ public class StopCamera : MonoBehaviour
         borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).y / 2 + GetComponent<BoxCollider2D>().size.y/2;
     }
 
-    private void OnEnable()
-    {
-        Camera.main.GetComponent<FollowCamera>().SetCamera();
-    }
-
     private void Update()
     {
         float cameraWithDist = Mathf.Abs( transform.position.y - cameraTr.position.y);
