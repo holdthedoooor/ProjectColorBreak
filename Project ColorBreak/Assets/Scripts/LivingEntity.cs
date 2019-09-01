@@ -31,8 +31,6 @@ public class LivingEntity : MonoBehaviour
     public int               maxLife;
     //현재 체력
     public int               curLife { get; protected set; }
-    [Header("시작 X, Y, Z 좌표를 입력해주세요!")]
-    public Vector3           originPosition;
     [Header( "체크 해제하면 세이프 블럭이 됩니다!" )]
     //파괴가능 여부
     public bool isBreakable = true;
@@ -43,8 +41,6 @@ public class LivingEntity : MonoBehaviour
     {
         curLife = maxLife;
         status = Status.Live;
-        transform.position = originPosition;
-
     }
 
     //데미지를 받았을 때 실행되는 함수

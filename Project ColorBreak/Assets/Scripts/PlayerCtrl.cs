@@ -31,6 +31,8 @@ public class PlayerCtrl : LivingEntity
     private bool isBounce = false;
     private float speed;
 
+    [Header( "시작 X, Y, Z 좌표를 입력해주세요!" )]
+    public Vector3  originPosition;
     private Vector3 startTouchPos = Vector3.zero;
     private Vector3 endTouchPos = Vector3.zero;
 
@@ -60,6 +62,7 @@ public class PlayerCtrl : LivingEntity
         base.OnEnable();
         colorType = ColorType.Red;
         ChangeColor( colorType );
+        transform.position = originPosition;
 
         touchDist = Vector3.zero;
         startTouchPos = Vector3.zero;

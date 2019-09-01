@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7857,7 +7857,7 @@ PrefabInstance:
         type: 3}
       propertyPath: go_StagePrefab
       value: 
-      objectReference: {fileID: 3198921652577601663, guid: 990a6dbe1e2c2e242afd4bb9b9f5b9c8,
+      objectReference: {fileID: 3198921652577601663, guid: 1923d57be571bc540aa6c8f1fca8e8d3,
         type: 3}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -11677,9 +11677,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorType: 0
   maxLife: 0
-  originPosition: {x: 0, y: 7, z: 0}
   isBreakable: 1
   moveVec: {x: 0, y: 0, z: 0}
+  originPosition: {x: 0, y: 7, z: 0}
   colorMt:
   - {fileID: 2100000, guid: c61abbe3a6f1ba44eac64b551c3ea037, type: 2}
   - {fileID: 2100000, guid: 2e898b36e9bc0b74e84735badfb4d8aa, type: 2}
@@ -12382,7 +12382,7 @@ PrefabInstance:
         type: 3}
       propertyPath: go_StagePrefab
       value: 
-      objectReference: {fileID: 8502337719857953484, guid: f105ba52afffa1e4cba59005213591c9,
+      objectReference: {fileID: 8502337719857953484, guid: c1bdde3c44265364da566eed6315aa68,
         type: 3}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -13236,7 +13236,7 @@ PrefabInstance:
         type: 3}
       propertyPath: go_StagePrefab
       value: 
-      objectReference: {fileID: 7834419685141859443, guid: f62cad5f004820e4ea59299aa10a4be6,
+      objectReference: {fileID: 7834419685141859443, guid: be610f3ad51e5be49ae3298c6098e176,
         type: 3}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -13690,7 +13690,7 @@ PrefabInstance:
         type: 3}
       propertyPath: go_StagePrefab
       value: 
-      objectReference: {fileID: 8151959711464767348, guid: 954d5e413b317764580df7149b8da02d,
+      objectReference: {fileID: 8151959711464767348, guid: 05aa2161b3012f8468f2a14ccaa82aee,
         type: 3}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
