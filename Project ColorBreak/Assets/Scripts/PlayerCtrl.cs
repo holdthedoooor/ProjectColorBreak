@@ -243,9 +243,15 @@ public class PlayerCtrl : LivingEntity
                         return;
                     }
 
+                    if (obstacle.colorType == ColorType.Black)
+                    {
+                        OnDamage();
+                        return;
+                    }
+
                     if (obstacle.colorType == colorType)
                     {
-                        if(isBounce)
+                        if (obstacle.isBounce)
                         {
                             if (obstacle.status != Status.Die)
                                 StartCoroutine( BounceBall() );
@@ -260,6 +266,10 @@ public class PlayerCtrl : LivingEntity
                                 StartCoroutine( BounceBall() );
                         }
                     }
+                    else if (obstacle.colorType == ColorType.Black)
+                        OnDamage();
+                    else if (obstacle.colorType == ColorType.White)
+                        obstacle.OnDamage();
                     else if (obstacle.colorType != colorType)
                         OnDamage();
                 }

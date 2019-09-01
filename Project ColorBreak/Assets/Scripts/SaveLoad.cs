@@ -40,7 +40,6 @@ public class SaveLoad : MonoBehaviour
         {
             if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Rock)
             {
-                Debug.Log( "하이" );
                 saveData.stageArrayNumber.Add( i );
                 saveData.stageBestScore.Add( UIManager.instance.stageSlots[i].bestScore );
                 saveData.stageStarCount.Add( UIManager.instance.stageSlots[i].starCount );

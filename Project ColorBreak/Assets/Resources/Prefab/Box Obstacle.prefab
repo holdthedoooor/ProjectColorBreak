@@ -47,10 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorType: 0
   maxLife: 0
-  originPosition: {x: 0, y: 4, z: 0}
   isBreakable: 1
   obstaclesType: 0
   moveType: 2
+  isBounce: 0
   maxPositionX: 0
   minPositionX: 0
   maxPositionY: 0
@@ -66,6 +66,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a363f6bc511bbda43b8003f4ec639ba2, type: 2}
   - {fileID: 2100000, guid: 43b17326971934444b57e9141e255ba2, type: 2}
   - {fileID: 2100000, guid: fc1bcdcbb2bc25140b0648dadaa01fc1, type: 2}
+  - {fileID: 2100000, guid: 23601079dc5ddd848bdb36ecbf9678ce, type: 2}
+  - {fileID: 2100000, guid: 611eda72c387317408bce29f543786ef, type: 2}
 --- !u!212 &3240943566343771838
 SpriteRenderer:
   m_ObjectHideFlags: 0
