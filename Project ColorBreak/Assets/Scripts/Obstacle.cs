@@ -9,7 +9,7 @@ public class Obstacle : LivingEntity
     {
         Standard,
         SafeBlock,
-        ColorChange
+        ColorChange,
     }
     public ObstaclesType obstaclesType;
 
@@ -21,6 +21,9 @@ public class Obstacle : LivingEntity
     }
     [Header("MoveX - X좌표로 이동, MoveY - Y좌표로 이동, Fix - 고정")]
     public MoveType moveType;
+
+    [Header("체크하시면 파괴되면서 튀기고 체크안하면 그냥 파괴만됩니다.")]
+    public bool isBounce = false;
 
     //장애물의 최대, 최소 x position
     public float     maxPositionX;

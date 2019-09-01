@@ -222,14 +222,12 @@ public class PlayerCtrl : LivingEntity
         colorType = color;
         playerSr.material = colorMt[(int)colorType];
         trailRenderer.material = colorMt[(int)colorType];
-
     }
-
 
     private void OnTriggerEnter2D( Collider2D other )
     {
         bool isCollisionUp = false;
-        isCollisionUp = other.transform.position.y < playerTr.position.y;
+        isCollisionUp = other.transform.position.y < playerTr.position.y; //세이프 블록일때만 적용
 
         if (other.tag == "Obstacle")
         {
@@ -243,19 +241,27 @@ public class PlayerCtrl : LivingEntity
                     {
                         StartCoroutine( BounceBall() ); ;
                         return;
-
                     }
 
                     if (obstacle.colorType == colorType)
                     {
-                        obstacle.OnDamage();
+                        if(isBounce)
+                        {
+                            if (obstacle.status != Status.Die)
+                                StartCoroutine( BounceBall() );
 
-                        if (obstacle.status != Status.Die)
-                            StartCoroutine( BounceBall() );
+                            obstacle.OnDamage();
+                        }
+                        else
+                        {
+                            obstacle.OnDamage();
+
+                            if (obstacle.status != Status.Die)
+                                StartCoroutine( BounceBall() );
+                        }
                     }
                     else if (obstacle.colorType != colorType)
                         OnDamage();
-
                 }
                 else if (obstacle.isBreakable == false)
                     return;
@@ -280,5 +286,4 @@ public class PlayerCtrl : LivingEntity
             StageManager.instance.currentStage.FinishStage();
         }
     }
-
 }
