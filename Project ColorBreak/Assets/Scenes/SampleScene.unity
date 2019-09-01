@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2498,6 +2498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stage Slot 3-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984863887555905418, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905421, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -5643,22 +5648,22 @@ PrefabInstance:
         type: 3}
       propertyPath: go_StagePrefab
       value: 
-      objectReference: {fileID: 8151959711464767348, guid: 954d5e413b317764580df7149b8da02d,
+      objectReference: {fileID: 3198921652577601663, guid: e11d1811ec4102f4d99d433df86b10e5,
         type: 3}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[0]
-      value: 2
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[1]
-      value: 4
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[2]
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -7455,6 +7460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stage Slot 3-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984863887555905418, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905421, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -10556,7 +10566,7 @@ PrefabInstance:
         type: 3}
       propertyPath: go_StagePrefab
       value: 
-      objectReference: {fileID: 7834419685141859443, guid: f62cad5f004820e4ea59299aa10a4be6,
+      objectReference: {fileID: 3198921652577601663, guid: 3af9989731729954da73cff46265fd9f,
         type: 3}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
@@ -10566,17 +10576,17 @@ PrefabInstance:
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[0]
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[1]
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[2]
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
