@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Obstacle : LivingEntity
 {
@@ -52,17 +53,26 @@ public class Obstacle : LivingEntity
     public Material[]       colorMaterials;
     private SpriteRenderer     spriteRenderer;
 
+    private Text         lifeText;
+
+
     void Awake()
     {
         status = Status.Live;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        lifeText = GetComponentInChildren<Text>();
         lastChangeTime = 0f;
 
         onDie += AddScore;
         onDie += CreateParticle;
         onDie += () => gameObject.SetActive(false);
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        SetLifeUI();
     }
 
     void Start()
@@ -71,7 +81,7 @@ public class Obstacle : LivingEntity
         {
             isBreakable = false;
             obstacleScore = 0;
-            //TO DO: 컬러타입 회색으로 
+            colorType = ColorType.Gray;
         }
 
         SetMaterial();
@@ -86,6 +96,22 @@ public class Obstacle : LivingEntity
             StartCoroutine( MoveYCoroutine() );
         }
 
+    }
+
+    public override void OnDamage()
+    {
+        base.OnDamage();
+
+        SetLifeUI();
+
+    }
+
+    void SetLifeUI()
+    {
+        if (curLife > 1)
+            lifeText.text = curLife.ToString();
+        else
+            lifeText.text = " ";
     }
 
     void AddScore()
