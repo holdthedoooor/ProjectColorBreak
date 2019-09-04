@@ -10,7 +10,8 @@ public class Obstacle : LivingEntity
     {
         Standard,
         SafeBlock,
-        ColorChange,
+        AutoColorChange, //자동으로 색이 변하는 블록
+        DamagedColorChange //데미지를 입을때마다 색이 변하는 블록
     }
     public ObstaclesType obstaclesType;
 
@@ -24,8 +25,8 @@ public class Obstacle : LivingEntity
     public MoveType moveType;
 
     [Header("체크하시면 파괴되면서 튀기고 체크안하면 그냥 파괴만됩니다.")]
-    public bool isBounce = false;
-
+    public bool isBounceBlock = false;
+    
     //장애물의 최대, 최소 x position
     public float     maxPositionX;
     public float     minPositionX;
@@ -42,10 +43,7 @@ public class Obstacle : LivingEntity
     //몇초 마다 장애물 색깔이 바뀔지 결정, 랜덤일수도 
     [HideInInspector]
     public float    colorChangeTime;
-    private float   lastChangeTime;
-
-    //랜덤으로 색을 바꿀 떄 사용
-    private int     colorChangeNum;
+    private float   lastChangeTime; 
 
     private int obstacleScore = 1;
 
@@ -73,6 +71,9 @@ public class Obstacle : LivingEntity
     {
         base.OnEnable();
         SetLifeUI();
+
+        if(obstaclesType == ObstaclesType.AutoColorChange)
+            StartCoroutine( ColorChangeCoroutine() );
     }
 
     void Start()
@@ -103,6 +104,13 @@ public class Obstacle : LivingEntity
         base.OnDamage();
 
         SetLifeUI();
+
+        if (obstaclesType == ObstaclesType.DamagedColorChange)
+        {
+            int colorNum = 0;
+            bool isRandomColor = true;
+            ChangeColor( colorNum, isRandomColor );
+        }
 
     }
 
@@ -178,15 +186,42 @@ public class Obstacle : LivingEntity
         }
     }
 
+    private void ChangeColor( int colorNum = 0, bool isRandom = true)
+    {
+        int colorMaxNum = colorMaterials.Length -1;
+
+        if(isRandom== true)
+        {
+            int randomColor = Random.Range( 0, colorMaxNum );
+
+            while (randomColor != (int)colorType)
+            {
+                randomColor = Random.Range( 0, colorMaxNum );
+            }
+
+            colorType = (ColorType)randomColor;
+        }
+        else
+        {
+            colorType = (ColorType)colorNum;
+        }
+              
+        SetMaterial();
+
+    }
+
     private IEnumerator ColorChangeCoroutine()
     {
+        if (obstaclesType != ObstaclesType.AutoColorChange)
+            yield return null;
+
         while(status == Status.Live)
         {
             if(lastChangeTime + colorChangeTime <= Time.time )
             {
                 lastChangeTime = Time.time;
 
-                colorChangeNum = Random.Range( 0, 4 );
+                int colorChangeNum = Random.Range( 0, 4 );
 
                 switch(colorChangeNum)
                 {
@@ -212,10 +247,9 @@ public class Obstacle : LivingEntity
 
     void CreateParticle()
     {
+        float destroyTime = 1.5f;
         GameObject obj = GameObject.Instantiate( particle);
         obj.transform.position = new Vector3( transform.position.x, transform.position.y, obj.transform.position.z );
-        Destroy( obj, 1.5f );
-
-
+        Destroy( obj, destroyTime );
     }
 }

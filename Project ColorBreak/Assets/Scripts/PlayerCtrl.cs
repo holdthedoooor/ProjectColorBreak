@@ -227,7 +227,7 @@ public class PlayerCtrl : LivingEntity
     private void OnTriggerEnter2D( Collider2D other )
     {
         bool isCollisionUp = false;
-        isCollisionUp = other.transform.position.y < playerTr.position.y; //세이프 블록일때만 적용
+        isCollisionUp = other.transform.position.y < playerTr.position.y;
 
         if (other.tag == "Obstacle")
         {
@@ -239,13 +239,13 @@ public class PlayerCtrl : LivingEntity
                 {
                     if (obstacle.isBreakable == false)
                     {
-                        StartCoroutine( BounceBall() ); ;
+                        StartCoroutine( BounceBall() );
                         return;
                     }
 
                     if (obstacle.colorType == colorType)
                     {
-                        if (obstacle.isBounce)
+                        if (obstacle.isBounceBlock)
                         {
                             if (obstacle.status != Status.Die)
                                 StartCoroutine( BounceBall() );
