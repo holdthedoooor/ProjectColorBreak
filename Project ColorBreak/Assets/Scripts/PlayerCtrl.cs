@@ -238,7 +238,6 @@ public class PlayerCtrl : LivingEntity
                 if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.colorType != ColorType.Gray)
                 {
                     OnDamage();
-                    Debug.Log( "플레이어죽음" );
                 }
                 //TO DO : 색으로 판정내리기 보다는 Obstacle에서 색에 따른 bool 변수 또는, ObstacleType을 지정해서 코드를 간소화할 필요가 있음.
 
@@ -294,7 +293,6 @@ public class PlayerCtrl : LivingEntity
         }
         else if (other.tag == "Boss")
         {
-            Debug.Log( "보스와 충돌" );
             StageManager.instance.NextPhase();
         }
     }

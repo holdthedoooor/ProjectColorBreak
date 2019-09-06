@@ -70,7 +70,6 @@ public class UIManager : MonoBehaviour
             starCount = 0;
             stageUI.ActivateUI();
             gameOverUI.ResetStar();
-            Debug.Log( "시작" );
         }
     }
 
@@ -143,8 +142,17 @@ public class UIManager : MonoBehaviour
     {
         gameOverUI.go_GameOverUI.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
-        Destroy( StageManager.instance.currentStage.gameObject );
-        StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
+        if (StageManager.instance.currentStageSlot != null)
+        {
+            Destroy( StageManager.instance.currentStage.gameObject );
+            StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
+        }
+        else
+        {
+            Destroy( StageManager.instance.currentBossStage.gameObject );
+            StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+        }
+
     }
 
     //다음 스테이지로 넘어가는 버튼

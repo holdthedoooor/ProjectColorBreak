@@ -109,6 +109,7 @@ public class StageManager : MonoBehaviour
         {
             //게임 종료
             StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine( damage ) );
+            FinishStage();
         }
     }
 
@@ -123,6 +124,7 @@ public class StageManager : MonoBehaviour
 
         isGoal = false;
         score = 0;
+        damage = 0;
         isGameOver = false;
         go_Player.SetActive( true );
 
@@ -146,6 +148,7 @@ public class StageManager : MonoBehaviour
 
             if (isGoal)
             {
+                //여기에서 오류 발생하는것같다
                 //현재 점수가 현재 스테이지에서 달성한 최대 점수보다 크다면 최대 점수 변경
                 if (score > currentStageSlot.bestScore)
                 {
