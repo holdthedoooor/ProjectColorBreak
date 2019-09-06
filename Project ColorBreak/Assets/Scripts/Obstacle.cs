@@ -26,6 +26,10 @@ public class Obstacle : LivingEntity
     [Header("체크하시면 파괴되면서 튀기고 체크안하면 그냥 파괴만됩니다.")]
     public bool isBounce = false;
 
+    [Header("체크하시면 플레이어가 떨어지고 있을 때만 장애물과 충돌합니다.")]
+    [Header("일단 모든 장애물에서 체크해주세요." )]
+    public bool isCollsionUp = true;
+
     //장애물의 최대, 최소 x position
     public float     maxPositionX;
     public float     minPositionX;
@@ -126,7 +130,7 @@ public class Obstacle : LivingEntity
         if (isBreakable == false || obstaclesType== ObstaclesType.SafeBlock)
             obstacleScore = 0;
 
-        StageManager.instance.AddScore( obstacleScore );
+        StageManager.instance.AddScoreAndDamage( obstacleScore );
     }
 
     private void SetMaterial()

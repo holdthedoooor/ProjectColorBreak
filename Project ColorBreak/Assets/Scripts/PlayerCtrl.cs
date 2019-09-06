@@ -54,7 +54,7 @@ public class PlayerCtrl : LivingEntity
         playerAnim = GetComponent<Animator>();
         trailRenderer = GetComponent<TrailRenderer>();
 
-        onDie += () => StageManager.instance.currentStage.FinishStage();
+        onDie += () => StageManager.instance.FinishStage();
     }
 
     protected override void OnEnable()
@@ -76,7 +76,6 @@ public class PlayerCtrl : LivingEntity
         isSwiped = false;
         isBounce = false;
         isGameOver = false;
-
 
         playerState = PlayerState.Start;
     }
@@ -226,49 +225,49 @@ public class PlayerCtrl : LivingEntity
 
     private void OnTriggerEnter2D( Collider2D other )
     {
-        bool isCollisionUp = false;
-        isCollisionUp = other.transform.position.y < playerTr.position.y; //세이프 블록일때만 적용
-
         if (other.tag == "Obstacle")
         {
             Obstacle obstacle = other.GetComponent<Obstacle>();
 
             if (obstacle != null)
             {
-                if (isCollisionUp == true)
+                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White)
                 {
-                    if (obstacle.isBreakable == false)
-                    {
-                        StartCoroutine( BounceBall() ); ;
-                        return;
-                    }
-
-                    if (obstacle.colorType == colorType)
-                    {
-                        if (obstacle.isBounce)
-                        {
-                            if (obstacle.status != Status.Die)
-                                StartCoroutine( BounceBall() );
-
-                            obstacle.OnDamage();
-                        }
-                        else
-                        {
-                            obstacle.OnDamage();
-
-                            if (obstacle.status != Status.Die)
-                                StartCoroutine( BounceBall() );
-                        }
-                    }
-                    else if (obstacle.colorType == ColorType.White)
-                        obstacle.OnDamage();
-                    else if (obstacle.colorType != colorType)
-                        OnDamage();
-                }
-                else if (obstacle.isBreakable == false)
-                    return;
-                else if (obstacle.colorType != colorType)
                     OnDamage();
+                    Debug.Log( "플레이어죽음" );
+                }
+
+                if (obstacle.isCollsionUp)
+                {
+                    if (other.transform.position.y < playerTr.position.y)
+                    {
+                        //파괴 불가능한 장애물
+                        if (obstacle.isBreakable == false)
+                        {
+                            StartCoroutine( BounceBall() ); ;
+                            return;
+                        }
+
+                        //색이 같으면
+                        if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
+                        {
+                            if (obstacle.isBounce)
+                            {
+                                if (obstacle.status != Status.Die)
+                                    StartCoroutine( BounceBall() );
+
+                                obstacle.OnDamage();
+                            }
+                            else
+                            {
+                                obstacle.OnDamage();
+
+                                if (obstacle.status != Status.Die)
+                                    StartCoroutine( BounceBall() );
+                            }
+                        }
+                    }
+                }
             }
         }
         else if (other.tag == "Item")
@@ -285,7 +284,12 @@ public class PlayerCtrl : LivingEntity
         else if (other.tag == "Goal")
         {
             StageManager.instance.isGoal = true;
-            StageManager.instance.currentStage.FinishStage();
+            StageManager.instance.FinishStage();
+        }
+        else if(other.tag == "Boss")
+        {
+            Debug.Log( "보스와 충돌" );
+            StageManager.instance.NextPhase();
         }
     }
 }

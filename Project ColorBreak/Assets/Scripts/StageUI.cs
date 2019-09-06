@@ -33,13 +33,16 @@ public class StageUI : MonoBehaviour
 
     private void ResetStar()
     {
-        for (int i = 0; i < starImages.Length; i++)
+        if(StageManager.instance.currentStageSlot != null)
         {
-            ratio = StageManager.instance.currentStageSlot.checkPoints[i] / (float)StageManager.instance.currentStageSlot.checkPoints[2];
-            starTexts[i].enabled = true;
-            starTexts[i].text = StageManager.instance.currentStageSlot.checkPoints[i].ToString();
-            starImages[i].transform.localPosition = new Vector3( Mathf.Lerp( minPositionX, maxPositionX, ratio ), starImages[i].transform.localPosition.y, starImages[i].transform.localPosition.z );
-            starImages[i].sprite = UIManager.instance.blankStarSprite;
+            for (int i = 0; i < starImages.Length; i++)
+            {
+                ratio = StageManager.instance.currentStageSlot.checkPoints[i] / (float)StageManager.instance.currentStageSlot.checkPoints[2];
+                starTexts[i].enabled = true;
+                starTexts[i].text = StageManager.instance.currentStageSlot.checkPoints[i].ToString();
+                starImages[i].transform.localPosition = new Vector3( Mathf.Lerp( minPositionX, maxPositionX, ratio ), starImages[i].transform.localPosition.y, starImages[i].transform.localPosition.z );
+                starImages[i].sprite = UIManager.instance.blankStarSprite;
+            }
         }
     }
 
