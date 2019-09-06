@@ -79,11 +79,7 @@ public class PlayerCtrl : LivingEntity
         isBounce = false;
         isGameOver = false;
 
-<<<<<<< HEAD
         trailRenderer.Clear();
-
-=======
->>>>>>> 428de52abb31abea7651811bcb7faf0a6cea71e7
         playerState = PlayerState.Start;
     }
 
