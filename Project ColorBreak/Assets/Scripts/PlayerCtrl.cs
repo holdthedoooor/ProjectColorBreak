@@ -100,14 +100,14 @@ public class PlayerCtrl : LivingEntity
 
         Moving();
 
-        playerAnim.SetBool( "isBounce", isBounce );
-
     }
 
     IEnumerator BounceBall()
     {
         isBounce = true;
         bouncePower = bounceMaxPower;
+
+        playerAnim.SetTrigger( "Bounce" );
 
         yield return new WaitForSeconds( 2.5f );
 
@@ -234,11 +234,12 @@ public class PlayerCtrl : LivingEntity
 
             if (obstacle != null)
             {
-                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White)
+                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.obstaclesType != Obstacle.ObstaclesType.SafeBlock)
                 {
                     OnDamage();
                     Debug.Log( "플레이어죽음" );
                 }
+                //TO DO : 색으로 판정내리기 보다는 Obstacle에서 색에 따른 bool 변수 또는, ObstacleType을 지정해서 코드를 간소화할 필요가 있음.
 
                 if (obstacle.isCollsionUp)
                 {
@@ -271,7 +272,8 @@ public class PlayerCtrl : LivingEntity
                         }
                     }
                 }
-            }
+
+            }//obstacle != null
         }
         else if (other.tag == "Item")
         {
