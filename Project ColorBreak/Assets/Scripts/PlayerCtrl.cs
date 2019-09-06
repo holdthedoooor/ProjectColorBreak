@@ -245,6 +245,7 @@ public class PlayerCtrl : LivingEntity
                         StartCoroutine( BounceBall() );
                         return;
                     }
+                    Debug.Log( "플레이어죽음" );
 
                     if (obstacle.colorType == colorType)
                     {

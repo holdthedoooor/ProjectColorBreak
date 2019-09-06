@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     public LobbyUI              lobbyUI;
     public PauseUI              pauseUI;
     public ChapterSelectUI      chapterSelectUI;
+    public BossStageUI          bossStageUI;
     public StageSlot[]          stageSlots;
 
     public int starCount { get; private set; }
@@ -38,7 +39,7 @@ public class UIManager : MonoBehaviour
     }
 
     //체크 포인트에 도달할 때마다 슬라이더의 Star Image와 gameOver의 Star Image를 변경
-    //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;ㅑ
+    //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;
     public void StarImageChange()
     {
         if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[0])
@@ -64,48 +65,57 @@ public class UIManager : MonoBehaviour
     //게임이 시작할 때
     public void SetStartUI()
     {
-        starCount = 0;
-        stageUI.ActivateUI();
-        gameOverUI.ResetStar();
+        if(StageManager.instance.currentStageSlot != null)
+        {
+            starCount = 0;
+            stageUI.ActivateUI();
+            gameOverUI.ResetStar();
+        }
+        
     }
 
     //게임이 끝날 때
     public void SetFinishUI()
     {
-        //starCount가 1개 이상이면 Stage Clear
-        if (UIManager.instance.starCount > 0 && StageManager.instance.isGoal)
+        if(StageManager.instance.currentStageSlot != null)
         {
-            gameOverUI.gameOverText.text = "Stage Clear";
-            gameOverUI.gameOverText.color = Color.blue;
-
-            //만약 현재 stageSlot이 Open만 된 상태였다면 Clear로 변경
-            if(StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
+            //starCount가 1개 이상이면 Stage Clear
+            if (starCount > 0 && StageManager.instance.isGoal)
             {
-                StageManager.instance.currentStageSlot.stageStatus = StageSlot.StageStatus.Clear;
+                gameOverUI.gameOverText.text = "Stage Clear";
+                gameOverUI.gameOverText.color = Color.blue;
 
-                //현재 Stage를 Clear 했으니 다음 Stage를 Open 시켜준다.
-                if(StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
-                     stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].StageSlotOpen();
+                //만약 현재 stageSlot이 Open만 된 상태였다면 Clear로 변경
+                if (StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
+                {
+                    StageManager.instance.currentStageSlot.stageStatus = StageSlot.StageStatus.Clear;
+
+                    //현재 Stage를 Clear 했으니 다음 Stage를 Open 시켜준다.
+                    if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
+                        stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].StageSlotOpen();
+                }
             }
-        }
-        else
-        {
-            gameOverUI.gameOverText.text = "Game Over";
-            gameOverUI.gameOverText.color = Color.red;
-        }
+            else
+            {
+                gameOverUI.gameOverText.text = "Game Over";
+                gameOverUI.gameOverText.color = Color.red;
+            }
 
-        if(StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
-        {
-            if (stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].stageStatus != StageSlot.StageStatus.Rock)
-                nextButton.interactable = true;
+            if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
+            {
+                if (stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].stageStatus != StageSlot.StageStatus.Rock)
+                    nextButton.interactable = true;
+                else
+                    nextButton.interactable = false;
+            }
             else
                 nextButton.interactable = false;
+
+            gameOverUI.gameOverScoreText.text = StageManager.instance.score.ToString();
+            gameOverUI.go_GameOverUI.SetActive( true );
         }
         else
-            nextButton.interactable = false;
-
-        gameOverUI.gameOverScoreText.text = StageManager.instance.score.ToString();
-        gameOverUI.go_GameOverUI.SetActive( true );
+            gameOverUI.go_GameOverUI.SetActive( true );
     }
 
     //홈 버튼 클릭
@@ -113,7 +123,17 @@ public class UIManager : MonoBehaviour
     {
         stageUI.DeactivateUI();
         gameOverUI.go_GameOverUI.SetActive( false );
-        Destroy( StageManager.instance.currentStage.gameObject );
+
+        if(StageManager.instance.currentStage != null)
+            Destroy( StageManager.instance.currentStage.gameObject );
+
+        else
+        {
+            Destroy( Camera.main.transform.GetChild(0).gameObject );
+            Destroy( StageManager.instance.currentBossStage.gameObject );
+        }
+            
+
         StageManager.instance.go_Player.SetActive( false );
         chapterSelectUI.go_CurrentChapterUI.SetActive( true );
     }
