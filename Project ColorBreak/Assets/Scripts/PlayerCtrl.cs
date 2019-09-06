@@ -44,6 +44,8 @@ public class PlayerCtrl : LivingEntity
     public float maxSpeed = 3.0f;    //공의 하강속도
     [Header( "터치의 감도를 수치로 설정해줍니다. 0.1 단위로 조작합니다." )]
     public float touchAmount = 1f; //터치 감도
+    [Header( "중력을 조절합니다. 수치가 높을수록 최대속도에 빨리 도달합니다." )]
+    public float gravity = 0.1f;
 
     //--------------------변수선언-----------------(여기까지)
     void Awake()
@@ -77,6 +79,7 @@ public class PlayerCtrl : LivingEntity
         isBounce = false;
         isGameOver = false;
 
+        trailRenderer.Clear();
         playerState = PlayerState.Start;
     }
 
@@ -105,6 +108,8 @@ public class PlayerCtrl : LivingEntity
         isBounce = true;
         bouncePower = bounceMaxPower;
 
+        playerAnim.SetTrigger( "Bounce" );
+
         yield return new WaitForSeconds( 2.5f );
 
         isBounce = false;
@@ -115,7 +120,7 @@ public class PlayerCtrl : LivingEntity
         //처음에 위에서 천천히 떨어지는 구간
         if (playerState == PlayerState.Start)
         {
-            speed += 0.1f;
+            speed += gravity;
 
             if (speed >= maxSpeed)
             {
@@ -152,7 +157,7 @@ public class PlayerCtrl : LivingEntity
         }
 
         if (bouncePower > 0)
-            bouncePower -= 0.1f;
+            bouncePower -= gravity;
 
         ////이동시키는 부분
         moveVec = Vector3.down;
@@ -190,7 +195,7 @@ public class PlayerCtrl : LivingEntity
         }
 
         if (bouncePower > 0)
-            bouncePower -= 0.1f;
+            bouncePower -= gravity;
 
         ////이동시키는 부분
         moveVec = Vector3.down;
@@ -235,6 +240,7 @@ public class PlayerCtrl : LivingEntity
                     OnDamage();
                     Debug.Log( "플레이어죽음" );
                 }
+                //TO DO : 색으로 판정내리기 보다는 Obstacle에서 색에 따른 bool 변수 또는, ObstacleType을 지정해서 코드를 간소화할 필요가 있음.
 
                 if (obstacle.isCollsionUp)
                 {
@@ -267,7 +273,8 @@ public class PlayerCtrl : LivingEntity
                         }
                     }
                 }
-            }
+
+            }//obstacle != null
         }
         else if (other.tag == "Item")
         {
