@@ -50,8 +50,8 @@ public class StageUI : MonoBehaviour
     {
         ResetStar();
         UpdateScoreText( 0 );
-        go_StageUI.SetActive( true );
         scoreSlider.fillAmount = 0f;
+        go_StageUI.SetActive( true );
     }
 
     public void DeactivateUI()

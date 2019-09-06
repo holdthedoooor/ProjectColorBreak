@@ -70,8 +70,8 @@ public class UIManager : MonoBehaviour
             starCount = 0;
             stageUI.ActivateUI();
             gameOverUI.ResetStar();
+            Debug.Log( "시작" );
         }
-        
     }
 
     //게임이 끝날 때

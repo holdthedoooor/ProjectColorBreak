@@ -98,7 +98,6 @@ public class PlayerCtrl : LivingEntity
         Moving();
 
         playerAnim.SetBool( "isBounce", isBounce );
-
     }
 
     IEnumerator BounceBall()
@@ -231,7 +230,7 @@ public class PlayerCtrl : LivingEntity
 
             if (obstacle != null)
             {
-                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White)
+                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.colorType != ColorType.Gray)
                 {
                     OnDamage();
                     Debug.Log( "플레이어죽음" );
