@@ -32,7 +32,7 @@ public class PlayerCtrl : LivingEntity
     private float speed;
 
     [Header( "시작 X, Y, Z 좌표를 입력해주세요!" )]
-    public Vector3  originPosition;
+    public Vector3 originPosition;
     private Vector3 startTouchPos = Vector3.zero;
     private Vector3 endTouchPos = Vector3.zero;
 
@@ -56,7 +56,7 @@ public class PlayerCtrl : LivingEntity
         playerAnim = GetComponent<Animator>();
         trailRenderer = GetComponent<TrailRenderer>();
 
-        onDie += () => StageManager.instance.currentStage.FinishStage();
+        onDie += () => StageManager.instance.FinishStage();
     }
 
     protected override void OnEnable()
@@ -79,8 +79,11 @@ public class PlayerCtrl : LivingEntity
         isBounce = false;
         isGameOver = false;
 
+<<<<<<< HEAD
         trailRenderer.Clear();
 
+=======
+>>>>>>> 428de52abb31abea7651811bcb7faf0a6cea71e7
         playerState = PlayerState.Start;
     }
 
@@ -229,50 +232,49 @@ public class PlayerCtrl : LivingEntity
 
     private void OnTriggerEnter2D( Collider2D other )
     {
-        bool isCollisionUp = false;
-        isCollisionUp = other.transform.position.y < playerTr.position.y;
-
         if (other.tag == "Obstacle")
         {
             Obstacle obstacle = other.GetComponent<Obstacle>();
 
             if (obstacle != null)
             {
-                if (isCollisionUp == true)
+                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White)
                 {
-                    if (obstacle.isBreakable == false)
-                    {
-                        StartCoroutine( BounceBall() );
-                        return;
-                    }
-                    Debug.Log( "플레이어죽음" );
-
-                    if (obstacle.colorType == colorType)
-                    {
-                        if (obstacle.isBounceBlock)
-                        {
-                            if (obstacle.status != Status.Die)
-                                StartCoroutine( BounceBall() );
-
-                            obstacle.OnDamage();
-                        }
-                        else
-                        {
-                            obstacle.OnDamage();
-
-                            if (obstacle.status != Status.Die)
-                                StartCoroutine( BounceBall() );
-                        }
-                    }
-                    else if (obstacle.colorType == ColorType.White)
-                        obstacle.OnDamage();
-                    else if (obstacle.colorType != colorType)
-                        OnDamage();
-                }
-                else if (obstacle.isBreakable == false)
-                    return;
-                else if (obstacle.colorType != colorType)
                     OnDamage();
+                    Debug.Log( "플레이어죽음" );
+                }
+
+                if (obstacle.isCollsionUp)
+                {
+                    if (other.transform.position.y < playerTr.position.y)
+                    {
+                        //파괴 불가능한 장애물
+                        if (obstacle.isBreakable == false)
+                        {
+                            StartCoroutine( BounceBall() ); ;
+                            return;
+                        }
+
+                        //색이 같으면
+                        if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
+                        {
+                            if (obstacle.isBounceBlock)
+                            {
+                                if (obstacle.status != Status.Die)
+                                    StartCoroutine( BounceBall() );
+
+                                obstacle.OnDamage();
+                            }
+                            else
+                            {
+                                obstacle.OnDamage();
+
+                                if (obstacle.status != Status.Die)
+                                    StartCoroutine( BounceBall() );
+                            }
+                        }
+                    }
+                }
             }
         }
         else if (other.tag == "Item")
@@ -289,7 +291,12 @@ public class PlayerCtrl : LivingEntity
         else if (other.tag == "Goal")
         {
             StageManager.instance.isGoal = true;
-            StageManager.instance.currentStage.FinishStage();
+            StageManager.instance.FinishStage();
+        }
+        else if (other.tag == "Boss")
+        {
+            Debug.Log( "보스와 충돌" );
+            StageManager.instance.NextPhase();
         }
     }
 }
