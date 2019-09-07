@@ -28,8 +28,9 @@ public class BossStageSlot : MonoBehaviour
     public int hardHp;
     public int currentHp;
 
-    public int bestScore = 0;
-
+    public int[] checkChallengeCount;
+    //재도전 횟수
+    public int challengeCount = 0;
     public int starCount = 0; //별이 몇개 채워졌는지 저장
 
     //해당 스테이지가 끝나고 점수가 bestScore보다 높을 때 실행
@@ -64,7 +65,6 @@ public class BossStageSlot : MonoBehaviour
     //마스터 모드 
     public void SetOpen()
     {
-        bestScore = 0;
         starCount = 0;
         stageSelectButton.interactable = true; //버튼 클릭 가능
         for (int i = 0; i < starImages.Length; i++)

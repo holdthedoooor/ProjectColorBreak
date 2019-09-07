@@ -293,7 +293,7 @@ public class PlayerCtrl : LivingEntity
         }
         else if (other.tag == "Boss")
         {
-            StageManager.instance.NextPhase();
+            StageManager.instance.BossCollision();
         }
     }
 }

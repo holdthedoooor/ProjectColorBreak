@@ -81,7 +81,7 @@ public class StageManager : MonoBehaviour
             else
             {
                 damage += _num;
-                //UIManager.instance.bossStageUI.UpdateDamageText( damage );
+                UIManager.instance.bossStageUI.UpdateDamageText();
             }
         }
     }
@@ -100,16 +100,40 @@ public class StageManager : MonoBehaviour
     //플레이어가 보스와 충돌했을 때 실행
     public void BossCollision()
     {
-        if(currentBossStage.bossStageType == BossStage.BossStageType.Normal)
+        currentBossStageSlot.currentHp -= damage;
+        UIManager.instance.bossStageUI.UpdateBossHpText();
+        StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine() );
+        if (currentBossStage.bossStageType == BossStage.BossStageType.Normal)
         {
-            NextPhase();
-            StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine(damage) );
+            if(currentBossStageSlot.currentHp <= currentBossStageSlot.hardHp)
+                 NextPhase();
+            else
+            {
+                Destroy(currentBossStage.gameObject );
+                currentBossStage = Instantiate(currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+                go_Player.SetActive( false );
+                go_Player.SetActive( true );
+                currentBossStageSlot.challengeCount++;
+                UIManager.instance.bossStageUI.UpdateChallengeCountText();
+            }
         }
         else
-        {
+        { 
             //게임 종료
-            StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine( damage ) );
-            FinishStage();
+            if (currentBossStageSlot.currentHp <= 0)
+            {
+                currentBossStageSlot.currentHp = 0;
+                FinishStage();
+            }
+            else
+            {
+                Destroy( currentBossStage.gameObject );
+                currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+                go_Player.SetActive( false );
+                go_Player.SetActive( true );
+                currentBossStageSlot.challengeCount++;
+                UIManager.instance.bossStageUI.UpdateChallengeCountText();
+            } 
         }
     }
 
@@ -123,18 +147,30 @@ public class StageManager : MonoBehaviour
         }
 
         isGoal = false;
-        score = 0;
-        damage = 0;
+        if(currentStageSlot != null)
+        {
+            score = 0;
+            UIManager.instance.SetStartUI();
+        }
+            
+        else
+        {
+            damage = 0;
+            if(currentBossStageSlot.challengeCount == 0)
+            {
+                currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
+                currentBossStageSlot.challengeCount++;
+                UIManager.instance.bossStageUI.UpdateChallengeCountText();
+                UIManager.instance.SetStartUI();
+            }
+                
+        }
+        
         isGameOver = false;
         go_Player.SetActive( true );
 
         //isMovable를 true로 바꿔줌으로 써 카메라가 다시 움직이도록 설정
         Camera.main.GetComponent<FollowCamera>().SetCamera();
-
-        if (currentStageSlot != null)
-        {
-            UIManager.instance.SetStartUI();
-        } 
     }
 
     // 스테이지를 통과 시 실행
@@ -162,6 +198,7 @@ public class StageManager : MonoBehaviour
         else
         {
             UIManager.instance.SetFinishUI();
+            currentBossStageSlot.challengeCount = 0;
         }
     }
 

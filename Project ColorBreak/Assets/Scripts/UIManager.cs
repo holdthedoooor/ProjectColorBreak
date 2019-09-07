@@ -42,23 +42,26 @@ public class UIManager : MonoBehaviour
     //도달할 때마다 해당 스테이지 슬롯의 starCount를 증가;
     public void StarImageChange()
     {
-        if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[0])
+        if(StageManager.instance.currentStageSlot != null)
         {
-            stageUI.starImages[0].sprite = starSprite;
-            gameOverUI.starImages[0].sprite = starSprite;
-            starCount = 1;
-        }
-        else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[1])
-        {
-            stageUI.starImages[1].sprite = starSprite;
-            gameOverUI.starImages[1].sprite = starSprite;
-            starCount = 2;
-        }
-        else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[2])
-        {
-            stageUI.starImages[2].sprite = starSprite;
-            gameOverUI.starImages[2].sprite = starSprite;
-            starCount = 3;
+            if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[0])
+            {
+                stageUI.starImages[0].sprite = starSprite;
+                gameOverUI.stageStarImages[0].sprite = starSprite;
+                starCount = 1;
+            }
+            else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[1])
+            {
+                stageUI.starImages[1].sprite = starSprite;
+                gameOverUI.stageStarImages[1].sprite = starSprite;
+                starCount = 2;
+            }
+            else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[2])
+            {
+                stageUI.starImages[2].sprite = starSprite;
+                gameOverUI.stageStarImages[2].sprite = starSprite;
+                starCount = 3;
+            }
         }
     }
 
@@ -69,20 +72,25 @@ public class UIManager : MonoBehaviour
         {
             starCount = 0;
             stageUI.ActivateUI();
-            gameOverUI.ResetStar();
+            gameOverUI.StageResetStar();
+        }
+        else
+        {
+            bossStageUI.ActivateUI();
+            gameOverUI.BossStageResetStar();
         }
     }
 
     //게임이 끝날 때
     public void SetFinishUI()
     {
-        if(StageManager.instance.currentStageSlot != null)
+        if (StageManager.instance.currentStageSlot != null)
         {
             //starCount가 1개 이상이면 Stage Clear
             if (starCount > 0 && StageManager.instance.isGoal)
             {
-                gameOverUI.gameOverText.text = "Stage Clear";
-                gameOverUI.gameOverText.color = Color.blue;
+                gameOverUI.gameoverText.text = "STAGE CLEAR!";
+                gameOverUI.gameoverText.color = Color.blue;
 
                 //만약 현재 stageSlot이 Open만 된 상태였다면 Clear로 변경
                 if (StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
@@ -96,8 +104,8 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                gameOverUI.gameOverText.text = "Game Over";
-                gameOverUI.gameOverText.color = Color.red;
+                gameOverUI.gameoverText.text = "GAME OVER";
+                gameOverUI.gameoverText.color = Color.red;
             }
 
             if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
@@ -110,28 +118,61 @@ public class UIManager : MonoBehaviour
             else
                 nextButton.interactable = false;
 
-            gameOverUI.gameOverScoreText.text = StageManager.instance.score.ToString();
-            gameOverUI.go_GameOverUI.SetActive( true );
+            gameOverUI.gameoverScoreText.text = StageManager.instance.score.ToString();
+            stageUI.DeactivateUI();
+            gameOverUI.go_StageGameoverUI.SetActive( true );
         }
         else
-            gameOverUI.go_GameOverUI.SetActive( true );
+        {
+            if(StageManager.instance.currentBossStageSlot.currentHp <= 0)
+            {
+                if (StageManager.instance.currentBossStageSlot.challengeCount <= StageManager.instance.currentBossStageSlot.checkChallengeCount[0])
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        gameOverUI.bossStageStarImages[i].sprite = starSprite;
+                    }
+                }
+                else if (StageManager.instance.currentBossStageSlot.challengeCount <= StageManager.instance.currentBossStageSlot.checkChallengeCount[1])
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        gameOverUI.bossStageStarImages[i].sprite = starSprite;
+                    }
+                }
+                else
+                    gameOverUI.bossStageStarImages[0].sprite = starSprite;
+
+                gameOverUI.bossGameoverText.text = "BOSS CLEAR!";
+                gameOverUI.bossGameoverText.color = Color.blue;
+            }
+            else
+            {
+                gameOverUI.bossGameoverText.text = "GAME OVER";
+                gameOverUI.bossGameoverText.color = Color.red;
+            }
+
+            gameOverUI.SetGameoverUI();
+            bossStageUI.DeactivateUI();
+        }
+
     }
 
     //홈 버튼 클릭
     public void HomeButton()
     {
-        stageUI.DeactivateUI();
-        gameOverUI.go_GameOverUI.SetActive( false );
+       
+        gameOverUI.go_StageGameoverUI.SetActive( false );
 
         if(StageManager.instance.currentStage != null)
+        {
             Destroy( StageManager.instance.currentStage.gameObject );
-
+        }
         else
         {
             Destroy( Camera.main.transform.GetChild(0).gameObject );
             Destroy( StageManager.instance.currentBossStage.gameObject );
-        }
-            
+        }    
 
         StageManager.instance.go_Player.SetActive( false );
         chapterSelectUI.go_CurrentChapterUI.SetActive( true );
@@ -140,25 +181,26 @@ public class UIManager : MonoBehaviour
     //현재 스테이지를 다시 플레이하는 버튼
     public void RestartButton()
     {
-        gameOverUI.go_GameOverUI.SetActive( false );
+        
         StageManager.instance.go_Player.SetActive( false );
         if (StageManager.instance.currentStageSlot != null)
         {
             Destroy( StageManager.instance.currentStage.gameObject );
             StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
+            gameOverUI.go_StageGameoverUI.SetActive( false );
         }
         else
         {
             Destroy( StageManager.instance.currentBossStage.gameObject );
             StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+            gameOverUI.go_BossStageGameoverUI.SetActive( false );
         }
-
     }
 
     //다음 스테이지로 넘어가는 버튼
     public void NextButton()
     {
-        gameOverUI.go_GameOverUI.SetActive( false );
+        gameOverUI.go_StageGameoverUI.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
         Destroy( StageManager.instance.currentStage.gameObject );
         StageManager.instance.currentStageSlot = stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1];
