@@ -219,17 +219,19 @@ public class UIManager : MonoBehaviour
     {
         StageManager.instance.go_Player.SetActive( false );
 
-        //일반 스테이지면
+        //일반 스테이지라면
         if(StageManager.instance.currentStageSlot != null)
         {
             gameOverUI.go_StageGameoverUI.SetActive( false );
             Destroy( StageManager.instance.currentStage.gameObject );
 
+            //다음 스테이지가 일반 스테이지라면
             if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
             {
                 StageManager.instance.currentStageSlot = stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1];
                 StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
             }
+            //다음 스테이지가 보스 스테이지라면
             else
             {
                 StageManager.instance.currentStageSlot = null;
@@ -253,6 +255,7 @@ public class UIManager : MonoBehaviour
 
             currentChapter++;
 
+            //다음 챕터의 슬롯들을 할당해준다.
             switch(currentChapter)
             {
                 case 2:
@@ -287,6 +290,9 @@ public class UIManager : MonoBehaviour
                     chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[4];
                     break;
             }
+
+            //다음 챕터의 첫 번째 스테이지의 Status가 Rock이라면 Open해준다.
+            stageSlots[0].StageSlotOpen();
 
             StageManager.instance.currentStageSlot = stageSlots[0];
             StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
