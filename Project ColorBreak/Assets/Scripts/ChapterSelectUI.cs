@@ -5,13 +5,14 @@ using UnityEngine;
 public class ChapterSelectUI : MonoBehaviour
 {
     public GameObject go_ChapterSelectUI;
-    public GameObject go_CurrentChapterUI { get; private set; }
+    public GameObject go_CurrentChapterUI;
     public GameObject[] go_Chapters;
 
     //슬롯들의 부모 오브젝트
     public GameObject[] go_StageSlotParents;
 
     public StageSlot[] chapter1_StageSlots;
+    public BossStageSlot chapter1_BossStageSlot;
     public StageSlot[] chapter2_StageSlots;
     public StageSlot[] chapter3_StageSlots;
     public StageSlot[] chapter4_StageSlots;
@@ -32,6 +33,8 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[0].SetActive( true );
         go_CurrentChapterUI = go_Chapters[0];
 
+        UIManager.instance.currentChapter = 1;
+
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
             UIManager.instance.stageSlots[i] = null;
@@ -42,6 +45,7 @@ public class ChapterSelectUI : MonoBehaviour
             //Debug.Log( UIManager.instance.stageSlots.Length );
             UIManager.instance.stageSlots[i] = chapter1_StageSlots[i];
         }
+        UIManager.instance.bossStageSlot = chapter1_BossStageSlot;
     }
 
     public void Chapter2_Button()
@@ -49,6 +53,8 @@ public class ChapterSelectUI : MonoBehaviour
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[1].SetActive( true );
         go_CurrentChapterUI = go_Chapters[1];
+
+        UIManager.instance.currentChapter = 2;
 
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
@@ -67,6 +73,8 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[2].SetActive( true );
         go_CurrentChapterUI = go_Chapters[2];
 
+        UIManager.instance.currentChapter = 3;
+
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
             UIManager.instance.stageSlots[i] = null;
@@ -84,6 +92,8 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[3].SetActive( true );
         go_CurrentChapterUI = go_Chapters[3];
 
+        UIManager.instance.currentChapter = 4;
+
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
             UIManager.instance.stageSlots[i] = null;
@@ -100,6 +110,8 @@ public class ChapterSelectUI : MonoBehaviour
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[4].SetActive( true );
         go_CurrentChapterUI = go_Chapters[4];
+
+        UIManager.instance.currentChapter = 5;
 
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {

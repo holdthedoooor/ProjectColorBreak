@@ -29,9 +29,11 @@ public class UIManager : MonoBehaviour
     public PauseUI              pauseUI;
     public ChapterSelectUI      chapterSelectUI;
     public BossStageUI          bossStageUI;
-    public StageSlot[]          stageSlots;
+    public StageSlot[]          stageSlots; //현재 Chapter의 스테이지 슬롯들
+    public BossStageSlot        bossStageSlot; //현재 Chapter의 보스 스테이지
 
     public int starCount { get; private set; }
+    public int currentChapter;
 
     void Awake()
     {
@@ -100,6 +102,11 @@ public class UIManager : MonoBehaviour
                     //현재 Stage를 Clear 했으니 다음 Stage를 Open 시켜준다.
                     if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
                         stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].StageSlotOpen();
+                    else
+                    {
+                        //보스 스테이지 슬롯 오픈
+                        bossStageSlot.BossStageSlotOpen();
+                    }
                 }
             }
             else
@@ -116,7 +123,12 @@ public class UIManager : MonoBehaviour
                     nextButton.interactable = false;
             }
             else
-                nextButton.interactable = false;
+            {
+                if (bossStageSlot.bossStageStatus != BossStageSlot.BossStageStatus.Rock)
+                    nextButton.interactable = true;
+                else
+                    nextButton.interactable = false;
+            }
 
             gameOverUI.gameoverScoreText.text = StageManager.instance.score.ToString();
             stageUI.DeactivateUI();
@@ -205,11 +217,80 @@ public class UIManager : MonoBehaviour
     //다음 스테이지로 넘어가는 버튼
     public void NextButton()
     {
-        gameOverUI.go_StageGameoverUI.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
-        Destroy( StageManager.instance.currentStage.gameObject );
-        StageManager.instance.currentStageSlot = stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1];
-        StageManager.instance.currentStage = Instantiate(StageManager.instance.currentStageSlot.go_StagePrefab,new Vector3(0,0,0),Quaternion.identity).GetComponent<Stage>();
+
+        //일반 스테이지면
+        if(StageManager.instance.currentStageSlot != null)
+        {
+            gameOverUI.go_StageGameoverUI.SetActive( false );
+            Destroy( StageManager.instance.currentStage.gameObject );
+
+            if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
+            {
+                StageManager.instance.currentStageSlot = stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1];
+                StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
+            }
+            else
+            {
+                StageManager.instance.currentStageSlot = null;
+                StageManager.instance.currentStage = null;
+                StageManager.instance.currentBossStageSlot = bossStageSlot;
+                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+            }
+        }
+        //보스 스테이지면
+        else
+        {
+            gameOverUI.go_BossStageGameoverUI.SetActive( false );
+            Destroy( StageManager.instance.currentBossStage.gameObject );
+            StageManager.instance.currentBossStageSlot = null;
+            StageManager.instance.currentBossStage = null;
+
+            for (int i = 0; i < stageSlots.Length; i++)
+            {
+                stageSlots[i] = null;
+            }
+
+            currentChapter++;
+
+            switch(currentChapter)
+            {
+                case 2:
+                    for (int i = 0; i < chapterSelectUI.chapter2_StageSlots.Length; i++)
+                    {
+                        stageSlots[i] = chapterSelectUI.chapter2_StageSlots[i];
+                    }
+                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[1];
+                    break;
+
+                case 3:
+                    for (int i = 0; i < chapterSelectUI.chapter3_StageSlots.Length; i++)
+                    {
+                        stageSlots[i] = chapterSelectUI.chapter3_StageSlots[i];
+                    }
+                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[2];
+                    break;
+
+                case 4:
+                    for (int i = 0; i < chapterSelectUI.chapter4_StageSlots.Length; i++)
+                    {
+                        stageSlots[i] = chapterSelectUI.chapter4_StageSlots[i];
+                    }
+                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[3];
+                    break;
+
+                case 5:
+                    for (int i = 0; i < chapterSelectUI.chapter5_StageSlots.Length; i++)
+                    {
+                        stageSlots[i] = chapterSelectUI.chapter5_StageSlots[i];
+                    }
+                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[4];
+                    break;
+            }
+
+            StageManager.instance.currentStageSlot = stageSlots[0];
+            StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
+        }
     }
 
     public void PauseButton()
