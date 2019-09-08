@@ -3378,6 +3378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   go_ChapterSelectUI: {fileID: 1180155591}
+  go_CurrentChapterUI: {fileID: 0}
   go_Chapters:
   - {fileID: 744690970}
   - {fileID: 57935982}
@@ -3391,11 +3392,11 @@ MonoBehaviour:
   - {fileID: 1659686000}
   - {fileID: 846851057}
   chapter1_StageSlots: []
+  chapter1_BossStageSlot: {fileID: 1913772784}
   chapter2_StageSlots: []
   chapter3_StageSlots: []
   chapter4_StageSlots: []
   chapter5_StageSlots: []
-  chapter1_BossStageSlot: {fileID: 1913772784}
 --- !u!1 &453852076
 GameObject:
   m_ObjectHideFlags: 0
@@ -8823,6 +8824,7 @@ MonoBehaviour:
   bossStageUI: {fileID: 1362229919}
   stageSlots: []
   bossStageSlot: {fileID: 0}
+  currentChapter: 0
 --- !u!4 &1130081597
 Transform:
   m_ObjectHideFlags: 0
@@ -14257,7 +14259,7 @@ Transform:
   m_GameObject: {fileID: 1753907795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 11, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1661867349}
   m_RootOrder: 3
@@ -14394,7 +14396,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.29165843
+        value: 0.39655498
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -16269,7 +16271,7 @@ PrefabInstance:
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: bossStageStatus
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
@@ -16294,17 +16296,17 @@ PrefabInstance:
     - target: {fileID: 647955111646434385, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903414966056698683, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1316007277166951429, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 647955111938527255, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}

@@ -63,6 +63,8 @@ public class StageManager : MonoBehaviour
             {
                 UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].SetOpen();
             }
+
+            UIManager.instance.chapterSelectUI.chapter1_BossStageSlot.SetOpen();
         }
     }
 

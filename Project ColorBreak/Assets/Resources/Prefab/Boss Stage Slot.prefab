@@ -230,7 +230,9 @@ MonoBehaviour:
   go_StageInformation: {fileID: 2903414966056698683}
   maxHp: 0
   hardHp: 0
-  bestScore: 0
+  currentHp: 0
+  checkChallengeCount: 
+  challengeCount: 0
   starCount: 0
 --- !u!1 &647955111686176452
 GameObject:
@@ -514,7 +516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2365997177027425528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -586,7 +588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1934109929220252403
 Transform:
   m_ObjectHideFlags: 0

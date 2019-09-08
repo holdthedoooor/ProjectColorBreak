@@ -47,6 +47,7 @@ public class BossStageSlot : MonoBehaviour
     {
         if (bossStageStatus == BossStageStatus.Rock)
         {
+            go_RockImage.SetActive( false );
             stageSelectButton.interactable = true; //버튼 클릭 가능
             go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
             bossStageStatus = BossStageStatus.Open;
@@ -71,6 +72,7 @@ public class BossStageSlot : MonoBehaviour
             starImages[i].sprite = UIManager.instance.blankStarSprite;
         }
         go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
+        go_RockImage.SetActive( false );
         bossStageStatus = BossStageStatus.Open;
     }
 }
