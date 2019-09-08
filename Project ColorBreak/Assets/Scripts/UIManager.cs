@@ -70,9 +70,9 @@ public class UIManager : MonoBehaviour
     //게임이 시작할 때
     public void SetStartUI()
     {
-        if(StageManager.instance.currentStageSlot != null)
-        {
-            starCount = 0;
+        starCount = 0;
+        if (StageManager.instance.currentStageSlot != null)
+        { 
             stageUI.ActivateUI();
             gameOverUI.StageResetStar();
         }
@@ -86,6 +86,7 @@ public class UIManager : MonoBehaviour
     //게임이 끝날 때
     public void SetFinishUI()
     {
+        //일반 스테이지라면
         if (StageManager.instance.currentStageSlot != null)
         {
             //starCount가 1개 이상이면 Stage Clear
@@ -134,6 +135,7 @@ public class UIManager : MonoBehaviour
             stageUI.DeactivateUI();
             gameOverUI.go_StageGameoverUI.SetActive( true );
         }
+        //보스 스테이지라면
         else
         {
             if(StageManager.instance.currentBossStageSlot.currentHp <= 0)
@@ -144,6 +146,7 @@ public class UIManager : MonoBehaviour
                     {
                         gameOverUI.bossStageStarImages[i].sprite = starSprite;
                     }
+                    starCount = 3;
                 }
                 else if (StageManager.instance.currentBossStageSlot.challengeCount <= StageManager.instance.currentBossStageSlot.checkChallengeCount[1])
                 {
@@ -151,10 +154,14 @@ public class UIManager : MonoBehaviour
                     {
                         gameOverUI.bossStageStarImages[i].sprite = starSprite;
                     }
+                    starCount = 2;
                 }
                 else
+                {
                     gameOverUI.bossStageStarImages[0].sprite = starSprite;
-
+                    starCount = 1;
+                }
+                    
                 gameOverUI.bossGameoverText.text = "BOSS CLEAR!";
                 gameOverUI.bossGameoverText.color = Color.blue;
             }
@@ -173,10 +180,11 @@ public class UIManager : MonoBehaviour
     //홈 버튼 클릭
     public void HomeButton()
     {
-        gameOverUI.go_StageGameoverUI.SetActive( false );
+        
 
         if(StageManager.instance.currentStage != null)
         {
+            gameOverUI.go_StageGameoverUI.SetActive( false );
             Destroy( StageManager.instance.currentStage.gameObject );
             stageUI.go_StageUI.SetActive( false );
             StageManager.instance.currentStage = null;
@@ -184,6 +192,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            gameOverUI.go_BossStageGameoverUI.SetActive( false );
             Destroy( StageManager.instance.currentBossStage.gameObject );
             bossStageUI.go_BossStageUI.SetActive( false );
             StageManager.instance.currentBossStageSlot.challengeCount = 0;

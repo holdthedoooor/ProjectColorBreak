@@ -199,6 +199,9 @@ public class StageManager : MonoBehaviour
         else
         {
             UIManager.instance.SetFinishUI();
+            if (currentBossStageSlot.starCount < UIManager.instance.starCount)
+                currentBossStageSlot.starCount = UIManager.instance.starCount;
+            currentBossStageSlot.StarImageChange();
             currentBossStageSlot.challengeCount = 0;
         }
     }
