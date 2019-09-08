@@ -58,11 +58,4 @@ public class StageUI : MonoBehaviour
     {
         go_StageUI.SetActive( false );
     }
-
-    public void PauseButton()
-    {
-        UIManager.instance.pauseUI.go_PauseUI.SetActive( true );
-        StageManager.instance.isPause = true;
-        Time.timeScale = 0;
-    }
 }

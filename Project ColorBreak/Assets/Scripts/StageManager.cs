@@ -162,8 +162,7 @@ public class StageManager : MonoBehaviour
                 currentBossStageSlot.challengeCount++;
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
                 UIManager.instance.SetStartUI();
-            }
-                
+            }         
         }
         
         isGameOver = false;

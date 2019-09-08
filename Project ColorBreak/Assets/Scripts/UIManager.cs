@@ -161,16 +161,22 @@ public class UIManager : MonoBehaviour
     //홈 버튼 클릭
     public void HomeButton()
     {
-       
         gameOverUI.go_StageGameoverUI.SetActive( false );
 
         if(StageManager.instance.currentStage != null)
         {
             Destroy( StageManager.instance.currentStage.gameObject );
+            stageUI.go_StageUI.SetActive( false );
+            StageManager.instance.currentStage = null;
+            StageManager.instance.currentStageSlot = null;
         }
         else
         {
             Destroy( StageManager.instance.currentBossStage.gameObject );
+            bossStageUI.go_BossStageUI.SetActive( false );
+            StageManager.instance.currentBossStageSlot.challengeCount = 0;
+            StageManager.instance.currentBossStage = null;
+            StageManager.instance.currentBossStageSlot = null;
         }    
 
         StageManager.instance.go_Player.SetActive( false );
@@ -204,6 +210,13 @@ public class UIManager : MonoBehaviour
         Destroy( StageManager.instance.currentStage.gameObject );
         StageManager.instance.currentStageSlot = stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1];
         StageManager.instance.currentStage = Instantiate(StageManager.instance.currentStageSlot.go_StagePrefab,new Vector3(0,0,0),Quaternion.identity).GetComponent<Stage>();
+    }
+
+    public void PauseButton()
+    {
+        pauseUI.go_PauseUI.SetActive( true );
+        StageManager.instance.isPause = true;
+        Time.timeScale = 0;
     }
 
     //스테이지 선택 UI로 가는 버튼
