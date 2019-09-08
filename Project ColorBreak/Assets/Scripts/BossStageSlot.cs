@@ -20,7 +20,6 @@ public class BossStageSlot : MonoBehaviour
     public GameObject go_BossStageNormal;
     public GameObject go_BossStageHard;
     public GameObject go_StageInformation;
-    public GameObject go_BossPrefab;
 
     //보스의 최대 체력
     public int maxHp;

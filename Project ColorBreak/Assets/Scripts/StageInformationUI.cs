@@ -84,8 +84,6 @@ public class StageInformationUI : MonoBehaviour
         else
         {
             StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-            //보스를 생성하고 카메라의 자식으로 옮긴다.
-            Instantiate( StageManager.instance.currentBossStageSlot.go_BossPrefab, new Vector3( 0, 0.88f, 0 ), Quaternion.identity ).transform.parent = Camera.main.transform;
         }
     }
 }

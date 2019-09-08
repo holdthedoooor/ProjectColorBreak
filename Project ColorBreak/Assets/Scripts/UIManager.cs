@@ -170,7 +170,6 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Destroy( Camera.main.transform.GetChild(0).gameObject );
             Destroy( StageManager.instance.currentBossStage.gameObject );
         }    
 
