@@ -36,6 +36,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource bgmPlayer;
 
+    public string startBgm;
 
 
     //------------------------------멤버 변수-------------------------------------
@@ -55,7 +56,7 @@ public class SoundManager : MonoBehaviour
     {
         LoadFiles();
 
-        PlayBGM( "BGM1" );
+        PlayBGM( startBgm );
         
     }
 
@@ -67,8 +68,8 @@ public class SoundManager : MonoBehaviour
 
     void LoadFiles()
     {
-        AudioClip[] bgms= (AudioClip[])Resources.LoadAll( "/Sounds/BGM" );
-        AudioClip[] FXs= (AudioClip[])Resources.LoadAll( "/Sounds/FX" );
+        AudioClip[] bgms= Resources.LoadAll<AudioClip>( "Sound/BGM" );
+        AudioClip[] FXs= Resources.LoadAll<AudioClip>( "FX" );
 
         List<AudioClip> bgmList = new List<AudioClip>();
         List<AudioClip> fxList = new List<AudioClip>();
