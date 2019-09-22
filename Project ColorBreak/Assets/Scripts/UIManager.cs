@@ -118,8 +118,13 @@ public class UIManager : MonoBehaviour
 
             if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
             {
-                if (stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].stageStatus != StageSlot.StageStatus.Rock)
-                    nextButton.interactable = true;
+                if(stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1] != null)
+                {
+                    if (stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].stageStatus != StageSlot.StageStatus.Rock)
+                        nextButton.interactable = true;
+                    else
+                        nextButton.interactable = false;
+                }
                 else
                     nextButton.interactable = false;
             }
