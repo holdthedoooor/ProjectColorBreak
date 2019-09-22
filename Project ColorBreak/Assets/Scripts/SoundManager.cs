@@ -5,15 +5,9 @@ using UnityEngine;
 public enum SoundType
 {
     BGM,
-    FX
+    SFX
 }
 
-struct SoundClip
-{
-    SoundType type;
-    string name;
-    AudioClip clip;
-}
 
 public class SoundManager : MonoBehaviour
 {
@@ -23,7 +17,7 @@ public class SoundManager : MonoBehaviour
     {
         get
         {
-            if(m_instance == null)
+            if (m_instance == null)
             {
                 m_instance = Transform.FindObjectOfType<SoundManager>();
             }
@@ -57,60 +51,72 @@ public class SoundManager : MonoBehaviour
         LoadFiles();
 
         PlayBGM( startBgm );
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void LoadFiles()
     {
-        AudioClip[] bgms= Resources.LoadAll<AudioClip>( "Sound/BGM" );
-        AudioClip[] FXs= Resources.LoadAll<AudioClip>( "FX" );
+        AudioClip[] bgms = Resources.LoadAll<AudioClip>( "Sound/BGM" );
+        AudioClip[] SFXs = Resources.LoadAll<AudioClip>( "FX" );
 
         List<AudioClip> bgmList = new List<AudioClip>();
-        List<AudioClip> fxList = new List<AudioClip>();
+        List<AudioClip> sfxList = new List<AudioClip>();
 
-        foreach(var bgm in bgms)
+        foreach (var bgm in bgms)
         {
             bgmList.Add( bgm );
         }
         audioClips.Add( SoundType.BGM, bgmList );
 
-        foreach (var fx in FXs)
+        foreach (var sfx in SFXs)
         {
-            fxList.Add( fx );
+            sfxList.Add( sfx );
         }
-        audioClips.Add( SoundType.FX, fxList );
+        audioClips.Add( SoundType.SFX, sfxList );
 
     }
 
-    AudioClip FindAudioClip(string name, SoundType type= SoundType.BGM)
+    public AudioClip FindAudioClip( string name, SoundType type = SoundType.BGM )
     {
         AudioClip result = null;
 
         List<AudioClip> list;
         audioClips.TryGetValue( type, out list );
 
-        foreach(var sound in list)
+        foreach (var sound in list)
         {
-            if(sound.name== name)
+            if (sound.name == name)
             {
                 result = sound;
             }
         }
-       
+
         return result;
     }
 
-    void PlayBGM(string name)
+    public void PlayBGM()
+    {
+        bgmPlayer.Play();
+    }
+
+    public void PlayBGM( string name )
     {
         bgmPlayer.clip = FindAudioClip( name );
         bgmPlayer.Play();
     }
+
+    public void StopBGM()
+    {
+        bgmPlayer.Stop();
+    }
+
+
 
 
 }
