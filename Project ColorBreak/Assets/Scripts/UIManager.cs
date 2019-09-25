@@ -46,23 +46,23 @@ public class UIManager : MonoBehaviour
     {
         if(StageManager.instance.currentStageSlot != null)
         {
-            if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[0])
+            if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[2])
             {
-                stageUI.starImages[0].sprite = starSprite;
-                gameOverUI.stageStarImages[0].sprite = starSprite;
-                starCount = 1;
+                stageUI.starImages[2].sprite = starSprite;
+                gameOverUI.stageStarImages[2].sprite = starSprite;
+                starCount = 3;
             }
-            else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[1])
+            else if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[1])
             {
                 stageUI.starImages[1].sprite = starSprite;
                 gameOverUI.stageStarImages[1].sprite = starSprite;
                 starCount = 2;
             }
-            else if (StageManager.instance.score == StageManager.instance.currentStageSlot.checkPoints[2])
+            else if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[0])
             {
-                stageUI.starImages[2].sprite = starSprite;
-                gameOverUI.stageStarImages[2].sprite = starSprite;
-                starCount = 3;
+                stageUI.starImages[0].sprite = starSprite;
+                gameOverUI.stageStarImages[0].sprite = starSprite;
+                starCount = 1;
             }
         }
     }
