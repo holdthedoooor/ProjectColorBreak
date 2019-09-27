@@ -16,11 +16,13 @@ public class PlayerCtrl : LivingEntity
     private Animator playerAnim;
     private TrailRenderer trailRenderer;
     private FollowCamera followCamera;
+    private Transform playerImage;
 
     private PlayerState playerState = PlayerState.Start;
     private Vector3 slideVec = Vector3.zero;
     private Vector3 touchDist = Vector3.zero;
     public Vector3 moveVec = Vector3.zero;
+    public float rotateSpeed = 10;
     private float bouncePower = 0f;
 
     private float touchStartTime = 0f;
@@ -52,10 +54,11 @@ public class PlayerCtrl : LivingEntity
     void Awake()
     {
         playerTr = this.transform;
+        playerImage = this.transform.Find( "Image" );
         playerCol = GetComponent<CircleCollider2D>();
-        playerSr = GetComponentInChildren<SpriteRenderer>();
-        playerAnim = GetComponent<Animator>();
-        trailRenderer = GetComponent<TrailRenderer>();
+        playerSr = playerImage.GetComponent<SpriteRenderer>();
+        playerAnim = playerImage.GetComponent<Animator>();
+        trailRenderer = playerImage.GetComponent<TrailRenderer>();
 
         onDie += () => StageManager.instance.FinishStage();
     }
@@ -104,6 +107,7 @@ public class PlayerCtrl : LivingEntity
             return;
 
         Moving();
+        Roll();
 
         playerAnim.SetBool( "isBounce", isBounce );
     }
@@ -224,6 +228,11 @@ public class PlayerCtrl : LivingEntity
         }
 
     }//Moving()
+
+    private void Roll()
+    {
+        playerImage.localEulerAngles += new Vector3( 0, 0, speed / maxSpeed * rotateSpeed );
+    }
 
     public void ChangeColor( ColorType color )
     {
