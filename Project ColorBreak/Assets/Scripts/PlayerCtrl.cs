@@ -37,6 +37,8 @@ public class PlayerCtrl : LivingEntity
 
     public Material[] colorMt;
 
+    public Sprite[] sprites;
+
     [Header( "공이 튕기는 정도를 수치로 설정해줍니다." )]
     public float bounceMaxPower = 3.0f;//튕기는 정도
     [Header( "공이 낙하는 최대 속도를 수치로 설정해줍니다." )]
@@ -84,11 +86,16 @@ public class PlayerCtrl : LivingEntity
 
     void Start()
     {
-        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).x - playerCol.radius / 2;
+        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).x - playerCol.radius / 2 * transform.localScale.x;
         //Screen.width - 게임 화면의 크기를 픽셀로 반환함.
         //ScreenToWorldPoint - 게임 화면의 픽셀위치를 월드포인트로 반환함.
-        playerSr.material = colorMt[(int)colorType];
+        //playerSr.material = colorMt[(int)colorType];
         trailRenderer.material = colorMt[(int)colorType];
+
+        playerSr.sprite = sprites[(int)colorType];
+
+        if ((int)colorType >= sprites.Length)
+            playerSr.sprite = sprites[sprites.Length - 1];
     }
 
     void Update()
@@ -221,8 +228,14 @@ public class PlayerCtrl : LivingEntity
     public void ChangeColor( ColorType color )
     {
         colorType = color;
-        playerSr.material = colorMt[(int)colorType];
+        //playerSr.material = colorMt[(int)colorType];
         trailRenderer.material = colorMt[(int)colorType];
+
+        playerSr.sprite = sprites[(int)colorType];
+
+        if ((int)color >= sprites.Length)
+            playerSr.sprite = sprites[sprites.Length - 1];
+
     }
 
     private void OnTriggerEnter2D( Collider2D other )

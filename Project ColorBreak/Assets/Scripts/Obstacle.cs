@@ -51,7 +51,7 @@ public class Obstacle : LivingEntity
 
     private int obstacleScore = 1;
 
-    public GameObject       particle;
+    public GameObject[]       particles;
     public Material[]       colorMaterials;
     private SpriteRenderer     spriteRenderer;
 
@@ -252,7 +252,13 @@ public class Obstacle : LivingEntity
     void CreateParticle()
     {
         float destroyTime = 1.5f;
-        GameObject obj = GameObject.Instantiate( particle);
+
+        int index = (int)colorType;
+
+        if (index >= particles.Length)
+            index = particles.Length-1;
+
+        GameObject obj = GameObject.Instantiate( particles[index]);
         obj.transform.position = new Vector3( transform.position.x, transform.position.y, obj.transform.position.z );
         Destroy( obj, destroyTime );
     }

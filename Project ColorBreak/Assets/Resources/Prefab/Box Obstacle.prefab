@@ -51,7 +51,8 @@ MonoBehaviour:
   isBreakable: 1
   obstaclesType: 0
   moveType: 2
-  isBounce: 0
+  isBounceBlock: 0
+  isCollsionUp: 1
   maxPositionX: 0
   minPositionX: 0
   maxPositionY: 0
@@ -59,8 +60,12 @@ MonoBehaviour:
   speed: 2
   direction: 0
   colorChangeTime: 2
-  particle: {fileID: 6100438554037562875, guid: 0722084e635dc9749a3507d5defd34bb,
-    type: 3}
+  particles:
+  - {fileID: 6100438554037562875, guid: 906b2c069c5edad46bb689ae58490bdc, type: 3}
+  - {fileID: 6100438554037562875, guid: 098213cb812656e4b87b1e9ac51156c2, type: 3}
+  - {fileID: 6100438554037562875, guid: 3af5865783bc3ff44874d40a0b42c6ef, type: 3}
+  - {fileID: 6100438554037562875, guid: d6cbc6f994aa6e5498c4feb212c122c5, type: 3}
+  - {fileID: 6100438554037562875, guid: bb672cc9ac1a214438db67fd9dcad1b4, type: 3}
   colorMaterials:
   - {fileID: 2100000, guid: c61abbe3a6f1ba44eac64b551c3ea037, type: 2}
   - {fileID: 2100000, guid: 2e898b36e9bc0b74e84735badfb4d8aa, type: 2}
