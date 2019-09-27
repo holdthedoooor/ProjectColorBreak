@@ -38,6 +38,12 @@ public class SaveLoad : MonoBehaviour
 
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
+            StageSlot stageSlot = UIManager.instance.stageSlots[ i ];
+            if ( stageSlot == null )
+            {
+                Debug.Log( $"다음 스테이지 슬롯({i})이 비어있습니다. 스테이지를 추가해주세요." );
+                continue;
+            }
             if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Rock)
             {
                 saveData.stageArrayNumber.Add( i );
