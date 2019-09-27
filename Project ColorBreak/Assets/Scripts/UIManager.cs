@@ -87,7 +87,8 @@ public class UIManager : MonoBehaviour
     public void SetFinishUI()
     {
         //일반 스테이지라면
-        if (StageManager.instance.currentStageSlot != null)
+        StageSlot currentStageSlot = StageManager.instance.currentStageSlot;
+        if ( currentStageSlot != null )
         {
             //starCount가 1개 이상이면 Stage Clear
             if (starCount > 0 && StageManager.instance.isGoal)
@@ -96,13 +97,19 @@ public class UIManager : MonoBehaviour
                 gameOverUI.gameoverText.color = Color.blue;
 
                 //만약 현재 stageSlot이 Open만 된 상태였다면 Clear로 변경
-                if (StageManager.instance.currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
+                if ( currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
                 {
-                    StageManager.instance.currentStageSlot.stageStatus = StageSlot.StageStatus.Clear;
+                    currentStageSlot.stageStatus = StageSlot.StageStatus.Clear;
 
                     //현재 Stage를 Clear 했으니 다음 Stage를 Open 시켜준다.
-                    if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
-                        stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].StageSlotOpen();
+                    int stageIdx = currentStageSlot.stageNumber + 1;
+                    if ( stageIdx != stageSlots.Length )
+                    {
+                        if ( stageSlots[ stageIdx ] == null )
+                            Debug.Log( "다음 스테이지 슬롯이 비어있습니다. 스테이지를 추가해주세요." );
+                        else
+                            stageSlots[ stageIdx ].StageSlotOpen();
+                    }
                     else
                     {
                         //보스 스테이지 슬롯 오픈
