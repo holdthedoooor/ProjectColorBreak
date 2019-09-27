@@ -16660,7 +16660,7 @@ PrefabInstance:
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: go_BossStageNormals.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
@@ -16710,6 +16710,18 @@ PrefabInstance:
       propertyPath: go_BossStageNormals.Array.data[0]
       value: 
       objectReference: {fileID: 3198921652577601663, guid: 80e77acd8b341284e93af24e02e06488,
+        type: 3}
+    - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
+        type: 3}
+      propertyPath: go_BossStageNormals.Array.data[1]
+      value: 
+      objectReference: {fileID: 3198921652577601663, guid: 98eb9058da8c072409f1cb2def80efb9,
+        type: 3}
+    - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
+        type: 3}
+      propertyPath: go_BossStageNormals.Array.data[2]
+      value: 
+      objectReference: {fileID: 3198921652577601663, guid: 190296303c311d740befaeac29841689,
         type: 3}
     - target: {fileID: 647955111646434385, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
