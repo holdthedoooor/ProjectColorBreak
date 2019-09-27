@@ -106,7 +106,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9d4faa5f427b89c44908ecdea11e497d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6362c78a0d9356a45ad4dab1528d6908, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -187,8 +187,8 @@ MonoBehaviour:
   - {fileID: 5984863887959880335}
   - {fileID: 5984863888777276044}
   - {fileID: 5984863889171212235}
-  rockSprite: {fileID: 21300000, guid: 9d4faa5f427b89c44908ecdea11e497d, type: 3}
-  openSprite: {fileID: 21300000, guid: 7e708dbfcda0bca4197e2135b6671a3a, type: 3}
+  rockSprite: {fileID: 21300000, guid: 6362c78a0d9356a45ad4dab1528d6908, type: 3}
+  openSprite: {fileID: 21300000, guid: a4289bddab10bc6438027b3d43a47f43, type: 3}
   stageSelectButton: {fileID: 5984863887555905422}
   go_StagePrefab: {fileID: 5984863888913351622}
   go_StageInformation: {fileID: 8338554098904994020}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

@@ -223,7 +223,13 @@ public class UIManager : MonoBehaviour
         else
         {
             Destroy( StageManager.instance.currentBossStage.gameObject );
-            StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
+            if(StageManager.instance.currentBossStageSlot.isRandom)
+                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]
+                    , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+            else
+                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
             gameOverUI.go_BossStageGameoverUI.SetActive( false );
         }
     }
@@ -251,7 +257,13 @@ public class UIManager : MonoBehaviour
                 StageManager.instance.currentStageSlot = null;
                 StageManager.instance.currentStage = null;
                 StageManager.instance.currentBossStageSlot = bossStageSlot;
-                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
+                if(StageManager.instance.currentBossStageSlot.isRandom)
+                    StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]
+                        , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+                else
+                    StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0]
+                        , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
             }
         }
         //보스 스테이지면
@@ -318,13 +330,6 @@ public class UIManager : MonoBehaviour
         pauseUI.go_PauseUI.SetActive( true );
         StageManager.instance.isPause = true;
         Time.timeScale = 0;
-    }
-
-    //스테이지 선택 UI로 가는 버튼
-    public void LobbyStartButton()
-    {
-        lobbyUI.go_LobbyUI.SetActive( false );
-        chapterSelectUI.go_ChapterSelectUI.SetActive( true );
     }
 
     public void LoadToStageSlot(int _arrayNumber ,int _bestScore, int _starCount, int _statusNumber)

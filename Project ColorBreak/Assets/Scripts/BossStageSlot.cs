@@ -17,7 +17,7 @@ public class BossStageSlot : MonoBehaviour
     public Image[] starImages;
     public Button stageSelectButton;
     public GameObject go_RockImage;
-    public GameObject go_BossStageNormal;
+    public GameObject[] go_BossStageNormals;
     public GameObject go_BossStageHard;
     public GameObject go_StageInformation;
 
@@ -31,6 +31,9 @@ public class BossStageSlot : MonoBehaviour
     //재도전 횟수
     public int challengeCount = 0;
     public int starCount = 0; //별이 몇개 채워졌는지 저장
+
+    [Header("체크하면 Normal Phase가 랜덤으로 나온다")]
+    public bool isRandom;
 
     //해당 스테이지가 끝나고 점수가 bestScore보다 높을 때 실행
     //별 이미지 최대 점수 변경
@@ -58,7 +61,6 @@ public class BossStageSlot : MonoBehaviour
     public void BossStageSelectButton()
     {
         StageManager.instance.currentBossStageSlot = transform.GetComponent<BossStageSlot>();
-        StageManager.instance.currentBossStage = StageManager.instance.currentBossStageSlot.go_BossStageNormal.GetComponent<BossStage>();
         UIManager.instance.stageInformationUI.SetStageInformation();
     }
 
@@ -72,7 +74,6 @@ public class BossStageSlot : MonoBehaviour
             starImages[i].sprite = UIManager.instance.blankStarSprite;
         }
         go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
-        go_RockImage.SetActive( false );
         bossStageStatus = BossStageStatus.Open;
     }
 }

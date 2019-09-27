@@ -27,7 +27,6 @@ public class PlayerCtrl : LivingEntity
     private bool isSwiped = false;
 
     private float borderDist;
-    private bool isGameOver = false;
     private bool isBounce = false;
     private float speed;
 
@@ -77,7 +76,6 @@ public class PlayerCtrl : LivingEntity
 
         isSwiped = false;
         isBounce = false;
-        isGameOver = false;
 
         trailRenderer.Clear();
         playerState = PlayerState.Start;

@@ -112,7 +112,12 @@ public class StageManager : MonoBehaviour
             else
             {
                 Destroy(currentBossStage.gameObject );
-                currentBossStage = Instantiate(currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+                if(currentBossStageSlot.isRandom)
+                    currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[Random.Range(0, currentBossStageSlot.go_BossStageNormals.Length)]
+                        , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+                else
+                    currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
                 currentBossStageSlot.challengeCount++;

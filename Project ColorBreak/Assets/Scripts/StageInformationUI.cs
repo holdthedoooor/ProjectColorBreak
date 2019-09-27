@@ -65,8 +65,7 @@ public class StageInformationUI : MonoBehaviour
 
             stageNumberText.text = "STAGE " + (StageManager.instance.currentStageSlot.stageNumber + 1).ToString();
         }
-        
-
+     
         go_StageInformationUI.SetActive( true );
     }
 
@@ -77,13 +76,18 @@ public class StageInformationUI : MonoBehaviour
         go_StageInformationUI.SetActive( false );
 
         //일반 스테이지면
-        if (StageManager.instance.currentStage != null)
+        if (StageManager.instance.currentStageSlot != null)
             StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
 
         //보스 스테이지면
         else
         {
-            StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormal, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+            if(StageManager.instance.currentBossStageSlot.isRandom)
+                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]
+                    , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+            else
+                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0]
+                    , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
         }
     }
 }
