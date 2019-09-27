@@ -78,7 +78,7 @@ public class StageManager : MonoBehaviour
                 score += _num;
                 UIManager.instance.stageUI.UpdateScoreText( score );
                 UIManager.instance.StarImageChange();
-                StartCoroutine( UIManager.instance.stageUI.UpdateScoreSliderCoroutine( score, currentStageSlot.checkPoints[2] ) );
+                StartCoroutine( UIManager.instance.stageUI.UpdateScoreSliderCoroutine());
             }
             else
             {

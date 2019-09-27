@@ -21,9 +21,9 @@ public class StageUI : MonoBehaviour
         scoreText.text = _score.ToString();
     }
 
-    public IEnumerator UpdateScoreSliderCoroutine( int _score, int _checkPoint_3 )
+    public IEnumerator UpdateScoreSliderCoroutine( )
     {
-        while (scoreSlider.fillAmount < _score / (float)_checkPoint_3)
+        while (scoreSlider.fillAmount < StageManager.instance.score / (float)StageManager.instance.currentStageSlot.checkPoints[2])
         {
             scoreSlider.fillAmount += Time.deltaTime;
 
@@ -57,5 +57,6 @@ public class StageUI : MonoBehaviour
     public void DeactivateUI()
     {
         go_StageUI.SetActive( false );
+        StopCoroutine( UpdateScoreSliderCoroutine() );
     }
 }

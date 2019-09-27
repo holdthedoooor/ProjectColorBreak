@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChapterSelectUI : MonoBehaviour
 {
@@ -8,12 +9,15 @@ public class ChapterSelectUI : MonoBehaviour
     public GameObject go_CurrentChapterUI;
     public GameObject[] go_Chapters;
 
+    public Button[] chapters_Button;
+
     //슬롯들의 부모 오브젝트
     public GameObject[] go_StageSlotParents;
 
     public StageSlot[] chapter1_StageSlots;
     public BossStageSlot chapter1_BossStageSlot;
     public StageSlot[] chapter2_StageSlots;
+    public BossStageSlot chapter2_BossStageSlot;
     public StageSlot[] chapter3_StageSlots;
     public StageSlot[] chapter4_StageSlots;
     public StageSlot[] chapter5_StageSlots;
@@ -65,6 +69,7 @@ public class ChapterSelectUI : MonoBehaviour
         {
             UIManager.instance.stageSlots[i] = chapter2_StageSlots[i];
         }
+        UIManager.instance.bossStageSlot = chapter2_BossStageSlot;
     }
 
     public void Chapter3_Button()

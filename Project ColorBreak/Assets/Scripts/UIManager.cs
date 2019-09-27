@@ -48,14 +48,20 @@ public class UIManager : MonoBehaviour
         {
             if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[2])
             {
-                stageUI.starImages[2].sprite = starSprite;
-                gameOverUI.stageStarImages[2].sprite = starSprite;
+                for (int i = 0; i < 3; i++)
+                {
+                    stageUI.starImages[i].sprite = starSprite;
+                    gameOverUI.stageStarImages[i].sprite = starSprite;
+                }
                 starCount = 3;
             }
             else if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[1])
             {
-                stageUI.starImages[1].sprite = starSprite;
-                gameOverUI.stageStarImages[1].sprite = starSprite;
+                for (int i = 0; i < 2; i++)
+                {
+                    stageUI.starImages[i].sprite = starSprite;
+                    gameOverUI.stageStarImages[i].sprite = starSprite;
+                }
                 starCount = 2;
             }
             else if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[0])
@@ -72,7 +78,8 @@ public class UIManager : MonoBehaviour
     {
         starCount = 0;
         if (StageManager.instance.currentStageSlot != null)
-        { 
+        {
+            Debug.Log( "스테이지 시작" );
             stageUI.ActivateUI();
             gameOverUI.StageResetStar();
         }
@@ -174,6 +181,19 @@ public class UIManager : MonoBehaviour
                     starCount = 1;
                 }
                     
+                if(StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
+                {
+                    StageManager.instance.currentBossStageSlot.bossStageStatus = BossStageSlot.BossStageStatus.Clear;
+                    if(currentChapter == 1)
+                    {
+                        chapterSelectUI.chapters_Button[1].interactable = true;
+                        chapterSelectUI.chapter2_StageSlots[0].StageSlotOpen();
+                    }
+                    else if(currentChapter == 2)
+                    {
+                        nextButton.interactable = false;
+                    }
+                }
                 gameOverUI.bossGameoverText.text = "BOSS CLEAR!";
                 gameOverUI.bossGameoverText.color = Color.blue;
             }
@@ -297,6 +317,7 @@ public class UIManager : MonoBehaviour
                         stageSlots[i] = chapterSelectUI.chapter2_StageSlots[i];
                     }
                     chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[1];
+                    bossStageSlot = chapterSelectUI.chapter2_BossStageSlot;
                     break;
 
                 case 3:
@@ -323,7 +344,6 @@ public class UIManager : MonoBehaviour
                     chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[4];
                     break;
             }
-
             //다음 챕터의 첫 번째 스테이지의 Status가 Rock이라면 Open해준다.
             stageSlots[0].StageSlotOpen();
 
