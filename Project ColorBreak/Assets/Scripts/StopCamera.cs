@@ -8,6 +8,7 @@ public class StopCamera : MonoBehaviour
 
     private float   borderDist = 0f;
     private Transform    cameraTr;
+    public float stopDumping = 5f;
 
     private void Start()
     {
