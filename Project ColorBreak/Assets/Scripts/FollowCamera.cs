@@ -10,6 +10,7 @@ public class FollowCamera : MonoBehaviour
     private float dumping = 2.5f;
     public bool isMovable = true;
 
+
     //----------------------변수선언---------------------(여기까지)
 
     private void Awake()
@@ -35,10 +36,9 @@ public class FollowCamera : MonoBehaviour
         moveVec = cameraTr.position;
         moveVec.y = playerTr.position.y - dumping;
 
-        if (playerTr.position.y < cameraTr.position.y + dumping)
-        {
+   
             cameraTr.position = moveVec;
-        }
+        
     }
 
     public void StopCamera()

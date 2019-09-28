@@ -22,7 +22,6 @@ public class PlayerCtrl : LivingEntity
     private Vector3 slideVec = Vector3.zero;
     private Vector3 touchDist = Vector3.zero;
     public Vector3 moveVec = Vector3.zero;
-    public float rotateSpeed = 10;
     private float bouncePower = 0f;
 
     private float touchStartTime = 0f;
@@ -49,16 +48,17 @@ public class PlayerCtrl : LivingEntity
     public float touchAmount = 1f; //터치 감도
     [Header( "중력을 조절합니다. 수치가 높을수록 최대속도에 빨리 도달합니다." )]
     public float gravity = 0.1f;
+    [Header( "회전하는 속도를 조절합니다." )]
+    public float rotateSpeed = 7f;
+
 
     //--------------------변수선언-----------------(여기까지)
     void Awake()
     {
         playerTr = this.transform;
-        playerImage = this.transform.Find( "Image" );
         playerCol = GetComponent<CircleCollider2D>();
-        playerSr = playerImage.GetComponent<SpriteRenderer>();
-        playerAnim = playerImage.GetComponent<Animator>();
-        trailRenderer = playerImage.GetComponent<TrailRenderer>();
+        playerSr = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponent<TrailRenderer>();
 
         onDie += () => StageManager.instance.FinishStage();
     }
@@ -89,10 +89,10 @@ public class PlayerCtrl : LivingEntity
 
     void Start()
     {
-        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).x - playerCol.radius / 2 * transform.localScale.x;
+        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).x *(Camera.main.rect.width ) - playerCol.radius * transform.localScale.x;
         //Screen.width - 게임 화면의 크기를 픽셀로 반환함.
         //ScreenToWorldPoint - 게임 화면의 픽셀위치를 월드포인트로 반환함.
-        //playerSr.material = colorMt[(int)colorType];
+
         trailRenderer.material = colorMt[(int)colorType];
 
         playerSr.sprite = sprites[(int)colorType];
@@ -109,15 +109,12 @@ public class PlayerCtrl : LivingEntity
         Moving();
         Roll();
 
-        playerAnim.SetBool( "isBounce", isBounce );
     }
 
     IEnumerator BounceBall()
     {
         isBounce = true;
         bouncePower = bounceMaxPower;
-
-        playerAnim.SetTrigger( "Bounce" );
 
         yield return new WaitForSeconds( 2.5f );
 
@@ -210,7 +207,7 @@ public class PlayerCtrl : LivingEntity
         moveVec = Vector3.down;
         moveVec.x += slideVec.x;
         moveVec.y += bouncePower;
-        playerTr.Translate( moveVec * speed * Time.deltaTime );
+        playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
 
 
 #endif
@@ -231,7 +228,8 @@ public class PlayerCtrl : LivingEntity
 
     private void Roll()
     {
-        playerImage.localEulerAngles += new Vector3( 0, 0, speed / maxSpeed * rotateSpeed );
+        //playerImage.localEulerAngles += new Vector3( 0, 0, speed / maxSpeed * rotateSpeed );
+        playerTr.Rotate( 0, 0, rotateSpeed * 100 * Time.deltaTime );
     }
 
     public void ChangeColor( ColorType color )
