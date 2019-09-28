@@ -162,16 +162,6 @@ public class PlayerCtrl : LivingEntity
             isSwiped = false;
         }
 
-        if (bouncePower > 0)
-            bouncePower -= gravity;
-
-        ////이동시키는 부분
-        moveVec = Vector3.down;
-        moveVec.x += slideVec.x;
-        moveVec.y += bouncePower;
-        playerTr.Translate( moveVec * speed * Time.deltaTime );
-
-
 
 #else //에디터일때
 
@@ -200,6 +190,7 @@ public class PlayerCtrl : LivingEntity
             isSwiped = false;
         }
 
+#endif
         if (bouncePower > 0)
             bouncePower -= gravity;
 
@@ -207,10 +198,9 @@ public class PlayerCtrl : LivingEntity
         moveVec = Vector3.down;
         moveVec.x += slideVec.x;
         moveVec.y += bouncePower;
+
         playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
 
-
-#endif
 
         //화면 끝 에외처리
         if (playerTr.position.x > borderDist)
