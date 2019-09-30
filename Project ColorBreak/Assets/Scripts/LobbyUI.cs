@@ -18,14 +18,19 @@ public class LobbyUI : MonoBehaviour
     {
         StartCoroutine( CharacterImageChangeCoroutine() );
     }
+
     //스테이지 선택 UI로 가는 버튼
     public void LobbyStartButton()
     {
+        if(!StageManager.instance.isMasterMode)
+        {
+            StageManager.instance.theSaveLoad.LoadData();
+            UIManager.instance.chapterSelectUI.ChapterOpen();
+        }
         go_LobbyUI.SetActive( false );
         UIManager.instance.chapterSelectUI.go_ChapterSelectUI.SetActive( true );
         isStop = true;
     }
-
 
     public IEnumerator CharacterImageChangeCoroutine()
     {

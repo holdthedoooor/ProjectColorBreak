@@ -75,4 +75,19 @@ public class BossStageSlot : MonoBehaviour
         go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
         bossStageStatus = BossStageStatus.Open;
     }
+
+    public void SetBossStageSlot( int _statusNumber)
+    {
+        if (_statusNumber == 1)
+        {
+            bossStageStatus = BossStageStatus.Open;
+            stageSelectButton.interactable = true;
+        }
+
+        else if (_statusNumber == 2)
+        {
+            bossStageStatus = BossStageStatus.Clear;
+            stageSelectButton.interactable = true;
+        }
+    }
 }

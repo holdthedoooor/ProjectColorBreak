@@ -10,9 +10,9 @@ public class NewORLoadUI : MonoBehaviour
     {
         go_NewORLoadUI.SetActive( false );
         UIManager.instance.lobbyUI.go_LobbyUI.SetActive( true );
-        StageManager.instance.theSaveLoad.ResetData();
     }
 
+    /*
     public void LoadGameButton()
     {
         if(StageManager.instance.theSaveLoad.LoadData())
@@ -20,5 +20,5 @@ public class NewORLoadUI : MonoBehaviour
             go_NewORLoadUI.SetActive( false );
             UIManager.instance.lobbyUI.go_LobbyUI.SetActive( true );
         }
-    }
+    }*/
 }

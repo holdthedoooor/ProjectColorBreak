@@ -18,6 +18,8 @@ public class StageManager : MonoBehaviour
     private static StageManager m_instance; //싱글톤이 할당될 변수
 
     public bool         isMasterMode = false;
+    [Header("체크 - 저장한 데이터 초기화, 체크해제 - 저장한 데이터 불러옴")]
+    public bool         isDataReset = false;
     public bool         isGameOver;
     public bool         isPause;
     public bool         isGoal;
@@ -37,34 +39,39 @@ public class StageManager : MonoBehaviour
         if (instance != this)
             Destroy( gameObject );
 
-        if(isMasterMode)
+        if (isDataReset)
+            theSaveLoad.DataReset();
+
+
+        if (isMasterMode)
         {
             for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].SetOpen();
+                UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
             for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter2_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].SetOpen();
+                UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
             for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter3_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].SetOpen();
+                UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
             for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter4_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].SetOpen();
+                UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
             for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter5_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].SetOpen();
+                UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
-            UIManager.instance.chapterSelectUI.chapter1_BossStageSlot.SetOpen();
+            UIManager.instance.chapterSelectUI.chapter1_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
+            UIManager.instance.chapterSelectUI.chapter2_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
         }
     }
 
@@ -205,7 +212,11 @@ public class StageManager : MonoBehaviour
         {
             UIManager.instance.SetFinishUI();
             if (currentBossStageSlot.starCount < UIManager.instance.starCount)
+            {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;
+                theSaveLoad.SaveData();
+            }
+                
             currentBossStageSlot.StarImageChange();
             currentBossStageSlot.challengeCount = 0;
         }

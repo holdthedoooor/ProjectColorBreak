@@ -6,94 +6,199 @@ using System.IO;
 [System.Serializable]
 public class SaveData
 {
-    public List<int> stageArrayNumber = new List<int>();
     public List<int> stageBestScore = new List<int>();
     public List<int> stageStarCount = new List<int>();
-    public List<int> satgeStatusNumber = new List<int>();
+    public List<int> stageStatusNumber = new List<int>();
+    public int bossStageStatusNumber;
 }
 
 public class SaveLoad : MonoBehaviour
 {
-    private SaveData saveData = new SaveData();
+    public SaveData[] saveData = new SaveData[5];
 
-    private string SAVE_DATA_DIRECTORY;
-    private string SAVE_FILENAME = "SaveFile.txt";
-
-    private void Start()
-    {
-        SAVE_DATA_DIRECTORY = Application.persistentDataPath + "/Saves/";
-
-        if(!Directory.Exists(SAVE_DATA_DIRECTORY))
-        {
-            Directory.CreateDirectory( SAVE_DATA_DIRECTORY );
-        }
-    }
+    private string json;
+    private string[] saveChapters = new string[] { "Chapter1", "Chapter2", "Chapter3", "Chapter4", "Chapter5"};
 
     public void SaveData()
     {
-        saveData.stageArrayNumber.Clear();
-        saveData.stageBestScore.Clear();
-        saveData.stageStarCount.Clear();
-        saveData.satgeStatusNumber.Clear();
+        saveData[UIManager.instance.currentChapter - 1].stageBestScore.Clear();
+        saveData[UIManager.instance.currentChapter - 1].stageStarCount.Clear();
+        saveData[UIManager.instance.currentChapter - 1].stageStatusNumber.Clear();
 
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
-            StageSlot stageSlot = UIManager.instance.stageSlots[ i ];
+            /*StageSlot stageSlot = UIManager.instance.stageSlots[ i ];
             if ( stageSlot == null )
             {
                 Debug.Log( $"다음 스테이지 슬롯({i})이 비어있습니다. 스테이지를 추가해주세요." );
                 continue;
-            }
-            if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Rock)
-            {
-                saveData.stageArrayNumber.Add( i );
-                saveData.stageBestScore.Add( UIManager.instance.stageSlots[i].bestScore );
-                saveData.stageStarCount.Add( UIManager.instance.stageSlots[i].starCount );
-                saveData.satgeStatusNumber.Add( (int)UIManager.instance.stageSlots[i].stageStatus );
-            }
+            }*/
+
+            if (UIManager.instance.stageSlots[i].stageStatus == StageSlot.StageStatus.Rock)
+                break;
+
+            saveData[UIManager.instance.currentChapter - 1].stageBestScore.Add( UIManager.instance.stageSlots[i].bestScore );
+            saveData[UIManager.instance.currentChapter - 1].stageStarCount.Add( UIManager.instance.stageSlots[i].starCount );
+            saveData[UIManager.instance.currentChapter - 1].stageStatusNumber.Add( (int)UIManager.instance.stageSlots[i].stageStatus );
         }
 
-        string json = JsonUtility.ToJson( saveData, true );
+        saveData[UIManager.instance.currentChapter - 1].bossStageStatusNumber = (int)UIManager.instance.bossStageSlot.bossStageStatus;
 
-        File.WriteAllText( SAVE_DATA_DIRECTORY + SAVE_FILENAME, json );
+        if(saveData[UIManager.instance.currentChapter - 1].bossStageStatusNumber == 2)
+        {
+            saveData[UIManager.instance.currentChapter].stageBestScore.Add( 0 );
+            saveData[UIManager.instance.currentChapter].stageStarCount.Add( 0 );
+            saveData[UIManager.instance.currentChapter].stageStatusNumber.Add( 1 );
+
+            json = JsonUtility.ToJson( saveData[UIManager.instance.currentChapter], true );
+            PlayerPrefs.SetString( saveChapters[UIManager.instance.currentChapter], json );
+        }
+            
+        PlayerPrefs.SetInt( "ChapterUnlock", UIManager.instance.chapterSelectUI.chapterUnlock );
+
+        switch (UIManager.instance.currentChapter)
+        {
+            case 1:
+                json = JsonUtility.ToJson( saveData[0], true );
+                if (PlayerPrefs.HasKey( saveChapters[0] ))
+                    PlayerPrefs.DeleteKey( saveChapters[0] );
+                PlayerPrefs.SetString( saveChapters[0], json );
+                break;
+            case 2:
+                json = JsonUtility.ToJson( saveData[1], true );
+                if (PlayerPrefs.HasKey( saveChapters[1] ))
+                    PlayerPrefs.DeleteKey( saveChapters[1] );
+                PlayerPrefs.SetString( saveChapters[1], json );
+                break;
+            case 3:
+                json = JsonUtility.ToJson( saveData[2], true );
+                if (PlayerPrefs.HasKey( saveChapters[2] ))
+                    PlayerPrefs.DeleteKey( saveChapters[2] );
+                PlayerPrefs.SetString( saveChapters[2], json );
+                break;
+            case 4:
+                json = JsonUtility.ToJson( saveData[3], true );
+                if (PlayerPrefs.HasKey( saveChapters[3] ))
+                    PlayerPrefs.DeleteKey( saveChapters[3] );
+                PlayerPrefs.SetString( saveChapters[3], json );
+                break;
+            case 5:
+                json = JsonUtility.ToJson( saveData[4], true );
+                if (PlayerPrefs.HasKey( saveChapters[4] ))
+                    PlayerPrefs.DeleteKey( saveChapters[4] );
+                PlayerPrefs.SetString( saveChapters[4], json );
+                break;
+        }
 
         Debug.Log( json );
     }
 
-    public bool LoadData()
+    public void LoadData()
     {
-        if (File.Exists( SAVE_DATA_DIRECTORY + SAVE_FILENAME ))
+        if (PlayerPrefs.HasKey( "ChapterUnlock" ))
+            UIManager.instance.chapterSelectUI.chapterUnlock = PlayerPrefs.GetInt( "ChapterUnlock" );
+
+        else
+            return;
+
+        switch(UIManager.instance.chapterSelectUI.chapterUnlock)
         {
-            string check = File.ReadAllText( SAVE_DATA_DIRECTORY + SAVE_FILENAME );
+            case 1:
+                json = PlayerPrefs.GetString( "Chapter1" );
+                saveData[0] = JsonUtility.FromJson<SaveData>( json );
 
-            if (check != "")
-            {
-                string loadJson = File.ReadAllText( SAVE_DATA_DIRECTORY + SAVE_FILENAME );
-                saveData = JsonUtility.FromJson<SaveData>( loadJson );
+                for (int i = 0; i < saveData[0].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[0].stageBestScore[i], saveData[0].stageStarCount[i], saveData[0].stageStatusNumber[i] );
 
-                for (int i = 0; i < saveData.stageArrayNumber.Count; i++)
+                UIManager.instance.chapterSelectUI.chapter1_StageSlots[9].GetComponent<BossStageSlot>().SetBossStageSlot( saveData[0].bossStageStatusNumber );
+                break;
+
+            case 2:
+                for (int i = 0; i < 2; i++)
                 {
-                    UIManager.instance.LoadToStageSlot( saveData.stageArrayNumber[i], saveData.stageBestScore[i], saveData.stageStarCount[i], saveData.satgeStatusNumber[i] );
+                    json = PlayerPrefs.GetString( saveChapters[i] );
+                    saveData[i] = JsonUtility.FromJson<SaveData>( json );
                 }
 
-                Debug.Log( "로드 성공" );
-                return true;
-            }
-            else
-            {
-                Debug.Log( "저장된 데이터가 없습니다." );
-                return false;
-            }  
-        }
-        else
-        {
-            Debug.Log( "세이브 파일이 없습니다." );
-            return false;
+                for (int i = 0; i < saveData[0].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[0].stageBestScore[i], saveData[0].stageStarCount[i], saveData[0].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[1].stageBestScore.Count; i++)
+                {
+                    UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[1].stageBestScore[i], saveData[1].stageStarCount[i], saveData[1].stageStatusNumber[i] );
+                }     
+
+                UIManager.instance.chapterSelectUI.chapter1_StageSlots[9].GetComponent<BossStageSlot>().SetBossStageSlot( saveData[0].bossStageStatusNumber );
+                UIManager.instance.chapterSelectUI.chapter2_StageSlots[9].GetComponent<BossStageSlot>().SetBossStageSlot( saveData[1].bossStageStatusNumber );
+                break;
+
+            case 3:
+                for (int i = 0; i < 3; i++)
+                {
+                    json = PlayerPrefs.GetString( saveChapters[i] );
+                    saveData[i] = JsonUtility.FromJson<SaveData>( json );
+                }
+
+                for (int i = 0; i < saveData[0].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[0].stageBestScore[i], saveData[0].stageStarCount[i], saveData[0].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[1].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[1].stageBestScore[i], saveData[1].stageStarCount[i], saveData[1].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[2].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[2].stageBestScore[i], saveData[2].stageStarCount[i], saveData[2].stageStatusNumber[i] );
+
+                break;
+
+            case 4:
+                for (int i = 0; i < 4; i++)
+                {
+                    json = PlayerPrefs.GetString( saveChapters[i] );
+                    saveData[i] = JsonUtility.FromJson<SaveData>( json );
+                }
+
+                for (int i = 0; i < saveData[0].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[0].stageBestScore[i], saveData[0].stageStarCount[i], saveData[0].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[1].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[1].stageBestScore[i], saveData[1].stageStarCount[i], saveData[1].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[2].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[2].stageBestScore[i], saveData[2].stageStarCount[i], saveData[2].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[3].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[3].stageBestScore[i], saveData[3].stageStarCount[i], saveData[3].stageStatusNumber[i] );
+
+                break;
+
+            case 5:
+                for (int i = 0; i < 5; i++)
+                {
+                    json = PlayerPrefs.GetString( saveChapters[i] );
+                    saveData[i] = JsonUtility.FromJson<SaveData>( json );
+                }
+
+                for (int i = 0; i < saveData[0].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[0].stageBestScore[i], saveData[0].stageStarCount[i], saveData[0].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[1].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[1].stageBestScore[i], saveData[1].stageStarCount[i], saveData[1].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[2].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[2].stageBestScore[i], saveData[2].stageStarCount[i], saveData[2].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[3].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[3].stageBestScore[i], saveData[3].stageStarCount[i], saveData[3].stageStatusNumber[i] );
+
+                for (int i = 0; i < saveData[4].stageBestScore.Count; i++)
+                    UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].GetComponent<StageSlot>().SetStageSlot( saveData[4].stageBestScore[i], saveData[4].stageStarCount[i], saveData[4].stageStatusNumber[i] );
+            
+                break;
         }
     }
 
-    public void ResetData()
+    public void DataReset()
     {
-        File.WriteAllText( SAVE_DATA_DIRECTORY + SAVE_FILENAME, "" );
+        PlayerPrefs.DeleteAll();
     }
 }
