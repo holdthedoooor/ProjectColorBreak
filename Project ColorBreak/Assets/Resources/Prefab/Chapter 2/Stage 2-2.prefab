@@ -82,7 +82,7 @@ PrefabInstance:
     - target: {fileID: 8692734140866675033, guid: ed4b59ba015a9994b8889e2e4235f3ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.94
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 8692734140866675033, guid: ed4b59ba015a9994b8889e2e4235f3ee,
         type: 3}
@@ -129,6 +129,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2072368773910329842, guid: ed4b59ba015a9994b8889e2e4235f3ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544764768361945794, guid: ed4b59ba015a9994b8889e2e4235f3ee,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed4b59ba015a9994b8889e2e4235f3ee, type: 3}
 --- !u!4 &8726796028213047927 stripped
@@ -144,11 +154,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3340797004382750143}
     m_Modifications:
-    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
-        type: 3}
-      propertyPath: m_Name
-      value: Sphere Item
-      objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -203,6 +208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: m_Name
+      value: Sphere Item
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -889,11 +899,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3340797004382750143}
     m_Modifications:
-    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
-        type: 3}
-      propertyPath: m_Name
-      value: Sphere Item (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -948,6 +953,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: m_Name
+      value: Sphere Item (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -1454,11 +1464,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3340797004382750143}
     m_Modifications:
-    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
-        type: 3}
-      propertyPath: m_Name
-      value: Sphere Item (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1514,6 +1519,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: m_Name
+      value: Sphere Item (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: originPosition.y
@@ -1539,11 +1549,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3340797004382750143}
     m_Modifications:
-    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
-        type: 3}
-      propertyPath: m_Name
-      value: Sphere Item (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1598,6 +1603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: m_Name
+      value: Sphere Item (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}

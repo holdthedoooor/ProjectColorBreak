@@ -106,9 +106,13 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isGameOver)
             return;
 
-        Moving();
         Roll();
 
+    }
+
+    private void FixedUpdate()
+    {
+        Moving();
     }
 
     IEnumerator BounceBall()
