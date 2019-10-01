@@ -15185,7 +15185,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!212 &1753907799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15354,6 +15354,7 @@ MonoBehaviour:
   maxLife: 0
   isBreakable: 1
   moveVec: {x: 0, y: 0, z: 0}
+  speed: 0
   originPosition: {x: 0, y: 7, z: 0}
   colorMt:
   - {fileID: 2100000, guid: c61abbe3a6f1ba44eac64b551c3ea037, type: 2}
@@ -15370,9 +15371,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5da1b82981f0ba94e86836a03d2fcca0, type: 3}
   - {fileID: 21300000, guid: 63c182831dbaf9a4c9091187d132522f, type: 3}
   bounceMaxPower: 4
-  maxSpeed: 3
+  maxSpeed: 150
   touchAmount: 1.4
-  gravity: 0.1
+  gravity: 10
   rotateSpeed: 10
 --- !u!1 &1803895131
 GameObject:
