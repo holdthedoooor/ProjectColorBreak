@@ -192,8 +192,8 @@ public class UIManager : MonoBehaviour
                             chapterSelectUI.chapter2_StageSlots[0].GetComponent<StageSlot>().StageSlotOpen();
                             break;
                         case 2:
-                            chapterSelectUI.chapters_Button[2].interactable = true;
-                            chapterSelectUI.chapter3_StageSlots[0].GetComponent<StageSlot>().StageSlotOpen();
+                            //chapterSelectUI.chapters_Button[2].interactable = true;
+                            //chapterSelectUI.chapter3_StageSlots[0].GetComponent<StageSlot>().StageSlotOpen();
                             break;
                         case 3:
                             chapterSelectUI.chapters_Button[3].interactable = true;
@@ -205,7 +205,8 @@ public class UIManager : MonoBehaviour
                             break;
                     }
 
-                    chapterSelectUI.chapterUnlock++;
+                    if(chapterSelectUI.chapterUnlock < 2)
+                        chapterSelectUI.chapterUnlock++;
                 }
                 gameOverUI.bossGameoverText.text = "BOSS CLEAR!";
                 gameOverUI.bossGameoverText.color = Color.blue;
@@ -325,7 +326,7 @@ public class UIManager : MonoBehaviour
             switch(currentChapter)
             {
                 case 2:
-                    for (int i = 0; i < chapterSelectUI.chapter2_StageSlots.Length; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter2_StageSlots.Length - 1; i++)
                     {
                         stageSlots[i] = chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>();
                     }
@@ -334,7 +335,7 @@ public class UIManager : MonoBehaviour
                     break;
 
                 case 3:
-                    for (int i = 0; i < chapterSelectUI.chapter3_StageSlots.Length; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter3_StageSlots.Length - 1; i++)
                     {
                         stageSlots[i] = chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>(); ;
                     }
@@ -342,7 +343,7 @@ public class UIManager : MonoBehaviour
                     break;
 
                 case 4:
-                    for (int i = 0; i < chapterSelectUI.chapter4_StageSlots.Length; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter4_StageSlots.Length - 1; i++)
                     {
                         stageSlots[i] = chapterSelectUI.chapter4_StageSlots[i].GetComponent<StageSlot>(); ;
                     }
@@ -350,7 +351,7 @@ public class UIManager : MonoBehaviour
                     break;
 
                 case 5:
-                    for (int i = 0; i < chapterSelectUI.chapter5_StageSlots.Length; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter5_StageSlots.Length - 1; i++)
                     {
                         stageSlots[i] = chapterSelectUI.chapter5_StageSlots[i].GetComponent<StageSlot>(); ;
                     }

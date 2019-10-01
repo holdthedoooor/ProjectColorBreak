@@ -110,7 +110,7 @@ public class StageManager : MonoBehaviour
     public void BossCollision()
     {
         currentBossStageSlot.currentHp -= damage;
-        UIManager.instance.bossStageUI.UpdateBossHpText();
+        
         StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine() );
         if (currentBossStage.bossStageType == BossStage.BossStageType.Normal)
         {
@@ -149,6 +149,7 @@ public class StageManager : MonoBehaviour
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
             } 
         }
+        UIManager.instance.bossStageUI.UpdateBossHpText();
     }
 
     // 활성화 되면 즉 스테이지 시작 시 실행
