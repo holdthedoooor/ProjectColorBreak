@@ -78,6 +78,7 @@ public class PlayerCtrl : LivingEntity
         slideVec = Vector3.zero;
         bouncePower = 0f;
         moveVec = Vector3.zero;
+        playerRb.velocity = Vector3.zero;
         speed = 0f;
         touchStartTime = 0f;
 
@@ -212,12 +213,18 @@ public class PlayerCtrl : LivingEntity
         if (playerTr.position.x > borderDist)
         {
             playerTr.position = new Vector3( borderDist, playerTr.position.y, playerTr.position.z );
+            moveVec.x = 0;
             slideVec = Vector3.zero;
+            playerRb.velocity = new Vector3( 0, playerRb.velocity.y, 0 );
+            
         }
         else if (playerTr.position.x < -borderDist)
         {
             playerTr.position = new Vector3( -borderDist, playerTr.position.y, playerTr.position.z );
             slideVec = Vector3.zero;
+            moveVec.x = 0;
+            playerRb.velocity = new Vector3( 0, playerRb.velocity.y, 0 );
+
         }
 
     }//Moving()
