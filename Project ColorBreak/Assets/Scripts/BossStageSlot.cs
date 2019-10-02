@@ -19,7 +19,7 @@ public class BossStageSlot : MonoBehaviour
     public GameObject go_RockImage;
     public GameObject[] go_BossStageNormals;
     public GameObject go_BossStageHard;
-    public GameObject go_StageInformation;
+    public GameObject go_BossStageInformation;
 
     //보스의 최대 체력
     public int maxHp;
@@ -27,9 +27,9 @@ public class BossStageSlot : MonoBehaviour
     public int hardHp;
     public int currentHp;
 
-    public int[] checkChallengeCount;
+    public int[] panaltyPoints;
     //재도전 횟수
-    public int challengeCount = 0;
+    public int minPanaltyPoint = 100;
     public int starCount = 0; //별이 몇개 채워졌는지 저장
 
     [Header("체크하면 Normal Phase가 랜덤으로 나온다")]
@@ -51,7 +51,7 @@ public class BossStageSlot : MonoBehaviour
         if (bossStageStatus == BossStageStatus.Rock)
         {
             stageSelectButton.interactable = true; //버튼 클릭 가능
-            go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
+            go_BossStageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
             bossStageStatus = BossStageStatus.Open;
         }
     }
@@ -60,7 +60,9 @@ public class BossStageSlot : MonoBehaviour
     public void BossStageSelectButton()
     {
         StageManager.instance.currentBossStageSlot = transform.GetComponent<BossStageSlot>();
-        UIManager.instance.stageInformationUI.SetStageInformation();
+
+        UIManager.instance.bossStageInformationUI.ResetBossStageInformation();
+        UIManager.instance.bossStageInformationUI.SetStageInformation();
     }
 
     //마스터 모드 
@@ -72,22 +74,25 @@ public class BossStageSlot : MonoBehaviour
         {
             starImages[i].sprite = UIManager.instance.blankStarSprite;
         }
-        go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
+        go_BossStageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
         bossStageStatus = BossStageStatus.Open;
     }
 
-    public void SetBossStageSlot( int _statusNumber)
+    public void SetBossStageSlot( int _statusNumber, int _minPanaltyPoint, int _starCount)
     {
         if (_statusNumber == 1)
-        {
             bossStageStatus = BossStageStatus.Open;
-            stageSelectButton.interactable = true;
-        }
-
         else if (_statusNumber == 2)
-        {
             bossStageStatus = BossStageStatus.Clear;
-            stageSelectButton.interactable = true;
-        }
+        else
+            return;
+
+        minPanaltyPoint = _minPanaltyPoint;
+        starCount = _starCount;
+
+        StarImageChange();
+
+        go_BossStageInformation.SetActive( true );
+        stageSelectButton.interactable = true;
     }
 }

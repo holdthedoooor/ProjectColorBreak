@@ -61,9 +61,6 @@ public class StageSlot : MonoBehaviour
         StageManager.instance.currentStageSlot = transform.GetComponent<StageSlot>();
         StageManager.instance.currentStage = StageManager.instance.currentStageSlot.go_StagePrefab.GetComponent<Stage>();
 
-        if (StageManager.instance.currentStageSlot.stageStatus == StageStatus.Rock)
-            return;
-
         UIManager.instance.stageInformationUI.ResetStageInformation();
         UIManager.instance.stageInformationUI.SetStageInformation();
     }

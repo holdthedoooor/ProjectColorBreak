@@ -20,11 +20,13 @@ public class UIManager : MonoBehaviour
 
     //나중에 기능별로 나눌 예정
     public Button               nextButton;
+    public Button               bossNextButton;
     public Sprite               starSprite; 
     public Sprite               blankStarSprite;
     public StageUI              stageUI;
     public GameOverUI           gameOverUI;
     public StageInformationUI   stageInformationUI;
+    public BossStageInformationUI bossStageInformationUI;
     public LobbyUI              lobbyUI;
     public PauseUI              pauseUI;
     public ChapterSelectUI      chapterSelectUI;
@@ -159,7 +161,7 @@ public class UIManager : MonoBehaviour
         {
             if(StageManager.instance.currentBossStageSlot.currentHp <= 0)
             {
-                if (StageManager.instance.currentBossStageSlot.challengeCount <= StageManager.instance.currentBossStageSlot.checkChallengeCount[0])
+                if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[2])
                 {
                     for (int i = 0; i < 3; i++)
                     {
@@ -167,7 +169,7 @@ public class UIManager : MonoBehaviour
                     }
                     starCount = 3;
                 }
-                else if (StageManager.instance.currentBossStageSlot.challengeCount <= StageManager.instance.currentBossStageSlot.checkChallengeCount[1])
+                else if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[1])
                 {
                     for (int i = 0; i < 2; i++)
                     {
@@ -208,6 +210,7 @@ public class UIManager : MonoBehaviour
                     if(chapterSelectUI.chapterUnlock < 2)
                         chapterSelectUI.chapterUnlock++;
                 }
+
                 gameOverUI.bossGameoverText.text = "BOSS CLEAR!";
                 gameOverUI.bossGameoverText.color = Color.blue;
             }
@@ -216,6 +219,16 @@ public class UIManager : MonoBehaviour
                 gameOverUI.bossGameoverText.text = "GAME OVER";
                 gameOverUI.bossGameoverText.color = Color.red;
             }
+
+            if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+            {
+                if(currentChapter == 1)
+                    bossNextButton.interactable = true;
+                else
+                    bossNextButton.interactable = false;
+            }
+            else
+                bossNextButton.interactable = false;
 
             gameOverUI.SetGameoverUI();
             bossStageUI.DeactivateUI();
@@ -226,8 +239,6 @@ public class UIManager : MonoBehaviour
     //홈 버튼 클릭
     public void HomeButton()
     {
-        
-
         if(StageManager.instance.currentStage != null)
         {
             gameOverUI.go_StageGameoverUI.SetActive( false );
@@ -241,7 +252,6 @@ public class UIManager : MonoBehaviour
             gameOverUI.go_BossStageGameoverUI.SetActive( false );
             Destroy( StageManager.instance.currentBossStage.gameObject );
             bossStageUI.go_BossStageUI.SetActive( false );
-            StageManager.instance.currentBossStageSlot.challengeCount = 0;
             StageManager.instance.currentBossStage = null;
             StageManager.instance.currentBossStageSlot = null;
         }    
@@ -264,8 +274,8 @@ public class UIManager : MonoBehaviour
         else
         {
             Destroy( StageManager.instance.currentBossStage.gameObject );
-
-            if(StageManager.instance.currentBossStageSlot.isRandom)
+            StageManager.instance.panaltyPoint = 0;
+            if (StageManager.instance.currentBossStageSlot.isRandom)
                 StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]
                     , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
             else

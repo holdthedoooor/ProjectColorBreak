@@ -25,6 +25,7 @@ public class StageManager : MonoBehaviour
     public bool         isGoal;
     public int          score; //일반 스테이지에서의 점수
     public int          damage;//보스 스테이지에서의 데미지
+    public int          panaltyPoint;
 
     public GameObject        go_Player;
     //현재 스테이지   
@@ -127,7 +128,7 @@ public class StageManager : MonoBehaviour
 
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-                currentBossStageSlot.challengeCount++;
+                panaltyPoint++;
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
             }
         }
@@ -145,7 +146,7 @@ public class StageManager : MonoBehaviour
                 currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-                currentBossStageSlot.challengeCount++;
+                panaltyPoint++;
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
             } 
         }
@@ -171,10 +172,10 @@ public class StageManager : MonoBehaviour
         else
         {
             damage = 0;
-            if(currentBossStageSlot.challengeCount == 0)
+            if(panaltyPoint == 0)
             {
                 currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
-                currentBossStageSlot.challengeCount++;
+                panaltyPoint++;
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
                 UIManager.instance.SetStartUI();
             }         
@@ -209,17 +210,26 @@ public class StageManager : MonoBehaviour
                 }
             }
         }
+        //보스 스테이지면
         else
         {
             UIManager.instance.SetFinishUI();
             if (currentBossStageSlot.starCount < UIManager.instance.starCount)
             {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;
+                if (currentBossStageSlot.minPanaltyPoint > panaltyPoint)
+                    currentBossStageSlot.minPanaltyPoint = panaltyPoint;
+                theSaveLoad.SaveData();
+            }
+            else if(currentBossStageSlot.starCount == UIManager.instance.starCount)
+            {
+                if (currentBossStageSlot.minPanaltyPoint > panaltyPoint)
+                    currentBossStageSlot.minPanaltyPoint = panaltyPoint;
                 theSaveLoad.SaveData();
             }
                 
             currentBossStageSlot.StarImageChange();
-            currentBossStageSlot.challengeCount = 0;
+            panaltyPoint = 0;
         }
     }
 

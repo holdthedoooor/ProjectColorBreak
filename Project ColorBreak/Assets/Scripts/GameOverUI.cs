@@ -43,7 +43,7 @@ public class GameOverUI : MonoBehaviour
     {
         resultBossHpSlider.fillAmount = (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp;
         hpPersentText.text = (Math.Truncate((float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp * 100)).ToString() + "%";
-        panaltyPointText.text = StageManager.instance.currentBossStageSlot.challengeCount.ToString();
+        panaltyPointText.text = StageManager.instance.panaltyPoint.ToString();
         go_BossStageGameoverUI.SetActive( true );
     }
 }

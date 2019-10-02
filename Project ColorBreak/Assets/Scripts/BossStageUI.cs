@@ -43,7 +43,7 @@ public class BossStageUI : MonoBehaviour
 
     public void UpdateChallengeCountText()
     {
-        challengeCount_Text.text = "Count : " + StageManager.instance.currentBossStageSlot.challengeCount.ToString();
+        challengeCount_Text.text = "Count : " + StageManager.instance.panaltyPoint.ToString();
     }
 
     public IEnumerator UpdateBossHpSliderCoroutine()

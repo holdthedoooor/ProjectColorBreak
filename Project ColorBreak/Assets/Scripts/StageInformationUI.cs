@@ -18,8 +18,6 @@ public class StageInformationUI : MonoBehaviour
         go_StageInformationUI.SetActive( false );
         StageManager.instance.currentStageSlot = null;
         StageManager.instance.currentStage = null;
-        StageManager.instance.currentBossStageSlot = null;
-        StageManager.instance.currentBossStage = null;
     }
 
     //최대 점수, Star Image, CheckPountText 초기화
@@ -78,16 +76,5 @@ public class StageInformationUI : MonoBehaviour
         //일반 스테이지면
         if (StageManager.instance.currentStageSlot != null)
             StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
-
-        //보스 스테이지면
-        else
-        {
-            if(StageManager.instance.currentBossStageSlot.isRandom)
-                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]
-                    , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-            else
-                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0]
-                    , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-        }
     }
 }
