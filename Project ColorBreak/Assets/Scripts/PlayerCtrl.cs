@@ -23,13 +23,13 @@ public class PlayerCtrl : LivingEntity
     private Vector3 slideVec = Vector3.zero;
     private Vector3 touchDist = Vector3.zero;
     public Vector3 moveVec = Vector3.zero;
-    private float bouncePower = 0f;
+    public float bouncePower = 0f;
 
     private float touchStartTime = 0f;
     private bool isSwiped = false;
 
     private float borderDist;
-    private bool isBounce = false;
+    public bool isBounce = false;
     public float speed;
 
     [Header( "시작 X, Y, Z 좌표를 입력해주세요!" )]
@@ -203,7 +203,7 @@ public class PlayerCtrl : LivingEntity
         ////이동시키는 부분
         moveVec = Vector3.down;
         moveVec.x += slideVec.x;
-        moveVec.y += bouncePower;
+        moveVec.y += bouncePower * Time.fixedDeltaTime;
 
         //playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
         playerRb.velocity = moveVec * speed * Time.fixedDeltaTime;
