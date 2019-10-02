@@ -17,6 +17,7 @@ public class PlayerCtrl : LivingEntity
     private TrailRenderer trailRenderer;
     private FollowCamera followCamera;
     private Transform playerImage;
+    private Rigidbody2D playerRb;
 
     private PlayerState playerState = PlayerState.Start;
     private Vector3 slideVec = Vector3.zero;
@@ -29,7 +30,7 @@ public class PlayerCtrl : LivingEntity
 
     private float borderDist;
     private bool isBounce = false;
-    private float speed;
+    public float speed;
 
     [Header( "시작 X, Y, Z 좌표를 입력해주세요!" )]
     public Vector3 originPosition;
@@ -43,7 +44,7 @@ public class PlayerCtrl : LivingEntity
     [Header( "공이 튕기는 정도를 수치로 설정해줍니다." )]
     public float bounceMaxPower = 3.0f;//튕기는 정도
     [Header( "공이 낙하는 최대 속도를 수치로 설정해줍니다." )]
-    public float maxSpeed = 3.0f;    //공의 하강속도
+    public float maxSpeed = 150.0f;    //공의 하강속도
     [Header( "터치의 감도를 수치로 설정해줍니다. 0.1 단위로 조작합니다." )]
     public float touchAmount = 1f; //터치 감도
     [Header( "중력을 조절합니다. 수치가 높을수록 최대속도에 빨리 도달합니다." )]
@@ -59,6 +60,7 @@ public class PlayerCtrl : LivingEntity
         playerCol = GetComponent<CircleCollider2D>();
         playerSr = GetComponent<SpriteRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
+        playerRb = GetComponent<Rigidbody2D>();
 
         onDie += () => StageManager.instance.FinishStage();
     }
@@ -106,9 +108,13 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isGameOver)
             return;
 
-        Moving();
         Roll();
 
+    }
+
+    private void FixedUpdate()
+    {
+        Moving();
     }
 
     IEnumerator BounceBall()
@@ -199,8 +205,8 @@ public class PlayerCtrl : LivingEntity
         moveVec.x += slideVec.x;
         moveVec.y += bouncePower;
 
-        playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
-
+        //playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
+        playerRb.velocity = moveVec * speed * Time.fixedDeltaTime;
 
         //화면 끝 에외처리
         if (playerTr.position.x > borderDist)
