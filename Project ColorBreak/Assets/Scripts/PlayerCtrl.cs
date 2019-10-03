@@ -62,30 +62,15 @@ public class PlayerCtrl : LivingEntity
         trailRenderer = GetComponent<TrailRenderer>();
         playerRb = GetComponent<Rigidbody2D>();
 
-        onDie += () => StageManager.instance.FinishStage();
+        onDie += StageManager.instance.FinishStage;
+        onDie += OnInitialize;
+
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        colorType = ColorType.Red;
-        ChangeColor( colorType );
-        transform.position = originPosition;
-
-        touchDist = Vector3.zero;
-        startTouchPos = Vector3.zero;
-        endTouchPos = Vector3.zero;
-        slideVec = Vector3.zero;
-        bouncePower = 0f;
-        moveVec = Vector3.zero;
-        speed = 0f;
-        touchStartTime = 0f;
-
-        isSwiped = false;
-        isBounce = false;
-
-        trailRenderer.Clear();
-        playerState = PlayerState.Start;
+        OnInitialize();
     }
 
 
@@ -114,6 +99,9 @@ public class PlayerCtrl : LivingEntity
 
     private void FixedUpdate()
     {
+        if (StageManager.instance.isGameOver)
+            return;
+
         Moving();
     }
 
@@ -212,12 +200,18 @@ public class PlayerCtrl : LivingEntity
         if (playerTr.position.x > borderDist)
         {
             playerTr.position = new Vector3( borderDist, playerTr.position.y, playerTr.position.z );
+            moveVec.x = 0;
             slideVec = Vector3.zero;
+            playerRb.velocity = new Vector3( 0, playerRb.velocity.y, 0 );
+            
         }
         else if (playerTr.position.x < -borderDist)
         {
             playerTr.position = new Vector3( -borderDist, playerTr.position.y, playerTr.position.z );
             slideVec = Vector3.zero;
+            moveVec.x = 0;
+            playerRb.velocity = new Vector3( 0, playerRb.velocity.y, 0 );
+
         }
 
     }//Moving()
@@ -241,6 +235,7 @@ public class PlayerCtrl : LivingEntity
 
     }
 
+    
     private void OnTriggerEnter2D( Collider2D other )
     {
         if (other.tag == "Obstacle")
@@ -310,4 +305,27 @@ public class PlayerCtrl : LivingEntity
             StageManager.instance.BossCollision();
         }
     }
+    public void OnInitialize()
+    {
+        colorType = ColorType.Red;
+        ChangeColor( colorType );
+        transform.position = originPosition;
+
+        touchDist = Vector3.zero;
+        startTouchPos = Vector3.zero;
+        endTouchPos = Vector3.zero;
+        slideVec = Vector3.zero;
+        bouncePower = 0f;
+        moveVec = Vector3.zero;
+        playerRb.velocity = Vector3.zero;
+        speed = 0f;
+        touchStartTime = 0f;
+
+        isSwiped = false;
+        isBounce = false;
+
+        trailRenderer.Clear();
+        playerState = PlayerState.Start;
+    }
+
 }
