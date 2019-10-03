@@ -46,33 +46,36 @@ public class StageManager : MonoBehaviour
 
         if (isMasterMode)
         {
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length - 1; i++)
             {
                 UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter2_StageSlots.Length; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter2_StageSlots.Length - 1; i++)
             {
                 UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter3_StageSlots.Length; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter3_StageSlots.Length - 1; i++)
             {
                 UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter4_StageSlots.Length; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter4_StageSlots.Length - 1; i++)
             {
                 UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter5_StageSlots.Length; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter5_StageSlots.Length - 1; i++)
             {
                 UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].GetComponent<StageSlot>().SetOpen();
             }
 
             UIManager.instance.chapterSelectUI.chapter1_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
             UIManager.instance.chapterSelectUI.chapter2_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
+
+            UIManager.instance.chapterSelectUI.chapterUnlock = 2;
+            UIManager.instance.chapterSelectUI.ChapterOpen();
         }
     }
 
