@@ -138,7 +138,11 @@ public class PlayerCtrl : LivingEntity
         }
 
         if(isSwiped == false)
-             isSwiped = Time.time - touchStartTime > 0.1f;
+        {
+            isSwiped = Time.time - touchStartTime > 0.1f;
+
+        }
+         isSwiped &= Input.touchCount == 1;
 
         if (Input.GetMouseButton( 0 ) && isSwiped == true)
         {
@@ -299,10 +303,13 @@ public class PlayerCtrl : LivingEntity
         {
             StageManager.instance.isGoal = true;
             StageManager.instance.FinishStage();
+            OnInitialize();
         }
         else if (other.tag == "Boss")
         {
             StageManager.instance.BossCollision();
+            OnInitialize();
+
         }
     }
     public void OnInitialize()
