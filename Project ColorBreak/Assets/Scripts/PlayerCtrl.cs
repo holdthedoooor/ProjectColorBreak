@@ -26,10 +26,13 @@ public class PlayerCtrl : LivingEntity
     public float bouncePower = 0f;
 
     private float touchStartTime = 0f;
-    private bool isSwiped = false;
-
+    private float awakedTime = 0f;
     private float borderDist;
+
+    private bool isSwiped = false;
+    private bool isAwaked = false;
     public bool isBounce = false;
+
     public float speed;
 
     [Header( "시작 X, Y, Z 좌표를 입력해주세요!" )]
@@ -102,6 +105,16 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isGameOver)
             return;
 
+        if (isAwaked == false)
+        {
+            awakedTime += Time.fixedDeltaTime;
+
+            if (awakedTime > 0.25f)
+                isAwaked = true;
+            else
+                return;
+        }
+
         Moving();
     }
 
@@ -142,7 +155,10 @@ public class PlayerCtrl : LivingEntity
             isSwiped = Time.time - touchStartTime > 0.1f;
 
         }
-         isSwiped &= Input.touchCount == 1;
+
+        isSwiped &= Input.touchCount == 1;
+
+        
 
         if (Input.GetMouseButton( 0 ) && isSwiped == true)
         {
@@ -191,6 +207,13 @@ public class PlayerCtrl : LivingEntity
 #endif
         if (bouncePower > 0)
             bouncePower -= gravity;
+
+        //튀는 현상 예외처리
+        float boundary = 7;
+        if (Mathf.Abs( slideVec.x ) > boundary)
+        {
+            slideVec.x = 0;
+        }
 
         ////이동시키는 부분
         moveVec = Vector3.down;
@@ -327,9 +350,11 @@ public class PlayerCtrl : LivingEntity
         playerRb.velocity = Vector3.zero;
         speed = 0f;
         touchStartTime = 0f;
+        awakedTime = 0f;
 
         isSwiped = false;
         isBounce = false;
+        isAwaked = false;
 
         trailRenderer.Clear();
         playerState = PlayerState.Start;
