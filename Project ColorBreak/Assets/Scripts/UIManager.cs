@@ -191,19 +191,19 @@ public class UIManager : MonoBehaviour
                     {
                         case 1:
                             chapterSelectUI.chapters_Button[1].interactable = true;
-                            chapterSelectUI.chapter2_StageSlots[0].GetComponent<StageSlot>().StageSlotOpen();
+                            chapterSelectUI.chapter2_StageSlots[0].StageSlotOpen();
                             break;
                         case 2:
-                            //chapterSelectUI.chapters_Button[2].interactable = true;
-                            //chapterSelectUI.chapter3_StageSlots[0].GetComponent<StageSlot>().StageSlotOpen();
+                            chapterSelectUI.chapters_Button[2].interactable = true;
+                            chapterSelectUI.chapter3_StageSlots[0].StageSlotOpen();
                             break;
                         case 3:
                             chapterSelectUI.chapters_Button[3].interactable = true;
-                            chapterSelectUI.chapter4_StageSlots[0].GetComponent<StageSlot>().StageSlotOpen();
+                            chapterSelectUI.chapter4_StageSlots[0].StageSlotOpen();
                             break;
                         case 4:
                             chapterSelectUI.chapters_Button[4].interactable = true;
-                            chapterSelectUI.chapter5_StageSlots[0].GetComponent<StageSlot>().StageSlotOpen();
+                            chapterSelectUI.chapter5_StageSlots[0].StageSlotOpen();
                             break;
                     }
 
@@ -336,34 +336,34 @@ public class UIManager : MonoBehaviour
             switch(currentChapter)
             {
                 case 2:
-                    for (int i = 0; i < chapterSelectUI.chapter2_StageSlots.Length - 1; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter2_StageSlots.Length; i++)
                     {
-                        stageSlots[i] = chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>();
+                        stageSlots[i] = chapterSelectUI.chapter2_StageSlots[i];
                     }
                     chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[1];
-                    bossStageSlot = chapterSelectUI.chapter2_StageSlots[9].GetComponent<BossStageSlot>();
+                    bossStageSlot = chapterSelectUI.BossStageSlots[1];
                     break;
 
                 case 3:
-                    for (int i = 0; i < chapterSelectUI.chapter3_StageSlots.Length - 1; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter3_StageSlots.Length; i++)
                     {
-                        stageSlots[i] = chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>(); ;
+                        stageSlots[i] = chapterSelectUI.chapter3_StageSlots[i];
                     }
                     chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[2];
                     break;
 
                 case 4:
-                    for (int i = 0; i < chapterSelectUI.chapter4_StageSlots.Length - 1; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter4_StageSlots.Length; i++)
                     {
-                        stageSlots[i] = chapterSelectUI.chapter4_StageSlots[i].GetComponent<StageSlot>(); ;
+                        stageSlots[i] = chapterSelectUI.chapter4_StageSlots[i];
                     }
                     chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[3];
                     break;
 
                 case 5:
-                    for (int i = 0; i < chapterSelectUI.chapter5_StageSlots.Length - 1; i++)
+                    for (int i = 0; i < chapterSelectUI.chapter5_StageSlots.Length; i++)
                     {
-                        stageSlots[i] = chapterSelectUI.chapter5_StageSlots[i].GetComponent<StageSlot>(); ;
+                        stageSlots[i] = chapterSelectUI.chapter5_StageSlots[i];
                     }
                     chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[4];
                     break;

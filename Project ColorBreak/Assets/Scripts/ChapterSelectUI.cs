@@ -7,16 +7,20 @@ public class ChapterSelectUI : MonoBehaviour
 {
     public GameObject go_ChapterSelectUI;
     public GameObject go_CurrentChapterUI;
+    [Header("각각의 Chapter UI")]
     public GameObject[] go_Chapters;
-
+    [Header("Slot들을 할당하기 위한 Slot들의 부모 게임오브젝트")]
+    public GameObject[] go_SlotParents;
     //챕터 선택 버튼들
     public Button[] chapters_Button;
 
-    public GameObject[] chapter1_StageSlots;
-    public GameObject[] chapter2_StageSlots;
-    public GameObject[] chapter3_StageSlots;
-    public GameObject[] chapter4_StageSlots;
-    public GameObject[] chapter5_StageSlots;
+    public StageSlot[] chapter1_StageSlots;
+    public StageSlot[] chapter2_StageSlots;
+    public StageSlot[] chapter3_StageSlots;
+    public StageSlot[] chapter4_StageSlots;
+    public StageSlot[] chapter5_StageSlots;
+    //1~5 챕터의 보스 스테이지 슬롯들이 할당됨
+    public BossStageSlot[] BossStageSlots;
 
     public int chapterUnlock;
 
@@ -28,10 +32,11 @@ public class ChapterSelectUI : MonoBehaviour
 
         UIManager.instance.currentChapter = 1;
 
-        for (int i = 0; i < 9; i++)
-            UIManager.instance.stageSlots[i] = chapter1_StageSlots[i].GetComponent<StageSlot>();
+        for (int i = 0; i < chapter1_StageSlots.Length; i++)
+            UIManager.instance.stageSlots[i] = chapter1_StageSlots[i];
         
-        UIManager.instance.bossStageSlot = chapter1_StageSlots[9].GetComponent<BossStageSlot>();
+        if(BossStageSlots.Length > 0)
+            UIManager.instance.bossStageSlot = BossStageSlots[0];
     }
 
     public void Chapter2_Button()
@@ -42,10 +47,11 @@ public class ChapterSelectUI : MonoBehaviour
 
         UIManager.instance.currentChapter = 2;
 
-        for (int i = 0; i < 9; i++)
-            UIManager.instance.stageSlots[i] = chapter2_StageSlots[i].GetComponent<StageSlot>();
+        for (int i = 0; i < chapter2_StageSlots.Length; i++)
+            UIManager.instance.stageSlots[i] = chapter2_StageSlots[i];
 
-        UIManager.instance.bossStageSlot = chapter2_StageSlots[9].GetComponent<BossStageSlot>();
+        if (BossStageSlots.Length > 1)
+            UIManager.instance.bossStageSlot = BossStageSlots[1];
     }
 
     public void Chapter3_Button()
@@ -57,8 +63,10 @@ public class ChapterSelectUI : MonoBehaviour
         UIManager.instance.currentChapter = 3;
 
         for (int i = 0; i < chapter3_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter3_StageSlots[i].GetComponent<StageSlot>();
-        
+            UIManager.instance.stageSlots[i] = chapter3_StageSlots[i];
+
+        if (BossStageSlots.Length > 2)
+            UIManager.instance.bossStageSlot = BossStageSlots[2];
     }
 
     public void Chapter4_Button()
@@ -70,8 +78,11 @@ public class ChapterSelectUI : MonoBehaviour
         UIManager.instance.currentChapter = 4;
 
         for (int i = 0; i < chapter4_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter4_StageSlots[i].GetComponent<StageSlot>();
-        
+            UIManager.instance.stageSlots[i] = chapter4_StageSlots[i];
+
+        if (BossStageSlots.Length > 3)
+            UIManager.instance.bossStageSlot = BossStageSlots[3];
+
     }
 
     public void Chapter5_Button()
@@ -83,8 +94,10 @@ public class ChapterSelectUI : MonoBehaviour
         UIManager.instance.currentChapter = 5;
 
         for (int i = 0; i < chapter5_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter5_StageSlots[i].GetComponent<StageSlot>();
-        
+            UIManager.instance.stageSlots[i] = chapter5_StageSlots[i];
+
+        if (BossStageSlots.Length > 4)
+            UIManager.instance.bossStageSlot = BossStageSlots[4];
     }
 
     public void BackButton()

@@ -43,35 +43,45 @@ public class StageManager : MonoBehaviour
         if (isDataReset)
             theSaveLoad.DataReset();
 
+        UIManager.instance.chapterSelectUI.chapter1_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[0].GetComponentsInChildren<StageSlot>();
+        UIManager.instance.chapterSelectUI.chapter2_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[1].GetComponentsInChildren<StageSlot>();
+        UIManager.instance.chapterSelectUI.chapter3_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[2].GetComponentsInChildren<StageSlot>();
+        UIManager.instance.chapterSelectUI.chapter4_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[3].GetComponentsInChildren<StageSlot>();
+        UIManager.instance.chapterSelectUI.chapter5_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[4].GetComponentsInChildren<StageSlot>();
+        Debug.Log( UIManager.instance.chapterSelectUI.go_SlotParents[0].transform.parent.name );
+        
+
         if (isMasterMode)
         {
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length - 1; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].GetComponent<StageSlot>().SetOpen();
+                UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter2_StageSlots.Length - 1; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter2_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].GetComponent<StageSlot>().SetOpen();
+                UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter3_StageSlots.Length - 1; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter3_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].GetComponent<StageSlot>().SetOpen();
+                UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter4_StageSlots.Length - 1; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter4_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].GetComponent<StageSlot>().SetOpen();
+                UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].SetOpen();
             }
 
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter5_StageSlots.Length - 1; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter5_StageSlots.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].GetComponent<StageSlot>().SetOpen();
+                UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].SetOpen();
             }
 
-            UIManager.instance.chapterSelectUI.chapter1_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
-            UIManager.instance.chapterSelectUI.chapter2_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.BossStageSlots.Length; i++)
+            {
+                UIManager.instance.chapterSelectUI.BossStageSlots[i].SetOpen();
+            }
 
             UIManager.instance.chapterSelectUI.chapterUnlock = 5;
             UIManager.instance.chapterSelectUI.ChapterOpen();
@@ -233,6 +243,8 @@ public class StageManager : MonoBehaviour
             currentBossStageSlot.StarImageChange();
             panaltyPoint = 0;
         }
+
+        go_Player.SetActive( false );
     }
 
     public void NextPhase()
