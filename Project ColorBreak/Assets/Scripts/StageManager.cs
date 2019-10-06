@@ -43,7 +43,6 @@ public class StageManager : MonoBehaviour
         if (isDataReset)
             theSaveLoad.DataReset();
 
-
         if (isMasterMode)
         {
             for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length - 1; i++)
@@ -74,7 +73,7 @@ public class StageManager : MonoBehaviour
             UIManager.instance.chapterSelectUI.chapter1_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
             UIManager.instance.chapterSelectUI.chapter2_StageSlots[9].GetComponent<BossStageSlot>().SetOpen();
 
-            UIManager.instance.chapterSelectUI.chapterUnlock = 2;
+            UIManager.instance.chapterSelectUI.chapterUnlock = 5;
             UIManager.instance.chapterSelectUI.ChapterOpen();
         }
     }

@@ -56,7 +56,7 @@ public class ChapterSelectUI : MonoBehaviour
 
         UIManager.instance.currentChapter = 3;
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < chapter3_StageSlots.Length; i++)
             UIManager.instance.stageSlots[i] = chapter3_StageSlots[i].GetComponent<StageSlot>();
         
     }
@@ -69,7 +69,7 @@ public class ChapterSelectUI : MonoBehaviour
 
         UIManager.instance.currentChapter = 4;
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < chapter4_StageSlots.Length; i++)
             UIManager.instance.stageSlots[i] = chapter4_StageSlots[i].GetComponent<StageSlot>();
         
     }
@@ -82,7 +82,7 @@ public class ChapterSelectUI : MonoBehaviour
 
         UIManager.instance.currentChapter = 5;
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < chapter5_StageSlots.Length; i++)
             UIManager.instance.stageSlots[i] = chapter5_StageSlots[i].GetComponent<StageSlot>();
         
     }
