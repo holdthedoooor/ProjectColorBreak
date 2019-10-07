@@ -13,10 +13,14 @@ public class LobbyUI : MonoBehaviour
 
     public bool isStop;
     private int num = 0;
+    private Coroutine coroutine;
 
     void Start()
     {
-        StartCoroutine( CharacterImageChangeCoroutine() );
+        LobbyStartCoroutine();
+
+        //현재 화면 상태를 Lobby로 변경
+        Quit.instance.quitStatus = Quit.QuitStatus.Lobby;
     }
 
     //스테이지 선택 UI로 가는 버튼
@@ -29,12 +33,24 @@ public class LobbyUI : MonoBehaviour
         }
         go_LobbyUI.SetActive( false );
         UIManager.instance.chapterSelectUI.go_ChapterSelectUI.SetActive( true );
-        isStop = true;
+
+        //현재 화면 상태를 ChapterSelect로 변경
+        Quit.instance.quitStatus = Quit.QuitStatus.ChapterSelect;
+
+        //캐릭터 이미지 변경 코루틴 멈춤
+        StopCoroutine( coroutine );
+
+        //Chapter Select UI의 Chapter Select Text 이미지 변경 코루틴 시작
+        UIManager.instance.chapterSelectUI.ChapterStartCoroutine();
+
     }
 
     public IEnumerator CharacterImageChangeCoroutine()
     {
-        while(!isStop)
+        num = 0;
+        isStop = false;
+        character_Image.sprite = character_Sprites[0];
+        while (!isStop)
         {
             yield return new WaitForSeconds( 2f );
 
@@ -45,5 +61,10 @@ public class LobbyUI : MonoBehaviour
 
             character_Image.sprite = character_Sprites[num];
         }
+    }
+
+    public void LobbyStartCoroutine()
+    {
+        coroutine = StartCoroutine( CharacterImageChangeCoroutine() );
     }
 }

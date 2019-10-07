@@ -175,12 +175,12 @@ public class StageManager : MonoBehaviour
         }
 
         isGoal = false;
+
         if(currentStageSlot != null)
         {
             score = 0;
             UIManager.instance.SetStartUI();
-        }
-            
+        }      
         else
         {
             damage = 0;
@@ -198,6 +198,8 @@ public class StageManager : MonoBehaviour
 
         //isMovable를 true로 바꿔줌으로 써 카메라가 다시 움직이도록 설정
         Camera.main.GetComponent<FollowCamera>().SetCamera();
+
+        Quit.instance.quitStatus = Quit.QuitStatus.InGame;
     }
 
     // 스테이지를 통과 시 실행

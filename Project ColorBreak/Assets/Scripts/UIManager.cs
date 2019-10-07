@@ -155,6 +155,7 @@ public class UIManager : MonoBehaviour
             gameOverUI.gameoverScoreText.text = StageManager.instance.score.ToString();
             stageUI.DeactivateUI();
             gameOverUI.go_StageGameoverUI.SetActive( true );
+
         }
         //보스 스테이지라면
         else
@@ -233,7 +234,7 @@ public class UIManager : MonoBehaviour
             gameOverUI.SetGameoverUI();
             bossStageUI.DeactivateUI();
         }
-
+        StageManager.instance.go_Player.SetActive( false );
     }
 
     //홈 버튼 클릭
@@ -241,23 +242,26 @@ public class UIManager : MonoBehaviour
     {
         if(StageManager.instance.currentStage != null)
         {
+            stageUI.DeactivateUI();
             gameOverUI.go_StageGameoverUI.SetActive( false );
             Destroy( StageManager.instance.currentStage.gameObject );
-            stageUI.go_StageUI.SetActive( false );
             StageManager.instance.currentStage = null;
             StageManager.instance.currentStageSlot = null;
         }
         else
         {
+            bossStageUI.DeactivateUI();
             gameOverUI.go_BossStageGameoverUI.SetActive( false );
             Destroy( StageManager.instance.currentBossStage.gameObject );
-            bossStageUI.go_BossStageUI.SetActive( false );
             StageManager.instance.currentBossStage = null;
             StageManager.instance.currentBossStageSlot = null;
-        }    
+        }
 
+        pauseUI.go_PauseUI.SetActive( false );
         StageManager.instance.go_Player.SetActive( false );
         chapterSelectUI.go_CurrentChapterUI.SetActive( true );
+        Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
+    
     }
 
     //현재 스테이지를 다시 플레이하는 버튼

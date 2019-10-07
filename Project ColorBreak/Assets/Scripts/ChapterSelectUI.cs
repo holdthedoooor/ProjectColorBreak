@@ -24,6 +24,18 @@ public class ChapterSelectUI : MonoBehaviour
 
     public int chapterUnlock;
 
+    //Chapter Rock 이미지
+    public Image[] chapterText_Images;
+    public Sprite[] chapterOpen_Sprites;
+    public Sprite[] chapterOpenText_Sprites;
+
+    //Chapter Select 텍스트 이미지 변경
+    public Coroutine coroutine;
+    public Image text_Image;
+    public Sprite[] text_Sprites;
+    private int num;
+    public bool isStop = false;
+
     public void Chapter1_Button()
     {
         go_ChapterSelectUI.SetActive( false );
@@ -37,6 +49,9 @@ public class ChapterSelectUI : MonoBehaviour
         
         if(BossStageSlots.Length > 0)
             UIManager.instance.bossStageSlot = BossStageSlots[0];
+
+        Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
+        ChapterStopCoroutine();
     }
 
     public void Chapter2_Button()
@@ -52,6 +67,9 @@ public class ChapterSelectUI : MonoBehaviour
 
         if (BossStageSlots.Length > 1)
             UIManager.instance.bossStageSlot = BossStageSlots[1];
+
+        Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
+        ChapterStopCoroutine();
     }
 
     public void Chapter3_Button()
@@ -67,6 +85,9 @@ public class ChapterSelectUI : MonoBehaviour
 
         if (BossStageSlots.Length > 2)
             UIManager.instance.bossStageSlot = BossStageSlots[2];
+
+        Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
+        ChapterStopCoroutine();
     }
 
     public void Chapter4_Button()
@@ -83,6 +104,8 @@ public class ChapterSelectUI : MonoBehaviour
         if (BossStageSlots.Length > 3)
             UIManager.instance.bossStageSlot = BossStageSlots[3];
 
+        Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
+        ChapterStopCoroutine();
     }
 
     public void Chapter5_Button()
@@ -98,19 +121,54 @@ public class ChapterSelectUI : MonoBehaviour
 
         if (BossStageSlots.Length > 4)
             UIManager.instance.bossStageSlot = BossStageSlots[4];
+
+        Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
+        ChapterStopCoroutine();
     }
 
     public void BackButton()
     {
         go_CurrentChapterUI.SetActive( false );
         go_ChapterSelectUI.SetActive( true );
+        Quit.instance.quitStatus = Quit.QuitStatus.ChapterSelect;
+        ChapterStartCoroutine();
     }
 
     public void ChapterOpen()
     {
-        for (int i = 0; i < chapterUnlock; i++)
+        for (int i = 0; i < chapterUnlock - 1; i++)
         {
-            chapters_Button[i].interactable = true;
+            chapters_Button[i + 1].interactable = true;
+            chapters_Button[i + 1].GetComponent<Image>().sprite = chapterOpen_Sprites[i];
+            chapterText_Images[i].sprite = chapterOpenText_Sprites[i];
         }
+    }
+
+    public IEnumerator TextImageChangeCoroutine()
+    {
+        num = 0;
+        isStop = false;
+        text_Image.sprite = text_Sprites[0];
+        while (!isStop)
+        {
+            yield return new WaitForSeconds( 2f );
+
+            num++;
+
+            if (num == text_Sprites.Length)
+                num = 0;
+
+            text_Image.sprite = text_Sprites[num];
+        }
+    }
+
+    public void ChapterStartCoroutine()
+    {
+        coroutine = StartCoroutine( TextImageChangeCoroutine() );
+    }
+
+    public void ChapterStopCoroutine()
+    {
+        StopCoroutine( coroutine );
     }
 }
