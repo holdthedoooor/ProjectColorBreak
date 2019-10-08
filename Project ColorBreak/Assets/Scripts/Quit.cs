@@ -27,6 +27,8 @@ public class Quit : MonoBehaviour
     }
     public QuitStatus quitStatus;
 
+    public int num = 0;
+
     // Update is called once per frame
     void Update()
     {
@@ -38,6 +40,15 @@ public class Quit : MonoBehaviour
                 {
                     case QuitStatus.Lobby:
                         //종료하시겠습니까 창 출력
+                        num++;
+                        if (num == 1)
+                        {
+                            UIManager.instance.quitUI.go_QuitUI.SetActive( true );
+                            num = -1;
+                        }
+                        else if (num == 0)
+                            UIManager.instance.quitUI.go_QuitUI.SetActive( false );
+
                         break;
 
                     case QuitStatus.ChapterSelect:
@@ -45,6 +56,7 @@ public class Quit : MonoBehaviour
                         UIManager.instance.chapterSelectUI.ChapterStopCoroutine();
                         UIManager.instance.lobbyUI.go_LobbyUI.SetActive( true );
                         UIManager.instance.lobbyUI.LobbyStartCoroutine();
+                        quitStatus = QuitStatus.Lobby;
                         break;
 
                     case QuitStatus.StageSelect:
