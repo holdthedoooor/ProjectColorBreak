@@ -8,8 +8,9 @@ public class Obstacle : LivingEntity
     //장애물 종류
     public enum ObstaclesType
     {
-        Standard,
-        SafeBlock,
+        Standard, //기본 
+        SafeBlock, //색 상관없이 점수 획득
+        DeathBlock, //무조건 죽음
         AutoColorChange, //자동으로 색이 변하는 블록
         DamagedColorChange //데미지를 입을때마다 색이 변하는 블록
     }
@@ -51,9 +52,15 @@ public class Obstacle : LivingEntity
 
     private int obstacleScore = 1;
 
-    public GameObject[]       particles;
-    public Material[]       colorMaterials;
-    private SpriteRenderer     spriteRenderer;
+    public GameObject[]         particles;
+    //public Material[]           colorMaterials;
+    public Sprite[]             colorSprites;
+    public Sprite[]             crackSprites;
+    public Sprite[]             crack1Sprites;
+    public Sprite[]             crack2Sprites;
+    public Sprite               deathSprite;
+    public Sprite               safeSprite;
+    private SpriteRenderer      spriteRenderer;
 
     private Text         lifeText;
 
@@ -74,7 +81,7 @@ public class Obstacle : LivingEntity
     protected override void OnEnable()
     {
         base.OnEnable();
-        SetLifeUI();
+        //SetLifeUI();
 
         if(obstaclesType == ObstaclesType.AutoColorChange)
             StartCoroutine( ColorChangeCoroutine() );
@@ -86,10 +93,10 @@ public class Obstacle : LivingEntity
         {
             isBreakable = false;
             obstacleScore = 0;
-            colorType = ColorType.Gray;
         }
 
-        SetMaterial();
+        //SetMaterial();
+        SetSprite();
 
         //장애물 타입이 Move면 MoveCoroutine 실행
         if (moveType == MoveType.MoveX)
@@ -107,24 +114,26 @@ public class Obstacle : LivingEntity
     {
         base.OnDamage();
 
-        SetLifeUI();
+        //SetLifeUI();
 
+        /*
         if (obstaclesType == ObstaclesType.DamagedColorChange)
         {
             int colorNum = 0;
             bool isRandomColor = true;
             ChangeColor( colorNum, isRandomColor );
-        }
+        }*/
 
     }
 
+    /*
     void SetLifeUI()
     {
         if (curLife > 1)
             lifeText.text = curLife.ToString();
         else
             lifeText.text = " ";
-    }
+    }*/
 
     void AddScore()
     {
@@ -141,6 +150,7 @@ public class Obstacle : LivingEntity
         StageManager.instance.AddScoreAndDamage( obstacleScore );
     }
 
+    /*
     private void SetMaterial()
     {
         if ((int)colorType >= colorMaterials.Length)
@@ -148,6 +158,24 @@ public class Obstacle : LivingEntity
 
         //colorType에 맞는 material을 설정
         spriteRenderer.material = colorMaterials[(int)colorType];
+    }*/
+
+    private void SetSprite()
+    {
+        switch (obstaclesType)
+        {
+            case ObstaclesType.Standard:
+                if ((int)colorType >= colorSprites.Length)
+                    return;
+                spriteRenderer.sprite = colorSprites[(int)colorType];
+                break;
+            case ObstaclesType.SafeBlock:
+                spriteRenderer.sprite = safeSprite;
+                break;
+            case ObstaclesType.DeathBlock:
+                spriteRenderer.sprite = deathSprite;
+                break;
+        }
     }
 
     private IEnumerator MoveXCoroutine()
@@ -190,6 +218,7 @@ public class Obstacle : LivingEntity
         }
     }
 
+    /*
     private void ChangeColor( int colorNum = 0, bool isRandom = true)
     {
         int colorMaxNum = colorMaterials.Length -1;
@@ -211,8 +240,7 @@ public class Obstacle : LivingEntity
         }
               
         SetMaterial();
-
-    }
+    }*/
 
     private IEnumerator ColorChangeCoroutine()
     {
@@ -243,7 +271,7 @@ public class Obstacle : LivingEntity
                         break;
                 }
 
-                SetMaterial();
+                //SetMaterial();
             }
             yield return null;
         }

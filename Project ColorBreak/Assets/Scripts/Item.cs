@@ -10,7 +10,7 @@ public class Item : LivingEntity
     }
     public ItemType itemType;
 
-    public Material[] colorMaterials;
+    public Sprite[] colorSprites;
     private SpriteRenderer spriteRenderer;
 
     void Awake()
@@ -22,16 +22,16 @@ public class Item : LivingEntity
 
     void Start()
     {
-        SetMaterial();
+        SetSprite();
     }
 
-    private void SetMaterial()
+    private void SetSprite()
     {
-        if ((int)colorType >= colorMaterials.Length)
+        if ((int)colorType >= colorSprites.Length)
             return;
 
         //colorType에 맞는 material을 설정
-        spriteRenderer.material = colorMaterials[(int)colorType];
+        spriteRenderer.sprite = colorSprites[(int)colorType];
     }
 
     override public void OnDamage()

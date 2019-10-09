@@ -271,7 +271,7 @@ public class PlayerCtrl : LivingEntity
 
             if (obstacle != null)
             {
-                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.colorType != ColorType.Gray)
+                if (obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.obstaclesType != Obstacle.ObstaclesType.SafeBlock)
                 {
                     OnDamage();
                 }
