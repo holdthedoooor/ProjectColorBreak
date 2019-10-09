@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7962729550380040627}
   - component: {fileID: 2577796524899146009}
   m_Layer: 0
-  m_Name: Stage 6_Prefab
+  m_Name: Stage 1-5_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,6 +796,11 @@ PrefabInstance:
       propertyPath: isBreakable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
 --- !u!4 &4744283105986094771 stripped
@@ -985,6 +990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: colorType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
