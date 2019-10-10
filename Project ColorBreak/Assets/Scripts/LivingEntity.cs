@@ -31,9 +31,7 @@ public class LivingEntity : MonoBehaviour
     public int               maxLife;
     //현재 체력
     public int               curLife { get; protected set; }
-    [Header( "체크 해제하면 세이프 블럭이 됩니다!" )]
-    //파괴가능 여부
-    public bool isBreakable = true;
+
     //죽을 때 실행되는 이벤트
     protected event Action   onDie;
 
@@ -46,9 +44,6 @@ public class LivingEntity : MonoBehaviour
     //데미지를 받았을 때 실행되는 함수
     virtual public void OnDamage()
     {
-        if (isBreakable == false)//부실수 없는 장애물의 경우
-            return;
-
         curLife -= 1;
 
         if (curLife <= 0)

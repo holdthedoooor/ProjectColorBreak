@@ -16,6 +16,8 @@ public class Obstacle : LivingEntity
         AutoColorChange, //자동으로 색이 변하는 블록
         DamagedColorChange //데미지를 입을때마다 색이 변하는 블록
     }
+    [Header("CreakBlock - 충돌 시 튕기는 블럭, 최대 체력을 1~3으로 설정")]
+    [Header( "BounceBlock - 충돌 시 1회 튕긴 다음 충돌 시 파괴되는 블럭, 최대 체력을 2로 설정" )]
     public ObstaclesType obstaclesType;
 
     public enum MoveType
@@ -27,8 +29,9 @@ public class Obstacle : LivingEntity
     [Header("MoveX - X좌표로 이동, MoveY - Y좌표로 이동, Fix - 고정")]
     public MoveType moveType;
 
+    /*
     [Header("체크하시면 파괴되면서 튀기고 체크안하면 그냥 파괴만됩니다.")]
-    public bool isBounceBlock = false;
+    public bool isBounceBlock = false;*/
     
     [Header("체크하시면 플레이어가 떨어지고 있을 때만 장애물과 충돌합니다.")]
     [Header("일단 모든 장애물에서 체크해주세요." )]
@@ -60,6 +63,8 @@ public class Obstacle : LivingEntity
     public Sprite[]             crackSprites;
     public Sprite[]             crack1Sprites;
     public Sprite[]             crack2Sprites;
+    public Sprite[]             bounceSprites;
+    public Sprite[]             bounce1Sprites;
     public Sprite               deathSprite;
     public Sprite               safeSprite;
     private SpriteRenderer      spriteRenderer;
@@ -93,7 +98,6 @@ public class Obstacle : LivingEntity
     {
         if (obstaclesType == ObstaclesType.SafeBlock)
         {
-            isBreakable = false;
             obstacleScore = 0;
         }
 
@@ -125,7 +129,21 @@ public class Obstacle : LivingEntity
             bool isRandomColor = true;
             ChangeColor( colorNum, isRandomColor );
         }*/
+        if (colorType == ColorType.White)
+            return;
 
+        switch(obstaclesType)
+        {
+            case ObstaclesType.CrackBlock:
+                if (curLife == 2)
+                    spriteRenderer.sprite = crack1Sprites[(int)colorType];
+                else if (curLife == 1)
+                    spriteRenderer.sprite = crack2Sprites[(int)colorType];
+                break;
+            case ObstaclesType.BounceBlock:
+                spriteRenderer.sprite = bounce1Sprites[(int)colorType];
+                break;
+        }
     }
 
     /*
@@ -146,7 +164,7 @@ public class Obstacle : LivingEntity
         else
             obstacleScore = 1;
 
-        if (isBreakable == false || obstaclesType== ObstaclesType.SafeBlock)
+        if (obstaclesType == ObstaclesType.SafeBlock)
             obstacleScore = 0;
 
         StageManager.instance.AddScoreAndDamage( obstacleScore );
@@ -176,6 +194,23 @@ public class Obstacle : LivingEntity
                 break;
             case ObstaclesType.DeathBlock:
                 spriteRenderer.sprite = deathSprite;
+                break;
+            case ObstaclesType.CrackBlock:
+                if (colorType != ColorType.White)
+                {
+                    if (maxLife == 1)
+                        spriteRenderer.sprite = crack2Sprites[(int)colorType];
+                    else if (maxLife == 2)
+                        spriteRenderer.sprite = crack1Sprites[(int)colorType];
+                    else if (maxLife == 3)
+                        spriteRenderer.sprite = crackSprites[(int)colorType];
+                }
+                break;
+            case ObstaclesType.BounceBlock:
+                if (colorType != ColorType.White && maxLife == 2)
+                    spriteRenderer.sprite = bounceSprites[(int)colorType];
+                break;
+            default:
                 break;
         }
     }

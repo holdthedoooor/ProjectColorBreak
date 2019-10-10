@@ -281,30 +281,35 @@ public class PlayerCtrl : LivingEntity
                 {
                     if (other.transform.position.y < playerTr.position.y)
                     {
-                        //파괴 불가능한 장애물
-                        if (obstacle.isBreakable == false)
+                        switch (obstacle.obstaclesType)
                         {
-                            StartCoroutine( BounceBall() ); ;
-                            return;
-                        }
+                            case Obstacle.ObstaclesType.Standard:
+                                if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
+                                    obstacle.OnDamage();
+                                break;
+                            case Obstacle.ObstaclesType.SafeBlock:
+                                StartCoroutine( BounceBall() ); ;
+                                break;
+                            case Obstacle.ObstaclesType.CrackBlock:
+                                if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
+                                {
+                                    if (obstacle.status != Status.Die)
+                                        StartCoroutine( BounceBall() );
 
-                        //색이 같으면
-                        if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
-                        {
-                            if (obstacle.isBounceBlock)
-                            {
-                                if (obstacle.status != Status.Die)
-                                    StartCoroutine( BounceBall() );
+                                    obstacle.OnDamage();
+                                }
+                                break;
+                            case Obstacle.ObstaclesType.BounceBlock:
+                                if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
+                                {
+                                    obstacle.OnDamage();
 
-                                obstacle.OnDamage();
-                            }
-                            else
-                            {
-                                obstacle.OnDamage();
-
-                                if (obstacle.status != Status.Die)
-                                    StartCoroutine( BounceBall() );
-                            }
+                                    if (obstacle.status != Status.Die)
+                                        StartCoroutine( BounceBall() );
+                                }
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
