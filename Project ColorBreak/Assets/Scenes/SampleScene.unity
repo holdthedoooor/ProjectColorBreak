@@ -14923,7 +14923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4ceecf23ae8ac4dacf4712a3d02050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMasterMode: 0
+  isMasterMode: 1
   isDataReset: 1
   isGameOver: 0
   isPause: 0
@@ -16938,7 +16938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorType: 0
   maxLife: 0
-  isBreakable: 1
   moveVec: {x: 0, y: 0, z: 0}
   bouncePower: 0
   isBounce: 0
@@ -17951,22 +17950,22 @@ PrefabInstance:
         type: 3}
       propertyPath: go_StagePrefab
       value: 
-      objectReference: {fileID: 8151959711464767348, guid: 954d5e413b317764580df7149b8da02d,
+      objectReference: {fileID: 8151959711464767348, guid: 458c8e007cd95a049acd72776b05594f,
         type: 3}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[0]
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[1]
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905425, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
       propertyPath: checkPoints.Array.data[2]
-      value: 6
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
