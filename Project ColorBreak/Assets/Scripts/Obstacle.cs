@@ -9,8 +9,10 @@ public class Obstacle : LivingEntity
     public enum ObstaclesType
     {
         Standard, //기본 
-        SafeBlock, //색 상관없이 점수 획득
+        SafeBlock, //색 상관없이 안전한 블럭
         DeathBlock, //무조건 죽음
+        CrackBlock,
+        BounceBlock,
         AutoColorChange, //자동으로 색이 변하는 블록
         DamagedColorChange //데미지를 입을때마다 색이 변하는 블록
     }

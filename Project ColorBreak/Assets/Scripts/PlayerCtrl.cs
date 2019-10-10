@@ -82,7 +82,7 @@ public class PlayerCtrl : LivingEntity
         borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).x *(Camera.main.rect.width ) - playerCol.radius * transform.localScale.x;
         //Screen.width - 게임 화면의 크기를 픽셀로 반환함.
         //ScreenToWorldPoint - 게임 화면의 픽셀위치를 월드포인트로 반환함.
-        Debug.Log( borderDist );
+
         trailRenderer.material = colorMt[(int)colorType];
 
         playerSr.sprite = sprites[(int)colorType];

@@ -13,16 +13,17 @@ public class StopCamera : MonoBehaviour
     private void Start()
     {
         cameraTr = Camera.main.GetComponent<Transform>();
-        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).y *(Camera.main.rect.height) / 2 + GetComponent<BoxCollider2D>().size.y/2;
+        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).y * (Camera.main.rect.height) / 2 + GetComponent<BoxCollider2D>().size.y/2;
     }
 
     private void Update()
     {
-        float cameraWithDist = Mathf.Abs( transform.position.y - cameraTr.position.y);
-
+        float cameraWithDist = Mathf.Abs( (transform.position.y - 0.005f) - cameraTr.position.y);
+        Debug.Log( "cameraTr : " + Camera.main.transform.position.y );
+        Debug.Log( "transform.position.y - cameraTr.position.y : " + Mathf.Abs( transform.position.y - cameraTr.position.y ) );
+        Debug.Log( "borderDist : " + borderDist );
         if(cameraWithDist <= borderDist)
              Camera.main.GetComponent<FollowCamera>().StopCamera();
-
     }
 
 }
