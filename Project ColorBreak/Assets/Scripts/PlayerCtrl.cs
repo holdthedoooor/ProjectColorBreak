@@ -123,7 +123,7 @@ public class PlayerCtrl : LivingEntity
         isBounce = true;
         bouncePower = bounceMaxPower;
 
-        yield return new WaitForSeconds( 2.5f );
+        yield return new WaitUntil( () => bouncePower <=0);
 
         isBounce = false;
     }
@@ -209,19 +209,19 @@ public class PlayerCtrl : LivingEntity
             bouncePower -= gravity;
 
         //튀는 현상 예외처리
-        float boundary = 7;
-        if (Mathf.Abs( slideVec.x ) > boundary)
-        {
-            slideVec.x = 0;
-        }
+        //float boundary = 7;
+        //if (Mathf.Abs( slideVec.x ) > boundary)
+        //{
+        //    slideVec.x = 0;
+        //}
 
         ////이동시키는 부분
         moveVec = Vector3.down;
         moveVec.x += slideVec.x;
         moveVec.y += bouncePower * Time.fixedDeltaTime;
 
-        //playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
-        playerRb.velocity = moveVec * speed * Time.fixedDeltaTime;
+        playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
+        //playerRb.velocity = moveVec * speed * Time.fixedDeltaTime;
 
         //화면 끝 에외처리
         if (playerTr.position.x > borderDist)
