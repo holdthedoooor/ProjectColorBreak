@@ -13,9 +13,10 @@ public class StageSlot : MonoBehaviour
     }
     public StageStatus stageStatus;
 
-    public   Text         stageNumberText;
     public   Image        stageSlotImage;  
     public   Image[]      starImages;
+    public   Image        stageNumberImage;
+    public   Sprite[]     stageNumberSprites;
     public   Sprite       rockSprite;
     public   Sprite       openSprite;
     public   Button       stageSelectButton;
@@ -30,7 +31,7 @@ public class StageSlot : MonoBehaviour
 
     void Awake()
     {
-        stageNumberText.text = (stageNumber + 1).ToString();
+        stageNumberImage.sprite = stageNumberSprites[stageNumber];
     }
 
     //해당 스테이지가 끝나고 점수가 bestScore보다 높을 때 실행
