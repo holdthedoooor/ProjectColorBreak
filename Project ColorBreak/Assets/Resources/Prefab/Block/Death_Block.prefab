@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3240943566343771838}
   - component: {fileID: 4545778032593463132}
   m_Layer: 0
-  m_Name: Box Obstacle
+  m_Name: Death_Block
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,10 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorType: 0
   maxLife: 0
-  isBreakable: 1
-  obstaclesType: 0
+  obstaclesType: 2
   moveType: 2
-  isBounceBlock: 0
   isCollsionUp: 1
   maxPositionX: 0
   minPositionX: 0
@@ -136,7 +134,7 @@ SpriteRenderer:
   m_SortingLayerID: 2040245699
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1ff6fb3ad3c4b9b4ba82c25c70128b38, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c10cccbef55629e419616addab272e2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -160,18 +158,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0066366494, y: 0.0048304796}
+  m_Offset: {x: -0.00088846684, y: -0.23492494}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.95, y: 0.48}
+    oldSize: {x: 1.92, y: 0.89}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9370975, y: 0.46731544}
+  m_Size: {x: 1.8713315, y: 0.3782814}
   m_EdgeRadius: 0
 --- !u!1001 &5701411209464486210
 PrefabInstance:
@@ -180,16 +178,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8625381213675161632}
     m_Modifications:
-    - target: {fileID: 1052389147655520724, guid: 35abdcb5f6c58904697c4981e813587d,
-        type: 3}
-      propertyPath: m_Name
-      value: LifeUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 1052389147655520724, guid: 35abdcb5f6c58904697c4981e813587d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1052389147655520744, guid: 35abdcb5f6c58904697c4981e813587d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -319,6 +307,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052389147655520724, guid: 35abdcb5f6c58904697c4981e813587d,
+        type: 3}
+      propertyPath: m_Name
+      value: LifeUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052389147655520724, guid: 35abdcb5f6c58904697c4981e813587d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052389147655520726, guid: 35abdcb5f6c58904697c4981e813587d,
         type: 3}

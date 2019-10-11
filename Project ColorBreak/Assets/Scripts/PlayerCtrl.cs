@@ -259,10 +259,8 @@ public class PlayerCtrl : LivingEntity
 
         if ((int)color >= sprites.Length)
             playerSr.sprite = sprites[sprites.Length - 1];
-
     }
 
-    
     private void OnTriggerEnter2D( Collider2D other )
     {
         if (other.tag == "Obstacle")
