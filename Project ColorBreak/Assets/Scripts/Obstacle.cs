@@ -246,7 +246,7 @@ public class Obstacle : LivingEntity
             }
             else if (transform.position.y >= maxPositionY)
             {
-                transform.position = new Vector3( transform.position.x, minPositionY, transform.position.z );
+                transform.position = new Vector3( transform.position.x, maxPositionY, transform.position.z );
                 direction = -1;
             }
 
