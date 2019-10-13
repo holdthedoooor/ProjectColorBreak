@@ -27,6 +27,7 @@ public class PlayerCtrl : LivingEntity
 
     private float touchStartTime = 0f;
     private float awakedTime = 0f;
+    private float swipeTime = 0f;
     private float borderDist;
 
     private bool isSwiped = false;
@@ -114,7 +115,7 @@ public class PlayerCtrl : LivingEntity
             else
                 return;
         }
-
+        
         Moving();
     }
 
@@ -150,7 +151,16 @@ public class PlayerCtrl : LivingEntity
             touchStartTime = Time.time;
         }
 
-        if(isSwiped == false)
+        if (Input.GetMouseButtonUp( 0 ))
+        {
+            isSwiped = false;
+            startTouchPos = Input.mousePosition;
+            touchStartTime = Time.time;
+            swipeTime = 0f;
+        }
+
+
+        if (isSwiped == false)
         {
             isSwiped = Time.time - touchStartTime > 0.1f;
 
@@ -158,10 +168,11 @@ public class PlayerCtrl : LivingEntity
 
         isSwiped &= Input.touchCount == 1;
 
-        
 
         if (Input.GetMouseButton( 0 ) && isSwiped == true)
         {
+            swipeTime += Time.fixedDeltaTime;
+
             endTouchPos = Input.mousePosition;
 
             touchDist = endTouchPos - startTouchPos;
@@ -174,6 +185,7 @@ public class PlayerCtrl : LivingEntity
         {
             slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
             isSwiped = false;
+            swipeTime = 0f;
         }
 
 
@@ -185,11 +197,26 @@ public class PlayerCtrl : LivingEntity
             touchStartTime = Time.time;
         }
 
+        if (Input.GetMouseButtonUp( 0 ))
+        {
+            isSwiped = false;
+            startTouchPos = Input.mousePosition;
+            touchStartTime = Time.time;
+            swipeTime = 0f;
+        }
+
+
         if (isSwiped == false)
+        {
             isSwiped = Time.time - touchStartTime > 0.1f;
+
+        }
+
 
         if (Input.GetMouseButton( 0 ) && isSwiped == true)
         {
+            swipeTime += Time.fixedDeltaTime;
+
             endTouchPos = Input.mousePosition;
 
             touchDist = endTouchPos - startTouchPos;
@@ -202,18 +229,25 @@ public class PlayerCtrl : LivingEntity
         {
             slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
             isSwiped = false;
+            swipeTime = 0f;
         }
 
 #endif
         if (bouncePower > 0)
             bouncePower -= gravity;
 
-        //튀는 현상 예외처리
-        //float boundary = 7;
-        //if (Mathf.Abs( slideVec.x ) > boundary)
-        //{
-        //    slideVec.x = 0;
-        //}
+        //단시간(순간) 튀는 현상 예외처리
+        float boundary = 7;
+        if (Mathf.Abs( slideVec.x ) > boundary && swipeTime < 0.6f)
+        {
+            slideVec.x = 0;
+            moveVec.x = 0;
+            isSwiped = false;
+            swipeTime = 0f;
+            touchStartTime = 0f;
+            startTouchPos = Vector3.zero;
+            endTouchPos = Vector3.zero;
+        }
 
         ////이동시키는 부분
         moveVec = Vector3.down;
@@ -230,7 +264,7 @@ public class PlayerCtrl : LivingEntity
             moveVec.x = 0;
             slideVec = Vector3.zero;
             playerRb.velocity = new Vector3( 0, playerRb.velocity.y, 0 );
-            
+
         }
         else if (playerTr.position.x < -borderDist)
         {
@@ -355,6 +389,7 @@ public class PlayerCtrl : LivingEntity
         speed = 0f;
         touchStartTime = 0f;
         awakedTime = 0f;
+        swipeTime = 0f;
 
         isSwiped = false;
         isBounce = false;
@@ -365,3 +400,4 @@ public class PlayerCtrl : LivingEntity
     }
 
 }
+
