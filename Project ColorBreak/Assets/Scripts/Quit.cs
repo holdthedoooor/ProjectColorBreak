@@ -32,7 +32,7 @@ public class Quit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.Android)
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
