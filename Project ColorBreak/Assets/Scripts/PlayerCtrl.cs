@@ -119,6 +119,15 @@ public class PlayerCtrl : LivingEntity
         Moving();
     }
 
+    void CancleSwipe()
+    {
+        isSwiped = false;
+        startTouchPos = endTouchPos;
+        endTouchPos = Vector3.zero;
+        swipeTime = 0f;
+    }
+
+
     IEnumerator BounceBall()
     {
         isBounce = true;
@@ -147,45 +156,58 @@ public class PlayerCtrl : LivingEntity
 
         if (Input.GetMouseButtonDown( 0 ))
         {
+            CancleSwipe();
+            slideVec.x = 0f;
             startTouchPos = Input.mousePosition;
-            touchStartTime = Time.time;
-        }
-
-        if (Input.GetMouseButtonUp( 0 ))
-        {
-            isSwiped = false;
-            startTouchPos = Input.mousePosition;
-            touchStartTime = Time.time;
-            swipeTime = 0f;
-        }
-
-
-        if (isSwiped == false)
-        {
-            isSwiped = Time.time - touchStartTime > 0.1f;
-
         }
 
         isSwiped &= Input.touchCount == 1;
 
-
-        if (Input.GetMouseButton( 0 ) && isSwiped == true)
+        if (Input.GetMouseButton( 0 ))
         {
-            swipeTime += Time.fixedDeltaTime;
+            if (isSwiped == false) //스와이프로 판정이 안됬을때
+            {
+                swipeTime += Time.fixedDeltaTime;
 
-            endTouchPos = Input.mousePosition;
+                if (swipeTime > Time.fixedDeltaTime * 2)
+                    isSwiped = true;
 
-            touchDist = endTouchPos - startTouchPos;
+            }
+            else if (isSwiped == true)//스와이프로 판정이 됐을때
+            {
 
-            slideVec = Vector3.Slerp( slideVec, touchDist/100, 1.0f ) * touchAmount;
+                endTouchPos = Input.mousePosition;
 
-            startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
+                touchDist = endTouchPos - startTouchPos;//팍튈때 x값이 500~이상 뜸
+
+                float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
+                //시간대비 이동한거리(x좌표기준)
+
+
+                if (swipeSpeed > 130f) //완전히 튕기는 경우
+                {
+                    touchDist = Vector3.zero;
+                    CancleSwipe();
+                }
+                else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
+                {
+                    touchDist /= 2f;
+                }
+
+                slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
+
+                startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
+
+            }
+
+        }
+        else if (Input.GetMouseButtonUp( 0 ))
+        {
+            CancleSwipe();
         }
         else
         {
             slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
-            isSwiped = false;
-            swipeTime = 0f;
         }
 
 
@@ -193,61 +215,61 @@ public class PlayerCtrl : LivingEntity
 
         if (Input.GetMouseButtonDown( 0 ))
         {
+            CancleSwipe();
+            slideVec.x = 0f;
             startTouchPos = Input.mousePosition;
-            touchStartTime = Time.time;
         }
 
-        if (Input.GetMouseButtonUp( 0 ))
+        if (Input.GetMouseButton( 0 ))
         {
-            isSwiped = false;
-            startTouchPos = Input.mousePosition;
-            touchStartTime = Time.time;
-            swipeTime = 0f;
+            if (isSwiped == false) //스와이프로 판정이 안됬을때
+            {
+                swipeTime += Time.fixedDeltaTime;
+
+                if (swipeTime > Time.fixedDeltaTime * 2)
+                    isSwiped = true;
+
+            }
+            else if (isSwiped == true)//스와이프로 판정이 됐을때
+            {
+
+                endTouchPos = Input.mousePosition;
+
+                touchDist = endTouchPos - startTouchPos;//팍튈때 x값이 500~이상 뜸
+
+                float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
+                     //시간대비 이동한거리(x좌표기준)
+
+
+                if (swipeSpeed > 130f) //완전히 튕기는 경우
+                {
+                    touchDist = Vector3.zero;
+                    CancleSwipe();
+                }
+                else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
+                {
+                    touchDist /= 2f;
+                }
+
+                slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
+
+                startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
+
+            }
+
         }
-
-
-        if (isSwiped == false)
+        else if (Input.GetMouseButtonUp( 0 ))
         {
-            isSwiped = Time.time - touchStartTime > 0.1f;
-
-        }
-
-
-        if (Input.GetMouseButton( 0 ) && isSwiped == true)
-        {
-            swipeTime += Time.fixedDeltaTime;
-
-            endTouchPos = Input.mousePosition;
-
-            touchDist = endTouchPos - startTouchPos;
-
-            slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
-
-            startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
+            CancleSwipe();
         }
         else
         {
             slideVec = Vector3.Slerp( slideVec, Vector3.zero, 0.1f );
-            isSwiped = false;
-            swipeTime = 0f;
         }
 
 #endif
         if (bouncePower > 0)
             bouncePower -= gravity;
-
-        //단시간(순간) 튀는 현상 예외처리
-        float boundary = 7;
-        if (Mathf.Abs( slideVec.x ) > boundary && swipeTime < 0.6f)
-        {
-            slideVec.x = 0;
-            moveVec.x = 0;
-            isSwiped = false;
-            swipeTime = 0f;
-            touchStartTime = 0f;
-            startTouchPos = Vector3.zero;
-            endTouchPos = Vector3.zero;
-        }
 
         ////이동시키는 부분
         moveVec = Vector3.down;
@@ -261,17 +283,13 @@ public class PlayerCtrl : LivingEntity
         if (playerTr.position.x > borderDist)
         {
             playerTr.position = new Vector3( borderDist, playerTr.position.y, playerTr.position.z );
-            moveVec.x = 0;
-            slideVec = Vector3.zero;
-            playerRb.velocity = new Vector3( 0, playerRb.velocity.y, 0 );
+          
 
         }
         else if (playerTr.position.x < -borderDist)
         {
             playerTr.position = new Vector3( -borderDist, playerTr.position.y, playerTr.position.z );
-            slideVec = Vector3.zero;
-            moveVec.x = 0;
-            playerRb.velocity = new Vector3( 0, playerRb.velocity.y, 0 );
+
 
         }
 
