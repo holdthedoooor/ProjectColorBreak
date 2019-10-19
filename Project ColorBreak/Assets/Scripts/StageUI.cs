@@ -12,8 +12,8 @@ public class StageUI : MonoBehaviour
     public Text[]        starTexts;
 
     private float ratio;
-    private float minPositionX = -365f;
-    private float maxPositionX = 365f;
+    private float minPositionX = -400f;
+    private float maxPositionX = 400f;
 
     //현재 스코어 갱신
     public void UpdateScoreText( int _score )
