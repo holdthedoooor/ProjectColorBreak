@@ -48,6 +48,7 @@ public class StageManager : MonoBehaviour
         UIManager.instance.chapterSelectUI.chapter3_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[2].GetComponentsInChildren<StageSlot>();
         UIManager.instance.chapterSelectUI.chapter4_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[3].GetComponentsInChildren<StageSlot>();
         UIManager.instance.chapterSelectUI.chapter5_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[4].GetComponentsInChildren<StageSlot>();
+
         Debug.Log( UIManager.instance.chapterSelectUI.go_SlotParents[0].transform.parent.name );
         
 

@@ -310,7 +310,7 @@ public class PlayerCtrl : LivingEntity
         playerSr.sprite = sprites[(int)colorType];
 
         if ((int)color >= sprites.Length)
-            playerSr.sprite = sprites[sprites.Length - 1];
+            playerSr.sprite = sprites[(int)color];
     }
 
     private void OnTriggerEnter2D( Collider2D other )
