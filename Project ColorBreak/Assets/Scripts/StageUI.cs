@@ -8,6 +8,7 @@ public class StageUI : MonoBehaviour
     public GameObject    go_StageUI;
     public Text          scoreText;
     public Image         scoreSlider;
+    public Sprite[]      sliderSprites;
     public Image[]       starImages;
     public Text[]        starTexts;
 
@@ -48,6 +49,7 @@ public class StageUI : MonoBehaviour
 
     public void ActivateUI()
     {
+        scoreSlider.sprite = sliderSprites[UIManager.instance.currentChapter - 1];
         ResetStar();
         UpdateScoreText( 0 );
         scoreSlider.fillAmount = 0f;
