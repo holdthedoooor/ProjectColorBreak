@@ -24,7 +24,8 @@ public class UIManager : MonoBehaviour
     public Sprite               starSprite; 
     public Sprite               blankStarSprite;
     public StageUI              stageUI;
-    public GameOverUI           gameOverUI;
+    public YouDiedUI            youDiedUI;
+    public StageClearUI         stageClearUI;
     public StageInformationUI   stageInformationUI;
     public BossStageInformationUI bossStageInformationUI;
     public LobbyUI              lobbyUI;
@@ -54,7 +55,6 @@ public class UIManager : MonoBehaviour
                 for (int i = 0; i < 3; i++)
                 {
                     stageUI.starImages[i].sprite = starSprite;
-                    gameOverUI.stageStarImages[i].sprite = starSprite;
                 }
                 starCount = 3;
             }
@@ -63,14 +63,12 @@ public class UIManager : MonoBehaviour
                 for (int i = 0; i < 2; i++)
                 {
                     stageUI.starImages[i].sprite = starSprite;
-                    gameOverUI.stageStarImages[i].sprite = starSprite;
                 }
                 starCount = 2;
             }
             else if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[0])
             {
                 stageUI.starImages[0].sprite = starSprite;
-                gameOverUI.stageStarImages[0].sprite = starSprite;
                 starCount = 1;
             }
         }
@@ -84,12 +82,10 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log( "스테이지 시작" );
             stageUI.ActivateUI();
-            gameOverUI.StageResetStar();
         }
         else
         {
             bossStageUI.ActivateUI();
-            gameOverUI.BossStageResetStar();
         }
     }
 
@@ -103,9 +99,6 @@ public class UIManager : MonoBehaviour
             //starCount가 1개 이상이면 Stage Clear
             if (starCount > 0 && StageManager.instance.isGoal)
             {
-                gameOverUI.gameoverText.text = "STAGE CLEAR!";
-                gameOverUI.gameoverText.color = Color.blue;
-
                 //만약 현재 stageSlot이 Open만 된 상태였다면 Clear로 변경
                 if ( currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
                 {
@@ -126,37 +119,14 @@ public class UIManager : MonoBehaviour
                         bossStageSlot.BossStageSlotOpen();
                     }
                 }
+                stageClearUI.S_ActiveClearUI();
             }
+            //클리어 못했을 시
             else
             {
-                gameOverUI.gameoverText.text = "GAME OVER";
-                gameOverUI.gameoverText.color = Color.red;
+                youDiedUI.S_ActiveYouDiedUI();
             }
-
-            if (StageManager.instance.currentStageSlot.stageNumber + 1 != stageSlots.Length)
-            {
-                if(stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1] != null)
-                {
-                    if (stageSlots[StageManager.instance.currentStageSlot.stageNumber + 1].stageStatus != StageSlot.StageStatus.Rock)
-                        nextButton.interactable = true;
-                    else
-                        nextButton.interactable = false;
-                }
-                else
-                    nextButton.interactable = false;
-            }
-            else
-            {
-                if (bossStageSlot.bossStageStatus != BossStageSlot.BossStageStatus.Rock)
-                    nextButton.interactable = true;
-                else
-                    nextButton.interactable = false;
-            }
-
-            gameOverUI.gameoverScoreText.text = StageManager.instance.score.ToString();
             stageUI.DeactivateUI();
-            gameOverUI.go_StageGameoverUI.SetActive( true );
-
         }
         //보스 스테이지라면
         else
@@ -164,32 +134,17 @@ public class UIManager : MonoBehaviour
             if(StageManager.instance.currentBossStageSlot.currentHp <= 0)
             {
                 if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[2])
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        gameOverUI.bossStageStarImages[i].sprite = starSprite;
-                    }
                     starCount = 3;
-                }
                 else if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[1])
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        gameOverUI.bossStageStarImages[i].sprite = starSprite;
-                    }
                     starCount = 2;
-                }
                 else
-                {
-                    gameOverUI.bossStageStarImages[0].sprite = starSprite;
                     starCount = 1;
-                }
-                    
-                if(StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
+
+                if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
                 {
                     StageManager.instance.currentBossStageSlot.bossStageStatus = BossStageSlot.BossStageStatus.Clear;
-                    
-                    switch(currentChapter)
+
+                    switch (currentChapter)
                     {
                         case 1:
                             chapterSelectUI.chapters_Button[1].interactable = true;
@@ -209,17 +164,13 @@ public class UIManager : MonoBehaviour
                             break;
                     }
 
-                    if(chapterSelectUI.chapterUnlock < 2)
+                    if (chapterSelectUI.chapterUnlock < 2)
                         chapterSelectUI.chapterUnlock++;
-                }
 
-                gameOverUI.bossGameoverText.text = "BOSS CLEAR!";
-                gameOverUI.bossGameoverText.color = Color.blue;
-            }
-            else
-            {
-                gameOverUI.bossGameoverText.text = "GAME OVER";
-                gameOverUI.bossGameoverText.color = Color.red;
+                    stageClearUI.BS_ActiveClearUI();
+                }
+                else
+                    youDiedUI.BS_ActiveYouDiedUI();
             }
 
             if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
@@ -232,7 +183,6 @@ public class UIManager : MonoBehaviour
             else
                 bossNextButton.interactable = false;
 
-            gameOverUI.SetGameoverUI();
             bossStageUI.DeactivateUI();
         }
         StageManager.instance.go_Player.SetActive( false );
@@ -244,7 +194,10 @@ public class UIManager : MonoBehaviour
         if(StageManager.instance.currentStage != null)
         {
             stageUI.DeactivateUI();
-            gameOverUI.go_StageGameoverUI.SetActive( false );
+            if (starCount > 0 && StageManager.instance.isGoal)
+                stageClearUI.S_DeactiveClearUI();
+            else
+                youDiedUI.S_DeactiveYouDiedUI();
             Destroy( StageManager.instance.currentStage.gameObject );
             StageManager.instance.currentStage = null;
             StageManager.instance.currentStageSlot = null;
@@ -252,7 +205,10 @@ public class UIManager : MonoBehaviour
         else
         {
             bossStageUI.DeactivateUI();
-            gameOverUI.go_BossStageGameoverUI.SetActive( false );
+            if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
+                stageClearUI.BS_DeactiveClearUI();
+            else
+                youDiedUI.BS_DeactiveYouDiedUI();
             Destroy( StageManager.instance.currentBossStage.gameObject );
             StageManager.instance.currentBossStage = null;
             StageManager.instance.currentBossStageSlot = null;
@@ -274,7 +230,10 @@ public class UIManager : MonoBehaviour
         {
             Destroy( StageManager.instance.currentStage.gameObject );
             StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
-            gameOverUI.go_StageGameoverUI.SetActive( false );
+            if (starCount > 0 && StageManager.instance.isGoal)
+                stageClearUI.S_DeactiveClearUI();
+            else
+                youDiedUI.S_DeactiveYouDiedUI();
         }
         else
         {
@@ -286,7 +245,10 @@ public class UIManager : MonoBehaviour
             else
                 StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
 
-            gameOverUI.go_BossStageGameoverUI.SetActive( false );
+            if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
+                stageClearUI.BS_DeactiveClearUI();
+            else
+                youDiedUI.BS_DeactiveYouDiedUI();
         }
     }
 
@@ -298,7 +260,8 @@ public class UIManager : MonoBehaviour
         //일반 스테이지라면
         if(StageManager.instance.currentStageSlot != null)
         {
-            gameOverUI.go_StageGameoverUI.SetActive( false );
+            stageClearUI.S_DeactiveClearUI();
+
             Destroy( StageManager.instance.currentStage.gameObject );
 
             //다음 스테이지가 일반 스테이지라면
@@ -320,12 +283,17 @@ public class UIManager : MonoBehaviour
                 else
                     StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0]
                         , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
+                if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
+                    stageClearUI.BS_DeactiveClearUI();
+                else
+                    youDiedUI.BS_DeactiveYouDiedUI();
             }
         }
         //보스 스테이지면
         else
         {
-            gameOverUI.go_BossStageGameoverUI.SetActive( false );
+            stageClearUI.BS_DeactiveClearUI();
             Destroy( StageManager.instance.currentBossStage.gameObject );
             StageManager.instance.currentBossStageSlot = null;
             StageManager.instance.currentBossStage = null;
