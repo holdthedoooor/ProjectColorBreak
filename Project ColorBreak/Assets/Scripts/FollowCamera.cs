@@ -8,8 +8,8 @@ public class FollowCamera : MonoBehaviour
     public Transform cameraTr { get; private set; }
     private Vector3 moveVec = Vector3.zero;
     private float dumping = 2.5f;
-    public bool isMovable = true;
-
+    public bool isNearGoal = false;
+    public Vector3 stopPos = Vector3.zero;
     public Vector3 pastPlayer;
 
     //----------------------변수선언---------------------(여기까지)
@@ -31,11 +31,18 @@ public class FollowCamera : MonoBehaviour
     {
         if (StageManager.instance.isGameOver)
             return;
-        if (isMovable == false)
-            return;
 
         moveVec = cameraTr.position;
         moveVec.y = playerTr.position.y - dumping;
+
+        if(isNearGoal)
+        {
+            if (moveVec.y <= stopPos.y)
+            {
+                moveVec.y = stopPos.y;
+            }
+        }
+       
 
         cameraTr.position = moveVec;   
     }
@@ -47,17 +54,19 @@ public class FollowCamera : MonoBehaviour
 
     public void StopCamera()
     {
-        isMovable = false;
+        isNearGoal = true;
+        stopPos = transform.position;
     }
+
 
     public void MoveCamera()
     {
-        isMovable = true;
+        //isMovable = true;
     }
 
     public void SetCamera()
     {
-        isMovable = true;
+        isNearGoal = false;
         cameraTr.position = new Vector3( 0, 4.6f, -10 );
     }
 
