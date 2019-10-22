@@ -17,7 +17,7 @@ public class PlayerCtrl : LivingEntity
     private TrailRenderer trailRenderer;
     private FollowCamera followCamera;
     private Transform playerImage;
-    private Rigidbody2D playerRb;
+    public Rigidbody2D playerRb;
 
     private PlayerState playerState = PlayerState.Start;
     private Vector3 slideVec = Vector3.zero;
@@ -99,6 +99,7 @@ public class PlayerCtrl : LivingEntity
 
         Roll();
 
+        Debug.Log( playerRb.velocity.y );
     }
 
     private void FixedUpdate()
@@ -289,8 +290,6 @@ public class PlayerCtrl : LivingEntity
         else if (playerTr.position.x < -borderDist)
         {
             playerTr.position = new Vector3( -borderDist, playerTr.position.y, playerTr.position.z );
-
-
         }
 
     }//Moving()

@@ -199,7 +199,7 @@ public class StageManager : MonoBehaviour
 
         //isMovable를 true로 바꿔줌으로 써 카메라가 다시 움직이도록 설정
         Camera.main.GetComponent<FollowCamera>().SetCamera();
-
+        StartCoroutine( Camera.main.GetComponent<FollowCamera>().PastPlayerCoroutine() );
         Quit.instance.quitStatus = Quit.QuitStatus.InGame;
     }
 

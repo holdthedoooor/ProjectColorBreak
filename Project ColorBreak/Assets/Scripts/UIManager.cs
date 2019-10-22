@@ -19,8 +19,6 @@ public class UIManager : MonoBehaviour
     private static UIManager m_instance; //싱글톤이 할당될 변수
 
     //나중에 기능별로 나눌 예정
-    public Button               nextButton;
-    public Button               bossNextButton;
     public Sprite               starSprite; 
     public Sprite               blankStarSprite;
     public StageUI              stageUI;
@@ -173,16 +171,6 @@ public class UIManager : MonoBehaviour
                     youDiedUI.BS_ActiveYouDiedUI();
             }
 
-            if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
-            {
-                if(currentChapter == 1)
-                    bossNextButton.interactable = true;
-                else
-                    bossNextButton.interactable = false;
-            }
-            else
-                bossNextButton.interactable = false;
-
             bossStageUI.DeactivateUI();
         }
         StageManager.instance.go_Player.SetActive( false );
@@ -226,17 +214,22 @@ public class UIManager : MonoBehaviour
     {
         
         StageManager.instance.go_Player.SetActive( false );
-        if (StageManager.instance.currentStageSlot != null)
+        if (StageManager.instance.currentStage != null)
         {
-            Destroy( StageManager.instance.currentStage.gameObject );
-            StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();
             if (starCount > 0 && StageManager.instance.isGoal)
                 stageClearUI.S_DeactiveClearUI();
             else
                 youDiedUI.S_DeactiveYouDiedUI();
+            Destroy( StageManager.instance.currentStage.gameObject );
+            StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();       
         }
         else
         {
+            if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
+                stageClearUI.BS_DeactiveClearUI();
+            else
+                youDiedUI.BS_DeactiveYouDiedUI();
+
             Destroy( StageManager.instance.currentBossStage.gameObject );
             StageManager.instance.panaltyPoint = 0;
             if (StageManager.instance.currentBossStageSlot.isRandom)
@@ -244,11 +237,6 @@ public class UIManager : MonoBehaviour
                     , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
             else
                 StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-
-            if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
-                stageClearUI.BS_DeactiveClearUI();
-            else
-                youDiedUI.BS_DeactiveYouDiedUI();
         }
     }
 

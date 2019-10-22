@@ -10,6 +10,7 @@ public class FollowCamera : MonoBehaviour
     private float dumping = 2.5f;
     public bool isMovable = true;
 
+    public Vector3 pastPlayer;
 
     //----------------------변수선언---------------------(여기까지)
 
@@ -36,9 +37,12 @@ public class FollowCamera : MonoBehaviour
         moveVec = cameraTr.position;
         moveVec.y = playerTr.position.y - dumping;
 
-   
-            cameraTr.position = moveVec;
-        
+        cameraTr.position = moveVec;   
+    }
+
+    private void Update()
+    {
+        Debug.Log( pastPlayer.y > StageManager.instance.go_Player.transform.localPosition.y );
     }
 
     public void StopCamera()
@@ -46,9 +50,26 @@ public class FollowCamera : MonoBehaviour
         isMovable = false;
     }
 
+    public void MoveCamera()
+    {
+        isMovable = true;
+    }
+
     public void SetCamera()
     {
         isMovable = true;
         cameraTr.position = new Vector3( 0, 4.6f, -10 );
+    }
+
+
+    public IEnumerator PastPlayerCoroutine()
+    {
+        while (!StageManager.instance.isGameOver)
+        {
+            pastPlayer = StageManager.instance.go_Player.transform.localPosition;
+
+            yield return new WaitForSeconds( 0.1f );
+        }
+        yield return null;
     }
 }
