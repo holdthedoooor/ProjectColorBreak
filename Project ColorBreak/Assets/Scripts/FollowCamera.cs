@@ -42,14 +42,8 @@ public class FollowCamera : MonoBehaviour
                 moveVec.y = stopPos.y;
             }
         }
-       
-
+      
         cameraTr.position = moveVec;   
-    }
-
-    private void Update()
-    {
-        Debug.Log( pastPlayer.y > StageManager.instance.go_Player.transform.localPosition.y );
     }
 
     public void StopCamera()
@@ -58,18 +52,11 @@ public class FollowCamera : MonoBehaviour
         stopPos = transform.position;
     }
 
-
-    public void MoveCamera()
-    {
-        //isMovable = true;
-    }
-
     public void SetCamera()
     {
         isNearGoal = false;
         cameraTr.position = new Vector3( 0, 4.6f, -10 );
     }
-
 
     public IEnumerator PastPlayerCoroutine()
     {

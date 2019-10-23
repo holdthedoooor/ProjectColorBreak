@@ -24,10 +24,5 @@ public class StopCamera : MonoBehaviour
             if (cameraWithDist <= borderDist)
                 Camera.main.GetComponent<FollowCamera>().StopCamera();
         }
-        //else if(Camera.main.GetComponent<FollowCamera>().pastPlayer.y < StageManager.instance.go_Player.transform.localPosition.y)
-        //{
-        //    Camera.main.GetComponent<FollowCamera>().MoveCamera();
-        //}
-           
     }
 }

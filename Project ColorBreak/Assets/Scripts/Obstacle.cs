@@ -113,7 +113,6 @@ public class Obstacle : LivingEntity
         {
             StartCoroutine( MoveYCoroutine() );
         }
-
     }
 
     public override void OnDamage()
