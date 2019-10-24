@@ -82,7 +82,8 @@ public class Obstacle : LivingEntity
         lastChangeTime = 0f;
 
         onDie += AddScore;
-        onDie += CreateParticle;
+        //onDie += CreateParticle;
+        onDie += CreateEffect;
         onDie += () => gameObject.SetActive(false);
     }
 
@@ -326,5 +327,19 @@ public class Obstacle : LivingEntity
         GameObject obj = GameObject.Instantiate( particles[index]);
         obj.transform.position = new Vector3( transform.position.x, transform.position.y, obj.transform.position.z );
         Destroy( obj, destroyTime );
+    }
+
+    public void CreateEffect()
+    {
+        float destroyTime = 0.4f;
+
+        int index = (int)colorType;
+
+        if (index > 3)
+            return;
+
+        GameObject clone = Instantiate( StageManager.instance.go_AddScoreEffects[index]);
+        clone.transform.position = new Vector3( StageManager.instance.go_Player.transform.localPosition.x, StageManager.instance.go_Player.transform.localPosition.y, transform.position.z );
+        Destroy( clone, destroyTime );
     }
 }
