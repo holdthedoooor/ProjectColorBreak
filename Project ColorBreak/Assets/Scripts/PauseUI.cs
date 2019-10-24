@@ -11,6 +11,7 @@ public class PauseUI : MonoBehaviour
         go_PauseUI.SetActive( false );
         Time.timeScale = 1;
         StageManager.instance.isPause = false;
+        Quit.instance.quitStatus = Quit.QuitStatus.InGame;
     }
 
     public void HomeButton()

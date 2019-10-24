@@ -415,6 +415,5 @@ public class PlayerCtrl : LivingEntity
         trailRenderer.Clear();
         playerState = PlayerState.Start;
     }
-
 }
 

@@ -23,6 +23,7 @@ public class Quit : MonoBehaviour
         Lobby,
         ChapterSelect,
         StageSelect,
+        StopGame,
         InGame,
     }
     public QuitStatus quitStatus;
@@ -63,8 +64,12 @@ public class Quit : MonoBehaviour
                         UIManager.instance.chapterSelectUI.BackButton();
                         break;
 
+                    case QuitStatus.StopGame:
+                        UIManager.instance.pauseUI.ContinueButton();
+                        break;
+
                     case QuitStatus.InGame:
-                        UIManager.instance.HomeButton();
+                        UIManager.instance.PauseButton();
                         break;
                 }
             }

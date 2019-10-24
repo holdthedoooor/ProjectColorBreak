@@ -17,7 +17,7 @@ public class StopCamera : MonoBehaviour
 
     private void Update()
     {
-        float cameraWithDist = Mathf.Abs( (transform.position.y - 0.005f) - cameraTr.position.y );
+        float cameraWithDist = Mathf.Abs( transform.position.y - cameraTr.position.y );
 
         if(Camera.main.GetComponent<FollowCamera>().pastPlayer.y > StageManager.instance.go_Player.transform.localPosition.y)
         {

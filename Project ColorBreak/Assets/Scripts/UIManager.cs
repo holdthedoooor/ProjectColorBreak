@@ -342,5 +342,6 @@ public class UIManager : MonoBehaviour
         pauseUI.go_PauseUI.SetActive( true );
         StageManager.instance.isPause = true;
         Time.timeScale = 0;
+        Quit.instance.quitStatus = Quit.QuitStatus.StopGame;
     }
 }
