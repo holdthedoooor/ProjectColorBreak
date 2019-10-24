@@ -8,7 +8,6 @@ public class StopCamera : MonoBehaviour
     private Transform    cameraTr;
     public float stopDumping = 5f;
 
-
     private void Start()
     {
         cameraTr = Camera.main.GetComponent<Transform>();

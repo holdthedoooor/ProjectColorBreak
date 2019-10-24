@@ -337,9 +337,11 @@ public class PlayerCtrl : LivingEntity
                                 if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
                                     obstacle.OnDamage();
                                 break;
+
                             case Obstacle.ObstaclesType.SafeBlock:
                                 StartCoroutine( BounceBall() ); ;
                                 break;
+
                             case Obstacle.ObstaclesType.CrackBlock:
                                 if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
                                 {
@@ -349,6 +351,7 @@ public class PlayerCtrl : LivingEntity
                                     obstacle.OnDamage();
                                 }
                                 break;
+
                             case Obstacle.ObstaclesType.BounceBlock:
                                 if (obstacle.colorType == colorType || obstacle.colorType == ColorType.White)
                                 {
@@ -358,6 +361,7 @@ public class PlayerCtrl : LivingEntity
                                         StartCoroutine( BounceBall() );
                                 }
                                 break;
+
                             default:
                                 break;
                         }

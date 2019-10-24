@@ -16,6 +16,7 @@ public class Obstacle : LivingEntity
         AutoColorChange, //자동으로 색이 변하는 블록
         DamagedColorChange //데미지를 입을때마다 색이 변하는 블록
     }
+
     [Header("CreakBlock - 충돌 시 튕기는 블럭, 최대 체력을 1~3으로 설정")]
     [Header( "BounceBlock - 충돌 시 1회 튕긴 다음 충돌 시 파괴되는 블럭, 최대 체력을 2로 설정" )]
     public ObstaclesType obstaclesType;

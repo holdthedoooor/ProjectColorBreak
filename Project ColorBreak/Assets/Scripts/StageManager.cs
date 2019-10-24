@@ -28,6 +28,8 @@ public class StageManager : MonoBehaviour
     public int          panaltyPoint;
 
     public GameObject        go_Player;
+    public GameObject[]      go_AddScoreEffects;
+    public GameObject[]      go_PlayerDieEffects;
     //현재 스테이지   
     public Stage             currentStage;
     public StageSlot         currentStageSlot;

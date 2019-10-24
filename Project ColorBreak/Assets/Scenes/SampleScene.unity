@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12437,7 +12437,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1967896060}
         m_MethodName: StageSelectCancelButton
         m_Mode: 1
         m_Arguments:
@@ -14138,7 +14138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1967896060}
         m_MethodName: StageStartButton
         m_Mode: 1
         m_Arguments:
@@ -17106,6 +17106,16 @@ MonoBehaviour:
   damage: 0
   panaltyPoint: 0
   go_Player: {fileID: 1753907795}
+  go_AddScoreEffects:
+  - {fileID: 5397562665665718399, guid: 689475e3eace54d46adc302dad4b24ba, type: 3}
+  - {fileID: 742706254232855071, guid: a25c7993df1453e4faab22678af52211, type: 3}
+  - {fileID: 2433103298809643166, guid: 6e81533369328094495d49348d69ea1a, type: 3}
+  - {fileID: 7801290891583282225, guid: 940605b08e20d2e4990a9497174722d7, type: 3}
+  go_PlayerDieEffects:
+  - {fileID: 2986340076736809687, guid: 159ad471af3419d4588ef89463d0ae06, type: 3}
+  - {fileID: 9126507872112727778, guid: 1c78f3b39534c624bad3ac0f28293923, type: 3}
+  - {fileID: 7432560667793323299, guid: 84cae39e7d3014546b08d9c67ff1861d, type: 3}
+  - {fileID: 6801467689385036968, guid: f94abec36e3aef742938c334584f1935, type: 3}
   currentStage: {fileID: 0}
   currentStageSlot: {fileID: 0}
   currentBossStage: {fileID: 0}
