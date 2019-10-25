@@ -23,8 +23,7 @@ public class Obstacle : LivingEntity
 
     public enum MoveType
     {
-        MoveX, //X좌표로 이동
-        MoveY, //Y좌표로 이동
+        Move,
         Fix //고정
     }
     [Header("MoveX - X좌표로 이동, MoveY - Y좌표로 이동, Fix - 고정")]
@@ -46,9 +45,12 @@ public class Obstacle : LivingEntity
     public float     maxPositionY;
     public float     minPositionY;
 
+    public Vector3 movePosition1;
+    public Vector3 movePosition2;
+    private Vector3 destination;
     //장애물의 스피드, 방향
     public float    speed;
-    [Header( "-1이면 왼쪽 or 아래쪽, 1이면 오른쪽 or 위쪽부터 시작" )]
+    [Header( "-1이면 movePosition1 부터 1이면 movePosition2 부터 시작" )]
     public int      direction; //-1이면 왼쪽 or 아래쪽, 1이면 오른쪽 or 위쪽
 
     //몇초 마다 장애물 색깔이 바뀔지 결정, 랜덤일수도 
@@ -106,15 +108,15 @@ public class Obstacle : LivingEntity
         //SetMaterial();
         SetSprite();
 
+        if (direction == -1)
+            destination = movePosition1;
+
+        else if (direction == 1)
+            destination = movePosition2;
+
         //장애물 타입이 Move면 MoveCoroutine 실행
-        if (moveType == MoveType.MoveX)
-        {
-            StartCoroutine( MoveXCoroutine() );
-        }
-        else if(moveType == MoveType.MoveY)
-        {
-            StartCoroutine( MoveYCoroutine() );
-        }
+        if (moveType == MoveType.Move)
+            StartCoroutine( MoveCoroutine() );
     }
 
     public override void OnDamage()
@@ -216,42 +218,17 @@ public class Obstacle : LivingEntity
         }
     }
 
-    private IEnumerator MoveXCoroutine()
-    {
-        while(status == Status.Live)
-        {
-            if(transform.position.x <= minPositionX)
-            {
-                transform.position = new Vector3( minPositionX, transform.position.y, transform.position.z );
-                direction = 1;
-            }
-            else if(transform.position.x >= maxPositionX)
-            {
-                transform.position = new Vector3( maxPositionX, transform.position.y, transform.position.z );
-                direction = -1;
-            }
-
-            transform.Translate( Vector3.right * speed * Time.deltaTime * direction );
-            yield return null;
-        }
-    }
-
-    private IEnumerator MoveYCoroutine()
+    private IEnumerator MoveCoroutine()
     {
         while (status == Status.Live)
         {
-            if (transform.position.y <= minPositionY)
-            {
-                transform.position = new Vector3( transform.position.x, minPositionY, transform.position.z );
-                direction = 1;
-            }
-            else if (transform.position.y >= maxPositionY)
-            {
-                transform.position = new Vector3( transform.position.x, maxPositionY, transform.position.z );
-                direction = -1;
-            }
+            if (Vector3.Distance(movePosition1, transform.position) <= 0.1f)
+                destination = movePosition2;
 
-            transform.Translate( Vector3.up * speed * Time.deltaTime * direction );
+            else if (Vector3.Distance( movePosition2, transform.position ) <= 0.1f)
+                destination = movePosition1;
+
+            transform.position = Vector3.MoveTowards( transform.position, destination, speed * Time.deltaTime );
             yield return null;
         }
     }
