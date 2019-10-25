@@ -15,7 +15,7 @@ public class Item : LivingEntity
         Move,
         Fix //고정
     }
-    [Header( "MoveX - X좌표로 이동, MoveY - Y좌표로 이동, Fix - 고정" )]
+    [Header( "Move - 설정한 좌표로 이동, Fix - 고정" )]
     public MoveType moveType;
 
     //아이템의 최대, 최소 x position
@@ -32,7 +32,7 @@ public class Item : LivingEntity
 
     //아이템의 스피드, 방향
     public float speed;
-    [Header( "-1이면 movePosition1 부터 1이면 movePosition2 부터 시작" )]
+    [Header( "1이면 movePosition1 부터 2면 movePosition2 부터 시작" )]
     public int direction; //-1이면 왼쪽 or 아래쪽, 1이면 오른쪽 or 위쪽
 
     public Sprite[] colorSprites;
@@ -49,6 +49,11 @@ public class Item : LivingEntity
     void Start()
     {
         SetSprite();
+
+        if (direction == 1)
+            destination = movePosition1;
+        else if (direction == 2)
+            destination = movePosition2;
 
         if (moveType == MoveType.Move)
             StartCoroutine( MoveCoroutine() );

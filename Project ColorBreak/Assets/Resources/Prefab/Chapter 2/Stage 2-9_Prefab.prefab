@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7962729550380040627}
   - component: {fileID: 2577796524899146009}
   m_Layer: 0
-  m_Name: Stage 2-9
+  m_Name: Stage 2-9_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -151,11 +156,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -181,6 +181,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (35)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -236,11 +241,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (35)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -287,6 +287,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -342,11 +347,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -365,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -382,6 +382,26 @@ PrefabInstance:
       propertyPath: speed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.x
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.y
+      value: 4.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.y
+      value: 4.79
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
 --- !u!4 &8220771536660620470 stripped
@@ -397,6 +417,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -452,11 +477,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -475,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -491,6 +511,26 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.x
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.y
+      value: 3.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.y
+      value: 3.59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
@@ -687,6 +727,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (25)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -742,11 +787,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (25)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -793,6 +833,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (12)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -848,11 +893,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -878,6 +918,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -933,11 +978,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -956,7 +996,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: direction
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -973,6 +1013,26 @@ PrefabInstance:
       propertyPath: speed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.x
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.y
+      value: 3.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.y
+      value: 3.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
 --- !u!4 &6036054994985055286 stripped
@@ -988,6 +1048,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (26)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1043,11 +1108,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (26)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1094,6 +1154,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1149,11 +1214,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1172,7 +1232,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: direction
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -1189,6 +1249,26 @@ PrefabInstance:
       propertyPath: speed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.x
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.y
+      value: 4.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.y
+      value: 4.59
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
 --- !u!4 &6809845540808767652 stripped
@@ -1204,6 +1284,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1259,11 +1344,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1289,6 +1369,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (38)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1344,11 +1429,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (38)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1395,6 +1475,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (20)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1450,11 +1535,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (20)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1485,6 +1565,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (37)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1540,11 +1625,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (37)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1591,6 +1671,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1645,11 +1730,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (8)
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -1751,6 +1831,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (28)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1806,11 +1891,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (28)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1857,6 +1937,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (36)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1912,11 +1997,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (36)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -1963,6 +2043,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (31)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2018,11 +2103,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (31)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -2069,6 +2149,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (18)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2123,11 +2208,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (18)
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -2345,6 +2425,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (30)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2399,11 +2484,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (30)
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -2606,6 +2686,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (14)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2661,11 +2746,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (14)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -2706,6 +2786,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (34)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2760,11 +2845,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (34)
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -2902,6 +2982,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (24)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2957,11 +3042,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (24)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -2992,6 +3072,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (23)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3047,11 +3132,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (23)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3082,6 +3162,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3137,11 +3222,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3167,6 +3247,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3222,11 +3307,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3252,6 +3332,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (19)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3307,11 +3392,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (19)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3358,6 +3438,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (32)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3413,11 +3498,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (32)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3464,6 +3544,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (15)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3519,11 +3604,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (15)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3574,6 +3654,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (33)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3629,11 +3714,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (33)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3680,6 +3760,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3735,11 +3820,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -3758,7 +3838,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -3775,6 +3855,26 @@ PrefabInstance:
       propertyPath: speed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.x
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.y
+      value: 4.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.y
+      value: 4.19
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
 --- !u!4 &2068595343382927091 stripped
@@ -3790,6 +3890,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (16)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3844,11 +3949,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (16)
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -4045,6 +4145,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4790893388263968669, guid: 4b7b74c79099db94788e5cc0bdef426e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -25.49
+      objectReference: {fileID: 0}
     - target: {fileID: 7318875168305605787, guid: 4b7b74c79099db94788e5cc0bdef426e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4054,11 +4159,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 2.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4790893388263968669, guid: 4b7b74c79099db94788e5cc0bdef426e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -25.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b7b74c79099db94788e5cc0bdef426e, type: 3}
@@ -4075,6 +4175,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4130,11 +4235,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -4153,7 +4253,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: direction
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -4170,6 +4270,26 @@ PrefabInstance:
       propertyPath: speed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.x
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition1.y
+      value: 3.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: movePosition2.y
+      value: 3.99
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
 --- !u!4 &13802500410468698 stripped
@@ -4185,6 +4305,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (29)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4240,11 +4365,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (29)
-      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: colorType
@@ -4291,6 +4411,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962729550380040627}
     m_Modifications:
+    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: m_Name
+      value: Box Obstacle (21)
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161632, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4345,11 +4470,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161635, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
-        type: 3}
-      propertyPath: m_Name
-      value: Box Obstacle (21)
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
