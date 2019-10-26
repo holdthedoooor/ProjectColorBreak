@@ -136,6 +136,7 @@ public class StageManager : MonoBehaviour
                  NextPhase();
             else
             {
+                panaltyPoint++;
                 Destroy(currentBossStage.gameObject );
                 if(currentBossStageSlot.isRandom)
                     currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[Random.Range(0, currentBossStageSlot.go_BossStageNormals.Length)]
@@ -143,9 +144,11 @@ public class StageManager : MonoBehaviour
                 else
                     currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
 
+                currentBossStage.go_BossPrefab.SetActive( true );
+
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-                panaltyPoint++;
+                
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
             }
         }
@@ -160,13 +163,17 @@ public class StageManager : MonoBehaviour
             else
             {
                 Destroy( currentBossStage.gameObject );
+                panaltyPoint++;
+
                 currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-                panaltyPoint++;
+
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
             } 
         }
+
         UIManager.instance.bossStageUI.UpdateBossHpText();
     }
 
@@ -247,6 +254,7 @@ public class StageManager : MonoBehaviour
         else
         {
             UIManager.instance.SetFinishUI();
+
             if (currentBossStageSlot.starCount < UIManager.instance.starCount)
             {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;

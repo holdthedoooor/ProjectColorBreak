@@ -68,7 +68,6 @@ public class PlayerCtrl : LivingEntity
 
         onDie += StageManager.instance.FinishStage;
         onDie += OnInitialize;
-
     }
 
     protected override void OnEnable()
@@ -108,6 +107,9 @@ public class PlayerCtrl : LivingEntity
     private void FixedUpdate()
     {
         if (StageManager.instance.isGameOver)
+            return;
+
+        if (StageManager.instance.isBossStageStart)
             return;
 
         if (isAwaked == false)
@@ -326,6 +328,7 @@ public class PlayerCtrl : LivingEntity
                 if ((obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.obstaclesType != Obstacle.ObstaclesType.SafeBlock)
                     || obstacle.obstaclesType == Obstacle.ObstaclesType.DeathBlock)
                 {
+                    Debug.Log( "죽음" );
                     OnDamage();
                 }
                 //TO DO : 색으로 판정내리기 보다는 Obstacle에서 색에 따른 bool 변수 또는, ObstacleType을 지정해서 코드를 간소화할 필요가 있음.
@@ -390,11 +393,14 @@ public class PlayerCtrl : LivingEntity
             StageManager.instance.FinishStage();
             OnInitialize();
         }
-        else if (other.tag == "Boss")
+    }
+
+    public void OnCollisionEnter2D( Collision2D collision )
+    {
+        if(collision.transform.tag == "Boss")
         {
             StageManager.instance.BossCollision();
             OnInitialize();
-
         }
     }
     public void OnInitialize()
