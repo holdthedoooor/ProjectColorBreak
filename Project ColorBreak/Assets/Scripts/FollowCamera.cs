@@ -9,6 +9,7 @@ public class FollowCamera : MonoBehaviour
     private Vector3 moveVec = Vector3.zero;
     private float dumping = 2.5f;
     public bool isNearGoal = false;
+
     public Vector3 stopPos = Vector3.zero;
     public Vector3 pastPlayer;
 
@@ -30,6 +31,9 @@ public class FollowCamera : MonoBehaviour
     void LateUpdate()
     {
         if (StageManager.instance.isGameOver)
+            return;
+
+        if (StageManager.instance.isBossStageStart)
             return;
 
         moveVec = cameraTr.position;

@@ -97,6 +97,9 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isGameOver)
             return;
 
+        if (StageManager.instance.isBossStageStart)
+            return;
+
         Roll();
 
         Debug.Log( playerRb.velocity.y );
