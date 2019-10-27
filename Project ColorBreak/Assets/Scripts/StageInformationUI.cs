@@ -29,7 +29,6 @@ public class StageInformationUI : MonoBehaviour
         {
             starImages[i].sprite = UIManager.instance.blankStarSprite;
             checkPointTexts[i].text = StageManager.instance.currentStageSlot.checkPoints[i].ToString();
-            checkPointTexts[i].enabled = true;
         }
     }
 
@@ -45,21 +44,6 @@ public class StageInformationUI : MonoBehaviour
                     starImages[i].sprite = UIManager.instance.starSprite;
                 }
             }
-
-            if (StageManager.instance.currentStageSlot.starCount == 3)
-            {
-                for (int i = 0; i < checkPointTexts.Length; i++)
-                {
-                    checkPointTexts[i].enabled = false;
-                }
-            }
-            else if (StageManager.instance.currentStageSlot.starCount == 2)
-            {
-                checkPointTexts[0].enabled = false;
-                checkPointTexts[1].enabled = false;
-            }
-            else if (StageManager.instance.currentStageSlot.starCount == 1)
-                checkPointTexts[0].enabled = false;
 
             stageNumberText.text = "STAGE " + (StageManager.instance.currentStageSlot.stageNumber + 1).ToString();
         }

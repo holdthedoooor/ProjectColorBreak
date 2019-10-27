@@ -23,6 +23,8 @@ public class StageManager : MonoBehaviour
     public bool         isGameOver;
     public bool         isPause;
     public bool         isGoal;
+    //보스 스테이지를 시작했을 때 애니메이션이 끝난 뒤에 이동
+    public bool         isBossStageStart = false;
     public int          score; //일반 스테이지에서의 점수
     public int          damage;//보스 스테이지에서의 데미지
     public int          panaltyPoint;
@@ -134,6 +136,7 @@ public class StageManager : MonoBehaviour
                  NextPhase();
             else
             {
+                panaltyPoint++;
                 Destroy(currentBossStage.gameObject );
                 if(currentBossStageSlot.isRandom)
                     currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[Random.Range(0, currentBossStageSlot.go_BossStageNormals.Length)]
@@ -141,9 +144,11 @@ public class StageManager : MonoBehaviour
                 else
                     currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
 
+                currentBossStage.go_BossPrefab.SetActive( true );
+
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-                panaltyPoint++;
+                
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
             }
         }
@@ -158,13 +163,17 @@ public class StageManager : MonoBehaviour
             else
             {
                 Destroy( currentBossStage.gameObject );
+                panaltyPoint++;
+
                 currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-                panaltyPoint++;
+
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
             } 
         }
+
         UIManager.instance.bossStageUI.UpdateBossHpText();
     }
 
@@ -179,27 +188,41 @@ public class StageManager : MonoBehaviour
 
         isGoal = false;
 
-        if(currentStageSlot != null)
-        {
-            score = 0;
-            UIManager.instance.SetStartUI();
-        }      
-        else
-        {
-            damage = 0;
-            if(panaltyPoint == 0)
-            {
-                currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
-                panaltyPoint++;
-                UIManager.instance.bossStageUI.UpdateChallengeCountText();
-                UIManager.instance.SetStartUI();
-            }         
-        }
-        
+        score = 0;
+        UIManager.instance.SetStartUI();
+
         isGameOver = false;
         go_Player.SetActive( true );
 
         //isMovable를 true로 바꿔줌으로 써 카메라가 다시 움직이도록 설정
+        Camera.main.GetComponent<FollowCamera>().SetCamera();
+        StartCoroutine( Camera.main.GetComponent<FollowCamera>().PastPlayerCoroutine() );
+        Quit.instance.quitStatus = Quit.QuitStatus.InGame;
+    }
+
+    public void StartBossStage()
+    {
+        if (isPause)
+        {
+            isPause = false;
+            Time.timeScale = 1;
+        }
+
+        damage = 0;
+
+        if (panaltyPoint == 0)
+        {
+            isBossStageStart = true;
+            StartCoroutine( currentBossStage.StartBossStageCoroutine() );
+            currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
+            panaltyPoint++;
+            UIManager.instance.bossStageUI.UpdateChallengeCountText();
+            UIManager.instance.SetStartUI();
+        }
+
+        isGameOver = false;
+        go_Player.SetActive( true );
+
         Camera.main.GetComponent<FollowCamera>().SetCamera();
         StartCoroutine( Camera.main.GetComponent<FollowCamera>().PastPlayerCoroutine() );
         Quit.instance.quitStatus = Quit.QuitStatus.InGame;
@@ -231,6 +254,7 @@ public class StageManager : MonoBehaviour
         else
         {
             UIManager.instance.SetFinishUI();
+
             if (currentBossStageSlot.starCount < UIManager.instance.starCount)
             {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;

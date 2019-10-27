@@ -167,9 +167,9 @@ public class UIManager : MonoBehaviour
 
                     stageClearUI.BS_ActiveClearUI();
                 }
-                else
-                    youDiedUI.BS_ActiveYouDiedUI();
             }
+            else
+                youDiedUI.BS_ActiveYouDiedUI();
 
             bossStageUI.DeactivateUI();
         }

@@ -26,7 +26,6 @@ public class BossStageInformationUI : MonoBehaviour
         {
             starImages[i].sprite = UIManager.instance.blankStarSprite;
             panaltyPointTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
-            panaltyPointTexts[i].enabled = true;
         }
     }
 
@@ -38,26 +37,8 @@ public class BossStageInformationUI : MonoBehaviour
             if (StageManager.instance.currentBossStageSlot.starCount > 0)
             {
                 for (int i = 0; i < StageManager.instance.currentBossStageSlot.starCount; i++)
-                {
                     starImages[i].sprite = UIManager.instance.starSprite;
-                    panaltyPointTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
-                }
             }
-
-            if (StageManager.instance.currentBossStageSlot.starCount == 3)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    panaltyPointTexts[i].enabled = false;
-                }
-            }
-            else if (StageManager.instance.currentBossStageSlot.starCount == 2)
-            {
-                panaltyPointTexts[0].enabled = false;
-                panaltyPointTexts[1].enabled = false;
-            }
-            else if (StageManager.instance.currentBossStageSlot.starCount == 1)
-                panaltyPointTexts[0].enabled = false;
 
             if (StageManager.instance.currentBossStageSlot.minPanaltyPoint == 100)
                 minPanaltyPoint_Text.text = "0";
@@ -75,15 +56,12 @@ public class BossStageInformationUI : MonoBehaviour
         go_BossStageInformationUI.SetActive( false );
 
         //보스 스테이지면
-        if(StageManager.instance.currentBossStageSlot != null)
-        {
-            StageManager.instance.panaltyPoint = 0;
-            if (StageManager.instance.currentBossStageSlot.isRandom)
-                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range( 0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length )]
-                    , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-            else
-                StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0]
-                    , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-        }
+        StageManager.instance.panaltyPoint = 0;
+        if (StageManager.instance.currentBossStageSlot.isRandom)
+            StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range( 0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length )]
+                , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+        else
+            StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0]
+                , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
     }
 }

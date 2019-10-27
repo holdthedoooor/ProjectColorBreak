@@ -124,11 +124,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4790893388263968669, guid: 1560a03ac1b0b5649a488b2c69090da7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -26.77
-      objectReference: {fileID: 0}
     - target: {fileID: 7318875168305605787, guid: 1560a03ac1b0b5649a488b2c69090da7,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -138,6 +133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790893388263968669, guid: 1560a03ac1b0b5649a488b2c69090da7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.77
       objectReference: {fileID: 0}
     - target: {fileID: 3186975646400282874, guid: 1560a03ac1b0b5649a488b2c69090da7,
         type: 3}
@@ -234,6 +234,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: maxLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_Sprite
@@ -243,16 +253,6 @@ PrefabInstance:
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: colorType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: maxLife
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -375,6 +375,11 @@ PrefabInstance:
       propertyPath: movePosition2.y
       value: -9.31
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6927737527735928342, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_Sprite
@@ -466,17 +471,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: maxLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 161d417a5ba61ae42a9c19626b0fe4c9,
         type: 3}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: maxLife
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
 --- !u!4 &4755380968687645852 stripped
@@ -562,6 +567,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: maxLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_Sprite
@@ -571,16 +586,6 @@ PrefabInstance:
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: colorType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: maxLife
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -668,12 +673,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c41080d7e5ad60f45a82f0f427092ce4,
-        type: 3}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
@@ -684,6 +683,12 @@ PrefabInstance:
       propertyPath: colorType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c41080d7e5ad60f45a82f0f427092ce4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
 --- !u!4 &3538837766833722233 stripped
@@ -769,6 +774,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: maxLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_Sprite
@@ -778,16 +793,6 @@ PrefabInstance:
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: colorType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: maxLife
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -875,12 +880,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 58c3adbae9a0fc24f918eee61ad785c0,
-        type: 3}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
@@ -891,6 +890,12 @@ PrefabInstance:
       propertyPath: colorType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58c3adbae9a0fc24f918eee61ad785c0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
 --- !u!4 &3404237118625196325 stripped
@@ -976,6 +981,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: maxLife
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3240943566343771838, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: m_Sprite
@@ -986,16 +1001,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: maxLife
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
-        type: 3}
-      propertyPath: colorType
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -1203,6 +1208,11 @@ PrefabInstance:
       propertyPath: movePosition2.y
       value: -9.31
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6927737527735928342, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_Sprite
@@ -1328,6 +1338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: movePosition2.y
       value: -2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6927737527735928342, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}

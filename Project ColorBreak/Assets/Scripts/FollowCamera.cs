@@ -7,8 +7,9 @@ public class FollowCamera : MonoBehaviour
     public Transform playerTr;
     public Transform cameraTr { get; private set; }
     private Vector3 moveVec = Vector3.zero;
-    private float dumping = 2.5f;
+    private float dumping = 2.6f;
     public bool isNearGoal = false;
+
     public Vector3 stopPos = Vector3.zero;
     public Vector3 pastPlayer;
 
@@ -30,6 +31,9 @@ public class FollowCamera : MonoBehaviour
     void LateUpdate()
     {
         if (StageManager.instance.isGameOver)
+            return;
+
+        if (StageManager.instance.isBossStageStart)
             return;
 
         moveVec = cameraTr.position;
@@ -55,7 +59,7 @@ public class FollowCamera : MonoBehaviour
     public void SetCamera()
     {
         isNearGoal = false;
-        cameraTr.position = new Vector3( 0, 4.6f, -10 );
+        cameraTr.position = new Vector3( 0, 4.4f, -10 );
     }
 
     public IEnumerator PastPlayerCoroutine()
