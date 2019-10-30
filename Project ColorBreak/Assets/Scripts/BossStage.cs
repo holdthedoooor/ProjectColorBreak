@@ -32,14 +32,15 @@ public class BossStage : MonoBehaviour
 
     public IEnumerator StartBossStageCoroutine()
     {
-        go_AppearAnimation.SetActive( true );
+        if (go_AppearAnimation != null)
+            go_AppearAnimation.SetActive( true );
 
         float _time = 0f;
 
         while(_time < 2f)
         {
             _time += Time.deltaTime;
-            Camera.main.transform.position = Vector3.Lerp( Camera.main.transform.position, new Vector3(0, go_AppearAnimation.transform.position.y + 5f, -10), _time / 2f );
+            Camera.main.transform.position = Vector3.Lerp( Camera.main.transform.position, new Vector3(0, go_BossPrefab.transform.position.y + 3, -10), _time / 2f );
             yield return null;
         }
 
@@ -54,9 +55,12 @@ public class BossStage : MonoBehaviour
             yield return null;
         }
 
-        go_AppearAnimation.SetActive( false );
+        if(go_AppearAnimation != null)
+            go_AppearAnimation.SetActive( false );
         go_BossPrefab.SetActive( true );
         StageManager.instance.isBossStageStart = false;
+
+        yield return null;
     }
 }
 

@@ -159,7 +159,7 @@ public class Obstacle : LivingEntity
 
     void AddScore()
     {
-        if (maxLife == 2 && moveType != MoveType.Fix)
+        if (maxLife == 3 && moveType != MoveType.Fix)
             obstacleScore = 3;
         else if (maxLife == 2 || moveType != MoveType.Fix)
             obstacleScore = 2;
@@ -314,7 +314,7 @@ public class Obstacle : LivingEntity
         if (index > 3)
             return;
 
-        GameObject clone = Instantiate( StageManager.instance.go_AddScoreEffects[index]);
+        GameObject clone = Instantiate( StageManager.instance.go_AddScoreEffects[index] );
         clone.transform.position = new Vector3( StageManager.instance.go_Player.transform.localPosition.x, StageManager.instance.go_Player.transform.localPosition.y, transform.position.z );
         Destroy( clone, destroyTime );
     }
