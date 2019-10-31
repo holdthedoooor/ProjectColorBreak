@@ -19,6 +19,9 @@ public class BossStage : MonoBehaviour
     public GameObject go_BossPrefab;
     private Animator   boss_Animator;
 
+    [HideInInspector]
+    public Coroutine startBossStageCoroutine;
+
     void Awake()
     {
         obstacles = transform.GetComponentsInChildren<Obstacle>();

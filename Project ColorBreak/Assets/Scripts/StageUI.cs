@@ -16,6 +16,9 @@ public class StageUI : MonoBehaviour
     private float minPositionX = -400f;
     private float maxPositionX = 400f;
 
+    [HideInInspector]
+    public Coroutine updateSliderCoroutine;
+
     //현재 스코어 갱신
     public void UpdateScoreText( int _score )
     {
@@ -59,6 +62,6 @@ public class StageUI : MonoBehaviour
     public void DeactivateUI()
     {
         go_StageUI.SetActive( false );
-        StopCoroutine( UpdateScoreSliderCoroutine() );
+        StopCoroutine( "UpdateScoreSliderCoroutine" );
     }
 }

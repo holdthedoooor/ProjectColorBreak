@@ -169,7 +169,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            StopCoroutine( "StartBossStageCoroutine" );
+            StopCoroutine( StageManager.instance.currentBossStage.startBossStageCoroutine );
             bossStageUI.DeactivateUI();
             if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
                 stageClearUI.BS_DeactiveClearUI();

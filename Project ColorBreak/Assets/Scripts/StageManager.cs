@@ -85,7 +85,7 @@ public class StageManager : MonoBehaviour
                 score += _num;
                 UIManager.instance.stageUI.UpdateScoreText( score );
                 UIManager.instance.StarImageChange();
-                StartCoroutine( "StartBossStageCoroutine" );
+                UIManager.instance.stageUI.updateSliderCoroutine = StartCoroutine( UIManager.instance.stageUI.UpdateScoreSliderCoroutine() );
             }
             else
             {
@@ -139,7 +139,6 @@ public class StageManager : MonoBehaviour
             //게임 종료
             if (currentBossStageSlot.currentHp <= 0)
             {
-                Debug.Log( "ㅎ1" );
                 currentBossStageSlot.currentHp = 0;
                 FinishStage();
             }
@@ -197,7 +196,7 @@ public class StageManager : MonoBehaviour
         if (panaltyPoint == 0)
         {
             isBossStageStart = true;
-            StartCoroutine( currentBossStage.StartBossStageCoroutine() );
+            currentBossStage.startBossStageCoroutine = StartCoroutine( currentBossStage.StartBossStageCoroutine() );
             currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
             panaltyPoint++;
             UIManager.instance.bossStageUI.UpdateChallengeCountText();
@@ -237,7 +236,6 @@ public class StageManager : MonoBehaviour
         //보스 스테이지면
         else
         {
-            Debug.Log( "ㅎ2" );
             UIManager.instance.SetFinishUI();
 
             if (currentBossStageSlot.starCount < UIManager.instance.starCount)
