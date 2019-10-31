@@ -19,7 +19,7 @@ public class BossStageUI : MonoBehaviour
 
     public void ActivateUI()
     {
-        bossHpSlider.sprite = sliderSprites[UIManager.instance.currentChapter - 1];
+        bossHpSlider.sprite = sliderSprites[StageManager.instance.currentChapter - 1];
         UpdateBossHpText();
         UpdateDamageText();
         bossHpSlider.fillAmount = 1f;
@@ -53,7 +53,6 @@ public class BossStageUI : MonoBehaviour
         while (bossHpSlider.fillAmount > StageManager.instance.currentBossStageSlot.currentHp / (float)StageManager.instance.currentBossStageSlot.maxHp)
         {
             bossHpSlider.fillAmount -= Time.deltaTime;
-            Debug.Log( "슬라이더 " );
             yield return null;
         }
     }

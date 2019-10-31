@@ -28,7 +28,10 @@ public class StageManager : MonoBehaviour
     public int          score; //일반 스테이지에서의 점수
     public int          damage;//보스 스테이지에서의 데미지
     public int          panaltyPoint;
-
+    public int          currentChapter;
+    public int[]        chaptersUnlockStarCount;
+    //현재 챕터의 별 총 개수
+    public int          chapterStarCount;
     public GameObject        go_Player;
     public GameObject[]      go_AddScoreEffects;
     public GameObject[]      go_PlayerDieEffects;
@@ -47,50 +50,29 @@ public class StageManager : MonoBehaviour
         if (isDataReset)
             theSaveLoad.DataReset();
 
-        UIManager.instance.chapterSelectUI.chapter1_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[0].GetComponentsInChildren<StageSlot>();
-        UIManager.instance.chapterSelectUI.chapter2_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[1].GetComponentsInChildren<StageSlot>();
-        UIManager.instance.chapterSelectUI.chapter3_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[2].GetComponentsInChildren<StageSlot>();
-        UIManager.instance.chapterSelectUI.chapter4_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[3].GetComponentsInChildren<StageSlot>();
-        UIManager.instance.chapterSelectUI.chapter5_StageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[4].GetComponentsInChildren<StageSlot>();
-
-        Debug.Log( UIManager.instance.chapterSelectUI.go_SlotParents[0].transform.parent.name );
-        
+        for (int i = 0; i < UIManager.instance.chapterSelectUI.allStageSlot.Length; i++)
+        {
+            UIManager.instance.chapterSelectUI.allStageSlot[i].stageSlots = UIManager.instance.chapterSelectUI.go_SlotParents[i].GetComponentsInChildren<StageSlot>();
+        }
 
         if (isMasterMode)
         {
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter1_StageSlots.Length; i++)
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.allStageSlot.Length; i++)
             {
-                UIManager.instance.chapterSelectUI.chapter1_StageSlots[i].SetOpen();
-            }
-
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter2_StageSlots.Length; i++)
-            {
-                UIManager.instance.chapterSelectUI.chapter2_StageSlots[i].SetOpen();
-            }
-
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter3_StageSlots.Length; i++)
-            {
-                UIManager.instance.chapterSelectUI.chapter3_StageSlots[i].SetOpen();
-            }
-
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter4_StageSlots.Length; i++)
-            {
-                UIManager.instance.chapterSelectUI.chapter4_StageSlots[i].SetOpen();
-            }
-
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapter5_StageSlots.Length; i++)
-            {
-                UIManager.instance.chapterSelectUI.chapter5_StageSlots[i].SetOpen();
-            }
-
-            for (int i = 0; i < UIManager.instance.chapterSelectUI.BossStageSlots.Length; i++)
-            {
-                UIManager.instance.chapterSelectUI.BossStageSlots[i].SetOpen();
+                for (int j = 0; j < UIManager.instance.chapterSelectUI.allStageSlot[i].stageSlots.Length; j++)
+                {
+                    UIManager.instance.chapterSelectUI.allStageSlot[i].stageSlots[j].SetOpen();
+                }
+                if (UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot != null)
+                    UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot.SetOpen();
             }
 
             UIManager.instance.chapterSelectUI.chapterUnlock = 5;
-            UIManager.instance.chapterSelectUI.ChapterOpen();
+            UIManager.instance.chapterSelectUI.LoadChapterOpen();
         }
+        else
+            theSaveLoad.LoadData();
+
     }
 
     // 같은 ColorType의 장애물과 충돌하면 1점씩 추가
@@ -103,7 +85,7 @@ public class StageManager : MonoBehaviour
                 score += _num;
                 UIManager.instance.stageUI.UpdateScoreText( score );
                 UIManager.instance.StarImageChange();
-                StartCoroutine( UIManager.instance.stageUI.UpdateScoreSliderCoroutine());
+                StartCoroutine( "StartBossStageCoroutine" );
             }
             else
             {
@@ -157,6 +139,7 @@ public class StageManager : MonoBehaviour
             //게임 종료
             if (currentBossStageSlot.currentHp <= 0)
             {
+                Debug.Log( "ㅎ1" );
                 currentBossStageSlot.currentHp = 0;
                 FinishStage();
             }
@@ -209,6 +192,7 @@ public class StageManager : MonoBehaviour
         }
 
         damage = 0;
+        UIManager.instance.bossStageUI.UpdateDamageText();
 
         if (panaltyPoint == 0)
         {
@@ -236,7 +220,6 @@ public class StageManager : MonoBehaviour
         if(currentStageSlot != null)
         {
             UIManager.instance.SetFinishUI();
-
             if (isGoal)
             {
                 //여기에서 오류 발생하는것같다
@@ -246,6 +229,7 @@ public class StageManager : MonoBehaviour
                     currentStageSlot.starCount = UIManager.instance.starCount;
                     currentStageSlot.StarImageChange();
                     currentStageSlot.bestScore = score;
+                    ChapterOpenCheck();
                     theSaveLoad.SaveData();
                 }
             }
@@ -253,11 +237,13 @@ public class StageManager : MonoBehaviour
         //보스 스테이지면
         else
         {
+            Debug.Log( "ㅎ2" );
             UIManager.instance.SetFinishUI();
 
             if (currentBossStageSlot.starCount < UIManager.instance.starCount)
             {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;
+                ChapterOpenCheck();
                 if (currentBossStageSlot.minPanaltyPoint > panaltyPoint)
                     currentBossStageSlot.minPanaltyPoint = panaltyPoint;
                 theSaveLoad.SaveData();
@@ -287,5 +273,28 @@ public class StageManager : MonoBehaviour
         //플레이어 위치 및 색 초기화
         go_Player.SetActive( false );
         go_Player.SetActive( true );
+    }
+
+    public void ChapterOpenCheck()
+    {
+        chapterStarCount = 0;
+
+        for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
+        {
+            chapterStarCount += UIManager.instance.stageSlots[i].starCount;
+        }
+        chapterStarCount += UIManager.instance.bossStageSlot.starCount;
+
+        if (UIManager.instance.chapterSelectUI.chapterUnlock == currentChapter)
+        {   
+            if (chapterStarCount >= chaptersUnlockStarCount[currentChapter - 1] && UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+            {
+                //다음 챕터 오픈
+                UIManager.instance.chapterSelectUI.NextChapterOpen();
+                //다음 챕터의 1스테이지 오픈
+                UIManager.instance.chapterSelectUI.allStageSlot[currentChapter].stageSlots[0].StageSlotOpen();
+                UIManager.instance.chapterSelectUI.chapterUnlock++;
+            }
+        }
     }
 }

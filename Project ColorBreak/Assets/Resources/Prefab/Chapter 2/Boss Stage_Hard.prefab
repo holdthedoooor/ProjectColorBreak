@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3d68006c3004647b7c0f3de599b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossStageType: 0
+  bossStageType: 1
   obstacles: []
   items: []
   go_AppearAnimation: {fileID: 0}
@@ -6752,10 +6752,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4048080450334033732, guid: 4b7b74c79099db94788e5cc0bdef426e,
+    - target: {fileID: 4790893388263968669, guid: 4b7b74c79099db94788e5cc0bdef426e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790893388263968669, guid: 4b7b74c79099db94788e5cc0bdef426e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -29.66
       objectReference: {fileID: 0}
     - target: {fileID: 7318875168305605787, guid: 4b7b74c79099db94788e5cc0bdef426e,
         type: 3}
@@ -6772,15 +6777,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4790893388263968669, guid: 4b7b74c79099db94788e5cc0bdef426e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4790893388263968669, guid: 4b7b74c79099db94788e5cc0bdef426e,
+    - target: {fileID: 4048080450334033732, guid: 4b7b74c79099db94788e5cc0bdef426e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3186975646400282874, guid: 4b7b74c79099db94788e5cc0bdef426e,
         type: 3}

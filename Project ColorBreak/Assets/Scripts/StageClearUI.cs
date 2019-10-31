@@ -31,20 +31,10 @@ public class StageClearUI : MonoBehaviour
 
     public void S_SetStar()
     {
-        if (UIManager.instance.starCount == 3)
+        for (int i = 0; i < UIManager.instance.starCount; i++)
         {
-            for (int i = 0; i < s_StarImages.Length; i++)
-            {
-                s_StarImages[i].sprite = UIManager.instance.starSprite;
-            }
+            s_StarImages[i].sprite = UIManager.instance.starSprite;
         }
-        else if (UIManager.instance.starCount == 2)
-        {
-            s_StarImages[0].sprite = UIManager.instance.starSprite;
-            s_StarImages[1].sprite = UIManager.instance.starSprite;
-        }
-        else if (UIManager.instance.starCount == 1)
-            s_StarImages[0].sprite = UIManager.instance.starSprite;
     }
 
     public void S_ActiveClearUI()
@@ -66,18 +56,25 @@ public class StageClearUI : MonoBehaviour
         for (int i = 0; i < bs_StarImages.Length; i++)
         {
             bs_StarImages[i].sprite = UIManager.instance.blankStarSprite;
+            panaltyTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
+        }
+    }
+
+    public void BS_SetStar()
+    {
+        for (int i = 0; i < UIManager.instance.starCount; i++)
+        {
+            bs_StarImages[i].sprite = UIManager.instance.starSprite;
         }
     }
 
     public void BS_ActiveClearUI()
     {
+        BS_ResetStar();
+        BS_SetStar();
         resultBossHpSlider.fillAmount = (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp;
         hpPersentText.text = (Math.Truncate( (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp * 100 )).ToString() + "%";
         panaltyPointText.text = StageManager.instance.panaltyPoint.ToString();
-        for (int i = 0; i < panaltyTexts.Length; i++)
-        {
-            panaltyTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
-        }
         go_BS_ClearUI.SetActive( true );
     }
 

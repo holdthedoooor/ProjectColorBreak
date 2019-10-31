@@ -80,6 +80,7 @@ public class BossStageSlot : MonoBehaviour
 
     public void SetBossStageSlot( int _statusNumber, int _minPanaltyPoint, int _starCount)
     {
+        Debug.Log( "보스 스테이지 설정" );
         if (_statusNumber == 1)
             bossStageStatus = BossStageStatus.Open;
         else if (_statusNumber == 2)

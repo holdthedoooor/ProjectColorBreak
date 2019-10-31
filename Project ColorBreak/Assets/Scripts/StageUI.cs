@@ -49,7 +49,7 @@ public class StageUI : MonoBehaviour
 
     public void ActivateUI()
     {
-        scoreSlider.sprite = sliderSprites[UIManager.instance.currentChapter - 1];
+        scoreSlider.sprite = sliderSprites[StageManager.instance.currentChapter - 1];
         ResetStar();
         UpdateScoreText( 0 );
         scoreSlider.fillAmount = 0f;

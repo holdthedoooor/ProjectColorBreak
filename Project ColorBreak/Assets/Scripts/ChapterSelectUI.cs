@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class AllStageSlot
+{
+    public StageSlot[] stageSlots = new StageSlot[9];
+    public BossStageSlot bossStageSlot;
+}
+
 public class ChapterSelectUI : MonoBehaviour
 {
     public GameObject go_ChapterSelectUI;
@@ -14,13 +21,7 @@ public class ChapterSelectUI : MonoBehaviour
     //챕터 선택 버튼들
     public Button[] chapters_Button;
 
-    public StageSlot[] chapter1_StageSlots;
-    public StageSlot[] chapter2_StageSlots;
-    public StageSlot[] chapter3_StageSlots;
-    public StageSlot[] chapter4_StageSlots;
-    public StageSlot[] chapter5_StageSlots;
-    //1~5 챕터의 보스 스테이지 슬롯들이 할당됨
-    public BossStageSlot[] BossStageSlots;
+    public AllStageSlot[] allStageSlot = new AllStageSlot[5];
 
     public int chapterUnlock;
 
@@ -42,13 +43,12 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[0].SetActive( true );
         go_CurrentChapterUI = go_Chapters[0];
 
-        UIManager.instance.currentChapter = 1;
+        StageManager.instance.currentChapter = 1;
 
-        for (int i = 0; i < chapter1_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter1_StageSlots[i];
-        
-        if(BossStageSlots.Length > 0)
-            UIManager.instance.bossStageSlot = BossStageSlots[0];
+        for (int i = 0; i < allStageSlot[0].stageSlots.Length; i++)
+            UIManager.instance.stageSlots[i] = allStageSlot[0].stageSlots[i];
+
+        UIManager.instance.bossStageSlot = allStageSlot[0].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
         ChapterStopCoroutine();
@@ -60,13 +60,12 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[1].SetActive( true );
         go_CurrentChapterUI = go_Chapters[1];
 
-        UIManager.instance.currentChapter = 2;
+        StageManager.instance.currentChapter = 2;
 
-        for (int i = 0; i < chapter2_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter2_StageSlots[i];
+        for (int i = 0; i < allStageSlot[1].stageSlots.Length; i++)
+            UIManager.instance.stageSlots[i] = allStageSlot[1].stageSlots[i];
 
-        if (BossStageSlots.Length > 1)
-            UIManager.instance.bossStageSlot = BossStageSlots[1];
+        UIManager.instance.bossStageSlot = allStageSlot[1].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
         ChapterStopCoroutine();
@@ -78,13 +77,12 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[2].SetActive( true );
         go_CurrentChapterUI = go_Chapters[2];
 
-        UIManager.instance.currentChapter = 3;
+        StageManager.instance.currentChapter = 3;
 
-        for (int i = 0; i < chapter3_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter3_StageSlots[i];
+        for (int i = 0; i < allStageSlot[2].stageSlots.Length; i++)
+            UIManager.instance.stageSlots[i] = allStageSlot[2].stageSlots[i];
 
-        if (BossStageSlots.Length > 2)
-            UIManager.instance.bossStageSlot = BossStageSlots[2];
+        //UIManager.instance.bossStageSlot = allStageSlot[2].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
         ChapterStopCoroutine();
@@ -96,13 +94,12 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[3].SetActive( true );
         go_CurrentChapterUI = go_Chapters[3];
 
-        UIManager.instance.currentChapter = 4;
+        StageManager.instance.currentChapter = 4;
 
-        for (int i = 0; i < chapter4_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter4_StageSlots[i];
+        for (int i = 0; i < allStageSlot[3].stageSlots.Length; i++)
+            UIManager.instance.stageSlots[i] = allStageSlot[3].stageSlots[i];
 
-        if (BossStageSlots.Length > 3)
-            UIManager.instance.bossStageSlot = BossStageSlots[3];
+        //UIManager.instance.bossStageSlot = allStageSlot[3].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
         ChapterStopCoroutine();
@@ -114,13 +111,12 @@ public class ChapterSelectUI : MonoBehaviour
         go_Chapters[4].SetActive( true );
         go_CurrentChapterUI = go_Chapters[4];
 
-        UIManager.instance.currentChapter = 5;
+        StageManager.instance.currentChapter = 5;
 
-        for (int i = 0; i < chapter5_StageSlots.Length; i++)
-            UIManager.instance.stageSlots[i] = chapter5_StageSlots[i];
+        for (int i = 0; i < allStageSlot[4].stageSlots.Length; i++)
+            UIManager.instance.stageSlots[i] = allStageSlot[4].stageSlots[i];
 
-        if (BossStageSlots.Length > 4)
-            UIManager.instance.bossStageSlot = BossStageSlots[4];
+        //UIManager.instance.bossStageSlot = allStageSlot[4].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
         ChapterStopCoroutine();
@@ -134,7 +130,7 @@ public class ChapterSelectUI : MonoBehaviour
         ChapterStartCoroutine();
     }
 
-    public void ChapterOpen()
+    public void LoadChapterOpen()
     {
         for (int i = 0; i < chapterUnlock - 1; i++)
         {
@@ -142,6 +138,13 @@ public class ChapterSelectUI : MonoBehaviour
             chapters_Button[i + 1].GetComponent<Image>().sprite = chapterOpen_Sprites[i];
             chapterText_Images[i].sprite = chapterOpenText_Sprites[i];
         }
+    }
+
+    public void NextChapterOpen()
+    {
+        chapters_Button[StageManager.instance.currentChapter].interactable = true;
+        chapters_Button[StageManager.instance.currentChapter - 1].GetComponent<Image>().sprite = chapterOpen_Sprites[StageManager.instance.currentChapter - 1];
+        chapterText_Images[StageManager.instance.currentChapter - 1].sprite = chapterOpenText_Sprites[StageManager.instance.currentChapter - 1];
     }
 
     public IEnumerator TextImageChangeCoroutine()

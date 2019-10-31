@@ -69,6 +69,14 @@ public class YouDiedUI : MonoBehaviour
         }
     }
 
+    public void BS_SetStar()
+    {
+        for (int i = 0; i < UIManager.instance.starCount; i++)
+        {
+            bs_StarImages[i].sprite = UIManager.instance.starSprite;
+        }
+    }
+
     public void BS_ActiveYouDiedUI()
     {
         resultBossHpSlider.fillAmount = (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp;

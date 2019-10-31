@@ -34,8 +34,8 @@ public class UIManager : MonoBehaviour
     public StageSlot[]          stageSlots; //현재 Chapter의 스테이지 슬롯들
     public BossStageSlot        bossStageSlot; //현재 Chapter의 보스 스테이지
 
-    public int starCount { get; private set; }
-    public int currentChapter;
+    public int starCount;
+
 
     void Awake()
     {
@@ -78,7 +78,6 @@ public class UIManager : MonoBehaviour
         starCount = 0;
         if (StageManager.instance.currentStageSlot != null)
         {
-            Debug.Log( "스테이지 시작" );
             stageUI.ActivateUI();
         }
         else
@@ -94,6 +93,7 @@ public class UIManager : MonoBehaviour
         StageSlot currentStageSlot = StageManager.instance.currentStageSlot;
         if ( currentStageSlot != null )
         {
+            stageUI.DeactivateUI();
             //starCount가 1개 이상이면 Stage Clear
             if (starCount > 0 && StageManager.instance.isGoal)
             {
@@ -124,12 +124,13 @@ public class UIManager : MonoBehaviour
             {
                 youDiedUI.S_ActiveYouDiedUI();
             }
-            stageUI.DeactivateUI();
+            
         }
         //보스 스테이지라면
         else
         {
-            if(StageManager.instance.currentBossStageSlot.currentHp <= 0)
+            bossStageUI.DeactivateUI();
+            if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
             {
                 if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[2])
                     starCount = 3;
@@ -141,37 +142,13 @@ public class UIManager : MonoBehaviour
                 if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
                 {
                     StageManager.instance.currentBossStageSlot.bossStageStatus = BossStageSlot.BossStageStatus.Clear;
-
-                    switch (currentChapter)
-                    {
-                        case 1:
-                            chapterSelectUI.chapters_Button[1].interactable = true;
-                            chapterSelectUI.chapter2_StageSlots[0].StageSlotOpen();
-                            break;
-                        case 2:
-                            chapterSelectUI.chapters_Button[2].interactable = true;
-                            chapterSelectUI.chapter3_StageSlots[0].StageSlotOpen();
-                            break;
-                        case 3:
-                            chapterSelectUI.chapters_Button[3].interactable = true;
-                            chapterSelectUI.chapter4_StageSlots[0].StageSlotOpen();
-                            break;
-                        case 4:
-                            chapterSelectUI.chapters_Button[4].interactable = true;
-                            chapterSelectUI.chapter5_StageSlots[0].StageSlotOpen();
-                            break;
-                    }
-
-                    if (chapterSelectUI.chapterUnlock < 2)
-                        chapterSelectUI.chapterUnlock++;
-
-                    stageClearUI.BS_ActiveClearUI();
                 }
+
+                stageClearUI.BS_ActiveClearUI();
             }
             else
                 youDiedUI.BS_ActiveYouDiedUI();
 
-            bossStageUI.DeactivateUI();
         }
         StageManager.instance.go_Player.SetActive( false );
     }
@@ -179,7 +156,7 @@ public class UIManager : MonoBehaviour
     //홈 버튼 클릭
     public void HomeButton()
     {
-        if(StageManager.instance.currentStage != null)
+        if (StageManager.instance.currentStage != null)
         {
             stageUI.DeactivateUI();
             if (starCount > 0 && StageManager.instance.isGoal)
@@ -192,6 +169,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            StopCoroutine( "StartBossStageCoroutine" );
             bossStageUI.DeactivateUI();
             if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
                 stageClearUI.BS_DeactiveClearUI();
@@ -206,7 +184,6 @@ public class UIManager : MonoBehaviour
         StageManager.instance.go_Player.SetActive( false );
         chapterSelectUI.go_CurrentChapterUI.SetActive( true );
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-    
     }
 
     //현재 스테이지를 다시 플레이하는 버튼
@@ -291,46 +268,15 @@ public class UIManager : MonoBehaviour
                 stageSlots[i] = null;
             }
 
-            currentChapter++;
+            StageManager.instance.currentChapter++;
 
             //다음 챕터의 슬롯들을 할당해준다.
-            switch(currentChapter)
+            for (int i = 0; i < chapterSelectUI.allStageSlot[StageManager.instance.currentChapter - 1].stageSlots.Length; i++)
             {
-                case 2:
-                    for (int i = 0; i < chapterSelectUI.chapter2_StageSlots.Length; i++)
-                    {
-                        stageSlots[i] = chapterSelectUI.chapter2_StageSlots[i];
-                    }
-                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[1];
-                    bossStageSlot = chapterSelectUI.BossStageSlots[1];
-                    break;
-
-                case 3:
-                    for (int i = 0; i < chapterSelectUI.chapter3_StageSlots.Length; i++)
-                    {
-                        stageSlots[i] = chapterSelectUI.chapter3_StageSlots[i];
-                    }
-                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[2];
-                    break;
-
-                case 4:
-                    for (int i = 0; i < chapterSelectUI.chapter4_StageSlots.Length; i++)
-                    {
-                        stageSlots[i] = chapterSelectUI.chapter4_StageSlots[i];
-                    }
-                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[3];
-                    break;
-
-                case 5:
-                    for (int i = 0; i < chapterSelectUI.chapter5_StageSlots.Length; i++)
-                    {
-                        stageSlots[i] = chapterSelectUI.chapter5_StageSlots[i];
-                    }
-                    chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[4];
-                    break;
+                stageSlots[i] = chapterSelectUI.allStageSlot[StageManager.instance.currentChapter - 1].stageSlots[i];
             }
-            //다음 챕터의 첫 번째 스테이지의 Status가 Rock이라면 Open해준다.
-            stageSlots[0].StageSlotOpen();
+            chapterSelectUI.go_CurrentChapterUI = chapterSelectUI.go_Chapters[StageManager.instance.currentChapter - 1];
+            bossStageSlot = chapterSelectUI.allStageSlot[StageManager.instance.currentChapter - 1].bossStageSlot;
 
             StageManager.instance.currentStageSlot = stageSlots[0];
             StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();

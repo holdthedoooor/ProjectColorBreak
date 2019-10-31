@@ -2128,7 +2128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &207904596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4670,46 +4670,62 @@ MonoBehaviour:
   - {fileID: 1297671840}
   - {fileID: 486288997}
   - {fileID: 1862519235}
-  chapter1_StageSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  chapter2_StageSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  chapter3_StageSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  chapter4_StageSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  chapter5_StageSlots:
-  - {fileID: 0}
-  BossStageSlots:
-  - {fileID: 1913772784}
-  - {fileID: 1894579978}
+  allStageSlot:
+  - stageSlots:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    bossStageSlot: {fileID: 1913772784}
+  - stageSlots:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    bossStageSlot: {fileID: 1894579978}
+  - stageSlots:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    bossStageSlot: {fileID: 0}
+  - stageSlots:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    bossStageSlot: {fileID: 0}
+  - stageSlots:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    bossStageSlot: {fileID: 0}
   chapterUnlock: 1
   chapterText_Images:
   - {fileID: 1860511642}
@@ -5192,6 +5208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653092783470092839, guid: 72d6fb36674c5154c8db345673b65b93,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8228033082350202510, guid: 72d6fb36674c5154c8db345673b65b93,
         type: 3}
@@ -10632,7 +10653,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 907359052}
-  - component: {fileID: 907359053}
   m_Layer: 5
   m_Name: StageSelectUI
   m_TagString: Untagged
@@ -10664,18 +10684,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &907359053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907359051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d909a975c64c2546b986f44147a1555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &916412455
 GameObject:
   m_ObjectHideFlags: 0
@@ -11971,7 +11979,7 @@ MonoBehaviour:
   quitUI: {fileID: 260727329}
   stageSlots: []
   bossStageSlot: {fileID: 0}
-  currentChapter: 0
+  starCount: 0
 --- !u!4 &1130081597
 Transform:
   m_ObjectHideFlags: 0
@@ -14013,6 +14021,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5653092783470092839, guid: fd8d6c9d63cfcf741befbc5c79bb6b64,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8228033082350202510, guid: fd8d6c9d63cfcf741befbc5c79bb6b64,
         type: 3}
       propertyPath: m_Name
@@ -14338,6 +14351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653092783470092839, guid: 289a15c18473f454bbff9f0d02a65a19,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 289a15c18473f454bbff9f0d02a65a19, type: 3}
@@ -17475,6 +17493,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5653092783470092839, guid: d3c2a268e54ae1944b65cd7e68aa6305,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8228033082350202510, guid: d3c2a268e54ae1944b65cd7e68aa6305,
         type: 3}
       propertyPath: m_Name
@@ -17935,8 +17958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4ceecf23ae8ac4dacf4712a3d02050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMasterMode: 1
-  isDataReset: 1
+  isMasterMode: 0
+  isDataReset: 0
   isGameOver: 0
   isPause: 0
   isGoal: 0
@@ -17944,6 +17967,9 @@ MonoBehaviour:
   score: 0
   damage: 0
   panaltyPoint: 0
+  currentChapter: 0
+  chaptersUnlockStarCount: 1800000018000000180000001800000018000000
+  chapterStarCount: 0
   go_Player: {fileID: 1753907795}
   go_AddScoreEffects:
   - {fileID: 5397562665665718399, guid: 689475e3eace54d46adc302dad4b24ba, type: 3}
@@ -18661,7 +18687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1643636277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20442,6 +20468,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5653092783470092839, guid: 346ce6bb5aed7464daee225c8a95e5fd,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8228033082350202510, guid: 346ce6bb5aed7464daee225c8a95e5fd,
         type: 3}
       propertyPath: m_Name
@@ -21227,7 +21258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1876852874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22013,12 +22044,12 @@ PrefabInstance:
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: maxHp
-      value: 20
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: hardHp
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
@@ -24512,6 +24543,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StageSelectButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984863887555905422, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5984863887555905420, guid: 43ada5e357ed9b44e8e35bdb2c2540bb,
         type: 3}
