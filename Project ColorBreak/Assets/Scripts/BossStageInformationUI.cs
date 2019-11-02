@@ -25,6 +25,10 @@ public class BossStageInformationUI : MonoBehaviour
         for (int i = 0; i < starImages.Length; i++)
         {
             starImages[i].sprite = UIManager.instance.blankStarSprite;
+        }
+
+        for (int i = 0; i < StageManager.instance.currentBossStageSlot.panaltyPoints.Length; i++)
+        {
             panaltyPointTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
         }
     }

@@ -132,9 +132,9 @@ public class UIManager : MonoBehaviour
             bossStageUI.DeactivateUI();
             if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
             {
-                if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[2])
+                if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[1])
                     starCount = 3;
-                else if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[1])
+                else if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[0])
                     starCount = 2;
                 else
                     starCount = 1;
@@ -169,7 +169,6 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            StopCoroutine( StageManager.instance.currentBossStage.startBossStageCoroutine );
             bossStageUI.DeactivateUI();
             if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
                 stageClearUI.BS_DeactiveClearUI();

@@ -67,6 +67,11 @@ public class YouDiedUI : MonoBehaviour
         {
             bs_StarImages[i].sprite = UIManager.instance.blankStarSprite;
         }
+
+        for (int i = 0; i < panaltyTexts.Length; i++)
+        {
+            panaltyTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
+        }
     }
 
     public void BS_SetStar()

@@ -50,12 +50,15 @@ public class StageClearUI : MonoBehaviour
         go_S_ClearUI.SetActive( false );
     }
 
-
     public void BS_ResetStar()
     {
         for (int i = 0; i < bs_StarImages.Length; i++)
         {
             bs_StarImages[i].sprite = UIManager.instance.blankStarSprite;
+        }
+
+        for (int i = 0; i < panaltyTexts.Length; i++)
+        {
             panaltyTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
         }
     }
