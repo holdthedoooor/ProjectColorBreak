@@ -244,7 +244,6 @@ public class PlayerCtrl : LivingEntity
                 float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
                      //시간대비 이동한거리(x좌표기준)
 
-
                 if (swipeSpeed > 130f) //완전히 튕기는 경우
                 {
                     touchDist = Vector3.zero;
