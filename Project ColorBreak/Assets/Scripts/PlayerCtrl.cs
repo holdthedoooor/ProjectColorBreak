@@ -252,7 +252,7 @@ public class PlayerCtrl : LivingEntity
                 }
                 else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
                 {
-                    touchDist = Vector2.zero;
+                    touchDist /= 2f;
                 }
 
                 slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
