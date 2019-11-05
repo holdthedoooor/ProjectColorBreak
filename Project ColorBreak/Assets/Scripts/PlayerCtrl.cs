@@ -115,7 +115,10 @@ public class PlayerCtrl : LivingEntity
             awakedTime += Time.fixedDeltaTime;
 
             if (awakedTime > 0.25f)
+            {
                 isAwaked = true;
+                CancleSwipe();
+            }
             else
                 return;
         }
@@ -127,7 +130,6 @@ public class PlayerCtrl : LivingEntity
     {
         isSwiped = false;
         startTouchPos = endTouchPos;
-        endTouchPos = Vector3.zero;
         swipeTime = 0f;
     }
 
