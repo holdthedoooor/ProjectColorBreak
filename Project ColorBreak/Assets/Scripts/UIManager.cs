@@ -148,7 +148,6 @@ public class UIManager : MonoBehaviour
             }
             else
                 youDiedUI.BS_ActiveYouDiedUI();
-
         }
         StageManager.instance.go_Player.SetActive( false );
     }
@@ -169,6 +168,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            if (StageManager.instance.isBossStageStart)
+                StageManager.instance.currentBossStage.StopCoroutine( StageManager.instance.currentBossStage.coroutine );
             bossStageUI.DeactivateUI();
             if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
                 stageClearUI.BS_DeactiveClearUI();
@@ -240,6 +241,7 @@ public class UIManager : MonoBehaviour
                 StageManager.instance.currentStageSlot = null;
                 StageManager.instance.currentStage = null;
                 StageManager.instance.currentBossStageSlot = bossStageSlot;
+                StageManager.instance.panaltyPoint = 0;
 
                 if(StageManager.instance.currentBossStageSlot.isRandom)
                     StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]

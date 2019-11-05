@@ -131,7 +131,6 @@ public class PlayerCtrl : LivingEntity
         swipeTime = 0f;
     }
 
-
     IEnumerator BounceBall()
     {
         isBounce = true;

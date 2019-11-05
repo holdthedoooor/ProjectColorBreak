@@ -196,7 +196,6 @@ public class StageManager : MonoBehaviour
         if (panaltyPoint == 0)
         {
             isBossStageStart = true;
-            currentBossStage.startBossStageCoroutine = StartCoroutine( currentBossStage.StartBossStageCoroutine() );
             currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
             panaltyPoint++;
             UIManager.instance.bossStageUI.UpdateChallengeCountText();
