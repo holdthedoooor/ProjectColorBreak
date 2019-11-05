@@ -417,6 +417,7 @@ public class PlayerCtrl : LivingEntity
         {
             StageManager.instance.BossCollision();
             OnInitialize();
+            Debug.Break();
         }
     }
     public void OnInitialize()
