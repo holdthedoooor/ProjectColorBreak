@@ -294,4 +294,20 @@ public class StageManager : MonoBehaviour
             }
         }
     }
+
+    public void BossAnimationSkip()
+    {
+        if(isBossStageStart)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                Camera.main.GetComponent<FollowCamera>().SetCamera();
+                isBossStageStart = false;
+                if (currentBossStage.go_AppearAnimation != null)
+                    currentBossStage.go_AppearAnimation.SetActive( false );
+                currentBossStage.go_BossPrefab.SetActive( true );
+                currentBossStage.StopCoroutine( currentBossStage.coroutine );
+            }
+        }
+    }
 }
