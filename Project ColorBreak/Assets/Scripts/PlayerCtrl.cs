@@ -38,8 +38,13 @@ public class PlayerCtrl : LivingEntity
 
     [Header( "시작 X, Y, Z 좌표를 입력해주세요!" )]
     public Vector3 originPosition;
+
+    [SerializeField]
     private Vector3 startTouchPos = Vector3.zero;
+    [SerializeField]
     private Vector3 endTouchPos = Vector3.zero;
+
+    public Vector3 curMousePos;
 
     public Material[] colorMt;
 
@@ -122,14 +127,14 @@ public class PlayerCtrl : LivingEntity
             else
                 return;
         }
-        
+        curMousePos = Input.mousePosition;
         Moving();
     }
 
     void CancleSwipe()
     {
         isSwiped = false;
-        startTouchPos = endTouchPos;
+        startTouchPos = endTouchPos = Input.mousePosition;
         swipeTime = 0f;
     }
 
@@ -174,8 +179,11 @@ public class PlayerCtrl : LivingEntity
             {
                 swipeTime += Time.fixedDeltaTime;
 
-                if (swipeTime > Time.fixedDeltaTime * 2)
+                  if (swipeTime > Time.fixedDeltaTime * 2)
+                {
                     isSwiped = true;
+                    startTouchPos = Input.mousePosition;
+                }
 
             }
             else if (isSwiped == true)//스와이프로 판정이 됐을때
@@ -185,19 +193,19 @@ public class PlayerCtrl : LivingEntity
 
                 touchDist = endTouchPos - startTouchPos;//팍튈때 x값이 500~이상 뜸
 
-                float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
-                //시간대비 이동한거리(x좌표기준)
+                //float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
+                ////시간대비 이동한거리(x좌표기준)
 
 
-                if (swipeSpeed > 130f) //완전히 튕기는 경우
-                {
-                    touchDist = Vector3.zero;
-                    CancleSwipe();
-                }
-                else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
-                {
-                    touchDist /= 2f;
-                }
+                //if (swipeSpeed > 130f) //완전히 튕기는 경우
+                //{
+                //    touchDist = Vector3.zero;
+                //    CancleSwipe();
+                //}
+                //else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
+                //{
+                //    touchDist /= 2f;
+                //}
 
                 slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
 
@@ -222,7 +230,8 @@ public class PlayerCtrl : LivingEntity
         {
             CancleSwipe();
             slideVec.x = 0f;
-            startTouchPos = Input.mousePosition;
+
+            Debug.Log("눌림");
         }
 
         if (Input.GetMouseButton( 0 ))
@@ -232,7 +241,10 @@ public class PlayerCtrl : LivingEntity
                 swipeTime += Time.fixedDeltaTime;
 
                 if (swipeTime > Time.fixedDeltaTime * 2)
+                {
                     isSwiped = true;
+                    startTouchPos = Input.mousePosition;
+                }
 
             }
             else if (isSwiped == true)//스와이프로 판정이 됐을때
@@ -242,18 +254,21 @@ public class PlayerCtrl : LivingEntity
 
                 touchDist = endTouchPos - startTouchPos;//팍튈때 x값이 500~이상 뜸
 
-                float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
-                     //시간대비 이동한거리(x좌표기준)
+                //float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
+                //     //시간대비 이동한거리(x좌표기준)
 
-                if (swipeSpeed > 130f) //완전히 튕기는 경우
-                {
-                    touchDist = Vector3.zero;
-                    CancleSwipe();
-                }
-                else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
-                {
-                    touchDist /= 2f;
-                }
+                //if (swipeSpeed > 130f) //완전히 튕기는 경우
+                //{
+                //   touchDist = Vector3.zero;
+                //   CancleSwipe();
+                //   Debug.Log( "완전 튐" );
+                //}
+                //else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
+                //{
+                //    touchDist /= 2f;
+                //    Debug.Log( "반쯤 튐" );
+
+                //}
 
                 slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
 
