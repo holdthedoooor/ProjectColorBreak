@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994898101526251514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.46, z: 0}
+  m_LocalPosition: {x: 0, y: -7.37, z: 0}
   m_LocalScale: {x: 0.53, y: 0.53, z: 1}
   m_Children: []
   m_Father: {fileID: 1349173285284117261}
@@ -104,7 +104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194413552505462212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -12.05, z: 0}
+  m_LocalPosition: {x: 0, y: -11.96, z: 0}
   m_LocalScale: {x: 0.53, y: 0.53, z: 1}
   m_Children: []
   m_Father: {fileID: 1349173285284117261}
@@ -183,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4263046011513239776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -16.6, z: 0}
+  m_LocalPosition: {x: 0, y: -16.51, z: 0}
   m_LocalScale: {x: 0.53, y: 0.53, z: 1}
   m_Children: []
   m_Father: {fileID: 1349173285284117261}
@@ -262,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6420289462666056077}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -21.15, z: 0}
+  m_LocalPosition: {x: 0, y: -21.06, z: 0}
   m_LocalScale: {x: 0.53, y: 0.53, z: 1}
   m_Children: []
   m_Father: {fileID: 1349173285284117261}
@@ -1632,11 +1632,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3730108828830545592}
     m_Modifications:
-    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
-        type: 3}
-      propertyPath: m_Name
-      value: ColorChange_Item
-      objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1691,6 +1686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: m_Name
+      value: ColorChange_Item
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -3900,7 +3900,7 @@ PrefabInstance:
     - target: {fileID: 7742499098462423939, guid: ac0f010402e5878468e48ac7303cfff7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7742499098462423939, guid: ac0f010402e5878468e48ac7303cfff7,
         type: 3}
@@ -3967,11 +3967,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3730108828830545592}
     m_Modifications:
-    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
-        type: 3}
-      propertyPath: m_Name
-      value: ColorChange_Item (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4026,6 +4021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714095, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: m_Name
+      value: ColorChange_Item (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
