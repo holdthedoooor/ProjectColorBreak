@@ -20,7 +20,7 @@ public class BossStage : MonoBehaviour
     private Animator   boss_Animator;
 
     [HideInInspector]
-    public Coroutine startBossStageCoroutine;
+    public Coroutine coroutine;
 
     void Awake()
     {
@@ -30,6 +30,8 @@ public class BossStage : MonoBehaviour
 
     void Start()
     {
+        if (StageManager.instance.panaltyPoint == 0)
+            coroutine = StartCoroutine( StartBossStageCoroutine() );
         StageManager.instance.StartBossStage();
     }
 
