@@ -101,6 +101,8 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isGameOver)
             return;
 
+        StageManager.instance.BossAnimationSkip();
+
         if (StageManager.instance.isBossStageStart)
             return;
 

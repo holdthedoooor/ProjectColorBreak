@@ -45,7 +45,7 @@ public class BossStage : MonoBehaviour
         while(_time < 2f)
         {
             _time += Time.deltaTime;
-            Camera.main.transform.position = Vector3.Lerp( Camera.main.transform.position, new Vector3(0, go_BossPrefab.transform.position.y + 3, -10), _time / 2f );
+            Camera.main.transform.localPosition = Vector3.Lerp( new Vector3(0, 4.4f, -10), new Vector3(0, go_BossPrefab.transform.position.y + 3, -10), _time / 2 );
             yield return null;
         }
 
@@ -56,16 +56,14 @@ public class BossStage : MonoBehaviour
         while (_time < 2f)
         {
             _time += Time.deltaTime;
-            Camera.main.transform.position = Vector3.Lerp( Camera.main.transform.position, new Vector3( 0, 4.4f, -10 ), _time / 2f );
+            Camera.main.transform.localPosition = Vector3.Lerp( new Vector3( 0, go_BossPrefab.transform.position.y + 3, -10 ), new Vector3( 0, 4.4f, -10 ), _time/2 );
             yield return null;
         }
 
-        if(go_AppearAnimation != null)
+        if (go_AppearAnimation != null)
             go_AppearAnimation.SetActive( false );
         go_BossPrefab.SetActive( true );
         StageManager.instance.isBossStageStart = false;
-
-        yield return null;
     }
 }
 
