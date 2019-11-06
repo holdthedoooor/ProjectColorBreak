@@ -44,6 +44,9 @@ public class PlayerCtrl : LivingEntity
     [SerializeField]
     private Vector3 endTouchPos = Vector3.zero;
 
+    [SerializeField]
+    private Vector3 wallPoint = Vector3.zero;
+
     public Vector3 curMousePos;
 
     public Material[] colorMt;
@@ -131,7 +134,41 @@ public class PlayerCtrl : LivingEntity
         }
         curMousePos = Input.mousePosition;
         Moving();
+        
     }
+
+    void CheckWallNormal()
+    {
+        RaycastHit2D hit = Physics2D.Linecast( transform.position, transform.position + moveVec.normalized * transform.localScale.x / 2, LayerMask.GetMask( "Wall" ) );
+
+        if (hit)
+        {
+            CancleSwipe();
+            slideVec.x = 0f;
+            touchDist = Vector2.zero;
+            //Debug.Break();
+            moveVec.x = 0f;
+        }
+    }
+
+    bool CheckWallFast()
+    {
+        bool isCollision = false;
+
+        //RaycastHit2D hit = Physics2D.CircleCast( transform.position, playerCol.radius * transform.localScale.x,moveVec.normalized,LayerMask.GetMask("Wall") );
+        RaycastHit2D hit = Physics2D.Linecast( transform.position, transform.position + moveVec * transform.localScale.x / 2, LayerMask.GetMask("Wall") );
+        
+        if(hit)
+        {
+            isCollision = true;
+            //Debug.Break();
+            wallPoint = hit.point;
+        }
+        Debug.DrawLine( transform.position, transform.position + moveVec/2 * transform.localScale.x /2 );
+
+        return isCollision;
+    }
+
 
     void CancleSwipe()
     {
@@ -198,11 +235,11 @@ public class PlayerCtrl : LivingEntity
                 //float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
                 ////시간대비 이동한거리(x좌표기준)
 
-
                 //if (swipeSpeed > 130f) //완전히 튕기는 경우
                 //{
-                //    touchDist = Vector3.zero;
-                //    CancleSwipe();
+                //    touchDist /= 2f;
+                //    //touchDist = Vector3.zero;
+                //    //CancleSwipe();
                 //}
                 //else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
                 //{
@@ -256,20 +293,27 @@ public class PlayerCtrl : LivingEntity
 
                 touchDist = endTouchPos - startTouchPos;//팍튈때 x값이 500~이상 뜸
 
-                //float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
-                //     //시간대비 이동한거리(x좌표기준)
+                float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
+                //시간대비 이동한거리(x좌표기준)
 
-                //if (swipeSpeed > 130f) //완전히 튕기는 경우
-                //{
-                //   touchDist = Vector3.zero;
-                //   CancleSwipe();
-                //   Debug.Log( "완전 튐" );
-                //}
+                if (swipeSpeed > 130f) //완전히 튕기는 경우
+                {
+                    //touchDist /= 2f;
+                    //touchDist = Vector3.zero;
+                    //CancleSwipe();
+                    if(CheckWallFast())
+                    {
+
+                    }
+                }
+                else
+                {
+                    CheckWallNormal();
+                }
+
                 //else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
                 //{
                 //    touchDist /= 2f;
-                //    Debug.Log( "반쯤 튐" );
-
                 //}
 
                 slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
@@ -297,8 +341,11 @@ public class PlayerCtrl : LivingEntity
         moveVec.x += slideVec.x;
         moveVec.y += bouncePower * Time.fixedDeltaTime;
 
+       
+
         playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
         //playerRb.velocity = moveVec * speed * Time.fixedDeltaTime;
+
 
         //화면 끝 에외처리
         if (playerTr.position.x > borderDist)
@@ -409,6 +456,8 @@ public class PlayerCtrl : LivingEntity
             StageManager.instance.FinishStage();
             OnInitialize();
         }
+
+
     }
 
     public void OnCollisionEnter2D( Collision2D collision )
@@ -419,7 +468,19 @@ public class PlayerCtrl : LivingEntity
             OnInitialize();
             Debug.Break();
         }
+
     }
+
+    public void CollisionWithWall(Vector2 setPos)
+    {
+        transform.position = setPos;
+
+        CancleSwipe();
+        slideVec.x = 0f;
+        touchDist = Vector2.zero;
+
+    }
+
     public void OnInitialize()
     {
         colorType = ColorType.Red;
