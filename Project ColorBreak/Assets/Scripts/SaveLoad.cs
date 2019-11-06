@@ -56,7 +56,7 @@ public class SaveLoad : MonoBehaviour
         }
 
         //현재 챕터의 보스스테이지를 클리어하고 별 개수가 현재 챕터의 목표 별 개수보다 크거나 같으면 다음챕터 Open
-        if (StageManager.instance.chapterStarCount >= StageManager.instance.chaptersUnlockStarCount[StageManager.instance.currentChapter - 1]
+        if (StageManager.instance.chaptersStarCount[StageManager.instance.currentChapter-1] >= StageManager.instance.chaptersUnlockStarCount[StageManager.instance.currentChapter - 1]
             && UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
         {
             saveData[StageManager.instance.currentChapter].stageBestScore.Add( 0 );
@@ -115,12 +115,26 @@ public class SaveLoad : MonoBehaviour
         {
             json = PlayerPrefs.GetString( saveChapters[i] );
             saveData[i] = JsonUtility.FromJson<SaveData>( json );
+
+            if (saveData[0].stageStatusNumber.Count == 0)
+                return;
+
             for (int j = 0; j < saveData[i].stageBestScore.Count; j++)
             {
                 UIManager.instance.chapterSelectUI.allStageSlot[i].stageSlots[j].SetStageSlot( saveData[i].stageBestScore[j], saveData[i].stageStarCount[j], saveData[i].stageStatusNumber[j] );
+                StageManager.instance.chaptersStarCount[i] += UIManager.instance.chapterSelectUI.allStageSlot[i].stageSlots[j].starCount;
+
+                if (saveData[i].stageStatusNumber[j] == 0)
+                    break;
             }
-            if (UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot != null)
-                UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot.SetBossStageSlot( saveData[i].bossStageStatusNumber, saveData[i].bossStageMinPanaltyPoint, saveData[i].bossStageStarCount );
+            if (saveData[i].stageBestScore.Count == 9)
+            {
+                if (UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot != null)
+                {
+                    UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot.SetBossStageSlot( saveData[i].bossStageStatusNumber, saveData[i].bossStageMinPanaltyPoint, saveData[i].bossStageStarCount );
+                    StageManager.instance.chaptersStarCount[i] += UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot.starCount;
+                }
+            }
         }
 
         UIManager.instance.chapterSelectUI.LoadChapterOpen();

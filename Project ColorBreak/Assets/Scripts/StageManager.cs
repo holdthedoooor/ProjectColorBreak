@@ -30,8 +30,10 @@ public class StageManager : MonoBehaviour
     public int          panaltyPoint;
     public int          currentChapter;
     public int[]        chaptersUnlockStarCount;
+
     //현재 챕터의 별 총 개수
-    public int          chapterStarCount;
+    public int[] chaptersStarCount;//챕터마다 획득한 별 개수 
+
     public GameObject        go_Player;
     public GameObject[]      go_AddScoreEffects;
     public GameObject[]      go_PlayerDieEffects;
@@ -73,6 +75,7 @@ public class StageManager : MonoBehaviour
         else
             theSaveLoad.LoadData();
 
+        UIManager.instance.chapterSelectUI.LoadStarCountText();
     }
 
     // 같은 ColorType의 장애물과 충돌하면 1점씩 추가
@@ -274,17 +277,23 @@ public class StageManager : MonoBehaviour
 
     public void ChapterOpenCheck()
     {
-        chapterStarCount = 0;
-
+        chaptersStarCount[currentChapter - 1] = 0;
         for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
-            chapterStarCount += UIManager.instance.stageSlots[i].starCount;
+            if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Clear)
+                break;
+
+            chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
         }
-        chapterStarCount += UIManager.instance.bossStageSlot.starCount;
+
+        if(UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+            chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
+
+        UIManager.instance.chapterSelectUI.SetStarCountText();
 
         if (UIManager.instance.chapterSelectUI.chapterUnlock == currentChapter)
         {   
-            if (chapterStarCount >= chaptersUnlockStarCount[currentChapter - 1] && UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+            if (chaptersStarCount[currentChapter - 1] >= chaptersUnlockStarCount[currentChapter - 1] && UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
             {
                 //다음 챕터 오픈
                 UIManager.instance.chapterSelectUI.NextChapterOpen();

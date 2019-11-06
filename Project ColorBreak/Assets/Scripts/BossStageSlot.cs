@@ -41,7 +41,7 @@ public class BossStageSlot : MonoBehaviour
     {
         for (int i = 0; i < starCount; i++)
         {
-            starImages[i].sprite = UIManager.instance.starSprite;
+            starImages[i].sprite = UIManager.instance.star2Sprite;
         }
     }
 
@@ -72,7 +72,7 @@ public class BossStageSlot : MonoBehaviour
         stageSelectButton.interactable = true; //버튼 클릭 가능
         for (int i = 0; i < starImages.Length; i++)
         {
-            starImages[i].sprite = UIManager.instance.blankStarSprite;
+            starImages[i].sprite = UIManager.instance.blankStar2Sprite;
         }
         go_BossStageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
         bossStageStatus = BossStageStatus.Open;

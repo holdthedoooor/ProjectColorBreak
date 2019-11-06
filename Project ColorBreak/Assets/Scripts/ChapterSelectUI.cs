@@ -37,8 +37,15 @@ public class ChapterSelectUI : MonoBehaviour
     private int num;
     public bool isStop = false;
 
+    //별 개수 확인
+    public GameObject go_StarCountCheckUI;
+    public Text totalStartCount_Text;
+    public Text[] chaptersStarCount_Text;
+
     public void Chapter1_Button()
     {
+        StopCoroutine( coroutine );
+
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[0].SetActive( true );
         go_CurrentChapterUI = go_Chapters[0];
@@ -51,11 +58,12 @@ public class ChapterSelectUI : MonoBehaviour
         UIManager.instance.bossStageSlot = allStageSlot[0].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-        ChapterStopCoroutine();
     }
 
     public void Chapter2_Button()
     {
+        StopCoroutine( coroutine );
+
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[1].SetActive( true );
         go_CurrentChapterUI = go_Chapters[1];
@@ -68,11 +76,12 @@ public class ChapterSelectUI : MonoBehaviour
         UIManager.instance.bossStageSlot = allStageSlot[1].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-        ChapterStopCoroutine();
     }
 
     public void Chapter3_Button()
     {
+        StopCoroutine( coroutine );
+
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[2].SetActive( true );
         go_CurrentChapterUI = go_Chapters[2];
@@ -85,11 +94,12 @@ public class ChapterSelectUI : MonoBehaviour
         //UIManager.instance.bossStageSlot = allStageSlot[2].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-        ChapterStopCoroutine();
     }
 
     public void Chapter4_Button()
     {
+        StopCoroutine( coroutine );
+
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[3].SetActive( true );
         go_CurrentChapterUI = go_Chapters[3];
@@ -102,11 +112,12 @@ public class ChapterSelectUI : MonoBehaviour
         //UIManager.instance.bossStageSlot = allStageSlot[3].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-        ChapterStopCoroutine();
     }
 
     public void Chapter5_Button()
     {
+        StopCoroutine( coroutine );
+
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[4].SetActive( true );
         go_CurrentChapterUI = go_Chapters[4];
@@ -119,15 +130,15 @@ public class ChapterSelectUI : MonoBehaviour
         //UIManager.instance.bossStageSlot = allStageSlot[4].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-        ChapterStopCoroutine();
     }
 
     public void BackButton()
     {
         go_CurrentChapterUI.SetActive( false );
         go_ChapterSelectUI.SetActive( true );
+        TICStartCoroutine();
+
         Quit.instance.quitStatus = Quit.QuitStatus.ChapterSelect;
-        ChapterStartCoroutine();
     }
 
     public void LoadChapterOpen()
@@ -143,7 +154,7 @@ public class ChapterSelectUI : MonoBehaviour
     public void NextChapterOpen()
     {
         chapters_Button[StageManager.instance.currentChapter].interactable = true;
-        chapters_Button[StageManager.instance.currentChapter - 1].GetComponent<Image>().sprite = chapterOpen_Sprites[StageManager.instance.currentChapter - 1];
+        chapters_Button[StageManager.instance.currentChapter].GetComponent<Image>().sprite = chapterOpen_Sprites[StageManager.instance.currentChapter - 1];
         chapterText_Images[StageManager.instance.currentChapter - 1].sprite = chapterOpenText_Sprites[StageManager.instance.currentChapter - 1];
     }
 
@@ -165,13 +176,43 @@ public class ChapterSelectUI : MonoBehaviour
         }
     }
 
-    public void ChapterStartCoroutine()
+    public void TICStartCoroutine()
     {
         coroutine = StartCoroutine( TextImageChangeCoroutine() );
     }
 
-    public void ChapterStopCoroutine()
+    public void SetStarCountText()
     {
-        StopCoroutine( coroutine );
+        int totalStarCount = 0;
+
+        for (int i = 0; i < chapterUnlock; i++)
+        {
+            totalStarCount += StageManager.instance.chaptersStarCount[i];
+        }
+
+        chaptersStarCount_Text[StageManager.instance.currentChapter - 1].text = StageManager.instance.chaptersStarCount[StageManager.instance.currentChapter - 1].ToString();
+        totalStartCount_Text.text = totalStarCount.ToString();
+    }
+
+    public void LoadStarCountText()
+    {
+        int totalStarCount = 0;
+
+        for (int i = 0; i < chapterUnlock; i++)
+        {
+            totalStarCount += StageManager.instance.chaptersStarCount[i];
+            chaptersStarCount_Text[i].text = StageManager.instance.chaptersStarCount[i].ToString();
+        }
+        totalStartCount_Text.text = totalStarCount.ToString();
+    }
+
+    public void StarCountCheck_Button()
+    {
+        go_StarCountCheckUI.SetActive( true );
+    }
+
+    public void StarCountCheckCancel_Button()
+    {
+        go_StarCountCheckUI.SetActive( false );
     }
 }
