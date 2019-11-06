@@ -191,12 +191,6 @@ public class Obstacle : LivingEntity
                     return;
                 spriteRenderer.sprite = colorSprites[(int)colorType];
                 break;
-            case ObstaclesType.SafeBlock:
-                spriteRenderer.sprite = safeSprite;
-                break;
-            case ObstaclesType.DeathBlock:
-                spriteRenderer.sprite = deathSprite;
-                break;
             case ObstaclesType.CrackBlock:
                 if (colorType != ColorType.White)
                 {
