@@ -416,8 +416,6 @@ public class PlayerCtrl : LivingEntity
         if(collision.transform.tag == "Boss")
         {
             StageManager.instance.BossCollision();
-            OnInitialize();
-            Debug.Break();
         }
     }
     public void OnInitialize()

@@ -53,8 +53,8 @@ public class Quit : MonoBehaviour
                         break;
 
                     case QuitStatus.ChapterSelect:
+                        UIManager.instance.chapterSelectUI.StopCoroutine( UIManager.instance.chapterSelectUI.coroutine );
                         UIManager.instance.chapterSelectUI.go_ChapterSelectUI.SetActive( false );
-                        UIManager.instance.chapterSelectUI.ChapterStopCoroutine();
                         UIManager.instance.lobbyUI.go_LobbyUI.SetActive( true );
                         UIManager.instance.lobbyUI.LobbyStartCoroutine();
                         quitStatus = QuitStatus.Lobby;

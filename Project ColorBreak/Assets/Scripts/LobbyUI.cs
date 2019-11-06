@@ -27,6 +27,7 @@ public class LobbyUI : MonoBehaviour
     public void LobbyStartButton()
     {
         go_LobbyUI.SetActive( false );
+
         UIManager.instance.chapterSelectUI.go_ChapterSelectUI.SetActive( true );
 
         //현재 화면 상태를 ChapterSelect로 변경
@@ -34,10 +35,6 @@ public class LobbyUI : MonoBehaviour
 
         //캐릭터 이미지 변경 코루틴 멈춤
         StopCoroutine( coroutine );
-
-        //Chapter Select UI의 Chapter Select Text 이미지 변경 코루틴 시작
-        UIManager.instance.chapterSelectUI.ChapterStartCoroutine();
-
     }
 
     public IEnumerator CharacterImageChangeCoroutine()
