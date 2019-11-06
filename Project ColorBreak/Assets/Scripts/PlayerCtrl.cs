@@ -137,39 +137,7 @@ public class PlayerCtrl : LivingEntity
         
     }
 
-    void CheckWallNormal()
-    {
-        RaycastHit2D hit = Physics2D.Linecast( transform.position, transform.position + moveVec.normalized * transform.localScale.x / 2, LayerMask.GetMask( "Wall" ) );
-
-        if (hit)
-        {
-            CancleSwipe();
-            slideVec.x = 0f;
-            touchDist = Vector2.zero;
-            //Debug.Break();
-            moveVec.x = 0f;
-        }
-    }
-
-    bool CheckWallFast()
-    {
-        bool isCollision = false;
-
-        //RaycastHit2D hit = Physics2D.CircleCast( transform.position, playerCol.radius * transform.localScale.x,moveVec.normalized,LayerMask.GetMask("Wall") );
-        RaycastHit2D hit = Physics2D.Linecast( transform.position, transform.position + moveVec * transform.localScale.x / 2, LayerMask.GetMask("Wall") );
-        
-        if(hit)
-        {
-            isCollision = true;
-            //Debug.Break();
-            wallPoint = hit.point;
-        }
-        Debug.DrawLine( transform.position, transform.position + moveVec/2 * transform.localScale.x /2 );
-
-        return isCollision;
-    }
-
-
+   
     void CancleSwipe()
     {
         isSwiped = false;
@@ -293,24 +261,15 @@ public class PlayerCtrl : LivingEntity
 
                 touchDist = endTouchPos - startTouchPos;//팍튈때 x값이 500~이상 뜸
 
-                float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
-                //시간대비 이동한거리(x좌표기준)
+                //float swipeSpeed = Mathf.Abs( touchDist.x ) / swipeTime * Time.deltaTime; //같은 거리 대비 시간이 짧을 수록 값은 커진다.
+                ////시간대비 이동한거리(x좌표기준)
 
-                if (swipeSpeed > 130f) //완전히 튕기는 경우
-                {
-                    //touchDist /= 2f;
-                    //touchDist = Vector3.zero;
-                    //CancleSwipe();
-                    if(CheckWallFast())
-                    {
-
-                    }
-                }
-                else
-                {
-                    CheckWallNormal();
-                }
-
+                //if (swipeSpeed > 130f) //완전히 튕기는 경우
+                //{
+                //    //touchDist = Vector3.zero;
+                //    //CancleSwipe();
+       
+                //}
                 //else if (swipeSpeed > 100f) //재빨리 스와이프 한 경우(확 그은 경우)
                 //{
                 //    touchDist /= 2f;
@@ -342,9 +301,30 @@ public class PlayerCtrl : LivingEntity
         moveVec.y += bouncePower * Time.fixedDeltaTime;
 
        
+        //playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
 
-        playerTr.Translate( moveVec * speed * Time.deltaTime, Space.World );
-        //playerRb.velocity = moveVec * speed * Time.fixedDeltaTime;
+        RaycastHit2D hit = Physics2D.Linecast( transform.position, transform.position + moveVec * speed * Time.deltaTime, LayerMask.GetMask( "Wall" ) );
+
+        if (hit)
+        {
+            Debug.Log( "벽 발견" );
+            wallPoint = hit.point;
+
+            if(transform.position.x > wallPoint.x) //벽이 왼쪽에 위치
+            {
+                transform.position = new Vector3( wallPoint.x + playerCol.radius * transform.localScale.x, wallPoint.y );
+            }
+            else
+            {
+                transform.position = new Vector3( wallPoint.x - playerCol.radius * transform.localScale.x, wallPoint.y );
+
+            }
+            CancleSwipe();
+            slideVec.x = 0f;
+            moveVec.x = 0f;
+
+        }
+        transform.position = transform.position + moveVec * speed * Time.deltaTime;
 
 
         //화면 끝 에외처리
