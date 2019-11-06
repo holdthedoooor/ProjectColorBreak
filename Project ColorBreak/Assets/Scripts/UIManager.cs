@@ -19,8 +19,10 @@ public class UIManager : MonoBehaviour
     private static UIManager m_instance; //싱글톤이 할당될 변수
 
     //나중에 기능별로 나눌 예정
-    public Sprite               starSprite; 
+    public Sprite               starSprite; //팝업창에 쓰이는 별 활성화 이미지
+    public Sprite               star2Sprite; //스테이지 슬롯과 슬라이더에 쓰일 별 활성화 이미지
     public Sprite               blankStarSprite;
+    public Sprite               blankStar2Sprite;
     public StageUI              stageUI;
     public YouDiedUI            youDiedUI;
     public StageClearUI         stageClearUI;
@@ -52,7 +54,7 @@ public class UIManager : MonoBehaviour
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    stageUI.starImages[i].sprite = starSprite;
+                    stageUI.starImages[i].sprite = star2Sprite;
                 }
                 starCount = 3;
             }
@@ -60,13 +62,13 @@ public class UIManager : MonoBehaviour
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    stageUI.starImages[i].sprite = starSprite;
+                    stageUI.starImages[i].sprite = star2Sprite;
                 }
                 starCount = 2;
             }
             else if (StageManager.instance.score >= StageManager.instance.currentStageSlot.checkPoints[0])
             {
-                stageUI.starImages[0].sprite = starSprite;
+                stageUI.starImages[0].sprite = star2Sprite;
                 starCount = 1;
             }
         }

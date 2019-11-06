@@ -45,7 +45,7 @@ public class StageUI : MonoBehaviour
                 starTexts[i].enabled = true;
                 starTexts[i].text = StageManager.instance.currentStageSlot.checkPoints[i].ToString();
                 starImages[i].transform.localPosition = new Vector3( Mathf.Lerp( minPositionX, maxPositionX, ratio ), starImages[i].transform.localPosition.y, starImages[i].transform.localPosition.z );
-                starImages[i].sprite = UIManager.instance.blankStarSprite;
+                starImages[i].sprite = UIManager.instance.blankStar2Sprite;
             }
         }
     }

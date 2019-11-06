@@ -40,7 +40,7 @@ public class StageSlot : MonoBehaviour
     {
         for (int i = 0; i < starCount; i++)
         {
-            starImages[i].sprite = UIManager.instance.starSprite;
+            starImages[i].sprite = UIManager.instance.star2Sprite;
         }
     }
 
@@ -88,7 +88,7 @@ public class StageSlot : MonoBehaviour
         stageSlotImage.sprite = openSprite;    //오픈 Sprite로 변경
         for (int i = 0; i < starImages.Length; i++)
         {
-            starImages[i].sprite = UIManager.instance.blankStarSprite;
+            starImages[i].sprite = UIManager.instance.blankStar2Sprite;
         }
         go_StageInformation.SetActive( true ); //스테이지 Text, Star Image 활성화
         stageStatus = StageStatus.Open;
