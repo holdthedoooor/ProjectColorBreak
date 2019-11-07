@@ -6,12 +6,12 @@ public class StopCamera : MonoBehaviour
 {
     private float   borderDist = 0f;
     private Transform    cameraTr;
-    public float stopDumping = 5f;
+    public float stopDumping = 0f;
 
     private void Start()
     {
         cameraTr = Camera.main.GetComponent<Transform>();
-        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).y * (Camera.main.rect.height) / 2 + GetComponentInChildren<BoxCollider2D>().size.y/2;
+        borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).y * (Camera.main.rect.height) / 2;
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class StopCamera : MonoBehaviour
 
         if(Camera.main.GetComponent<FollowCamera>().pastPlayer.y > StageManager.instance.go_Player.transform.localPosition.y)
         {
-            if (cameraWithDist <= borderDist)
+            if (cameraWithDist <= borderDist + stopDumping)
                 Camera.main.GetComponent<FollowCamera>().StopCamera();
         }
     }
