@@ -237,8 +237,6 @@ public class PlayerCtrl : LivingEntity
         {
             CancleSwipe();
             slideVec.x = 0f;
-
-            Debug.Log("눌림");
         }
 
         if (Input.GetMouseButton( 0 ))
@@ -370,7 +368,6 @@ public class PlayerCtrl : LivingEntity
                 if ((obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.obstaclesType != Obstacle.ObstaclesType.SafeBlock)
                     || obstacle.obstaclesType == Obstacle.ObstaclesType.DeathBlock)
                 {
-                    Debug.Log( "데미지 입음" );
                     OnDamage();
                 }
                 //TO DO : 색으로 판정내리기 보다는 Obstacle에서 색에 따른 bool 변수 또는, ObstacleType을 지정해서 코드를 간소화할 필요가 있음.
@@ -424,7 +421,6 @@ public class PlayerCtrl : LivingEntity
 
             if (item != null)
             {
-                Debug.Log( "색 변경" );
                 if (item.itemType == Item.ItemType.ColorChange)
                     ChangeColor( item.colorType );
                 item.OnDamage();

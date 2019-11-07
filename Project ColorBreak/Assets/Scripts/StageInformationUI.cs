@@ -15,7 +15,7 @@ public class StageInformationUI : MonoBehaviour
     //현재 슬롯 및 스테이지를 null로 바꿔준다.
     public void StageSelectCancelButton()
     {
-        go_StageInformationUI.SetActive( false );
+        Quit.instance.DeactivePopUP();
         StageManager.instance.currentStageSlot = null;
         StageManager.instance.currentStage = null;
     }
@@ -47,8 +47,9 @@ public class StageInformationUI : MonoBehaviour
 
             stageNumberText.text = "STAGE " + (StageManager.instance.currentStageSlot.stageNumber + 1).ToString();
         }
-     
-        go_StageInformationUI.SetActive( true );
+
+        Quit.instance.ActivePopUp( go_StageInformationUI, Quit.instance.quitStatus );
+        //go_StageInformationUI.SetActive( true );
     }
 
     //누르면 게임 시작

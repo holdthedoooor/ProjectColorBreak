@@ -208,11 +208,11 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void StarCountCheck_Button()
     {
-        go_StarCountCheckUI.SetActive( true );
+        Quit.instance.ActivePopUp( go_StarCountCheckUI, Quit.instance.quitStatus );
     }
 
     public void StarCountCheckCancel_Button()
     {
-        go_StarCountCheckUI.SetActive( false );
+        Quit.instance.DeactivePopUP();
     }
 }

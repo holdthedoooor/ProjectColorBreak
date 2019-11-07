@@ -14,7 +14,7 @@ public class BossStageInformationUI : MonoBehaviour
     //현재 슬롯 및 스테이지를 null로 바꿔준다.
     public void StageSelectCancelButton()
     {
-        go_BossStageInformationUI.SetActive( false );
+        Quit.instance.DeactivePopUP();
         StageManager.instance.currentBossStageSlot = null;
         StageManager.instance.currentBossStage = null;
     }
@@ -49,7 +49,7 @@ public class BossStageInformationUI : MonoBehaviour
             else
                 minPanaltyPoint_Text.text = StageManager.instance.currentBossStageSlot.minPanaltyPoint.ToString();
 
-            go_BossStageInformationUI.SetActive( true );
+            Quit.instance.ActivePopUp( go_BossStageInformationUI, Quit.instance.quitStatus );
         }
     }
 

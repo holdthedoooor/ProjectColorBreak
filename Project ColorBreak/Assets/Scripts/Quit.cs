@@ -23,10 +23,14 @@ public class Quit : MonoBehaviour
         Lobby,
         ChapterSelect,
         StageSelect,
+        Popup,
         StopGame,
         InGame,
     }
     public QuitStatus quitStatus;
+
+    public GameObject currentPopUp;
+    public QuitStatus beforeStatus;
 
     public int num = 0;
 
@@ -59,6 +63,10 @@ public class Quit : MonoBehaviour
                         quitStatus = QuitStatus.Lobby;
                         break;
 
+                    case QuitStatus.Popup:
+                        DeactivePopUP();
+                        break;
+
                     case QuitStatus.StageSelect:
                         UIManager.instance.chapterSelectUI.BackButton();
                         break;
@@ -73,5 +81,23 @@ public class Quit : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ActivePopUp( GameObject _currentPopUp, QuitStatus _beforeQuitStatus )
+    {
+        currentPopUp = _currentPopUp;
+
+        currentPopUp.SetActive( true );
+
+        beforeStatus = _beforeQuitStatus;
+
+        quitStatus = QuitStatus.Popup;
+    }
+
+    public void DeactivePopUP()
+    {
+        currentPopUp.SetActive( false );
+
+        quitStatus = beforeStatus;
     }
 }
