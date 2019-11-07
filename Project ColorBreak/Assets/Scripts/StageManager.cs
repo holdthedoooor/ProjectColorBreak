@@ -115,13 +115,25 @@ public class StageManager : MonoBehaviour
         currentBossStageSlot.currentHp -= damage;
         
         StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine() );
+
+        UIManager.instance.bossStageUI.UpdateBossHpText();
+
         if (currentBossStage.bossStageType == BossStage.BossStageType.Normal)
         {
             if(currentBossStageSlot.currentHp <= currentBossStageSlot.hardHp)
                  NextPhase();
             else
             {
-                panaltyPoint++;
+                panaltyPoint--;
+
+                UIManager.instance.bossStageUI.UpdateChallengeCountText();
+
+                if (panaltyPoint == 0)
+                {
+                    FinishStage();
+                    return;
+                }
+
                 Destroy(currentBossStage.gameObject );
                 if(currentBossStageSlot.isRandom)
                     currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[Random.Range(0, currentBossStageSlot.go_BossStageNormals.Length)]
@@ -133,8 +145,6 @@ public class StageManager : MonoBehaviour
 
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-                
-                UIManager.instance.bossStageUI.UpdateChallengeCountText();
             }
         }
         else
@@ -148,18 +158,22 @@ public class StageManager : MonoBehaviour
             else
             {
                 Destroy( currentBossStage.gameObject );
-                panaltyPoint++;
+                panaltyPoint--;
+
+                UIManager.instance.bossStageUI.UpdateChallengeCountText();
+
+                if (panaltyPoint == 0)
+                {
+                    FinishStage();
+                    return;
+                }
 
                 currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
 
                 go_Player.SetActive( false );
                 go_Player.SetActive( true );
-
-                UIManager.instance.bossStageUI.UpdateChallengeCountText();
             } 
-        }
-
-        UIManager.instance.bossStageUI.UpdateBossHpText();
+        }        
     }
 
     // 활성화 되면 즉 스테이지 시작 시 실행
@@ -200,7 +214,7 @@ public class StageManager : MonoBehaviour
         {
             isBossStageStart = true;
             currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
-            panaltyPoint++;
+            panaltyPoint = currentBossStageSlot.panaltyPoints[0];
             UIManager.instance.bossStageUI.UpdateChallengeCountText();
             UIManager.instance.SetStartUI();
         }
