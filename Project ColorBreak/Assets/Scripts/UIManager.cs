@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     public Sprite               star2Sprite; //스테이지 슬롯과 슬라이더에 쓰일 별 활성화 이미지
     public Sprite               blankStarSprite;
     public Sprite               blankStar2Sprite;
+    public Button               nextButton; //보스 스테이지 StageClear UI의 Next 버튼
     public StageUI              stageUI;
     public YouDiedUI            youDiedUI;
     public StageClearUI         stageClearUI;
@@ -132,19 +133,23 @@ public class UIManager : MonoBehaviour
         else
         {
             bossStageUI.DeactivateUI();
-            if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
+
+            if (StageManager.instance.currentBossStageSlot.currentHp <= 0 && StageManager.instance.panaltyPoint > 0)
             {
-                if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[1])
+                if (StageManager.instance.panaltyPoint >= StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
                     starCount = 3;
-                else if (StageManager.instance.panaltyPoint <= StageManager.instance.currentBossStageSlot.panaltyPoints[0])
+                else if (StageManager.instance.panaltyPoint > 0 && StageManager.instance.panaltyPoint < StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
                     starCount = 2;
-                else
+                else if (StageManager.instance.panaltyPoint > 0)
                     starCount = 1;
 
                 if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
-                {
                     StageManager.instance.currentBossStageSlot.bossStageStatus = BossStageSlot.BossStageStatus.Clear;
-                }
+
+                if (StageManager.instance.chaptersStarCount[StageManager.instance.currentChapter - 1] >= StageManager.instance.chaptersUnlockStarCount[StageManager.instance.currentChapter - 1])
+                    nextButton.interactable = true;
+                else
+                    nextButton.interactable = false;
 
                 stageClearUI.BS_ActiveClearUI();
             }
