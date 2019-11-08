@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15417,7 +15417,8 @@ PrefabInstance:
         type: 3}
       propertyPath: go_BossStageNormals.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3198921652577601663, guid: c3d51e5867b3d7741a90623407fbf618,
+        type: 3}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: go_BossStageNormals.Array.data[1]
@@ -15434,16 +15435,17 @@ PrefabInstance:
         type: 3}
       propertyPath: go_BossStageHard
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3198921652577601663, guid: c3d51e5867b3d7741a90623407fbf618,
+        type: 3}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: maxHp
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: hardHp
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
