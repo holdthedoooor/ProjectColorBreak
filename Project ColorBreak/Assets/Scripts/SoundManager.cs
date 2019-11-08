@@ -28,7 +28,8 @@ public class SoundManager : MonoBehaviour
 
     public Dictionary<SoundType, List<AudioClip>> audioClips = new Dictionary<SoundType, List<AudioClip>>();
 
-    private AudioSource bgmPlayer;
+    public AudioSource bgmPlayer;
+    public AudioSource[] sfxPlayers;
 
     public string startBgm;
 
@@ -42,8 +43,6 @@ public class SoundManager : MonoBehaviour
         else if (m_instance != this)
             DestroyImmediate( this.gameObject );
 
-        bgmPlayer = GetComponent<AudioSource>();
-
     }
 
     void Start()
@@ -51,19 +50,12 @@ public class SoundManager : MonoBehaviour
         LoadFiles();
 
         PlayBGM( startBgm );
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void LoadFiles()
     {
         AudioClip[] bgms = Resources.LoadAll<AudioClip>( "Sound/BGM" );
-        AudioClip[] SFXs = Resources.LoadAll<AudioClip>( "FX" );
+        AudioClip[] SFXs = Resources.LoadAll<AudioClip>( "Sound/Effect" );
 
         List<AudioClip> bgmList = new List<AudioClip>();
         List<AudioClip> sfxList = new List<AudioClip>();
@@ -82,7 +74,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public AudioClip FindAudioClip( string name, SoundType type = SoundType.BGM )
+    public AudioClip FindAudioClip( string name, SoundType type)
     {
         AudioClip result = null;
 
@@ -107,7 +99,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBGM( string name )
     {
-        bgmPlayer.clip = FindAudioClip( name );
+        bgmPlayer.clip = FindAudioClip( name, SoundType.BGM );
         bgmPlayer.Play();
     }
 
@@ -116,7 +108,29 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.Stop();
     }
 
+    public void PlaySFX( string name )
+    {
+        for (int i = 0; i < sfxPlayers.Length; i++)
+        {
+            if(!sfxPlayers[i].isPlaying)
+            {
+                sfxPlayers[i].clip = FindAudioClip( name, SoundType.SFX );
+                sfxPlayers[i].Play();
+                return;
+            }
+        }
+        Debug.Log( "모든 SFX_AudioSource 사용중" );
+    }
 
-
-
+    public void StopAllSFX()
+    {
+        for (int i = 0; i < sfxPlayers.Length; i++)
+        {
+            if (sfxPlayers[i].isPlaying)
+            {
+                sfxPlayers[i].Stop();
+                return;
+            }
+        }
+    }
 }
