@@ -50,10 +50,10 @@ public class FollowCamera : MonoBehaviour
         cameraTr.position = moveVec;   
     }
 
-    public void StopCamera()
+    public void StopCamera(Vector3 _stopPos)
     {
         isNearGoal = true;
-        stopPos = transform.position;
+        stopPos = _stopPos;
     }
 
     public void SetCamera()

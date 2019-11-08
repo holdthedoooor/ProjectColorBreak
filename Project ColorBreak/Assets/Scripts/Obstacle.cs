@@ -159,7 +159,7 @@ public class Obstacle : LivingEntity
 
     void AddScore()
     {
-        if (maxLife == 3 && moveType != MoveType.Fix)
+        if (maxLife == 3)
             obstacleScore = 3;
         else if (maxLife == 2 || moveType != MoveType.Fix)
             obstacleScore = 2;
