@@ -9,6 +9,7 @@
   * Removed `inheritDeform` field, getter, and setter from `MeshAttachment`.
   * Changed `.skel` binary format, added a string table. References to strings in the data resolve to this string table, reducing storage size of binary files considerably.
   * Changed the `.json` and `.skel` file formats to accomodate the new feature and file size optimiations. Old projects must be exported with Spine 3.8.20+ to be compatible with the 3.8 Spine runtimes.
+  * Switched projects from FDT to Visual Studio Code. See updated `README.md` files for instructions.
 
 * **Additions**
   * Added `SkeletonBinary` to load binary `.skel` files. See `MixAndMatchExample.as` in `spine-startling-example`.
@@ -26,6 +27,7 @@
 
 ### Starling
 * Added `MixAndMatchExample.as` to demonstrate the new Skin API additions and how to load binary `.skel` files.
+* Switched projects from FDT to Visual Studio Code. See updated `README.md` files for instructions.
 
 ## C
 * **Breaking changes**
@@ -53,9 +55,12 @@
 
 ### Cocos2d-Objc
 * Added mix-and-match example to demonstrate the new Skin API.
+* Added `IKExample`.
+* Added `SkeletonAnimation preUpdateWorldTransformsListener` and `SkeletonAnimation postUpdateWorldTransformsListener`. When set, these callbacks will be invokved before and after the skeleton's `updateWorldTransforms()` method is called. See the `IKExample` how it can be used.
 
 ### SFML
 * Added mix-and-match example to demonstrate the new Skin API.
+* Added `IKExample`.
 
 ## C++
 * **Breaking Changes**
@@ -88,6 +93,8 @@
 * Updated to cocos2d-x 3.17.1
 * Added mix-and-match example to demonstrate the new Skin API.
 * Exmaple project requires Visual Studio 2019 on Windows
+* Added `IKExample`.
+* Added `SkeletonAnimation::setPreUpdateWorldTransformsListener()` and `SkeletonAnimation::setPreUpdateWorldTransformsListener()`. When set, these callbacks will be invokved before and after the skeleton's `updateWorldTransforms()` method is called. See the `IKExample` how it can be used.
 
 ### SFML
 * Added mix-and-match example to demonstrate the new Skin API.
