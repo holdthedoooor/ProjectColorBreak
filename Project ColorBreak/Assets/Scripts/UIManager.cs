@@ -203,6 +203,7 @@ public class UIManager : MonoBehaviour
                 stageClearUI.S_DeactiveClearUI();
             else
                 youDiedUI.S_DeactiveYouDiedUI();
+
             Destroy( StageManager.instance.currentStage.gameObject );
             StageManager.instance.currentStage = Instantiate( StageManager.instance.currentStageSlot.go_StagePrefab, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<Stage>();       
         }
@@ -221,6 +222,7 @@ public class UIManager : MonoBehaviour
             else
                 StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
         }
+        pauseUI.go_PauseUI.SetActive( false );
     }
 
     //다음 스테이지로 넘어가는 버튼
