@@ -368,6 +368,7 @@ public class PlayerCtrl : LivingEntity
                 if ((obstacle.colorType != colorType && obstacle.colorType != ColorType.White && obstacle.obstaclesType != Obstacle.ObstaclesType.SafeBlock)
                     || obstacle.obstaclesType == Obstacle.ObstaclesType.DeathBlock)
                 {
+                    ;
                     OnDamage();
                 }
                 //TO DO : 색으로 판정내리기 보다는 Obstacle에서 색에 따른 bool 변수 또는, ObstacleType을 지정해서 코드를 간소화할 필요가 있음.
@@ -440,6 +441,31 @@ public class PlayerCtrl : LivingEntity
     {
         if(collision.transform.tag == "Boss")
         {
+            if (StageManager.instance.currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.BounceAttack)
+            {
+                if (colorType == ColorType.Red)
+                {
+                    StageManager.instance.currentBossStageSlot.currentHp -= 1;
+
+                    UIManager.instance.bossStageUI.UpdateBossHpText();
+
+                    StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine() );
+
+                    if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
+                    {
+                        StageManager.instance.currentBossStageSlot.currentHp = 0;
+                        StageManager.instance.FinishStage();
+                        return;
+                    }
+
+                    StartCoroutine( BounceBall() );
+                }
+                else
+                    StageManager.instance.FinishStage();
+
+                return;
+            }
+
             StageManager.instance.BossCollision();
         }
 

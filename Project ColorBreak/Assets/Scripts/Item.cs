@@ -68,7 +68,7 @@ public class Item : LivingEntity
         spriteRenderer.sprite = colorSprites[(int)colorType];
     }
 
-    override public void OnDamage()
+    override public void OnDamage(int _damage = 1)
     {
         Die();
     }

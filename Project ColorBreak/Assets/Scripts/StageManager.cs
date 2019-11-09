@@ -113,7 +113,7 @@ public class StageManager : MonoBehaviour
     public void BossCollision()
     {
         currentBossStageSlot.currentHp -= damage;
-        
+
         StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine() );
 
         UIManager.instance.bossStageUI.UpdateBossHpText();
@@ -135,10 +135,10 @@ public class StageManager : MonoBehaviour
                 }
 
                 Destroy(currentBossStage.gameObject );
-                if(currentBossStageSlot.isRandom)
+                if(currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.StageRandom)
                     currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[Random.Range(0, currentBossStageSlot.go_BossStageNormals.Length)]
                         , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-                else
+                else if(currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.Standard)
                     currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
 
                 currentBossStage.go_BossPrefab.SetActive( true );
