@@ -13,6 +13,14 @@ public class BossStageSlot : MonoBehaviour
     }
     public BossStageStatus bossStageStatus;
 
+    public enum BossStageType
+    {
+        Standard,
+        StageRandom,
+        BounceAttack
+    }
+    public BossStageType bossStageType;
+
     public Image stageSlotImage;
     public Image[] starImages;
     public Button stageSelectButton;
@@ -31,9 +39,6 @@ public class BossStageSlot : MonoBehaviour
     //재도전 횟수
     public int minPanaltyPoint = 100;
     public int starCount = 0; //별이 몇개 채워졌는지 저장
-
-    [Header("체크하면 Normal Phase가 랜덤으로 나온다")]
-    public bool isRandom;
 
     //해당 스테이지가 끝나고 점수가 bestScore보다 높을 때 실행
     //별 이미지 최대 점수 변경

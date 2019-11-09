@@ -61,7 +61,7 @@ public class BossStageInformationUI : MonoBehaviour
 
         //보스 스테이지면
         StageManager.instance.panaltyPoint = 0;
-        if (StageManager.instance.currentBossStageSlot.isRandom)
+        if (StageManager.instance.currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.StageRandom)
             StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range( 0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length )]
                 , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
         else

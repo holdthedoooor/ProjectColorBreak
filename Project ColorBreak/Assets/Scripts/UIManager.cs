@@ -196,7 +196,6 @@ public class UIManager : MonoBehaviour
     //현재 스테이지를 다시 플레이하는 버튼
     public void RestartButton()
     {
-        
         StageManager.instance.go_Player.SetActive( false );
         if (StageManager.instance.currentStage != null)
         {
@@ -216,7 +215,7 @@ public class UIManager : MonoBehaviour
 
             Destroy( StageManager.instance.currentBossStage.gameObject );
             StageManager.instance.panaltyPoint = 0;
-            if (StageManager.instance.currentBossStageSlot.isRandom)
+            if (StageManager.instance.currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.StageRandom)
                 StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]
                     , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
             else
@@ -250,7 +249,7 @@ public class UIManager : MonoBehaviour
                 StageManager.instance.currentBossStageSlot = bossStageSlot;
                 StageManager.instance.panaltyPoint = 0;
 
-                if(StageManager.instance.currentBossStageSlot.isRandom)
+                if(StageManager.instance.currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.StageRandom)
                     StageManager.instance.currentBossStage = Instantiate( StageManager.instance.currentBossStageSlot.go_BossStageNormals[Random.Range(0, StageManager.instance.currentBossStageSlot.go_BossStageNormals.Length)]
                         , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
                 else

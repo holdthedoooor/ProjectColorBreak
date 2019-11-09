@@ -118,7 +118,7 @@ public class Obstacle : LivingEntity
             StartCoroutine( MoveCoroutine() );
     }
 
-    public override void OnDamage()
+    public override void OnDamage(int _damage = 1)
     {
         base.OnDamage();
 
