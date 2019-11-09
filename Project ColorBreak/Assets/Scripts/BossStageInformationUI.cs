@@ -7,8 +7,8 @@ public class BossStageInformationUI : MonoBehaviour
 {
     public GameObject go_BossStageInformationUI;
 
-    public Text[]  panaltyPointTexts;
-    public Text  minPanaltyPoint_Text;
+    public Text[]  heartPoint_Texts;
+    public Text  heartPoint_Text;
     public Image[] starImages;
 
     //현재 슬롯 및 스테이지를 null로 바꿔준다.
@@ -29,7 +29,7 @@ public class BossStageInformationUI : MonoBehaviour
 
         for (int i = 0; i < StageManager.instance.currentBossStageSlot.panaltyPoints.Length; i++)
         {
-            panaltyPointTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
+            heartPoint_Texts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
         }
     }
 
@@ -45,9 +45,9 @@ public class BossStageInformationUI : MonoBehaviour
             }
 
             if (StageManager.instance.currentBossStageSlot.minPanaltyPoint == 100)
-                minPanaltyPoint_Text.text = "0";
+                heartPoint_Text.text = "0";
             else
-                minPanaltyPoint_Text.text = StageManager.instance.currentBossStageSlot.minPanaltyPoint.ToString();
+                heartPoint_Text.text = StageManager.instance.currentBossStageSlot.minPanaltyPoint.ToString();
 
             Quit.instance.ActivePopUp( go_BossStageInformationUI, Quit.instance.quitStatus );
         }

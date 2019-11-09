@@ -21,7 +21,6 @@ public class StopCamera : MonoBehaviour
 
         if (Camera.main.GetComponent<FollowCamera>().pastPlayer.y > StageManager.instance.go_Player.transform.position.y)
         {
-            Debug.Log( Camera.main.transform.position.y );
             if (cameraWithDist <= borderDist + stopDumping)
             {
                 Camera.main.GetComponent<FollowCamera>().StopCamera( new Vector3( 0, transform.position.y + borderDist + stopDumping, -10 ) );
