@@ -8,39 +8,18 @@ public class LobbyUI : MonoBehaviour
     public GameObject go_LobbyUI;
     public GameObject go_Slime;
     public GameObject go_TitleText;
-    private Vector3 originPosition;
 
-    private float time = 0f;
+    public Coroutine coroutine1;
+    public Coroutine coroutine2;
+
+    //1이면 Logo, 2면 Quit
+    public int stopCourotineNum;
     
     void Start()
     {
         //현재 화면 상태를 Lobby로 변경
         Quit.instance.quitStatus = Quit.QuitStatus.Lobby;
-
-        originPosition = go_TitleText.transform.position;
-    }
-
-    void Update()
-    {
-        if (!go_Slime.activeInHierarchy)
-            return;
-
-        go_Slime.transform.Rotate( new Vector3( 0, 0, 1 ) * Time.deltaTime * 120 );
-
-        if (time <= 3f)
-        {
-            time += Time.deltaTime;
-            go_TitleText.transform.position = originPosition + Random.insideUnitSphere * 10;
-            go_TitleText.transform.position = new Vector3( go_TitleText.transform.position.x, go_TitleText.transform.position.y, 0 );
-        }
-        else
-        {
-            if(time <= 6f)
-                time += Time.deltaTime;
-            else
-                time = 0;
-        }
-           
+        stopCourotineNum = 0;
     }
 
     //스테이지 선택 UI로 가는 버튼
@@ -52,5 +31,48 @@ public class LobbyUI : MonoBehaviour
 
         //현재 화면 상태를 ChapterSelect로 변경
         Quit.instance.quitStatus = Quit.QuitStatus.ChapterSelect;
+
+        if(stopCourotineNum == 0)
+        {
+            FindObjectOfType<LogoUI>().StopCoroutine( coroutine1 );
+            FindObjectOfType<LogoUI>().StopCoroutine( coroutine2 );
+            stopCourotineNum++;
+        }
+        else
+        {
+            Quit.instance.StopCoroutine( coroutine1 );
+            Quit.instance.StopCoroutine( coroutine2 );
+        }
+    }
+
+    public IEnumerator SlimeRotation()
+    {
+        go_Slime.transform.eulerAngles = new Vector3( 0, 0, 0 );
+
+        while(go_Slime.activeInHierarchy)
+        {
+            go_Slime.transform.Rotate( new Vector3( 0, 0, 1 ) * Time.deltaTime * 120 );
+            yield return null;
+        }
+    }
+
+    public IEnumerator TextShake()
+    {
+        float _time = 0;
+        go_TitleText.transform.localScale = new Vector3( 1, 1, 1 );
+
+        while (go_Slime.activeInHierarchy)
+        {
+            go_TitleText.transform.localScale = new Vector3( 1.1f, 1.1f, 1 );
+
+            _time = 0;
+            while (_time < 0.3f)
+            {
+                _time += Time.deltaTime;
+                go_TitleText.transform.localScale = Vector3.Lerp( new Vector3( 1.1f, 1.1f, 1 ), new Vector3( 1,1,1 ), _time / 0.3f );
+                yield return null;
+            }
+            yield return null;
+        }
     }
 }
