@@ -61,9 +61,13 @@ public class PlayerCtrl : LivingEntity
     public float touchAmount = 1f; //터치 감도
     [Header( "중력을 조절합니다. 수치가 높을수록 최대속도에 빨리 도달합니다." )]
     public float gravity = 0.1f;
-    [Header( "회전하는 속도를 조절합니다." )]
-    public float rotateSpeed = 7f;
 
+    [Header( "공의 회전 속도를 조절합니다." )]
+    public float torque = 100.0f;
+    [Header( "공의 회전 감속도를 조절합니다. 1.0에 가까울수록 천천히 감소합니다." )]
+    [Range( 0.00001f, 0.999999f )]
+    public float damper = 0.99f;
+    private float rotateSpeed = 0.0f;
 
     //--------------------변수선언-----------------(여기까지)
     void Awake()
@@ -169,7 +173,7 @@ public class PlayerCtrl : LivingEntity
             }
         }
 
-#if UNITY_ANDROID //안드로이드일때
+#if !UNITY_EDITOR //안드로이드일때
 
         if (Input.GetMouseButtonDown( 0 ))
         {
@@ -342,7 +346,13 @@ public class PlayerCtrl : LivingEntity
     private void Roll()
     {
         //playerImage.localEulerAngles += new Vector3( 0, 0, speed / maxSpeed * rotateSpeed );
-        playerTr.Rotate( 0, 0, rotateSpeed * 100 * Time.deltaTime );
+        playerTr.Rotate( 0, 0, rotateSpeed * Time.deltaTime );
+        rotateSpeed *= 0.99f;
+    }
+
+    private void OnBounce()
+    {
+        rotateSpeed = -torque * moveVec.x;
     }
 
     public void ChangeColor( ColorType color )
@@ -386,6 +396,7 @@ public class PlayerCtrl : LivingEntity
 
                             case Obstacle.ObstaclesType.SafeBlock:
                                 StartCoroutine( BounceBall() ); ;
+                                OnBounce();
                                 break;
 
                             case Obstacle.ObstaclesType.CrackBlock:
@@ -395,6 +406,7 @@ public class PlayerCtrl : LivingEntity
                                         StartCoroutine( BounceBall() );
 
                                     obstacle.OnDamage();
+                                    OnBounce();
                                 }
                                 break;
 
@@ -405,6 +417,7 @@ public class PlayerCtrl : LivingEntity
 
                                     if (obstacle.status != Status.Die)
                                         StartCoroutine( BounceBall() );
+                                    OnBounce();
                                 }
                                 break;
 
