@@ -239,7 +239,7 @@ public class StageManager : MonoBehaviour
             {
                 //여기에서 오류 발생하는것같다
                 //현재 점수가 현재 스테이지에서 달성한 최대 점수보다 크다면 최대 점수 변경
-                if (score > currentStageSlot.bestScore)
+                if (score > currentStageSlot.bestScore && UIManager.instance.starCount > 0)
                 {
                     currentStageSlot.starCount = UIManager.instance.starCount;
                     currentStageSlot.StarImageChange();
@@ -272,7 +272,6 @@ public class StageManager : MonoBehaviour
             currentBossStageSlot.StarImageChange();
             panaltyPoint = 0;
         }
-
         go_Player.SetActive( false );
     }
 
