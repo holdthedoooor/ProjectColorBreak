@@ -50,8 +50,8 @@ public class LogoUI : MonoBehaviour
         yield return new WaitForSeconds( 0.2f );
 
         go_Background.SetActive( false );
-        UIManager.instance.lobbyUI.go_LobbyUI.SetActive( true );
-        UIManager.instance.lobbyUI.coroutine1 = StartCoroutine( UIManager.instance.lobbyUI.TextShake() );
-        UIManager.instance.lobbyUI.coroutine2 = StartCoroutine( UIManager.instance.lobbyUI.SlimeRotation() );
+
+
+        UIManager.instance.scenarioUI.coroutine = StartCoroutine( UIManager.instance.scenarioUI.ScenarioCoroutine() );
     }
 }

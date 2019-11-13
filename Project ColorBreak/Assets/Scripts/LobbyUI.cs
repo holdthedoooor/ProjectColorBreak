@@ -34,8 +34,8 @@ public class LobbyUI : MonoBehaviour
 
         if(stopCourotineNum == 0)
         {
-            FindObjectOfType<LogoUI>().StopCoroutine( coroutine1 );
-            FindObjectOfType<LogoUI>().StopCoroutine( coroutine2 );
+            UIManager.instance.scenarioUI.StopCoroutine( coroutine1 );
+            UIManager.instance.scenarioUI.StopCoroutine( coroutine2 );
             stopCourotineNum++;
         }
         else

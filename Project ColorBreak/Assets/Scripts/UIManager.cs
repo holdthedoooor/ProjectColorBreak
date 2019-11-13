@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
     public ChapterSelectUI      chapterSelectUI;
     public BossStageUI          bossStageUI;
     public QuitUI               quitUI;
+    public ScenarioUI           scenarioUI;
+    public LogoUI               logoUI;
     public StageSlot[]          stageSlots; //현재 Chapter의 스테이지 슬롯들
     public BossStageSlot        bossStageSlot; //현재 Chapter의 보스 스테이지
 
