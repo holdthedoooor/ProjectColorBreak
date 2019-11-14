@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21598,7 +21598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4ceecf23ae8ac4dacf4712a3d02050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMasterMode: 0
+  isMasterMode: 1
   isDataReset: 1
   isGameOver: 0
   isPause: 0
@@ -21616,6 +21616,7 @@ MonoBehaviour:
   - {fileID: 742706254232855071, guid: a25c7993df1453e4faab22678af52211, type: 3}
   - {fileID: 2433103298809643166, guid: 6e81533369328094495d49348d69ea1a, type: 3}
   - {fileID: 7801290891583282225, guid: 940605b08e20d2e4990a9497174722d7, type: 3}
+  - {fileID: 1001554439331140451, guid: 0055b4a9d1cc482428195576cfe44018, type: 3}
   go_PlayerDieEffects:
   - {fileID: 2986340076736809687, guid: 159ad471af3419d4588ef89463d0ae06, type: 3}
   - {fileID: 9126507872112727778, guid: 1c78f3b39534c624bad3ac0f28293923, type: 3}

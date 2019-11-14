@@ -305,9 +305,6 @@ public class Obstacle : LivingEntity
 
         int index = (int)colorType;
 
-        if (index > 3)
-            return;
-
         GameObject clone = Instantiate( StageManager.instance.go_AddScoreEffects[index] );
         clone.transform.position = new Vector3( StageManager.instance.go_Player.transform.localPosition.x, StageManager.instance.go_Player.transform.localPosition.y, transform.position.z );
         Destroy( clone, destroyTime );
