@@ -39,8 +39,9 @@ public class Quit : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.Android)
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
+                SoundManager.instance.PlaySFX( "Click_1" );
                 switch (quitStatus)
                 {
                     case QuitStatus.Lobby:
@@ -87,6 +88,8 @@ public class Quit : MonoBehaviour
 
     public void ActivePopUp( GameObject _currentPopUp, QuitStatus _beforeQuitStatus )
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         currentPopUp = _currentPopUp;
 
         currentPopUp.SetActive( true );
@@ -98,6 +101,8 @@ public class Quit : MonoBehaviour
 
     public void DeactivePopUP()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         currentPopUp.SetActive( false );
 
         quitStatus = beforeStatus;

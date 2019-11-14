@@ -55,6 +55,8 @@ public class StageInformationUI : MonoBehaviour
     //누르면 게임 시작
     public void StageStartButton()
     {
+        SoundManager.instance.PlaySFX( "Click_2" );
+
         UIManager.instance.chapterSelectUI.go_CurrentChapterUI.SetActive( false );
         go_StageInformationUI.SetActive( false );
 

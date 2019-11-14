@@ -51,6 +51,8 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter1_Button()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
@@ -69,6 +71,8 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter2_Button()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         if (chapterUnlock < 2)
         {
             starSum = 0;
@@ -103,6 +107,8 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter3_Button()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         if (chapterUnlock < 3)
         {
             starSum = 0;
@@ -137,6 +143,8 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter4_Button()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         if (chapterUnlock < 4)
         {
             starSum = 0;
@@ -171,6 +179,8 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter5_Button()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         if (chapterUnlock < 5)
         {
             starSum = 0;
@@ -205,6 +215,8 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void BackButton()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         go_CurrentChapterUI.SetActive( false );
         go_ChapterSelectUI.SetActive( true );
         TICStartCoroutine();
@@ -281,7 +293,7 @@ public class ChapterSelectUI : MonoBehaviour
     }
 
     public void PopUpCancel_Button()
-    {
+    { 
         Quit.instance.DeactivePopUP();
     }
 }

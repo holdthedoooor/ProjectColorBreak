@@ -24,6 +24,8 @@ public class ScenarioUI : MonoBehaviour
     {
         if(isCoroutineRun)
         {
+            SoundManager.instance.PlaySFX( "Click_1" );
+
             UIManager.instance.logoUI.StopCoroutine( coroutine );
 
             go_ScenarioUI.SetActive( false );

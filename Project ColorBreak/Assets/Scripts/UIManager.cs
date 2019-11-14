@@ -164,6 +164,8 @@ public class UIManager : MonoBehaviour
     //홈 버튼 클릭
     public void HomeButton()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         if (StageManager.instance.currentStage != null)
         {
             stageUI.DeactivateUI();
@@ -198,6 +200,8 @@ public class UIManager : MonoBehaviour
     //현재 스테이지를 다시 플레이하는 버튼
     public void RestartButton()
     {
+        SoundManager.instance.PlaySFX( "Click_1" );
+
         StageManager.instance.go_Player.SetActive( false );
         if (StageManager.instance.currentStage != null)
         {
@@ -230,6 +234,8 @@ public class UIManager : MonoBehaviour
     //다음 스테이지로 넘어가는 버튼
     public void NextButton()
     {
+        SoundManager.instance.PlaySFX( "Click_2" );
+
         StageManager.instance.go_Player.SetActive( false );
 
         //일반 스테이지라면
@@ -300,5 +306,7 @@ public class UIManager : MonoBehaviour
         StageManager.instance.isPause = true;
         Time.timeScale = 0;
         Quit.instance.quitStatus = Quit.QuitStatus.StopGame;
+
+        SoundManager.instance.PlaySFX( "Click_1" );
     }
 }

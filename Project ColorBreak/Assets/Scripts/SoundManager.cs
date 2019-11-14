@@ -29,7 +29,7 @@ public class SoundManager : MonoBehaviour
     public Dictionary<SoundType, List<AudioClip>> audioClips = new Dictionary<SoundType, List<AudioClip>>();
 
     public AudioSource bgmPlayer;
-    public AudioSource[] sfxPlayers;
+    public AudioSource sfxPlayer;
 
     public string startBgm;
 
@@ -110,27 +110,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX( string name )
     {
-        for (int i = 0; i < sfxPlayers.Length; i++)
-        {
-            if(!sfxPlayers[i].isPlaying)
-            {
-                sfxPlayers[i].clip = FindAudioClip( name, SoundType.SFX );
-                sfxPlayers[i].Play();
-                return;
-            }
-        }
-        Debug.Log( "모든 SFX_AudioSource 사용중" );
-    }
-
-    public void StopAllSFX()
-    {
-        for (int i = 0; i < sfxPlayers.Length; i++)
-        {
-            if (sfxPlayers[i].isPlaying)
-            {
-                sfxPlayers[i].Stop();
-                return;
-            }
-        }
+        sfxPlayer.clip = FindAudioClip( name, SoundType.SFX );
+        sfxPlayer.Play();
     }
 }
