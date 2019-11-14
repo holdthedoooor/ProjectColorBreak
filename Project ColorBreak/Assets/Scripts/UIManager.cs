@@ -166,6 +166,8 @@ public class UIManager : MonoBehaviour
     {
         SoundManager.instance.PlaySFX( "Click_1" );
 
+        SoundManager.instance.PlayBGM( "BGM_5" );
+
         if (StageManager.instance.currentStage != null)
         {
             stageUI.DeactivateUI();
@@ -205,6 +207,8 @@ public class UIManager : MonoBehaviour
         StageManager.instance.go_Player.SetActive( false );
         if (StageManager.instance.currentStage != null)
         {
+            SoundManager.instance.PlayBGM( "BGM_6" );
+
             if (starCount > 0 && StageManager.instance.isGoal)
                 stageClearUI.S_DeactiveClearUI();
             else
@@ -215,6 +219,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            SoundManager.instance.PlayBGM( "BGM_3" );
+
             if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
                 stageClearUI.BS_DeactiveClearUI();
             else
@@ -241,6 +247,8 @@ public class UIManager : MonoBehaviour
         //일반 스테이지라면
         if(StageManager.instance.currentStageSlot != null)
         {
+            SoundManager.instance.PlayBGM( "BGM_6" );
+
             stageClearUI.S_DeactiveClearUI();
 
             Destroy( StageManager.instance.currentStage.gameObject );
@@ -254,6 +262,8 @@ public class UIManager : MonoBehaviour
             //다음 스테이지가 보스 스테이지라면
             else
             {
+                SoundManager.instance.PlayBGM( "BGM_3" );
+
                 StageManager.instance.currentStageSlot = null;
                 StageManager.instance.currentStage = null;
                 StageManager.instance.currentBossStageSlot = bossStageSlot;
@@ -275,6 +285,8 @@ public class UIManager : MonoBehaviour
         //보스 스테이지면
         else
         {
+            SoundManager.instance.PlayBGM( "BGM_6" );
+
             stageClearUI.BS_DeactiveClearUI();
             Destroy( StageManager.instance.currentBossStage.gameObject );
             StageManager.instance.currentBossStageSlot = null;

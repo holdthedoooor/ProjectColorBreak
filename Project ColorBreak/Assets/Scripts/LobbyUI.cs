@@ -42,6 +42,7 @@ public class LobbyUI : MonoBehaviour
         }
         else
         {
+            Debug.Log( "코루틴" );
             Quit.instance.StopCoroutine( coroutine1 );
             Quit.instance.StopCoroutine( coroutine2 );
         }

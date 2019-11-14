@@ -56,6 +56,7 @@ public class StageInformationUI : MonoBehaviour
     public void StageStartButton()
     {
         SoundManager.instance.PlaySFX( "Click_2" );
+        SoundManager.instance.PlayBGM( "BGM_6" );
 
         UIManager.instance.chapterSelectUI.go_CurrentChapterUI.SetActive( false );
         go_StageInformationUI.SetActive( false );

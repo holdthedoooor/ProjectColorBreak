@@ -61,8 +61,8 @@ public class Quit : MonoBehaviour
                         UIManager.instance.chapterSelectUI.StopCoroutine( UIManager.instance.chapterSelectUI.coroutine );
                         UIManager.instance.chapterSelectUI.go_ChapterSelectUI.SetActive( false );
                         UIManager.instance.lobbyUI.go_LobbyUI.SetActive( true );
-                        UIManager.instance.lobbyUI.coroutine1 = UIManager.instance.lobbyUI.StartCoroutine( UIManager.instance.lobbyUI.TextShake() );
-                        UIManager.instance.lobbyUI.coroutine2 = UIManager.instance.lobbyUI.StartCoroutine( UIManager.instance.lobbyUI.SlimeRotation() );
+                        UIManager.instance.lobbyUI.coroutine1 = StartCoroutine( UIManager.instance.lobbyUI.TextShake() );
+                        UIManager.instance.lobbyUI.coroutine2 = StartCoroutine( UIManager.instance.lobbyUI.SlimeRotation() );
                         quitStatus = QuitStatus.Lobby;
                         break;
 

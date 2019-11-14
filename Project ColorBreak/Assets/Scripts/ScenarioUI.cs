@@ -42,6 +42,8 @@ public class ScenarioUI : MonoBehaviour
     {
         isCoroutineRun = true;
 
+        SoundManager.instance.PlayBGM( "BGM_5" );
+
         go_ScenarioUI.SetActive( true );
 
         int _num = 0;
