@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class AllStageSlot
@@ -37,10 +38,16 @@ public class ChapterSelectUI : MonoBehaviour
     private int num;
     public bool isStop = false;
 
-    //별 개수 확인
+    //모든 챕터의 별 개수 확인
     public GameObject go_StarCountCheckUI;
     public Text totalStartCount_Text;
     public Text[] chaptersStarCount_Text;
+
+    //Lock 상태인 챕터 선택시 각 챕터의 오픈에 필요한 별 개수 확인
+    public GameObject go_NeedStarCountCheckUI;
+    public Text chapterNum_Text;
+    public Text needStarCount_Text;
+    private int starSum = 0;
 
     public void Chapter1_Button()
     {
@@ -62,6 +69,22 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter2_Button()
     {
+        if (chapterUnlock < 2)
+        {
+            starSum = 0;
+            chapterNum_Text.text = "2";
+            for (int i = 0; i < chapterUnlock; i++)
+            {
+                starSum += StageManager.instance.chaptersUnlockStarCount[i];
+            }
+
+            needStarCount_Text.text = starSum.ToString();
+
+            Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
+
+            return;
+        }
+
         StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
@@ -80,6 +103,22 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter3_Button()
     {
+        if (chapterUnlock < 3)
+        {
+            starSum = 0;
+            chapterNum_Text.text = "3";
+            for (int i = 0; i < chapterUnlock; i++)
+            {
+                starSum += StageManager.instance.chaptersUnlockStarCount[i];
+            }
+
+            needStarCount_Text.text = starSum.ToString();
+
+            Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
+
+            return;
+        }
+
         StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
@@ -98,6 +137,22 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter4_Button()
     {
+        if (chapterUnlock < 4)
+        {
+            starSum = 0;
+            chapterNum_Text.text = "4";
+            for (int i = 0; i < chapterUnlock; i++)
+            {
+                starSum += StageManager.instance.chaptersUnlockStarCount[i];
+            }
+
+            needStarCount_Text.text = starSum.ToString();
+
+            Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
+
+            return;
+        }
+
         StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
@@ -116,6 +171,22 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void Chapter5_Button()
     {
+        if (chapterUnlock < 5)
+        {
+            starSum = 0;
+            chapterNum_Text.text = "5";
+            for (int i = 0; i < chapterUnlock; i++)
+            {
+                starSum += StageManager.instance.chaptersUnlockStarCount[i];
+            }
+
+            needStarCount_Text.text = starSum.ToString();
+
+            Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
+
+            return;
+        }
+
         StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
@@ -145,7 +216,6 @@ public class ChapterSelectUI : MonoBehaviour
     {
         for (int i = 0; i < chapterUnlock - 1; i++)
         {
-            chapters_Button[i + 1].interactable = true;
             chapters_Button[i + 1].GetComponent<Image>().sprite = chapterOpen_Sprites[i];
             chapterText_Images[i].sprite = chapterOpenText_Sprites[i];
         }
@@ -153,7 +223,6 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void NextChapterOpen()
     {
-        chapters_Button[StageManager.instance.currentChapter].interactable = true;
         chapters_Button[StageManager.instance.currentChapter].GetComponent<Image>().sprite = chapterOpen_Sprites[StageManager.instance.currentChapter - 1];
         chapterText_Images[StageManager.instance.currentChapter - 1].sprite = chapterOpenText_Sprites[StageManager.instance.currentChapter - 1];
     }
@@ -211,7 +280,7 @@ public class ChapterSelectUI : MonoBehaviour
         Quit.instance.ActivePopUp( go_StarCountCheckUI, Quit.instance.quitStatus );
     }
 
-    public void StarCountCheckCancel_Button()
+    public void PopUpCancel_Button()
     {
         Quit.instance.DeactivePopUP();
     }

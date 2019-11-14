@@ -67,21 +67,7 @@ public class ScenarioUI : MonoBehaviour
             yield return new WaitForSeconds( 0.5f );
         }
 
-        _time = 0;
-
-        while (_time < 0.5f)
-        {
-            _time += Time.deltaTime;
-
-            text_Image.transform.localScale = Vector3.Lerp( new Vector3( 0.1f, 0.1f, 1f ), new Vector3( 1f, 1f, 1f ), _time / 0.5f );
-
-            _color = text_Image.color;
-            _color.a = Mathf.Lerp( 0, 1, _time / 0.5f );
-            text_Image.color = _color;
-
-            yield return null;
-        }
-
+        text_Image.enabled = true;
         _time = 0;
 
         while(_time < 3f)
