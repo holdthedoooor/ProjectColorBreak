@@ -100,6 +100,17 @@ public class Obstacle : LivingEntity
 
     void Start()
     {
+        switch (obstaclesType)
+        {
+            case ObstaclesType.Standard:
+                onDie += () => SoundManager.instance.PlaySFX( "Block_Break_1" );
+                break;
+            case ObstaclesType.BounceBlock:
+            case ObstaclesType.CrackBlock:
+                onDie += () => SoundManager.instance.PlaySFX( "Block_Break_2" );
+                break;
+        }
+
         if (obstaclesType == ObstaclesType.SafeBlock)
         {
             obstacleScore = 0;
@@ -131,18 +142,20 @@ public class Obstacle : LivingEntity
             bool isRandomColor = true;
             ChangeColor( colorNum, isRandomColor );
         }*/
-        if (colorType == ColorType.White)
+        if (colorType == ColorType.White || status == Status.Die)
             return;
 
         switch(obstaclesType)
         {
             case ObstaclesType.CrackBlock:
+                SoundManager.instance.PlaySFX( "Block_Bounce" );
                 if (curLife == 2)
                     spriteRenderer.sprite = crack1Sprites[(int)colorType];
                 else if (curLife == 1)
                     spriteRenderer.sprite = crack2Sprites[(int)colorType];
                 break;
             case ObstaclesType.BounceBlock:
+                SoundManager.instance.PlaySFX( "Block_Bounce" );
                 spriteRenderer.sprite = bounce1Sprites[(int)colorType];
                 break;
         }

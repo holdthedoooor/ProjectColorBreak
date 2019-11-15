@@ -151,6 +151,7 @@ public class PlayerCtrl : LivingEntity
     IEnumerator BounceBall()
     {
         isBounce = true;
+
         bouncePower = bounceMaxPower;
 
         yield return new WaitUntil( () => bouncePower <=0);
@@ -394,6 +395,7 @@ public class PlayerCtrl : LivingEntity
                                 break;
 
                             case Obstacle.ObstaclesType.SafeBlock:
+                                SoundManager.instance.PlaySFX( "Block_Bounce" );
                                 StartCoroutine( BounceBall() ); ;
                                 OnBounce();
                                 break;

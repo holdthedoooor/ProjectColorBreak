@@ -47,7 +47,9 @@ public class LivingEntity : MonoBehaviour
         curLife -= _damage;
 
         if (curLife <= 0)
+        {
             Die();
+        }
     }
 
     //죽었을 때 실행되는 함수
