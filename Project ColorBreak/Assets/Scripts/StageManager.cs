@@ -112,6 +112,8 @@ public class StageManager : MonoBehaviour
     //플레이어가 보스와 충돌했을 때 실행
     public void BossCollision()
     {
+        SoundManager.instance.PlaySFX( "Boss_Damage" );
+
         currentBossStageSlot.currentHp -= damage;
 
         StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine() );

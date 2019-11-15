@@ -163,6 +163,7 @@ public class UIManager : MonoBehaviour
             else
             {
                 SoundManager.instance.PlaySFX( "Game_Over" );
+                youDiedUI.BS_ActiveYouDiedUI();
             }
         }
         StageManager.instance.go_Player.SetActive( false );
