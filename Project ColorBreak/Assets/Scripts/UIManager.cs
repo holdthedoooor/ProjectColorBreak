@@ -102,6 +102,8 @@ public class UIManager : MonoBehaviour
             //starCount가 1개 이상이면 Stage Clear
             if (starCount > 0 && StageManager.instance.isGoal)
             {
+                SoundManager.instance.PlaySFX( "Game_Clear" );
+
                 //만약 현재 stageSlot이 Open만 된 상태였다면 Clear로 변경
                 if ( currentStageSlot.stageStatus == StageSlot.StageStatus.Open)
                 {
@@ -127,6 +129,7 @@ public class UIManager : MonoBehaviour
             //클리어 못했을 시
             else
             {
+                SoundManager.instance.PlaySFX( "Game_Over" );
                 youDiedUI.S_ActiveYouDiedUI();
             }
             
@@ -138,6 +141,8 @@ public class UIManager : MonoBehaviour
 
             if (StageManager.instance.currentBossStageSlot.currentHp <= 0 && StageManager.instance.panaltyPoint > 0)
             {
+                SoundManager.instance.PlaySFX( "Boss_Clear" );
+
                 if (StageManager.instance.panaltyPoint >= StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
                     starCount = 3;
                 else if (StageManager.instance.panaltyPoint > 0 && StageManager.instance.panaltyPoint < StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
@@ -156,7 +161,9 @@ public class UIManager : MonoBehaviour
                 stageClearUI.BS_ActiveClearUI();
             }
             else
-                youDiedUI.BS_ActiveYouDiedUI();
+            {
+                SoundManager.instance.PlaySFX( "Game_Over" );
+            }
         }
         StageManager.instance.go_Player.SetActive( false );
     }

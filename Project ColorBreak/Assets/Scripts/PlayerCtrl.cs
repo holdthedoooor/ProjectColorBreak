@@ -78,8 +78,7 @@ public class PlayerCtrl : LivingEntity
         trailRenderer = GetComponent<TrailRenderer>();
         playerRb = GetComponent<Rigidbody2D>();
 
-        onDie += StageManager.instance.FinishStage;
-        onDie += OnInitialize;
+        onDie += StageManager.instance.CreateDieEffect;
     }
 
     protected override void OnEnable()
@@ -436,18 +435,21 @@ public class PlayerCtrl : LivingEntity
             if (item != null)
             {
                 if (item.itemType == Item.ItemType.ColorChange)
+                {
                     ChangeColor( item.colorType );
+                    SoundManager.instance.PlaySFX( "Item_Eat" );
+                }
+                    
                 item.OnDamage();
             }
         }
         else if (other.tag == "Goal")
         {
+            SoundManager.instance.PlaySFX( "Goal_In" );
             StageManager.instance.isGoal = true;
             StageManager.instance.FinishStage();
             OnInitialize();
         }
-
-
     }
 
     public void OnCollisionEnter2D( Collision2D collision )
@@ -491,7 +493,6 @@ public class PlayerCtrl : LivingEntity
         CancleSwipe();
         slideVec.x = 0f;
         touchDist = Vector2.zero;
-
     }
 
     public void OnInitialize()

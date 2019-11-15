@@ -272,7 +272,6 @@ public class StageManager : MonoBehaviour
             currentBossStageSlot.StarImageChange();
             panaltyPoint = 0;
         }
-        go_Player.SetActive( false );
     }
 
     public void NextPhase()
@@ -331,5 +330,29 @@ public class StageManager : MonoBehaviour
                 currentBossStage.StopCoroutine( currentBossStage.coroutine );
             }
         }
+    }
+
+    public void CreateDieEffect()
+    {
+        StartCoroutine( DieEffectCoroutine() );
+    }
+
+    public IEnumerator DieEffectCoroutine()
+    {
+        go_Player.SetActive( false );
+
+        SoundManager.instance.PlaySFX( "Character_Destroy" );
+
+        float destroyTime = 0.25f;
+
+        int index = (int)go_Player.GetComponent<LivingEntity>().colorType;
+
+        GameObject clone = Instantiate(go_PlayerDieEffects[index] );
+        clone.transform.position = go_Player.transform.position;
+
+        yield return new WaitForSeconds( destroyTime );
+
+        Destroy( clone );
+        FinishStage();
     }
 }
