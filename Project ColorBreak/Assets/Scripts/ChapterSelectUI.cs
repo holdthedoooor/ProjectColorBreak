@@ -177,6 +177,7 @@ public class ChapterSelectUI : MonoBehaviour
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
     }
 
+    /*
     public void Chapter5_Button()
     {
         SoundManager.instance.PlaySFX( "Click_1" );
@@ -211,7 +212,7 @@ public class ChapterSelectUI : MonoBehaviour
         //UIManager.instance.bossStageSlot = allStageSlot[4].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-    }
+    }*/
 
     public void BackButton()
     {
@@ -246,7 +247,7 @@ public class ChapterSelectUI : MonoBehaviour
         text_Image.sprite = text_Sprites[0];
         while (!isStop)
         {
-            yield return new WaitForSeconds( 2f );
+            yield return new WaitForSeconds( 0.5f );
 
             num++;
 

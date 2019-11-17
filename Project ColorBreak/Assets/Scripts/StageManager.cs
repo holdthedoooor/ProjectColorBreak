@@ -69,7 +69,7 @@ public class StageManager : MonoBehaviour
                     UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot.SetOpen();
             }
 
-            UIManager.instance.chapterSelectUI.chapterUnlock = 5;
+            UIManager.instance.chapterSelectUI.chapterUnlock = 4;
             UIManager.instance.chapterSelectUI.LoadChapterOpen();
         }
         else
@@ -307,7 +307,7 @@ public class StageManager : MonoBehaviour
 
         if (UIManager.instance.chapterSelectUI.chapterUnlock == currentChapter)
         {   
-            if (chaptersStarCount[currentChapter - 1] >= chaptersUnlockStarCount[currentChapter - 1] && UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+            if (chaptersStarCount[currentChapter - 1] >= chaptersUnlockStarCount[currentChapter - 1])
             {
                 //다음 챕터 오픈
                 UIManager.instance.chapterSelectUI.NextChapterOpen();
