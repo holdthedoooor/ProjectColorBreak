@@ -12,7 +12,7 @@ public class StopCamera : MonoBehaviour
     {
         cameraTr = Camera.main.GetComponent<Transform>();
         //borderDist = Camera.main.ScreenToWorldPoint( new Vector2( Screen.width, Screen.height ) ).y * (Camera.main.rect.height) / 2;
-        borderDist = cameraTr.position.y - Camera.main.ScreenToWorldPoint( new Vector2( 0,0 ) ).y;
+        borderDist = (cameraTr.position.y - Camera.main.ScreenToWorldPoint( new Vector2( 0,0 ) ).y) * (Camera.main.rect.height);
     }
 
     private void Update()
