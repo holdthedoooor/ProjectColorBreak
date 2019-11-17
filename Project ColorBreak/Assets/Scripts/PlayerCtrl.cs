@@ -218,9 +218,9 @@ public class PlayerCtrl : LivingEntity
                 //    touchDist /= 2f;
                 //}
 
-                slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
+                slideVec = Vector3.Slerp( slideVec, touchDist / 3 * Time.deltaTime, 1.0f ) * touchAmount;
 
-                startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
+                startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 5f* Time.deltaTime );
 
             }
 
@@ -277,9 +277,10 @@ public class PlayerCtrl : LivingEntity
                 //    touchDist /= 2f;
                 //}
 
-                slideVec = Vector3.Slerp( slideVec, touchDist / 100, 1.0f ) * touchAmount;
-
-                startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 0.1f );
+                slideVec = Vector3.Slerp( slideVec, touchDist / 3 * Time.deltaTime, 1.0f ) * touchAmount;
+                // touchDist/3  * Time.deltaTime
+                // touchDist/100
+                startTouchPos = Vector3.Slerp( startTouchPos, endTouchPos, 5f* Time.deltaTime );
 
             }
 
