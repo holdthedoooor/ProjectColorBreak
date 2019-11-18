@@ -291,29 +291,39 @@ public class StageManager : MonoBehaviour
 
     public void ChapterOpenCheck()
     {
-        chaptersStarCount[currentChapter - 1] = 0;
-        for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
+        if ( currentChapter < 4)
         {
-            if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Clear)
-                break;
-
-            chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
-        }
-
-        if(UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
-            chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
-
-        UIManager.instance.chapterSelectUI.SetStarCountText();
-
-        if (UIManager.instance.chapterSelectUI.chapterUnlock == currentChapter)
-        {   
-            if (chaptersStarCount[currentChapter - 1] >= chaptersUnlockStarCount[currentChapter - 1])
+            chaptersStarCount[currentChapter - 1] = 0;
+            for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
             {
-                //다음 챕터 오픈
-                UIManager.instance.chapterSelectUI.NextChapterOpen();
-                //다음 챕터의 1스테이지 오픈
-                UIManager.instance.chapterSelectUI.allStageSlot[currentChapter].stageSlots[0].StageSlotOpen();
-                UIManager.instance.chapterSelectUI.chapterUnlock++;
+                if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Clear)
+                    break;
+
+                chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
+            }
+
+            if (UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+                chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
+
+            UIManager.instance.chapterSelectUI.SetStarCountText();
+
+            if (UIManager.instance.chapterSelectUI.chapterUnlock >= currentChapter)
+            {
+                int total = 0;
+
+                for (int i = 0; i < UIManager.instance.chapterSelectUI.chapterUnlock; i++)
+                {
+                    total += chaptersStarCount[i];
+                }
+
+                if (total >= chaptersUnlockStarCount[currentChapter - 1])
+                {
+                    //다음 챕터 오픈
+                    UIManager.instance.chapterSelectUI.NextChapterOpen();
+                    //다음 챕터의 1스테이지 오픈
+                    UIManager.instance.chapterSelectUI.allStageSlot[UIManager.instance.chapterSelectUI.chapterUnlock].stageSlots[0].StageSlotOpen();
+                    UIManager.instance.chapterSelectUI.chapterUnlock++;
+                }
             }
         }
     }

@@ -5544,6 +5544,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8b68291843944624c82e5a24b99b088a, type: 3}
   - {fileID: 21300000, guid: 6f7fd6888949c0e45bbb3b39779b3502, type: 3}
   - {fileID: 21300000, guid: 442d94405022f944fad20d611f0a1f0a, type: 3}
+  coroutineNum: 0
   text_Image: {fileID: 213631039}
   text_Sprites:
   - {fileID: 21300000, guid: 2d251f776b00cbf4186022e6ca678b25, type: 3}
@@ -21597,7 +21598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4ceecf23ae8ac4dacf4712a3d02050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMasterMode: 1
+  isMasterMode: 0
   isDataReset: 1
   isGameOver: 0
   isPause: 0
