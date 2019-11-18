@@ -126,18 +126,7 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isBossStageStart || StageManager.instance.isReady)
             return;
 
-        if (isAwaked == false)
-        {
-            awakedTime += Time.fixedDeltaTime;
-
-            if (awakedTime > 0.25f)
-            {
-                isAwaked = true;
-                CancleSwipe();
-            }
-            else
-                return;
-        }
+        
         curMousePos = Input.mousePosition;
         Moving();
         
