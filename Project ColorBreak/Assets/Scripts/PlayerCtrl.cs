@@ -107,9 +107,12 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isGameOver)
             return;
 
-        StageManager.instance.BossAnimationSkip();
+        if(StageManager.instance.currentBossStage != null)
+            StageManager.instance.BossAnimationSkip();
 
-        if (StageManager.instance.isBossStageStart)
+        StageManager.instance.StageReadySkip();
+
+        if (StageManager.instance.isBossStageStart || StageManager.instance.isReady)
             return;
 
         Roll();
@@ -120,7 +123,7 @@ public class PlayerCtrl : LivingEntity
         if (StageManager.instance.isGameOver)
             return;
 
-        if (StageManager.instance.isBossStageStart)
+        if (StageManager.instance.isBossStageStart || StageManager.instance.isReady)
             return;
 
         if (isAwaked == false)

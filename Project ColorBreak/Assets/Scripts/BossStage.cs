@@ -19,8 +19,10 @@ public class BossStage : MonoBehaviour
     public GameObject go_BossPrefab;
     private Animator   boss_Animator;
 
-    [HideInInspector]
     public Coroutine coroutine;
+    public Coroutine coroutine2;
+
+    public int coroutineNum;
 
     void Awake()
     {
@@ -64,6 +66,9 @@ public class BossStage : MonoBehaviour
             go_AppearAnimation.SetActive( false );
         go_BossPrefab.SetActive( true );
         StageManager.instance.isBossStageStart = false;
+
+        coroutine2 = StartCoroutine( StageManager.instance.StageReadyCoroutine() );
+        coroutineNum = 0;
     }
 }
 
