@@ -64,7 +64,9 @@ public class BossStage : MonoBehaviour
 
         if (go_AppearAnimation != null)
             go_AppearAnimation.SetActive( false );
+
         go_BossPrefab.SetActive( true );
+
         StageManager.instance.isBossStageStart = false;
 
         coroutine2 = StartCoroutine( StageManager.instance.StageReadyCoroutine() );

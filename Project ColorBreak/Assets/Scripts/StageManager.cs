@@ -185,7 +185,7 @@ public class StageManager : MonoBehaviour
         if(isPause)
         {
             Time.timeScale = 1;
-            StageManager.instance.isPause = false;
+            isPause = false;
         }
 
         isGoal = false;
@@ -211,7 +211,7 @@ public class StageManager : MonoBehaviour
         if (isPause)
         {
             Time.timeScale = 1;
-            StageManager.instance.isPause = false;
+            isPause = false;
         }
 
         damage = 0;
@@ -341,15 +341,18 @@ public class StageManager : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 Camera.main.GetComponent<FollowCamera>().SetCamera();
+
                 if (currentBossStage.go_AppearAnimation != null)
                     currentBossStage.go_AppearAnimation.SetActive( false );
+
                 currentBossStage.go_BossPrefab.SetActive( true );
+
                 currentBossStage.StopCoroutine( currentBossStage.coroutine );
+
+                isBossStageStart = false;
 
                 currentBossStage.coroutine2 = StartCoroutine( StageReadyCoroutine() );
                 currentBossStage.coroutineNum = 1;
-
-                isBossStageStart = false;
             }
         }
     }
