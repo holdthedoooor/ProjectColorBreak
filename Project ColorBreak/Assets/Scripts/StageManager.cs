@@ -182,10 +182,10 @@ public class StageManager : MonoBehaviour
     // 활성화 되면 즉 스테이지 시작 시 실행
     public void StartStage()
     {
-        if (isPause)
+        if(isPause)
         {
-            isPause = false;
             Time.timeScale = 1;
+            StageManager.instance.isPause = false;
         }
 
         isGoal = false;
@@ -210,8 +210,8 @@ public class StageManager : MonoBehaviour
     {
         if (isPause)
         {
-            isPause = false;
             Time.timeScale = 1;
+            StageManager.instance.isPause = false;
         }
 
         damage = 0;
@@ -341,7 +341,6 @@ public class StageManager : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 Camera.main.GetComponent<FollowCamera>().SetCamera();
-                isBossStageStart = false;
                 if (currentBossStage.go_AppearAnimation != null)
                     currentBossStage.go_AppearAnimation.SetActive( false );
                 currentBossStage.go_BossPrefab.SetActive( true );
@@ -349,6 +348,8 @@ public class StageManager : MonoBehaviour
 
                 currentBossStage.coroutine2 = StartCoroutine( StageReadyCoroutine() );
                 currentBossStage.coroutineNum = 1;
+
+                isBossStageStart = false;
             }
         }
     }
@@ -379,7 +380,7 @@ public class StageManager : MonoBehaviour
 
     public void StageReadySkip()
     {
-        if(isReady)
+        if(isReady && !isBossStageStart)
         {
             if(Input.GetMouseButtonDown(0))
             {
@@ -397,14 +398,13 @@ public class StageManager : MonoBehaviour
                         StopCoroutine( currentBossStage.coroutine2 );
                 }        
                 isReady = false;
+                Time.timeScale = 1;
             }
         }
     }
 
     public IEnumerator StageReadyCoroutine()
     {
-        yield return null;
-
         isReady = true;
 
         if (currentStage != null)
