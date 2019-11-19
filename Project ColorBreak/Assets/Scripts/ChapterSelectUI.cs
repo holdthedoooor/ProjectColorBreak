@@ -33,6 +33,7 @@ public class ChapterSelectUI : MonoBehaviour
 
     //Chapter Select 텍스트 이미지 변경
     public Coroutine coroutine;
+    public int coroutineNum;
     public Image text_Image;
     public Sprite[] text_Sprites;
     private int num;
@@ -53,7 +54,10 @@ public class ChapterSelectUI : MonoBehaviour
     {
         SoundManager.instance.PlaySFX( "Click_1" );
 
-        StopCoroutine( coroutine );
+        if (coroutineNum == 0)
+            UIManager.instance.lobbyUI.StopCoroutine( coroutine );
+        else
+            StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[0].SetActive( true );
@@ -89,7 +93,10 @@ public class ChapterSelectUI : MonoBehaviour
             return;
         }
 
-        StopCoroutine( coroutine );
+        if (coroutineNum == 0)
+            UIManager.instance.lobbyUI.StopCoroutine( coroutine );
+        else
+            StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[1].SetActive( true );
@@ -125,7 +132,10 @@ public class ChapterSelectUI : MonoBehaviour
             return;
         }
 
-        StopCoroutine( coroutine );
+        if (coroutineNum == 0)
+            UIManager.instance.lobbyUI.StopCoroutine( coroutine );
+        else
+            StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[2].SetActive( true );
@@ -161,7 +171,10 @@ public class ChapterSelectUI : MonoBehaviour
             return;
         }
 
-        StopCoroutine( coroutine );
+        if (coroutineNum == 0)
+            UIManager.instance.lobbyUI.StopCoroutine( coroutine );
+        else
+            StopCoroutine( coroutine );
 
         go_ChapterSelectUI.SetActive( false );
         go_Chapters[3].SetActive( true );
@@ -177,6 +190,7 @@ public class ChapterSelectUI : MonoBehaviour
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
     }
 
+    /*
     public void Chapter5_Button()
     {
         SoundManager.instance.PlaySFX( "Click_1" );
@@ -211,15 +225,17 @@ public class ChapterSelectUI : MonoBehaviour
         //UIManager.instance.bossStageSlot = allStageSlot[4].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
-    }
+    }*/
 
     public void BackButton()
     {
         SoundManager.instance.PlaySFX( "Click_1" );
 
+        coroutineNum = 1;
+
         go_CurrentChapterUI.SetActive( false );
         go_ChapterSelectUI.SetActive( true );
-        TICStartCoroutine();
+        coroutine = StartCoroutine( TextImageChangeCoroutine() );
 
         Quit.instance.quitStatus = Quit.QuitStatus.ChapterSelect;
     }
@@ -246,7 +262,7 @@ public class ChapterSelectUI : MonoBehaviour
         text_Image.sprite = text_Sprites[0];
         while (!isStop)
         {
-            yield return new WaitForSeconds( 2f );
+            yield return new WaitForSeconds( 0.5f );
 
             num++;
 
@@ -255,11 +271,6 @@ public class ChapterSelectUI : MonoBehaviour
 
             text_Image.sprite = text_Sprites[num];
         }
-    }
-
-    public void TICStartCoroutine()
-    {
-        coroutine = StartCoroutine( TextImageChangeCoroutine() );
     }
 
     public void SetStarCountText()

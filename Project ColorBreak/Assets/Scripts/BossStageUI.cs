@@ -12,6 +12,7 @@ public class BossStageUI : MonoBehaviour
     public Image            bossHpSlider;
     public Image            hardPhaseLine;
     public Sprite[]         sliderSprites;
+    public Image            stopImage;
 
     private float ratio;
     private float minPositionX = -400f;

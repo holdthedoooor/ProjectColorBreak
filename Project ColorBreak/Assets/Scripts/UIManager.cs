@@ -153,7 +153,14 @@ public class UIManager : MonoBehaviour
                 if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
                     StageManager.instance.currentBossStageSlot.bossStageStatus = BossStageSlot.BossStageStatus.Clear;
 
-                if (StageManager.instance.chaptersStarCount[StageManager.instance.currentChapter - 1] >= StageManager.instance.chaptersUnlockStarCount[StageManager.instance.currentChapter - 1])
+                int total = 0;
+
+                for (int i = 0; i < StageManager.instance.currentChapter; i++)
+                {
+                    total += StageManager.instance.chaptersStarCount[i];
+                }
+
+                if (StageManager.instance.currentChapter != 4 && total >= StageManager.instance.chaptersUnlockStarCount[StageManager.instance.currentChapter - 1])
                     nextButton.interactable = true;
                 else
                     nextButton.interactable = false;

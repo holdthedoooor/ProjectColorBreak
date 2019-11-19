@@ -25,6 +25,7 @@ public class StageManager : MonoBehaviour
     public bool         isGoal;
     //보스 스테이지를 시작했을 때 애니메이션이 끝난 뒤에 이동
     public bool         isBossStageStart = false;
+    public bool         isReady = false; //스테이지를 시작했을 때 1초간 준비시간이 있음
     public int          score; //일반 스테이지에서의 점수
     public int          damage;//보스 스테이지에서의 데미지
     public int          panaltyPoint;
@@ -69,7 +70,7 @@ public class StageManager : MonoBehaviour
                     UIManager.instance.chapterSelectUI.allStageSlot[i].bossStageSlot.SetOpen();
             }
 
-            UIManager.instance.chapterSelectUI.chapterUnlock = 5;
+            UIManager.instance.chapterSelectUI.chapterUnlock = 4;
             UIManager.instance.chapterSelectUI.LoadChapterOpen();
         }
         else
@@ -181,10 +182,10 @@ public class StageManager : MonoBehaviour
     // 활성화 되면 즉 스테이지 시작 시 실행
     public void StartStage()
     {
-        if (isPause)
+        if(isPause)
         {
-            isPause = false;
             Time.timeScale = 1;
+            isPause = false;
         }
 
         isGoal = false;
@@ -198,6 +199,10 @@ public class StageManager : MonoBehaviour
         //isMovable를 true로 바꿔줌으로 써 카메라가 다시 움직이도록 설정
         Camera.main.GetComponent<FollowCamera>().SetCamera();
         StartCoroutine( Camera.main.GetComponent<FollowCamera>().PastPlayerCoroutine() );
+
+        isReady = false;
+        currentStage.coroutine = StartCoroutine( StageReadyCoroutine() );
+
         Quit.instance.quitStatus = Quit.QuitStatus.InGame;
     }
 
@@ -205,8 +210,8 @@ public class StageManager : MonoBehaviour
     {
         if (isPause)
         {
-            isPause = false;
             Time.timeScale = 1;
+            isPause = false;
         }
 
         damage = 0;
@@ -215,6 +220,7 @@ public class StageManager : MonoBehaviour
         if (panaltyPoint == 0)
         {
             isBossStageStart = true;
+            isReady = false;
             currentBossStageSlot.currentHp = currentBossStageSlot.maxHp;
             panaltyPoint = currentBossStageSlot.panaltyPoints[0];
             UIManager.instance.bossStageUI.UpdateChallengeCountText();
@@ -291,29 +297,39 @@ public class StageManager : MonoBehaviour
 
     public void ChapterOpenCheck()
     {
-        chaptersStarCount[currentChapter - 1] = 0;
-        for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
+        if ( currentChapter < 4)
         {
-            if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Clear)
-                break;
-
-            chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
-        }
-
-        if(UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
-            chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
-
-        UIManager.instance.chapterSelectUI.SetStarCountText();
-
-        if (UIManager.instance.chapterSelectUI.chapterUnlock == currentChapter)
-        {   
-            if (chaptersStarCount[currentChapter - 1] >= chaptersUnlockStarCount[currentChapter - 1] && UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+            chaptersStarCount[currentChapter - 1] = 0;
+            for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
             {
-                //다음 챕터 오픈
-                UIManager.instance.chapterSelectUI.NextChapterOpen();
-                //다음 챕터의 1스테이지 오픈
-                UIManager.instance.chapterSelectUI.allStageSlot[currentChapter].stageSlots[0].StageSlotOpen();
-                UIManager.instance.chapterSelectUI.chapterUnlock++;
+                if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Clear)
+                    break;
+
+                chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
+            }
+
+            if (UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+                chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
+
+            UIManager.instance.chapterSelectUI.SetStarCountText();
+
+            if (UIManager.instance.chapterSelectUI.chapterUnlock >= currentChapter)
+            {
+                int total = 0;
+
+                for (int i = 0; i < UIManager.instance.chapterSelectUI.chapterUnlock; i++)
+                {
+                    total += chaptersStarCount[i];
+                }
+
+                if (total >= chaptersUnlockStarCount[currentChapter - 1])
+                {
+                    //다음 챕터 오픈
+                    UIManager.instance.chapterSelectUI.NextChapterOpen();
+                    //다음 챕터의 1스테이지 오픈
+                    UIManager.instance.chapterSelectUI.allStageSlot[UIManager.instance.chapterSelectUI.chapterUnlock].stageSlots[0].StageSlotOpen();
+                    UIManager.instance.chapterSelectUI.chapterUnlock++;
+                }
             }
         }
     }
@@ -325,11 +341,18 @@ public class StageManager : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 Camera.main.GetComponent<FollowCamera>().SetCamera();
-                isBossStageStart = false;
+
                 if (currentBossStage.go_AppearAnimation != null)
                     currentBossStage.go_AppearAnimation.SetActive( false );
+
                 currentBossStage.go_BossPrefab.SetActive( true );
+
                 currentBossStage.StopCoroutine( currentBossStage.coroutine );
+
+                isBossStageStart = false;
+
+                currentBossStage.coroutine2 = StartCoroutine( StageReadyCoroutine() );
+                currentBossStage.coroutineNum = 1;
             }
         }
     }
@@ -356,5 +379,49 @@ public class StageManager : MonoBehaviour
 
         Destroy( clone );
         FinishStage();
+    }
+
+    public void StageReadySkip()
+    {
+        if(isReady && !isBossStageStart)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                if (currentStage != null)
+                {
+                    UIManager.instance.stageUI.stopImage.enabled = false;
+                    StopCoroutine( currentStage.coroutine );
+                }
+                else
+                {
+                    UIManager.instance.bossStageUI.stopImage.enabled = false;
+                    if (currentBossStage.coroutineNum == 0)
+                        currentBossStage.StopCoroutine( currentBossStage.coroutine2 );
+                    else
+                        StopCoroutine( currentBossStage.coroutine2 );
+                }        
+                isReady = false;
+                Time.timeScale = 1;
+            }
+        }
+    }
+
+    public IEnumerator StageReadyCoroutine()
+    {
+        isReady = true;
+
+        if (currentStage != null)
+            UIManager.instance.stageUI.stopImage.enabled = true;
+        else
+            UIManager.instance.bossStageUI.stopImage.enabled = true;
+
+        yield return new WaitForSeconds( 1f );
+
+        if (currentStage != null)
+            UIManager.instance.stageUI.stopImage.enabled = false;
+        else
+            UIManager.instance.bossStageUI.stopImage.enabled = false;
+
+        isReady = false;
     }
 }

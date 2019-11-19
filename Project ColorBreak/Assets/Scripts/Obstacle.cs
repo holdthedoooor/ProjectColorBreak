@@ -228,13 +228,16 @@ public class Obstacle : LivingEntity
     {
         while (status == Status.Live)
         {
-            if (Vector3.Distance(movePosition1, transform.position) <= 0.1f)
-                destination = movePosition2;
+            if(!StageManager.instance.isReady && !StageManager.instance.isBossStageStart)
+            {
+                if (Vector3.Distance( movePosition1, transform.position ) <= 0.1f)
+                    destination = movePosition2;
 
-            else if (Vector3.Distance( movePosition2, transform.position ) <= 0.1f)
-                destination = movePosition1;
+                else if (Vector3.Distance( movePosition2, transform.position ) <= 0.1f)
+                    destination = movePosition1;
 
-            transform.position = Vector3.MoveTowards( transform.position, destination, speed * Time.deltaTime );
+                transform.position = Vector3.MoveTowards( transform.position, destination, speed * Time.deltaTime );
+            }
             yield return null;
         }
     }

@@ -11,6 +11,7 @@ public class StageUI : MonoBehaviour
     public Sprite[]      sliderSprites;
     public Image[]       starImages;
     public Text[]        starTexts;
+    public Image         stopImage;
 
     private float ratio;
     private float minPositionX = -400f;
