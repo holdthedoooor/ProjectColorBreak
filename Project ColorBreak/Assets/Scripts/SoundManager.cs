@@ -8,7 +8,6 @@ public enum SoundType
     SFX
 }
 
-
 public class SoundManager : MonoBehaviour
 {
 
@@ -31,9 +30,6 @@ public class SoundManager : MonoBehaviour
     public AudioSource bgmPlayer;
     public AudioSource sfxPlayer;
 
-    public string startBgm;
-
-
     //------------------------------멤버 변수-------------------------------------
 
     private void Awake()
@@ -48,8 +44,6 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         LoadFiles();
-
-        PlayBGM( startBgm );
     }
 
     void LoadFiles()
