@@ -26,6 +26,7 @@ public class StageManager : MonoBehaviour
     //보스 스테이지를 시작했을 때 애니메이션이 끝난 뒤에 이동
     public bool         isBossStageStart = false;
     public bool         isReady = false; //스테이지를 시작했을 때 1초간 준비시간이 있음
+    public bool         isButtonUp = false;
     public int          score; //일반 스테이지에서의 점수
     public int          damage;//보스 스테이지에서의 데미지
     public int          panaltyPoint;
@@ -353,6 +354,8 @@ public class StageManager : MonoBehaviour
 
                 currentBossStage.coroutine2 = StartCoroutine( StageReadyCoroutine() );
                 currentBossStage.coroutineNum = 1;
+
+                isButtonUp = false;
             }
         }
     }
@@ -385,23 +388,39 @@ public class StageManager : MonoBehaviour
     {
         if(isReady && !isBossStageStart)
         {
-            if(Input.GetMouseButtonDown(0))
+            if (currentBossStage != null)
             {
-                if (currentStage != null)
+                if (Input.GetMouseButtonUp(0))
                 {
-                    UIManager.instance.stageUI.stopImage.enabled = false;
-                    StopCoroutine( currentStage.coroutine );
+                    Debug.Log( "버튼 UP" );
+                    isButtonUp = true;
                 }
-                else
+            }
+
+            if(currentBossStage != null)
+            {
+                if (Input.GetMouseButtonDown( 0 ) && isButtonUp)
                 {
+                    Debug.Log( "버튼 DOWN" );
                     UIManager.instance.bossStageUI.stopImage.enabled = false;
                     if (currentBossStage.coroutineNum == 0)
                         currentBossStage.StopCoroutine( currentBossStage.coroutine2 );
                     else
                         StopCoroutine( currentBossStage.coroutine2 );
-                }        
-                isReady = false;
-                Time.timeScale = 1;
+                    isReady = false;
+                    isButtonUp = false;
+                    Time.timeScale = 1;
+                }
+            }
+            else
+            {
+                if(Input.GetMouseButtonDown( 0 ))
+                {
+                    UIManager.instance.stageUI.stopImage.enabled = false;
+                    StopCoroutine( currentStage.coroutine );
+                    isReady = false;
+                    Time.timeScale = 1;
+                }
             }
         }
     }
@@ -423,5 +442,6 @@ public class StageManager : MonoBehaviour
             UIManager.instance.bossStageUI.stopImage.enabled = false;
 
         isReady = false;
+        isButtonUp = false;
     }
 }
