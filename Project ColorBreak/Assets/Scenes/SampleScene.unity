@@ -5305,7 +5305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmPlayer: {fileID: 426878396}
   sfxPlayer: {fileID: 426878399}
-  startBgm: BGM1
 --- !u!82 &426878399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21609,6 +21608,7 @@ MonoBehaviour:
   isGoal: 0
   isBossStageStart: 0
   isReady: 0
+  isButtonUp: 0
   score: 0
   damage: 0
   panaltyPoint: 0
@@ -26398,7 +26398,7 @@ PrefabInstance:
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: go_BossStageNormals.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
@@ -26415,19 +26415,19 @@ PrefabInstance:
         type: 3}
       propertyPath: go_BossStageNormals.Array.data[1]
       value: 
-      objectReference: {fileID: 3198921652577601663, guid: 48cd0482d35220145a6730905c185c48,
+      objectReference: {fileID: 3198921652577601663, guid: cf0b510dc2c6f654f852660b4c3bd83b,
         type: 3}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: go_BossStageNormals.Array.data[2]
       value: 
-      objectReference: {fileID: 3198921652577601663, guid: 48cd0482d35220145a6730905c185c48,
+      objectReference: {fileID: 3198921652577601663, guid: 92e3fd965aed6144db4c372a889c7e96,
         type: 3}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
       propertyPath: go_BossStageHard
       value: 
-      objectReference: {fileID: 3198921652577601663, guid: f3eb7a6bba1cfc94c80fabe12eb0e3a2,
+      objectReference: {fileID: 3198921652577601663, guid: c126a6e34b44e1e48a272ff26be9c24b,
         type: 3}
     - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
         type: 3}
@@ -26458,6 +26458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isRandom
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151272993243133084, guid: d49009ce63473f642add7724e13a5c7e,
+        type: 3}
+      propertyPath: bossStageType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d49009ce63473f642add7724e13a5c7e, type: 3}
