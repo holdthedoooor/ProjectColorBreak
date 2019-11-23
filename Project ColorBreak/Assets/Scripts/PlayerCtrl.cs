@@ -64,6 +64,8 @@ public class PlayerCtrl : LivingEntity
 
     [Header( "공의 회전 속도를 조절합니다." )]
     public float torque = 100.0f;
+    [Header( "공의 최소 회전 속도입니다." )]
+    public float torqueMin = 0.0f;
     [Header( "공의 회전 감속도를 조절합니다. 1.0에 가까울수록 천천히 감소합니다." )]
     [Range( 0.00001f, 0.999999f )]
     public float damper = 0.99f;
@@ -340,12 +342,18 @@ public class PlayerCtrl : LivingEntity
     {
         //playerImage.localEulerAngles += new Vector3( 0, 0, speed / maxSpeed * rotateSpeed );
         playerTr.Rotate( 0, 0, rotateSpeed * Time.deltaTime );
+        if ( Mathf.Abs( rotateSpeed ) <= torqueMin )
+        {
+            rotateSpeed = Mathf.Clamp( rotateSpeed, -torqueMin, torqueMin );
+            return;
+        }
         rotateSpeed *= 0.99f;
     }
 
     private void OnBounce()
     {
-        rotateSpeed = -torque * moveVec.x;
+        if ( moveVec.x < 0 ) rotateSpeed = -Mathf.Min( torque * moveVec.x, -torqueMin );
+        else rotateSpeed = -Mathf.Max( torque * moveVec.x, torqueMin );
     }
 
     public void ChangeColor( ColorType color )
@@ -507,6 +515,7 @@ public class PlayerCtrl : LivingEntity
         touchStartTime = 0f;
         awakedTime = 0f;
         swipeTime = 0f;
+        rotateSpeed = torqueMin;
 
         isSwiped = false;
         isBounce = false;
