@@ -241,6 +241,7 @@ MonoBehaviour:
   items: []
   go_AppearAnimation: {fileID: 0}
   go_BossPrefab: {fileID: 7016966380366577441}
+  coroutineNum: 0
 --- !u!1 &3735239655024145047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,7 +1604,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
@@ -2583,7 +2584,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
