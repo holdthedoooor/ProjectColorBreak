@@ -878,9 +878,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3730108828830545592}
-  - component: {fileID: 9116238002967752210}
+  - component: {fileID: 5780268180921056983}
   m_Layer: 0
-  m_Name: Stage Final Boss
+  m_Name: Stage Final Boss_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,7 +983,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9116238002967752210
+--- !u!114 &5780268180921056983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -992,11 +992,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8151959711464767348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30266193aedf7be48a161b5300eefe12, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d3d68006c3004647b7c0f3de599b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossStageType: 0
   obstacles: []
   items: []
+  go_AppearAnimation: {fileID: 0}
+  go_BossPrefab: {fileID: 0}
+  coroutineNum: 0
 --- !u!1001 &200001416200353926
 PrefabInstance:
   m_ObjectHideFlags: 0

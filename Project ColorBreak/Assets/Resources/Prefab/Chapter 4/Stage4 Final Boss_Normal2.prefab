@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3730108828830545592}
-  - component: {fileID: 9116238002967752210}
+  - component: {fileID: 4006855833094164391}
   m_Layer: 0
   m_Name: Stage4 Final Boss_Normal2
   m_TagString: Untagged
@@ -392,7 +392,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9116238002967752210
+--- !u!114 &4006855833094164391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -401,11 +401,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8151959711464767348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30266193aedf7be48a161b5300eefe12, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d3d68006c3004647b7c0f3de599b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossStageType: 0
   obstacles: []
   items: []
+  go_AppearAnimation: {fileID: 0}
+  go_BossPrefab: {fileID: 0}
+  coroutineNum: 0
 --- !u!1001 &98011481296100528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4128,6 +4132,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3240943566343771838, guid: 17eba7688a6767b46a088a73f8932411,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 17eba7688a6767b46a088a73f8932411,
         type: 3}
       propertyPath: moveType
@@ -4161,11 +4170,6 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: 17eba7688a6767b46a088a73f8932411,
         type: 3}
       propertyPath: colorType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3240943566343771838, guid: 17eba7688a6767b46a088a73f8932411,
-        type: 3}
-      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
