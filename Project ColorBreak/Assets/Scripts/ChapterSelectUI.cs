@@ -48,7 +48,6 @@ public class ChapterSelectUI : MonoBehaviour
     public GameObject go_NeedStarCountCheckUI;
     public Text chapterNum_Text;
     public Text needStarCount_Text;
-    private int starSum = 0;
 
     public void Chapter1_Button()
     {
@@ -79,14 +78,9 @@ public class ChapterSelectUI : MonoBehaviour
 
         if (chapterUnlock < 2)
         {
-            starSum = 0;
             chapterNum_Text.text = "2";
-            for (int i = 0; i < chapterUnlock; i++)
-            {
-                starSum += StageManager.instance.chaptersUnlockStarCount[i];
-            }
 
-            needStarCount_Text.text = starSum.ToString();
+            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[1].ToString();
 
             Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
 
@@ -118,14 +112,9 @@ public class ChapterSelectUI : MonoBehaviour
 
         if (chapterUnlock < 3)
         {
-            starSum = 0;
             chapterNum_Text.text = "3";
-            for (int i = 0; i < chapterUnlock; i++)
-            {
-                starSum += StageManager.instance.chaptersUnlockStarCount[i];
-            }
 
-            needStarCount_Text.text = starSum.ToString();
+            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[2].ToString();
 
             Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
 
@@ -157,14 +146,9 @@ public class ChapterSelectUI : MonoBehaviour
 
         if (chapterUnlock < 4)
         {
-            starSum = 0;
             chapterNum_Text.text = "4";
-            for (int i = 0; i < chapterUnlock; i++)
-            {
-                starSum += StageManager.instance.chaptersUnlockStarCount[i];
-            }
 
-            needStarCount_Text.text = starSum.ToString();
+            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[3].ToString();
 
             Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
 
