@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7962729550380040627}
   - component: {fileID: 7558274857003284836}
   m_Layer: 0
-  m_Name: Boss Stage3_Hard
+  m_Name: Stage3_Boss_Hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,6 +383,7 @@ MonoBehaviour:
   items: []
   go_AppearAnimation: {fileID: 2646581700873083655}
   go_BossPrefab: {fileID: 6980002481797270801}
+  coroutineNum: 0
 --- !u!1 &3641581703778200798
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +615,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5056058023833798063, guid: 8d78e36c14feedd4aa2f4a6f0828ab8e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0a6aebd3992dabc4ebca1d8530e7eefc, type: 2}
     - target: {fileID: 8755547590473088972, guid: 8d78e36c14feedd4aa2f4a6f0828ab8e,
         type: 3}
       propertyPath: m_Sprite

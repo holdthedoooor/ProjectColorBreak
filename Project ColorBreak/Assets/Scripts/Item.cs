@@ -18,14 +18,6 @@ public class Item : LivingEntity
     [Header( "Move - 설정한 좌표로 이동, Fix - 고정" )]
     public MoveType moveType;
 
-    //아이템의 최대, 최소 x position
-    public float maxPositionX;
-    public float minPositionX;
-
-    //아이템의 최대, 최소 y position
-    public float maxPositionY;
-    public float minPositionY;
-
     public Vector3 movePosition1;
     public Vector3 movePosition2;
     private Vector3 destination;
@@ -77,13 +69,16 @@ public class Item : LivingEntity
     {
         while (status == Status.Live)
         {
-            if (Vector3.Distance( movePosition1, transform.position ) <= 0.1f)
-                destination = movePosition2;
+            if(!StageManager.instance.isReady && !StageManager.instance.isBossStageStart && !StageManager.instance.isGameOver)
+            {
+                if (Vector3.Distance( movePosition1, transform.position ) <= 0.1f)
+                    destination = movePosition2;
 
-            else if (Vector3.Distance( movePosition2, transform.position ) <= 0.1f)
-                destination = movePosition1;
+                else if (Vector3.Distance( movePosition2, transform.position ) <= 0.1f)
+                    destination = movePosition1;
 
-            transform.position = Vector3.MoveTowards( transform.position, destination, speed * Time.deltaTime );
+                transform.position = Vector3.MoveTowards( transform.position, destination, speed * Time.deltaTime );
+            }
             yield return null;
         }
     }
