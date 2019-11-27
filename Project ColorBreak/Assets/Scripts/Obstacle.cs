@@ -228,7 +228,7 @@ public class Obstacle : LivingEntity
     {
         while (status == Status.Live)
         {
-            if(!StageManager.instance.isReady && !StageManager.instance.isBossStageStart)
+            if(!StageManager.instance.isReady && !StageManager.instance.isBossStageStart && !StageManager.instance.isGameOver)
             {
                 if (Vector3.Distance( movePosition1, transform.position ) <= 0.1f)
                     destination = movePosition2;

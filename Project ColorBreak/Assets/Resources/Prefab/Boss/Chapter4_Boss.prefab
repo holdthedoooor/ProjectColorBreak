@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 952726158481883821}
   - component: {fileID: 4394715729618949429}
   - component: {fileID: 8911442321238555146}
+  - component: {fileID: 255643839199397533}
   m_Layer: 0
   m_Name: Chapter4_Boss
   m_TagString: Boss
@@ -119,3 +120,22 @@ PolygonCollider2D:
       - {x: -5.4, y: -2.54}
       - {x: 5.4, y: -2.21}
       - {x: 5.39, y: -2.2}
+--- !u!95 &255643839199397533
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215118072366738814}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2a5fd427e5c49b4cafac8524a29685f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
