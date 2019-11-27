@@ -169,7 +169,7 @@ public class ChapterSelectUI : MonoBehaviour
         for (int i = 0; i < allStageSlot[3].stageSlots.Length; i++)
             UIManager.instance.stageSlots[i] = allStageSlot[3].stageSlots[i];
 
-        //UIManager.instance.bossStageSlot = allStageSlot[3].bossStageSlot;
+        UIManager.instance.bossStageSlot = allStageSlot[3].bossStageSlot;
 
         Quit.instance.quitStatus = Quit.QuitStatus.StageSelect;
     }
