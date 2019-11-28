@@ -10,6 +10,7 @@ public class YouDiedUI : MonoBehaviour
 
     public GameObject   go_S_YouDiedUI;
     public GameObject   go_BS_YouDiedUI;
+    public GameObject   go_BS2_YouDiedUI; //Bounce Attack 패턴 UI
 
     public Image[]      s_StarImages;
     public Text[]       checkPointTexts;
@@ -19,6 +20,10 @@ public class YouDiedUI : MonoBehaviour
     public Text         hpPersentText;
     public Text         panaltyPointText;
     public Text[]       panaltyTexts;
+
+    //Bounce Attack 패턴 UI
+    public Image        resultBossHpSlider2;
+    public Text         hpPersentText2;
 
     public void S_ResetStar()
     {
@@ -31,20 +36,10 @@ public class YouDiedUI : MonoBehaviour
 
     public void S_SetStar()
     {
-        if(UIManager.instance.starCount == 3)
+        for (int i = 0; i < UIManager.instance.starCount; i++)
         {
-            for (int i = 0; i < s_StarImages.Length; i++)
-            {
-                s_StarImages[i].sprite = UIManager.instance.starSprite;
-            }
+            s_StarImages[i].sprite = UIManager.instance.starSprite;
         }
-        else if(UIManager.instance.starCount == 2)
-        {
-            s_StarImages[0].sprite = UIManager.instance.starSprite;
-            s_StarImages[1].sprite = UIManager.instance.starSprite;
-        }
-        else if(UIManager.instance.starCount == 1)
-            s_StarImages[0].sprite = UIManager.instance.starSprite;
     }
 
     public void S_ActiveYouDiedUI()
@@ -67,11 +62,6 @@ public class YouDiedUI : MonoBehaviour
         {
             bs_StarImages[i].sprite = UIManager.instance.blankStarSprite;
         }
-
-        for (int i = 0; i < panaltyTexts.Length; i++)
-        {
-            panaltyTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
-        }
     }
 
     public void BS_SetStar()
@@ -84,18 +74,33 @@ public class YouDiedUI : MonoBehaviour
 
     public void BS_ActiveYouDiedUI()
     {
-        resultBossHpSlider.fillAmount = (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp;
-        hpPersentText.text = (Math.Truncate((float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp * 100)).ToString() + "%";
-        panaltyPointText.text = StageManager.instance.panaltyPoint.ToString();
-        for (int i = 0; i < panaltyTexts.Length; i++)
+        if(StageManager.instance.currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
         {
-            panaltyTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
+            BS_ResetStar();
+            BS_SetStar();
+            resultBossHpSlider.fillAmount = (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp;
+            hpPersentText.text = (Math.Truncate( (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp * 100 )).ToString() + "%";
+            panaltyPointText.text = StageManager.instance.panaltyPoint.ToString();
+            for (int i = 0; i < panaltyTexts.Length; i++)
+            {
+                panaltyTexts[i].text = StageManager.instance.currentBossStageSlot.panaltyPoints[i].ToString();
+            }
+            go_BS_YouDiedUI.SetActive( true );
         }
-        go_BS_YouDiedUI.SetActive( true );
+        else
+        {
+            resultBossHpSlider2.fillAmount = (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp;
+            hpPersentText2.text = (Math.Truncate( (float)StageManager.instance.currentBossStageSlot.currentHp / StageManager.instance.currentBossStageSlot.maxHp * 100 )).ToString() + "%";
+            go_BS2_YouDiedUI.SetActive( true );
+        }
+
     }
 
     public void BS_DeactiveYouDiedUI()
     {
-        go_BS_YouDiedUI.SetActive( false );
+        if (StageManager.instance.currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
+            go_BS_YouDiedUI.SetActive( false );
+        else
+            go_BS2_YouDiedUI.SetActive( false );
     }
 }

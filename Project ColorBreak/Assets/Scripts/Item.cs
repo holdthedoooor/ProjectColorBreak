@@ -68,8 +68,6 @@ public class Item : LivingEntity
             return;
         }
 
-        Debug.Log( (int)colorType + ", " + colorSprites.Length );
-
         //colorType에 맞는 material을 설정
         spriteRenderer.sprite = colorSprites[(int)colorType];
     }

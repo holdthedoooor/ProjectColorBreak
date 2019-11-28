@@ -267,14 +267,20 @@ public class StageManager : MonoBehaviour
             {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;
                 ChapterOpenCheck();
-                if (currentBossStageSlot.minPanaltyPoint > panaltyPoint)
-                    currentBossStageSlot.minPanaltyPoint = panaltyPoint;
+
+                if(currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
+                {
+                    if (currentBossStageSlot.minPanaltyPoint > panaltyPoint)
+                        currentBossStageSlot.minPanaltyPoint = panaltyPoint;
+                }
+
                 theSaveLoad.SaveData();
             }
-            else if(currentBossStageSlot.starCount == UIManager.instance.starCount)
+            else if(currentBossStageSlot.starCount == UIManager.instance.starCount && currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
             {
                 if (currentBossStageSlot.minPanaltyPoint > panaltyPoint)
                     currentBossStageSlot.minPanaltyPoint = panaltyPoint;
+
                 theSaveLoad.SaveData();
             }
                 

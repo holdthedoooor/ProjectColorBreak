@@ -96,6 +96,7 @@ public class UIManager : MonoBehaviour
     {
         //일반 스테이지라면
         StageSlot currentStageSlot = StageManager.instance.currentStageSlot;
+        StageManager.instance.go_Player.SetActive( false );
         if ( currentStageSlot != null )
         {
             stageUI.DeactivateUI();
@@ -139,16 +140,27 @@ public class UIManager : MonoBehaviour
         {
             bossStageUI.DeactivateUI();
 
-            if (StageManager.instance.currentBossStageSlot.currentHp <= 0 && StageManager.instance.panaltyPoint > 0)
+            if (StageManager.instance.currentBossStageSlot.currentHp <= 0 )
             {
-                SoundManager.instance.PlaySFX( "Boss_Clear" );
-
-                if (StageManager.instance.panaltyPoint >= StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
+                if(StageManager.instance.currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
+                {
+                    if(StageManager.instance.panaltyPoint <= 0)
+                    {
+                        SoundManager.instance.PlaySFX( "Game_Over" );
+                        youDiedUI.BS_ActiveYouDiedUI();
+                        return;
+                    }
+                    if (StageManager.instance.panaltyPoint >= StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
+                        starCount = 3;
+                    else if (StageManager.instance.panaltyPoint > 0 && StageManager.instance.panaltyPoint < StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
+                        starCount = 2;
+                    else if (StageManager.instance.panaltyPoint > 0)
+                        starCount = 1;
+                }
+                else
                     starCount = 3;
-                else if (StageManager.instance.panaltyPoint > 0 && StageManager.instance.panaltyPoint < StageManager.instance.currentBossStageSlot.panaltyPoints[0] - StageManager.instance.currentBossStageSlot.panaltyPoints[1])
-                    starCount = 2;
-                else if (StageManager.instance.panaltyPoint > 0)
-                    starCount = 1;
+
+                SoundManager.instance.PlaySFX( "Boss_Clear" );
 
                 if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
                     StageManager.instance.currentBossStageSlot.bossStageStatus = BossStageSlot.BossStageStatus.Clear;
@@ -173,7 +185,7 @@ public class UIManager : MonoBehaviour
                 youDiedUI.BS_ActiveYouDiedUI();
             }
         }
-        StageManager.instance.go_Player.SetActive( false );
+
     }
 
     //홈 버튼 클릭
