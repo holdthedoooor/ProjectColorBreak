@@ -548,38 +548,93 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.y
-      value: -7.88
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.y
-      value: -5.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: speed
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5641d619ff544b4448c04c2b0fcca52c, type: 3}
@@ -768,6 +823,71 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d674ada4dbe31d445a426053c649ed70, type: 3}
 --- !u!1001 &1099470920230323915
@@ -839,9 +959,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
-      propertyPath: colorType
-      value: 1
+      propertyPath: colorSprites.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &3994749158875491257 stripped
@@ -919,33 +1073,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.y
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.y
-      value: -6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
@@ -1024,33 +1233,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.y
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.y
-      value: -6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
@@ -1126,6 +1390,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738e01e960b059142bab29aecb2354af, type: 3}
@@ -1204,18 +1533,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
       propertyPath: colorType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: obstaclesType
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -1307,6 +1696,71 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d674ada4dbe31d445a426053c649ed70, type: 3}
 --- !u!1001 &3568810965355634571
@@ -1378,8 +1832,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -1389,7 +1848,7 @@ PrefabInstance:
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: movePosition1.x
-      value: -2.65
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -1416,6 +1875,30 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &699429453212267257 stripped
@@ -1493,33 +1976,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.y
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.y
-      value: -6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
@@ -1598,33 +2136,93 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
         type: 3}
       propertyPath: movePosition2.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
         type: 3}
       propertyPath: movePosition2.y
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
         type: 3}
       propertyPath: movePosition1.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
         type: 3}
       propertyPath: movePosition1.y
-      value: -12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738e01e960b059142bab29aecb2354af, type: 3}
@@ -1703,33 +2301,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition1.y
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
         type: 3}
       propertyPath: movePosition2.y
-      value: -6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: b5531d5d0ca9b5d449f1c3381a23ad74,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5531d5d0ca9b5d449f1c3381a23ad74, type: 3}
@@ -1808,9 +2461,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
-      propertyPath: colorType
-      value: 2
+      propertyPath: colorSprites.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &71740155202427033 stripped
@@ -1888,38 +2575,93 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.x
-      value: -2.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.y
-      value: -2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.x
-      value: 2.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.y
-      value: -2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: speed
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5641d619ff544b4448c04c2b0fcca52c, type: 3}
@@ -1998,9 +2740,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
       propertyPath: colorType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &472487409436529015 stripped
@@ -2078,8 +2854,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
       propertyPath: colorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -2094,7 +2875,7 @@ PrefabInstance:
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: movePosition1.x
-      value: -2.65
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -2116,6 +2897,30 @@ PrefabInstance:
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &8884645834672826810 stripped
@@ -2190,6 +2995,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738e01e960b059142bab29aecb2354af, type: 3}
@@ -2268,9 +3138,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
-      propertyPath: colorType
-      value: 1
+      propertyPath: colorSprites.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &8191465475634848261 stripped
@@ -2345,6 +3249,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: moveType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738e01e960b059142bab29aecb2354af, type: 3}
@@ -2423,38 +3392,93 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.x
-      value: 2.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.y
-      value: -0.87
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.x
-      value: -2.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.y
-      value: -0.87
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: speed
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5641d619ff544b4448c04c2b0fcca52c, type: 3}
@@ -2533,38 +3557,93 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.x
-      value: 2.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.y
-      value: -3.87
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.x
-      value: -2.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.y
-      value: -3.87
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5641d619ff544b4448c04c2b0fcca52c, type: 3}
@@ -2734,48 +3813,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
       propertyPath: colorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: obstaclesType
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.x
-      value: 1.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.y
-      value: -5.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.x
-      value: -1.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.y
-      value: -7.88
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: moveType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -2854,43 +3988,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.y
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.y
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: obstaclesType
-      value: 4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -2972,6 +4161,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -29.721
       objectReference: {fileID: 0}
+    - target: {fileID: 4759304164838129778, guid: ac0f010402e5878468e48ac7303cfff7,
+        type: 3}
+      propertyPath: stopDumping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac0f010402e5878468e48ac7303cfff7, type: 3}
 --- !u!4 &4468884535106944326 stripped
@@ -3049,18 +4243,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: obstaclesType
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -3152,6 +4406,71 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004609100615224313, guid: d674ada4dbe31d445a426053c649ed70,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d674ada4dbe31d445a426053c649ed70, type: 3}
 --- !u!1001 &7031069033014754404
@@ -3223,9 +4542,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
-      propertyPath: colorType
-      value: 1
+      propertyPath: colorSprites.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &6458524444183023894 stripped
@@ -3301,6 +4654,71 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738e01e960b059142bab29aecb2354af, type: 3}
 --- !u!4 &1469908358645324917 stripped
@@ -3375,6 +4793,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 738e01e960b059142bab29aecb2354af,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738e01e960b059142bab29aecb2354af, type: 3}
@@ -3453,43 +4936,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
       propertyPath: colorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.y
-      value: 3.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.y
-      value: 3.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: obstaclesType
-      value: 4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -3568,43 +5106,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
       propertyPath: colorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: obstaclesType
-      value: 4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -3693,6 +5286,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
@@ -3704,7 +5332,7 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition1.y
-      value: -12.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
@@ -3714,17 +5342,37 @@ PrefabInstance:
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: movePosition2.y
-      value: -12.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: speed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
         type: 3}
       propertyPath: direction
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: obstaclesType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: 5641d619ff544b4448c04c2b0fcca52c,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5641d619ff544b4448c04c2b0fcca52c, type: 3}
@@ -3803,43 +5451,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crackSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: crack2Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounceSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: bounce1Sprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
       propertyPath: colorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: moveType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: maxLife
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition1.y
-      value: 1.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.x
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: movePosition2.y
-      value: 1.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
         type: 3}
       propertyPath: obstaclesType
-      value: 4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: colorChangeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625381213675161633, guid: ff7abbe02371e9a4e84b32cfeb254117,
+        type: 3}
+      propertyPath: safeSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7abbe02371e9a4e84b32cfeb254117, type: 3}
@@ -3918,9 +5621,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
-      propertyPath: colorType
-      value: 2
+      propertyPath: colorSprites.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &4696461646764485815 stripped
@@ -3998,6 +5735,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
       propertyPath: colorType
       value: 0
       objectReference: {fileID: 0}
@@ -4009,7 +5751,7 @@ PrefabInstance:
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: movePosition1.x
-      value: -2.65
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -4036,6 +5778,30 @@ PrefabInstance:
       propertyPath: moveType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &4813033005876174069 stripped
@@ -4074,7 +5840,7 @@ PrefabInstance:
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03489949
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -4089,7 +5855,7 @@ PrefabInstance:
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99939084
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -4099,7 +5865,7 @@ PrefabInstance:
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714098, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -4113,8 +5879,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
+      propertyPath: colorSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
       propertyPath: colorType
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -4129,7 +5900,7 @@ PrefabInstance:
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
       propertyPath: movePosition1.x
-      value: -2.65
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
         type: 3}
@@ -4151,6 +5922,30 @@ PrefabInstance:
       propertyPath: direction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: da380ac1b5cd021489c1be6eeba494e8,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7aacc26a7b9f44bb9e22f289365139,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: df8b6c9202063a848adb244b695706a5,
+        type: 3}
+    - target: {fileID: 4049344970784714094, guid: 2b9b2b0dc99ac9849b0e1cdc54410893,
+        type: 3}
+      propertyPath: colorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5890a9bdfdf7f46bdbac1b4d356949,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9b2b0dc99ac9849b0e1cdc54410893, type: 3}
 --- !u!4 &4952905079650125392 stripped

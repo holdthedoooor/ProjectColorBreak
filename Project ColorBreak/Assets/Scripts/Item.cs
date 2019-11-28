@@ -21,6 +21,7 @@ public class Item : LivingEntity
     public Vector3 movePosition1;
     public Vector3 movePosition2;
     private Vector3 destination;
+    private CircleCollider2D circleCollider;
 
     //아이템의 스피드, 방향
     public float speed;
@@ -34,8 +35,10 @@ public class Item : LivingEntity
     {
         status = Status.Live;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        circleCollider = GetComponent<CircleCollider2D>();
 
-        onDie += () => gameObject.SetActive( false );
+        onDie += () => circleCollider.enabled = false;
+        onDie += () => spriteRenderer.enabled = false;
     }
 
     void Start()
@@ -51,10 +54,21 @@ public class Item : LivingEntity
             StartCoroutine( MoveCoroutine() );
     }
 
-    private void SetSprite()
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        
+    }
+
+    public void SetSprite()
     {
         if ((int)colorType >= colorSprites.Length)
+        {
             return;
+        }
+
+        Debug.Log( (int)colorType + ", " + colorSprites.Length );
 
         //colorType에 맞는 material을 설정
         spriteRenderer.sprite = colorSprites[(int)colorType];
@@ -67,15 +81,48 @@ public class Item : LivingEntity
 
     private IEnumerator MoveCoroutine()
     {
-        while (status == Status.Live)
+        while (!StageManager.instance.isGameOver)
         {
-            if(!StageManager.instance.isReady && !StageManager.instance.isBossStageStart && !StageManager.instance.isGameOver)
+            if(!StageManager.instance.isReady && !StageManager.instance.isBossStageStart)
             {
                 if (Vector3.Distance( movePosition1, transform.position ) <= 0.1f)
                     destination = movePosition2;
 
                 else if (Vector3.Distance( movePosition2, transform.position ) <= 0.1f)
+                {
+                    if (StageManager.instance.currentBossStageSlot != null)
+                    {
+                        if (StageManager.instance.currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.BounceAttack)
+                        {
+                            int _randNum = Random.Range( 0, 4 );
+
+                            switch (_randNum)
+                            {
+                                case 0:
+                                    colorType = ColorType.Red;
+                                    break;
+                                case 1:
+                                    colorType = ColorType.Yellow;
+                                    break;
+                                case 2:
+                                    colorType = ColorType.Blue;
+                                    break;
+                                case 3:
+                                    colorType = ColorType.Purple;
+                                    break;
+                            }
+
+                            SetSprite();
+
+                            status = Status.Live;
+
+                            circleCollider.enabled = true;
+                            spriteRenderer.enabled = true;
+                        }
+                    }
                     destination = movePosition1;
+                }
+                    
 
                 transform.position = Vector3.MoveTowards( transform.position, destination, speed * Time.deltaTime );
             }
