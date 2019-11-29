@@ -39,6 +39,7 @@ public class StageManager : MonoBehaviour
     public GameObject        go_Player;
     public GameObject[]      go_AddScoreEffects;
     public GameObject[]      go_PlayerDieEffects;
+    public GameObject        go_TeleportEffect;
     //현재 스테이지   
     public Stage             currentStage;
     public StageSlot         currentStageSlot;
@@ -125,10 +126,24 @@ public class StageManager : MonoBehaviour
         if (currentBossStage.bossStageType == BossStage.BossStageType.Normal)
         {
             if(currentBossStageSlot.currentHp <= currentBossStageSlot.hardHp)
-                 NextPhase();
+            {
+                go_Player.SetActive( false );
+
+                GameObject.FindGameObjectWithTag( "Boss" ).GetComponent<Animator>().SetBool( "isHit", true );
+
+                GameObject clone = Instantiate( go_TeleportEffect );
+
+                clone.transform.position = go_Player.transform.position;
+                Destroy( clone, 0.15f );
+
+                Invoke( "NextPhase", 0.5f );
+            }
+
             else
             {
                 panaltyPoint--;
+
+                go_Player.SetActive( false );
 
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
 
@@ -138,17 +153,14 @@ public class StageManager : MonoBehaviour
                     return;
                 }
 
-                Destroy(currentBossStage.gameObject );
-                if(currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.StageRandom)
-                    currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[Random.Range(0, currentBossStageSlot.go_BossStageNormals.Length)]
-                        , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
-                else if(currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.Standard)
-                    currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+                GameObject.FindGameObjectWithTag( "Boss" ).GetComponent<Animator>().SetBool( "isHit", true );
 
-                currentBossStage.go_BossPrefab.SetActive( true );
+                GameObject clone = Instantiate( go_TeleportEffect);
 
-                go_Player.SetActive( false );
-                go_Player.SetActive( true );
+                clone.transform.position = go_Player.transform.position;
+                Destroy( clone, 0.15f );
+
+                Invoke( "BossHitNormal", 0.5f );
             }
         }
         else
@@ -157,12 +169,14 @@ public class StageManager : MonoBehaviour
             if (currentBossStageSlot.currentHp <= 0)
             {
                 currentBossStageSlot.currentHp = 0;
+                GameObject.FindGameObjectWithTag( "Boss" ).GetComponent<Animator>().SetBool( "isHit", true );
                 FinishStage();
             }
             else
             {
-                Destroy( currentBossStage.gameObject );
                 panaltyPoint--;
+
+                go_Player.SetActive( false );
 
                 UIManager.instance.bossStageUI.UpdateChallengeCountText();
 
@@ -172,10 +186,14 @@ public class StageManager : MonoBehaviour
                     return;
                 }
 
-                currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+                GameObject.FindGameObjectWithTag( "Boss" ).GetComponent<Animator>().SetBool( "isHit", true );
 
-                go_Player.SetActive( false );
-                go_Player.SetActive( true );
+                GameObject clone = Instantiate( go_TeleportEffect );
+
+                clone.transform.position = go_Player.transform.position;
+                Destroy( clone, 0.15f );
+
+                Invoke( "BossHitHard", 0.5f );
             } 
         }        
     }
@@ -298,7 +316,6 @@ public class StageManager : MonoBehaviour
         currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
 
         //플레이어 위치 및 색 초기화
-        go_Player.SetActive( false );
         go_Player.SetActive( true );
     }
 
@@ -451,5 +468,29 @@ public class StageManager : MonoBehaviour
 
         isReady = false;
         isButtonUp = false;
+    }
+
+    public void BossHitNormal()
+    {
+        Destroy( currentBossStage.gameObject );
+
+        if (currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.StageRandom)
+            currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[Random.Range( 0, currentBossStageSlot.go_BossStageNormals.Length )]
+                , new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+        else if (currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.Standard)
+            currentBossStage = Instantiate( currentBossStageSlot.go_BossStageNormals[0], new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
+        currentBossStage.go_BossPrefab.SetActive( true );
+
+        go_Player.SetActive( true );
+    }
+
+    public void BossHitHard()
+    {
+        Destroy( currentBossStage.gameObject );
+
+        currentBossStage = Instantiate( currentBossStageSlot.go_BossStageHard, new Vector3( 0, 0, 0 ), Quaternion.identity ).GetComponent<BossStage>();
+
+        go_Player.SetActive( true );
     }
 }
