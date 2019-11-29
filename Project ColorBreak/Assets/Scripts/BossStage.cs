@@ -51,7 +51,22 @@ public class BossStage : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds( 2f );
+        _time = 0f;
+
+        UIManager.instance.bossStageUI.grrrrImage.gameObject.SetActive( true );
+        //여기에 grrrr 텍스트 이미지
+        while (_time < 2f)
+        {
+            _time += Time.deltaTime;
+
+            UIManager.instance.bossStageUI.grrrrImage.transform.localPosition = UIManager.instance.bossStageUI.grrrrImageOrizinPos + (Random.insideUnitSphere * 15);
+            UIManager.instance.bossStageUI.grrrrImage.transform.localPosition = new Vector3( UIManager.instance.bossStageUI.grrrrImage.transform.localPosition.x,
+                UIManager.instance.bossStageUI.grrrrImage.transform.localPosition.y, 0 );
+
+            yield return null;
+        }
+
+        UIManager.instance.bossStageUI.grrrrImage.gameObject.SetActive( false );
 
         _time = 0f;
 

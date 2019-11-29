@@ -354,6 +354,8 @@ public class StageManager : MonoBehaviour
 
                 currentBossStage.go_BossPrefab.SetActive( true );
 
+                UIManager.instance.bossStageUI.grrrrImage.gameObject.SetActive( false );
+
                 currentBossStage.StopCoroutine( currentBossStage.coroutine );
 
                 isBossStageStart = false;
