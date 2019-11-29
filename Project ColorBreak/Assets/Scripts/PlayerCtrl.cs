@@ -461,14 +461,14 @@ public class PlayerCtrl : LivingEntity
         {
             if (StageManager.instance.currentBossStageSlot.bossStageType == BossStageSlot.BossStageType.BounceAttack)
             {
-                if (colorType == ColorType.Red)
+                if (colorType == ColorType.Blue)
                 {
                     StageManager.instance.currentBossStageSlot.currentHp -= 1;
 
                     UIManager.instance.bossStageUI.UpdateBossHpText();
 
                     StartCoroutine( UIManager.instance.bossStageUI.UpdateBossHpSliderCoroutine() );
-
+                    StartCoroutine( BossDamage() );
                     if (StageManager.instance.currentBossStageSlot.currentHp <= 0)
                     {
                         StageManager.instance.currentBossStageSlot.currentHp = 0;
@@ -487,6 +487,15 @@ public class PlayerCtrl : LivingEntity
             StageManager.instance.BossCollision();
         }
 
+    }
+
+    public IEnumerator BossDamage()
+    {
+        StageManager.instance.currentBossStage.go_BossPrefab.GetComponent<Animator>().SetBool( "isHit", true );
+
+        yield return new WaitForSeconds( 0.5f );
+
+        StageManager.instance.currentBossStage.go_BossPrefab.GetComponent<Animator>().SetBool( "isHit", false );
     }
 
     public void CollisionWithWall(Vector2 setPos)

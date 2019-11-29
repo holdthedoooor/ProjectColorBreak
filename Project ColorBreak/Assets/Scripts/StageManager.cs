@@ -129,7 +129,7 @@ public class StageManager : MonoBehaviour
             {
                 go_Player.SetActive( false );
 
-                GameObject.FindGameObjectWithTag( "Boss" ).GetComponent<Animator>().SetBool( "isHit", true );
+                currentBossStage.go_BossPrefab.GetComponent<Animator>().SetBool( "isHit", true );
 
                 GameObject clone = Instantiate( go_TeleportEffect );
 
@@ -153,7 +153,7 @@ public class StageManager : MonoBehaviour
                     return;
                 }
 
-                GameObject.FindGameObjectWithTag( "Boss" ).GetComponent<Animator>().SetBool( "isHit", true );
+                currentBossStage.go_BossPrefab.GetComponent<Animator>().SetBool( "isHit", true );
 
                 GameObject clone = Instantiate( go_TeleportEffect);
 
@@ -169,7 +169,7 @@ public class StageManager : MonoBehaviour
             if (currentBossStageSlot.currentHp <= 0)
             {
                 currentBossStageSlot.currentHp = 0;
-                GameObject.FindGameObjectWithTag( "Boss" ).GetComponent<Animator>().SetBool( "isHit", true );
+                currentBossStage.go_BossPrefab.GetComponent<Animator>().SetBool( "isHit", true );
                 FinishStage();
             }
             else
