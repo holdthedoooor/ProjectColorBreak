@@ -22,7 +22,6 @@ public class LogoUI : MonoBehaviour
 
         while (_time < 1.5f)
         {
-            Debug.Log( "로고" );
             _time += Time.deltaTime;
 
             _alpha = Mathf.Lerp( 0f, 1f, _time / 1.5f );

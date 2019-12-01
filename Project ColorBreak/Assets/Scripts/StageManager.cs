@@ -348,6 +348,9 @@ public class StageManager : MonoBehaviour
 
                 if (total >= chaptersUnlockStarCount[currentChapter - 1])
                 {
+                    if (currentChapter == 3)
+                        UIManager.instance.chapterSelectUI.endingScene_Btn.SetActive( true );
+
                     //다음 챕터 오픈
                     UIManager.instance.chapterSelectUI.NextChapterOpen();
                     //다음 챕터의 1스테이지 오픈

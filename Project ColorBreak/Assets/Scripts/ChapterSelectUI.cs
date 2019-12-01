@@ -49,6 +49,8 @@ public class ChapterSelectUI : MonoBehaviour
     public Text chapterNum_Text;
     public Text needStarCount_Text;
 
+    public GameObject endingScene_Btn;
+
     public void Chapter1_Button()
     {
         SoundManager.instance.PlaySFX( "Click_1" );

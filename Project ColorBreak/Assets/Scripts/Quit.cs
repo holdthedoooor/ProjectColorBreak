@@ -105,6 +105,11 @@ public class Quit : MonoBehaviour
 
     public void DeactivePopUP()
     {
+        if(UIManager.instance.endingSceneUI.isEndingCredit)
+        {
+            UIManager.instance.endingSceneUI.StopCoroutine( UIManager.instance.endingSceneUI.EndingCreditCoroutine() );
+            UIManager.instance.endingSceneUI.isEndingCredit = false;
+        }
         SoundManager.instance.PlaySFX( "Click_1" );
 
         currentPopUp.SetActive( false );
