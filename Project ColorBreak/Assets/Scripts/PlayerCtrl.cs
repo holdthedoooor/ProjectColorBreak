@@ -475,7 +475,7 @@ public class PlayerCtrl : LivingEntity
                         StageManager.instance.FinishStage();
                         return;
                     }
-
+                    SoundManager.instance.PlaySFX( "Block_Bounce" );
                     StartCoroutine( BounceBall() );
                 }
                 else
