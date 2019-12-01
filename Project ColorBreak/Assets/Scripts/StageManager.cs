@@ -281,10 +281,11 @@ public class StageManager : MonoBehaviour
         {
             UIManager.instance.SetFinishUI();
 
-            if (currentBossStageSlot.starCount < UIManager.instance.starCount)
+            if (currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear && currentBossStageSlot.starCount <= UIManager.instance.starCount)
             {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;
                 ChapterOpenCheck();
+                Debug.Log( "???" );
 
                 if(currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
                 {
@@ -332,8 +333,7 @@ public class StageManager : MonoBehaviour
                 chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
             }
 
-            if (UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
-                chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
+            chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
 
             UIManager.instance.chapterSelectUI.SetStarCountText();
 
@@ -346,8 +346,11 @@ public class StageManager : MonoBehaviour
                     total += chaptersStarCount[i];
                 }
 
+                Debug.Log( "total : " + total );
+
                 if (total >= chaptersUnlockStarCount[currentChapter - 1])
                 {
+                    Debug.Log( "챕터 오픈" );
                     if (currentChapter == 3)
                         UIManager.instance.chapterSelectUI.endingScene_Btn.SetActive( true );
 

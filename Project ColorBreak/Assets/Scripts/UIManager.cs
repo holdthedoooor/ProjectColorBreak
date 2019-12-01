@@ -163,10 +163,18 @@ public class UIManager : MonoBehaviour
 
                 SoundManager.instance.PlaySFX( "Boss_Clear" );
 
+                int total = 0;
+
                 if (StageManager.instance.currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Open)
                     StageManager.instance.currentBossStageSlot.bossStageStatus = BossStageSlot.BossStageStatus.Clear;
 
-                int total = 0;
+                if (bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+                {
+                    if(StageManager.instance.currentBossStageSlot.starCount < starCount)
+                        StageManager.instance.currentBossStageSlot.starCount = starCount;
+
+                    StageManager.instance.chaptersStarCount[StageManager.instance.currentChapter - 1] += bossStageSlot.starCount;
+                }         
 
                 for (int i = 0; i < StageManager.instance.currentChapter; i++)
                 {
