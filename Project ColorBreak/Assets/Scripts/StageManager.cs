@@ -357,7 +357,7 @@ public class StageManager : MonoBehaviour
                     UIManager.instance.chapterSelectUI.allStageSlot[UIManager.instance.chapterSelectUI.chapterUnlock].stageSlots[0].StageSlotOpen();
                     UIManager.instance.chapterSelectUI.chapterUnlock++;
                 }
-            }
+            } 
         }
     }
 

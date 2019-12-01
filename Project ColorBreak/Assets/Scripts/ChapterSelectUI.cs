@@ -82,7 +82,7 @@ public class ChapterSelectUI : MonoBehaviour
         {
             chapterNum_Text.text = "2";
 
-            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[1].ToString();
+            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[0].ToString();
 
             Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
 
@@ -116,7 +116,7 @@ public class ChapterSelectUI : MonoBehaviour
         {
             chapterNum_Text.text = "3";
 
-            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[2].ToString();
+            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[1].ToString();
 
             Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
 
@@ -150,7 +150,7 @@ public class ChapterSelectUI : MonoBehaviour
         {
             chapterNum_Text.text = "4";
 
-            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[3].ToString();
+            needStarCount_Text.text = StageManager.instance.chaptersUnlockStarCount[2].ToString();
 
             Quit.instance.ActivePopUp( go_NeedStarCountCheckUI, Quit.QuitStatus.ChapterSelect );
 
