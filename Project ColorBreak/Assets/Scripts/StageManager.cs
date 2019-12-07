@@ -322,45 +322,45 @@ public class StageManager : MonoBehaviour
 
     public void ChapterOpenCheck()
     {
-        if ( currentChapter < 4)
+        chaptersStarCount[currentChapter - 1] = 0;
+        for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
         {
-            chaptersStarCount[currentChapter - 1] = 0;
-            for (int i = 0; i < UIManager.instance.stageSlots.Length; i++)
-            {
-                if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Clear)
-                    break;
+            if (UIManager.instance.stageSlots[i].stageStatus != StageSlot.StageStatus.Clear)
+                break;
 
-                chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
+            chaptersStarCount[currentChapter - 1] += UIManager.instance.stageSlots[i].starCount;
+        }
+
+        chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
+
+        UIManager.instance.chapterSelectUI.SetStarCountText();
+
+        if (UIManager.instance.chapterSelectUI.chapterUnlock >= currentChapter)
+        {
+            int total = 0;
+
+            for (int i = 0; i < UIManager.instance.chapterSelectUI.chapterUnlock; i++)
+            {
+                total += chaptersStarCount[i];
             }
 
-            chaptersStarCount[currentChapter - 1] += UIManager.instance.bossStageSlot.starCount;
+            Debug.Log( "total : " + total );
 
-            UIManager.instance.chapterSelectUI.SetStarCountText();
+            if (currentChapter == 4)
+                return;
 
-            if (UIManager.instance.chapterSelectUI.chapterUnlock >= currentChapter)
+            if (total >= chaptersUnlockStarCount[currentChapter - 1])
             {
-                int total = 0;
+                Debug.Log( "챕터 오픈" );
+                if (currentChapter == 3)
+                    UIManager.instance.chapterSelectUI.endingScene_Btn.SetActive( true );
 
-                for (int i = 0; i < UIManager.instance.chapterSelectUI.chapterUnlock; i++)
-                {
-                    total += chaptersStarCount[i];
-                }
-
-                Debug.Log( "total : " + total );
-
-                if (total >= chaptersUnlockStarCount[currentChapter - 1])
-                {
-                    Debug.Log( "챕터 오픈" );
-                    if (currentChapter == 3)
-                        UIManager.instance.chapterSelectUI.endingScene_Btn.SetActive( true );
-
-                    //다음 챕터 오픈
-                    UIManager.instance.chapterSelectUI.NextChapterOpen();
-                    //다음 챕터의 1스테이지 오픈
-                    UIManager.instance.chapterSelectUI.allStageSlot[UIManager.instance.chapterSelectUI.chapterUnlock].stageSlots[0].StageSlotOpen();
-                    UIManager.instance.chapterSelectUI.chapterUnlock++;
-                }
-            } 
+                //다음 챕터 오픈
+                UIManager.instance.chapterSelectUI.NextChapterOpen();
+                //다음 챕터의 1스테이지 오픈
+                UIManager.instance.chapterSelectUI.allStageSlot[UIManager.instance.chapterSelectUI.chapterUnlock].stageSlots[0].StageSlotOpen();
+                UIManager.instance.chapterSelectUI.chapterUnlock++;
+            }
         }
     }
 
