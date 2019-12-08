@@ -237,8 +237,9 @@ public class ChapterSelectUI : MonoBehaviour
 
     public void NextChapterOpen()
     {
-        chapters_Button[StageManager.instance.currentChapter].GetComponent<Image>().sprite = chapterOpen_Sprites[StageManager.instance.currentChapter - 1];
-        chapterText_Images[StageManager.instance.currentChapter - 1].sprite = chapterOpenText_Sprites[StageManager.instance.currentChapter - 1];
+        Debug.Log( "NextChapterOpen" );
+        chapters_Button[chapterUnlock].GetComponent<Image>().sprite = chapterOpen_Sprites[chapterUnlock - 1];
+        chapterText_Images[chapterUnlock - 1].sprite = chapterOpenText_Sprites[chapterUnlock - 1];
     }
 
     public IEnumerator TextImageChangeCoroutine()

@@ -32,6 +32,7 @@ public class StageManager : MonoBehaviour
     public int          panaltyPoint;
     public int          currentChapter;
     public int[]        chaptersUnlockStarCount;
+    public int          beforeChapterUnlock;
 
     //현재 챕터의 별 총 개수
     public int[] chaptersStarCount;//챕터마다 획득한 별 개수 
@@ -76,7 +77,11 @@ public class StageManager : MonoBehaviour
             UIManager.instance.chapterSelectUI.LoadChapterOpen();
         }
         else
+        {
             theSaveLoad.LoadData();
+            beforeChapterUnlock = UIManager.instance.chapterSelectUI.chapterUnlock;
+        }
+
 
         UIManager.instance.chapterSelectUI.LoadStarCountText();
     }
@@ -271,6 +276,7 @@ public class StageManager : MonoBehaviour
                     currentStageSlot.starCount = UIManager.instance.starCount;
                     currentStageSlot.StarImageChange();
                     currentStageSlot.bestScore = score;
+                    beforeChapterUnlock = UIManager.instance.chapterSelectUI.chapterUnlock;
                     ChapterOpenCheck();
                     theSaveLoad.SaveData();
                 }
@@ -284,8 +290,8 @@ public class StageManager : MonoBehaviour
             if (currentBossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear && currentBossStageSlot.starCount <= UIManager.instance.starCount)
             {
                 currentBossStageSlot.starCount = UIManager.instance.starCount;
+                beforeChapterUnlock = UIManager.instance.chapterSelectUI.chapterUnlock;
                 ChapterOpenCheck();
-                Debug.Log( "???" );
 
                 if(currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
                 {
@@ -298,9 +304,12 @@ public class StageManager : MonoBehaviour
             else if(currentBossStageSlot.starCount == UIManager.instance.starCount && currentBossStageSlot.bossStageType != BossStageSlot.BossStageType.BounceAttack)
             {
                 if (currentBossStageSlot.minPanaltyPoint > panaltyPoint)
+                {
                     currentBossStageSlot.minPanaltyPoint = panaltyPoint;
 
-                theSaveLoad.SaveData();
+                    theSaveLoad.SaveData();
+                }
+
             }
                 
             currentBossStageSlot.StarImageChange();
@@ -344,12 +353,10 @@ public class StageManager : MonoBehaviour
                 total += chaptersStarCount[i];
             }
 
-            Debug.Log( "total : " + total );
-
             if (currentChapter == 4)
                 return;
 
-            if (total >= chaptersUnlockStarCount[currentChapter - 1])
+            if (total >= chaptersUnlockStarCount[UIManager.instance.chapterSelectUI.chapterUnlock - 1] && total < chaptersUnlockStarCount[UIManager.instance.chapterSelectUI.chapterUnlock])
             {
                 Debug.Log( "챕터 오픈" );
                 if (currentChapter == 3)
@@ -359,6 +366,8 @@ public class StageManager : MonoBehaviour
                 UIManager.instance.chapterSelectUI.NextChapterOpen();
                 //다음 챕터의 1스테이지 오픈
                 UIManager.instance.chapterSelectUI.allStageSlot[UIManager.instance.chapterSelectUI.chapterUnlock].stageSlots[0].StageSlotOpen();
+
+                beforeChapterUnlock = UIManager.instance.chapterSelectUI.chapterUnlock;
                 UIManager.instance.chapterSelectUI.chapterUnlock++;
             }
         }

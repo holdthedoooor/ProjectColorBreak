@@ -10,7 +10,6 @@ public class LogoUI : MonoBehaviour
     
     void Start()
     {
-        Debug.Log( "시작" );
         StartCoroutine( LogoCoroutine() );
     }
     

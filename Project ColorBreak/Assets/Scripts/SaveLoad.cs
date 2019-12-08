@@ -56,15 +56,15 @@ public class SaveLoad : MonoBehaviour
         }
 
         //현재 챕터의 보스스테이지를 클리어하고 별 개수가 현재 챕터의 목표 별 개수보다 크거나 같으면 다음챕터 Open
-        if (StageManager.instance.chaptersStarCount[StageManager.instance.currentChapter-1] >= StageManager.instance.chaptersUnlockStarCount[StageManager.instance.currentChapter - 1]
-            && UIManager.instance.bossStageSlot.bossStageStatus == BossStageSlot.BossStageStatus.Clear)
+        if (StageManager.instance.beforeChapterUnlock != UIManager.instance.chapterSelectUI.chapterUnlock)
         {
-            saveData[StageManager.instance.currentChapter].stageBestScore.Add( 0 );
-            saveData[StageManager.instance.currentChapter].stageStarCount.Add( 0 );
-            saveData[StageManager.instance.currentChapter].stageStatusNumber.Add( 1 );
+            Debug.Log( "다음 챕터 1스테이지 오픈" );
+            saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1].stageBestScore.Add( 0 );
+            saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1].stageStarCount.Add( 0 );
+            saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1].stageStatusNumber.Add( 1 );
 
-            json = JsonUtility.ToJson( saveData[StageManager.instance.currentChapter], true );
-            PlayerPrefs.SetString( saveChapters[StageManager.instance.currentChapter], json );
+            json = JsonUtility.ToJson( saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1], true );
+            PlayerPrefs.SetString( saveChapters[UIManager.instance.chapterSelectUI.chapterUnlock - 1], json );
         }
            
         PlayerPrefs.SetInt( "ChapterUnlock", UIManager.instance.chapterSelectUI.chapterUnlock );
@@ -119,6 +119,14 @@ public class SaveLoad : MonoBehaviour
             if (saveData[0].stageStatusNumber.Count == 0)
                 return;
 
+            /*
+            if (saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1].stageBestScore.Count == 0)
+            {
+                saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1].stageStarCount.Add( 0 );
+                saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1].stageBestScore.Add( 0 );
+                saveData[UIManager.instance.chapterSelectUI.chapterUnlock - 1].stageStatusNumber.Add(1);
+            }*/
+
             for (int j = 0; j < saveData[i].stageBestScore.Count; j++)
             {
                 UIManager.instance.chapterSelectUI.allStageSlot[i].stageSlots[j].SetStageSlot( saveData[i].stageBestScore[j], saveData[i].stageStarCount[j], saveData[i].stageStatusNumber[j] );
@@ -136,6 +144,9 @@ public class SaveLoad : MonoBehaviour
                 }
             }
         }
+
+        if (UIManager.instance.chapterSelectUI.chapterUnlock >= 3)
+            UIManager.instance.chapterSelectUI.endingScene_Btn.SetActive( true );
 
         UIManager.instance.chapterSelectUI.LoadChapterOpen();
     }
