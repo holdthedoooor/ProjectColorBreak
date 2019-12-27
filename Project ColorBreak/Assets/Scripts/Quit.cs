@@ -107,7 +107,7 @@ public class Quit : MonoBehaviour
     {
         if(UIManager.instance.endingSceneUI.isEndingCredit)
         {
-            UIManager.instance.endingSceneUI.StopCoroutine( UIManager.instance.endingSceneUI.EndingCreditCoroutine() );
+            UIManager.instance.endingSceneUI.StopCoroutine( UIManager.instance.endingSceneUI.coroutine );
             UIManager.instance.endingSceneUI.isEndingCredit = false;
         }
         SoundManager.instance.PlaySFX( "Click_1" );

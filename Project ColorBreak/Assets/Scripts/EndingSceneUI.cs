@@ -11,6 +11,8 @@ public class EndingSceneUI : MonoBehaviour
 
     private Vector3 orizinPos;
 
+    public Coroutine coroutine;
+
     void Awake()
     {
         orizinPos = endingCreditPos.localPosition;
@@ -25,6 +27,8 @@ public class EndingSceneUI : MonoBehaviour
         go_EndingSceneUI.SetActive( true );
 
         endingCreditPos.localPosition = orizinPos;
+
+        Debug.Log( endingCreditPos.localPosition );
 
         //1625
 
@@ -45,6 +49,6 @@ public class EndingSceneUI : MonoBehaviour
     public void EndingSceneButton()
     {
         Quit.instance.ActivePopUp( go_EndingSceneUI, Quit.QuitStatus.ChapterSelect );
-        StartCoroutine( EndingCreditCoroutine() );
+        coroutine = StartCoroutine( EndingCreditCoroutine() );
     }
 }
